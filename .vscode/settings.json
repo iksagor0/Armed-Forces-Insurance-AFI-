@@ -1,0 +1,94 @@
+{
+  "editor.hover.enabled": true,
+  // ===================
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.wordWrap": "on",
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true,
+  "C_Cpp.updateChannel": "Insiders",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "beautify.config": "string|Object.<string,string|number|boolean>",
+  "editor.formatOnType": true,
+  "editor.renderControlCharacters": true,
+  "workbench.activityBar.visible": true,
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.donotVerifyTags": true,
+  "editor.linkedEditing": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 20000,
+  "quokka.automaticRestart": true,
+  "quokka.colors": {
+    "covered": "#62b455",
+    "errorPath": "#ffa0a0",
+    "errorSource": "#fe536a",
+    "notCovered": "#cccccc",
+    "partiallyCovered": "#d2a032"
+  },
+  "workbench.editor.enablePreview": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'cascadia code', Consolas, 'Courier New', monospace",
+  "materialTheme.accent": "Cyan",
+  "comments.openPanel": "neverOpen",
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.ts"
+  ],
+  // ======== LIVE SASS ======= Own Customized
+  "liveSassCompile.settings.formats": [
+    {
+      "savePath": "/css",
+      // For NORMAL CSS
+      "extensionName": ".css"
+
+      // // For MINIFIED CSS
+      // "format": "compressed",
+      // "extensionName": ".min.css"
+    }
+  ],
+
+  "liveSassCompile.settings.showOutputWindow": false,
+  "liveSassCompile.settings.generateMap": false,
+  "explorer.confirmDelete": false,
+  "liveSassCompile.settings.autoprefix": ["> 1%", "last 3 versions"],
+  "git.autofetch": true,
+  "bracketPairColorizer.depreciation-notice": false,
+  "eslint.debug": true,
+  // ************************************
+  //         CODE FORMATOR
+  "editor.defaultFormatter": "HookyQR.beautify",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // ************************************
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": true, //disable all built-in syntax checking
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.organizeImports": true
+  },
+  "eslint.alwaysShowStatus": true,
+  // emmet
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+
+  // ========== terminal
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeight": "normal",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.enableSmartCommit": true,
+  "workbench.colorTheme": "Monokai",
+  "explorer.compactFolders": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "explorer.confirmDragAndDrop": false,
+  "editor.fontSize": 16,
+  "editor.accessibilitySupport": "on",
+  "window.zoomLevel": 1
+}
