@@ -97,6 +97,10 @@ h3 {
   font-family: var(--font-family-secondary);
 }
 
+h1 {
+  font-size: 2rem;
+}
+
 a {
   text-decoration: none;
   color: #0570c5;
