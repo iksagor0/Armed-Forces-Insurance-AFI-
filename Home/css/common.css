@@ -87,6 +87,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  margin-bottom: 1.125rem;
 }
 
 h1,
@@ -98,6 +99,8 @@ h3 {
 
 a {
   text-decoration: none;
+  color: #0570c5;
+  color: var(--color-blue-10);
 }
 
 button,
@@ -277,4 +280,16 @@ main.offscreen__darken:before {
   border-color: var(--color-blue-20);
   color: #fff;
   color: var(--color-white);
+}
+
+[class*="icon-"],
+[class^="icon-"] {
+  font-family: afi-icon !important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
