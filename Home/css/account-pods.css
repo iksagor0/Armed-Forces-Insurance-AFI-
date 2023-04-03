@@ -1,0 +1,13 @@
+.account-pods {
+  background-color: #f6f6f6;
+  background-color: var(--color-gray-10);
+  padding: 2.75rem 0;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: 64em) {
+  .account-pods {
+    padding: 3.625rem 0 2.75rem;
+  }
+}

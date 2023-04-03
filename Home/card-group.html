@@ -42,6 +42,12 @@
       crossorigin="anonymous"
     />
 
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/card-group.css" />
     <link rel="stylesheet" href="css/common.css" />
@@ -49,100 +55,131 @@
 
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
-      <!-- <div class="container"> -->
       <!-- ********************* Section Start ********************* -->
-      <section
-        class="content-pod-group"
-        data-module="podGroup"
-        data-breakpoints-inited="true"
-      >
-        <div class="container">
-          <div class="grid js-carousel">
-            <div class="grid__item">
-              <div class="content-pod js-carousel-slide">
-                <img
-                  src="/img//card-group/Home_gridpod.jpg"
-                  class="content-pod__image"
-                  alt="Home Insurance"
-                  width="305"
-                  height="305"
-                />
-                <div class="content-pod__content">
-                  <h2 class="content-pod__heading">Home</h2>
-                  <p class="content-pod__description js-peekaboo-text">
-                    Like all service members, you've worked hard for what you
-                    earned, and your home is often your biggest investment.
-                  </p>
-                  <a class="button button--small-text" href="#">Learn More</a>
+      <section class="content-pod-group">
+        <div class="container overflow__hidden">
+          <div class="grid_wrapper mySwiper">
+            <div class="grid js-carousel swiper-wrapper">
+              <!-- Item 01 -->
+              <div class="grid__item swiper-slide">
+                <div class="content-pod js-carousel-slide">
+                  <img
+                    src="/img//card-group/Home_gridpod.jpg"
+                    class="content-pod__image"
+                    alt="Home Insurance"
+                    width="305"
+                    height="305"
+                  />
+                  <div class="content-pod__content">
+                    <h2 class="content-pod__heading">Home</h2>
+                    <p class="content-pod__description js-peekaboo-text">
+                      Like all service members, you've worked hard for what you
+                      earned, and your home is often your biggest investment.
+                    </p>
+                    <a class="button button--small-text" href="#">Learn More</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 02 -->
+              <div class="grid__item swiper-slide">
+                <div class="content-pod js-carousel-slide">
+                  <img
+                    src="/img//card-group/Renter_gridpod.jpg"
+                    class="content-pod__image"
+                    alt="Renter Insurance"
+                    width="305"
+                    height="305"
+                  />
+                  <div class="content-pod__content">
+                    <h2 class="content-pod__heading">Renter</h2>
+                    <p class="content-pod__description js-peekaboo-text">
+                      Renter insurance covers damages to your possessions when
+                      you rent and includes liability insurance should someone
+                      get hurt at your residence.
+                    </p>
+                    <a class="button button--small-text" href="#">Learn More</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 03 -->
+              <div class="grid__item swiper-slide">
+                <div class="content-pod js-carousel-slide">
+                  <img
+                    src="/img//card-group/Auto_gridpod.jpg"
+                    class="content-pod__image"
+                    alt="Auto Insurance"
+                    width="305"
+                    height="305"
+                  />
+                  <div class="content-pod__content">
+                    <h2 class="content-pod__heading">Auto</h2>
+                    <p class="content-pod__description js-peekaboo-text">
+                      Armed Forces Insurance agents will work closely with our
+                      select partner companies to find an affordable auto policy
+                      that fits your needs.
+                    </p>
+                    <a class="button button--small-text" href="#">Learn More</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 04 -->
+              <div class="grid__item swiper-slide">
+                <div class="content-pod js-carousel-slide">
+                  <img
+                    src="/img//card-group/Business_gridpod.jpg"
+                    class="content-pod__image"
+                    alt="Business Insurance"
+                    width="305"
+                    height="305"
+                  />
+                  <div class="content-pod__content">
+                    <h2 class="content-pod__heading">Business</h2>
+                    <p class="content-pod__description js-peekaboo-text">
+                      We are military specialists who provide exceptional and
+                      highly personalized care and offer insurance solutions for
+                      many different types of businesses.
+                    </p>
+                    <a class="button button--small-text" href="#">Learn More</a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="grid__item">
-              <div class="content-pod js-carousel-slide">
-                <img
-                  src="/img//card-group/Renter_gridpod.jpg"
-                  class="content-pod__image"
-                  alt="Renter Insurance"
-                  width="305"
-                  height="305"
-                />
-                <div class="content-pod__content">
-                  <h2 class="content-pod__heading">Renter</h2>
-                  <p class="content-pod__description js-peekaboo-text">
-                    Renter insurance covers damages to your possessions when you
-                    rent and includes liability insurance should someone get
-                    hurt at your residence.
-                  </p>
-                  <a class="button button--small-text" href="#">Learn More</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid__item">
-              <div class="content-pod js-carousel-slide">
-                <img
-                  src="/img//card-group/Auto_gridpod.jpg"
-                  class="content-pod__image"
-                  alt="Auto Insurance"
-                  width="305"
-                  height="305"
-                />
-                <div class="content-pod__content">
-                  <h2 class="content-pod__heading">Auto</h2>
-                  <p class="content-pod__description js-peekaboo-text">
-                    Armed Forces Insurance agents will work closely with our
-                    select partner companies to find an affordable auto policy
-                    that fits your needs.
-                  </p>
-                  <a class="button button--small-text" href="#">Learn More</a>
-                </div>
-              </div>
-            </div>
-            <!-- Item 04 -->
-            <div class="grid__item">
-              <div class="content-pod js-carousel-slide">
-                <img
-                  src="/img//card-group/Business_gridpod.jpg"
-                  class="content-pod__image"
-                  alt="Business Insurance"
-                  width="305"
-                  height="305"
-                />
-                <div class="content-pod__content">
-                  <h2 class="content-pod__heading">Business</h2>
-                  <p class="content-pod__description js-peekaboo-text">
-                    We are military specialists who provide exceptional and
-                    highly personalized care and offer insurance solutions for
-                    many different types of businesses.
-                  </p>
-                  <a class="button button--small-text" href="#">Learn More</a>
-                </div>
-              </div>
-            </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
       </section>
       <!-- ********************* Section End ********************* -->
-      <!-- </div> -->
     </main>
+
+    <!-- SCIPT -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+      if (screen.width <= 768) {
+        console.log("< 786");
+        let swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+
+          breakpoints: {
+            // when window width is <= 640px
+            450: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+          },
+        });
+      }
+    </script>
   </body>
 </html>
