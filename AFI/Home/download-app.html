@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Header</title>
+    <title>Home</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,27 +43,61 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/our-mission.css" />
     <link rel="stylesheet" href="css/common.css" />
+
+    <!-- INTERNAL CSS -->
+    <style>
+      .afi-section-wrapper {
+        padding: 1.75rem;
+      }
+
+      .download__app h2,
+      .download__app p {
+        text-align: center !important;
+      }
+
+      .download__app .app__link_container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      @media screen and (min-width: 48em) {
+        .afi-section-wrapper {
+          padding: 1rem 0 2rem;
+        }
+      }
+    </style>
   </head>
 
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
       <div class="container">
-        <!-- ********************* Our Mission Start ********************* -->
-        <section class="content-panel content-panel--one-column">
-          <h1 class="heading-blue">Our Mission is You®</h1>
+        <!-- ********************* Section Start ********************* -->
+        <section class="download__app afi-section-wrapper">
+          <h2 class="">Download Our Mobile App</h2>
           <p>
-            Since 1887, Armed Forces Insurance (AFI) has existed with a single,
-            unwavering purpose: To protect the people who protect our nation. So
-            for more than 135 years, we've provided military homeowner
-            insurance, military renter insurance, military auto insurance and
-            much more to our members. Let AFI's dedicated agents shop our
-            network of national carriers to find the best value and options to
-            fit your needs.
+            Download the Armed Forces Insurance (AFI) mobile app today to gain
+            quick and easy access to your account information, pay your bill,
+            file a claim, review the progress of your claim, and much more. AFI
+            was founded in 1887 by military leaders with a single mission: to
+            protect the property of those who protect our nation. We know you
+            and the challenges you face every day. This app is yet another way
+            we are delivering services tailored directly for you.
           </p>
+          <div class="app__link_container">
+            <a href="#"
+              ><img
+                src="./img/download-app/downloadAppStore.png"
+                alt="Apple Store" /></a
+            ><a href="#"
+              ><img
+                src="./img/download-app/downloadPlayStore.png"
+                alt="Play Store"
+            /></a>
+          </div>
         </section>
-        <!-- ********************* Our Mission End ********************* -->
+        <!-- ********************* Section End ********************* -->
       </div>
     </main>
   </body>

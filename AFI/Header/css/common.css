@@ -87,10 +87,24 @@ h4,
 h5,
 h6 {
   margin: 0;
+  margin-bottom: 1.125rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Zilla Slab, serif;
+  font-family: var(--font-family-secondary);
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 a {
   text-decoration: none;
+  color: #0570c5;
+  color: var(--color-blue-10);
 }
 
 button,
@@ -103,7 +117,11 @@ textarea:focus {
   outline-offset: 0;
 }
 
-p {}
+p {
+  line-height: 1.8;
+  margin: 0 0 1.5rem;
+  margin: 0 0 var(--spacing-vertical);
+}
 
 input[type="date"],
 input[type="email"],
@@ -130,32 +148,6 @@ i.fa {
   width: calc(100% - 16px);
   margin: 0 auto;
 }
-
-.button {
-  background-color: #0570c5;
-  border-color: #0570c5;
-  color: #fff;
-  border-radius: 1.625rem;
-  border-style: solid;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 400;
-  min-width: 9.25rem;
-  opacity: 1;
-  padding: 0.75rem 1.25rem;
-  text-align: center;
-  transition: background-color 0.25s, border-color 0.25s, color 0.25s,
-    opacity 0.25s;
-}
-
-.button:hover {
-  background-color: #025699;
-  background-color: var(--color-blue-20);
-  border-color: #025699;
-  border-color: var(--color-blue-20);
-}
-
 
 /* ***************************************** */
 /*                      BODY                  */
@@ -208,24 +200,35 @@ body.offscreen-is-active .hamburger .hamburger__inner:before {
   top: 0 !important;
   -webkit-transform: translate3d(0, 10px, 0) rotate(45deg);
   transform: translate3d(0, 10px, 0) rotate(45deg);
-  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s, -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  -webkit-transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s, -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  -o-transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s, transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s, transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s, transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s, -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s,
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  -webkit-transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s,
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  -o-transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s,
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s,
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.1s cubic-bezier(0.33333, 0, 0.66667, 0.33333) 0.15s,
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s,
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
 }
 
 body.offscreen-is-active .hamburger .hamburger__inner:after {
   top: 0 !important;
   -webkit-transform: translate3d(0, 10px, 0) rotate(-45deg);
   transform: translate3d(0, 10px, 0) rotate(-45deg);
-  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  -webkit-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  -o-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
-  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s, -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  -webkit-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  -o-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s,
+    -webkit-transform 0.13s cubic-bezier(0.215, 0.61, 0.355, 1) 0.22s;
 }
-
 
 .offscreen__darken {
   position: relative;
@@ -244,4 +247,53 @@ main.offscreen__darken:before {
   transition: opacity var(--anim-duration-half);
   width: 0;
   z-index: 9;
+}
+
+/* COMMON CLASSES WITH STYLES */
+.heading-blue {
+  color: #003864;
+  color: var(--color-blue-40);
+}
+
+.button--small-text {
+  font-size: 0.75rem;
+}
+
+.button {
+  background-color: #0570c5;
+  border-color: #0570c5;
+  color: #fff;
+  border-radius: 1.625rem;
+  border-style: solid;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
+  min-width: 9.25rem;
+  opacity: 1;
+  padding: 8px 20px;
+  text-align: center;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s,
+    opacity 0.25s;
+}
+
+.button:hover {
+  background-color: #025699;
+  background-color: var(--color-blue-20);
+  border-color: #025699;
+  border-color: var(--color-blue-20);
+  color: #fff;
+  color: var(--color-white);
+}
+
+[class*="icon-"],
+[class^="icon-"] {
+  font-family: afi-icon !important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
