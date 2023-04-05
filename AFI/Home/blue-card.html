@@ -47,6 +47,13 @@
 
     <!-- INTERNAL CSS -->
     <style>
+      .blue__card__container {
+        max-width: 966px;
+        margin: 0 auto;
+      }
+      .card__item {
+        padding-left: 0;
+      }
       .card__grid__item {
         background-color: #003864;
         background-color: var(--color-blue-40);
@@ -65,9 +72,9 @@
       }
 
       @media screen and (min-width: 48em) {
-        .blue__cards {
+        /* .blue__cards {
           padding: 20px 100px;
-        }
+        } */
         .card__grid__item {
           padding: 1.5rem 2.25rem 1rem;
         }
@@ -80,7 +87,7 @@
       <div class="container">
         <!-- ********************* Section Start ********************* -->
         <section class="blue__cards">
-          <div class="blue__card__container row g-5">
+          <div class="blue__card__container row gy-4 gx-5">
             <div class="card__item col-md-6">
               <section class="card__grid__item">
                 <h1>Auto</h1>
