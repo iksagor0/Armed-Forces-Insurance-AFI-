@@ -47,17 +47,17 @@
 
     <!-- CSS FOR THIS SECTION -->
     <style>
-      .interior__title {
-        background: linear-gradient(120deg, #cb2c30e6, #881b26e6);
-        height: 15.625rem;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        color: #fff;
+      .landing-page-hero__wrapper {
+        text-align: center;
+        max-height: 32.5rem;
+        overflow: hidden;
       }
-
-      .interior__title h1 {
-        margin-top: 4rem;
+      .hero__image img {
+        width: 100%;
+        max-width: 1600px;
+        height: auto;
+        -o-object-fit: cover;
+        object-fit: cover;
       }
     </style>
   </head>
@@ -65,9 +65,19 @@
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
       <!-- ********************* Section Start ********************* -->
-      <section class="interior__title">
-        <div class="container">
-          <h1>AFI History</h1>
+      <section class="landing-page-hero__wrapper">
+        <picture class="hero__image">
+          <source
+            srcset="./img/Is-Afi-For-You.jpg"
+            media="(min-width: 1025px)"
+          />
+          <img
+            src="./img/Is-Afi-For-You.jpg"
+            alt="Military dad holding daughter's hand."
+          />
+        </picture>
+        <div class="wrapper">
+          <a class="logo__link"> </a>
         </div>
       </section>
       <!-- ********************* Section End ********************* -->
