@@ -50,30 +50,61 @@
       .landing-page-hero__wrapper {
         display: block;
         position: relative;
-        background: url(./img/videohero_auto1.jpg);
+        /* background: url(./img/videohero_auto1.jpg); */
         max-width: 1600px;
         margin: auto;
         padding: 20px;
       }
 
       .auto__hero .video__container {
-        max-width: 850px;
-        /* margin: auto; */
-        margin-left: auto;
+        width: 100%;
+        aspect-ratio: 16 / 8;
+        overflow: hidden;
+        position: relative;
       }
 
-      .auto__hero .video {
+      .auto__hero .video__container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        /* background: #000; */
+        user-select: none;
+        z-index: 1;
+      }
+
+      .auto__hero iframe.video {
         aspect-ratio: 16 / 9;
+        /* width: 114%;*/
+        transform: translate(0, -10%);
+
+        width: 105%;
       }
 
       @media screen and (min-width: 64em) {
         .landing-page-hero__wrapper {
           display: block;
-          height: 32.5rem;
+          /* height: 32.5rem; */
           overflow: hidden;
           padding: 25px;
         }
+      }
+
+      /* ======= */
+      .hero_content_wrapper {
+        position: relative;
+      }
+
+      .auto__hero .text__area {
+        position: absolute;
+        bottom: 50px;
+        right: 20px;
+        max-width: 550px;
+        z-index: 2;
+        color: #fff;
+        text-align: right;
       }
     </style>
   </head>
@@ -85,16 +116,26 @@
         class="landing-page-hero__wrapper landing-page-hero__video-wrapper auto__hero"
       >
         <div class="container">
-          <!-- Video Box -->
-          <div class="video__container">
-            <iframe
-              src="https://www.youtube.com/embed/AtdcUuUOV6w?&amp;modestbranding=0&amp;autohide=1&amp;showinfo=0&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen=""
-              class="video"
-            ></iframe>
+          <div class="hero_content_wrapper">
+            <!-- Video Box -->
+            <div class="video__container">
+              <iframe
+                allow="autoplay; encrypted-media"
+                src="https://www.youtube.com/embed/AtdcUuUOV6w?rel=0&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;disablekb=1&amp;loop=1&amp;autoplay=1&amp;background=1&amp;hd=1&amp;playsinline=1&amp;mute=1&amp;playlist=AtdcUuUOV6w&amp;allowsInlineMediaPlayback=TRUE&amp;enablejsapi=1&amp;version=3&amp;html5=1&amp;wmode=transparent&amp;"
+                rel="0"
+                class="video"
+              ></iframe>
+            </div>
+
+            <!-- Text Box -->
+            <div class="text__area">
+              <h1>Lorem ipsum dolor sit amet.</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eligendi animi suscipit ea sapiente omnis obcaecati eos odio,
+                reprehenderit eaque harum.
+              </p>
+            </div>
           </div>
         </div>
       </section>
