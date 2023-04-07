@@ -77,9 +77,7 @@
 
       .auto__hero iframe.video {
         aspect-ratio: 16 / 9;
-        /* width: 114%;*/
-        transform: translate(0, -10%);
-
+        transform: translate(-5%, -10%);
         width: 105%;
       }
 
@@ -97,21 +95,67 @@
         position: relative;
       }
 
-      .auto__hero .text__area {
+      .auto__hero .quote-start {
         position: absolute;
-        bottom: 50px;
+        bottom: 20px;
         right: 20px;
-        max-width: 550px;
+        max-width: 287px;
         z-index: 2;
         color: #fff;
-        text-align: right;
       }
+
+      .auto__hero .quote-start {
+        background-image: linear-gradient(120deg, #cb2c30, #881b26);
+        background-image: linear-gradient(
+          120deg,
+          var(--color-red-10),
+          var(--color-red-20)
+        );
+        color: #fff;
+        color: var(--color-white);
+        padding: 2.75rem 2.25rem;
+      }
+
+      .auto__hero .quote-start__type-image {
+        height: 2.9375rem;
+        width: auto;
+      }
+
+      .auto__hero .quote-start__heading {
+        margin-top: 0.8rem !important;
+      }
+
+      .auto__hero .quote-start__upper-wrapper p {
+        line-height: 2 !important;
+      }
+
+      .auto__hero .quote-start__controls .button {
+        width: 100%;
+        font-size: 1.125rem;
+      }
+
+      @media screen and (max-width: 991px) {
+        .auto__hero .quote-start {
+          display: none;
+        }
+
+        .auto__hero iframe.video {
+          transform: translate(-10%, -20%);
+          width: 120%;
+        }
+      }
+      /* @media screen and (max-width: 500px) {
+        .auto__hero iframe.video {
+          transform: translate(-20%, -40%);
+          width: 140%;
+        } 
+      }*/
     </style>
   </head>
 
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
-      <!-- ********************* Our Mission Start ********************* -->
+      <!-- ********************* Section Start ********************* -->
       <section
         class="landing-page-hero__wrapper landing-page-hero__video-wrapper auto__hero"
       >
@@ -121,25 +165,53 @@
             <div class="video__container">
               <iframe
                 allow="autoplay; encrypted-media"
-                src="https://www.youtube.com/embed/AtdcUuUOV6w?rel=0&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;disablekb=1&amp;loop=1&amp;autoplay=1&amp;background=1&amp;hd=1&amp;playsinline=1&amp;mute=1&amp;playlist=AtdcUuUOV6w&amp;allowsInlineMediaPlayback=TRUE&amp;enablejsapi=1&amp;version=3&amp;html5=1&amp;wmode=transparent&amp;"
+                src="https://www.youtube.com/embed/AtdcUuUOV6w?rel=0&modestbranding=1&controls=0&showinfo=0&disablekb=1&loop=1&autoplay=1&background=1&hd=1&playsinline=1&mute=1&playlist=AtdcUuUOV6w&allowsInlineMediaPlayback=TRUE&enablejsapi=1&version=3&html5=1&wmode=transparent&rel=0"
                 rel="0"
                 class="video"
               ></iframe>
             </div>
 
-            <!-- Text Box -->
-            <div class="text__area">
-              <h1>Lorem ipsum dolor sit amet.</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi animi suscipit ea sapiente omnis obcaecati eos odio,
-                reprehenderit eaque harum.
-              </p>
-            </div>
+            <!-- Quote Box -->
+            <section class="quote-start">
+              <div class="quote-start__controls">
+                <div class="quote-start__upper-wrapper">
+                  <img
+                    class="quote-start__type-image"
+                    src="./img/auto.svg"
+                    alt=""
+                  />
+                  <h1 class="quote-start__heading">Auto Insurance</h1>
+                  <p class="quote-start__heading">
+                    Let us help protect what matters most. Get a free quote in
+                    minutes.
+                  </p>
+                </div>
+                <div class="quote-start__lower-wrapper">
+                  <div class="field" style="display: none">
+                    <input
+                      class="js-shortzip-mask zip"
+                      id="quote-zip"
+                      type="text"
+                      autocomplete="off"
+                      required=""
+                      name="quoteZip"
+                      alt="Auto"
+                    />
+                    <label for="quote-zip"></label>
+                  </div>
+                  <button
+                    class="button button--large-text Click-here"
+                    type="button"
+                  >
+                    Get a Quote
+                  </button>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </section>
-      <!-- ********************* Our Mission End ********************* -->
+      <!-- ********************* Section End ********************* -->
     </main>
   </body>
 </html>
