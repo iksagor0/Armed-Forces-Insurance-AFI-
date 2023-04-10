@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto : Related Articles</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Zilla+Slab:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/common.css" />
+
+    <!-- CSS FOR THIS SECTION -->
+    <style>
+      .articles__container .resources__header {
+        text-align: center;
+      }
+
+      .article-img-outer-container {
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 0.25rem;
+      }
+
+      .article-img-inner-container {
+        width: 100%;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform;
+        transition-duration: 500ms;
+        transition-timing-function: ease-in-out;
+      }
+
+      .article-img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .article-content {
+        margin-top: 0.75rem;
+      }
+
+      .article-content h1 {
+        color: #004976;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        letter-spacing: 0.025em;
+      }
+
+      .article-content p {
+        margin-top: 0;
+        line-height: 1.5;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+
+  <body class="body">
+    <main class="offscreen__darken" role="main" id="main-content">
+      <div class="container">
+        <!-- ********************* Our Mission Start ********************* -->
+        <div class="articles__container">
+          <h2 class="resources__header blue__text">Related Articles</h2>
+          <div class="articles__wrapper row">
+            <article class="col-lg-4 col-md-6">
+              <div class="article-img-outer-container">
+                <div class="article-img-inner-container">
+                  <a href="#"
+                    ><img
+                      src="./img/7 Back to School Driving Tips.jpg"
+                      class="article-img"
+                      alt="Kids getting into a yellow school bus."
+                  /></a>
+                </div>
+              </div>
+              <div class="article-content">
+                <h1>7 Back-to-School Driving Safety Tips</h1>
+                <p>
+                  Whenever school goes back in session, there are more
+                  inexperienced drivers and more frenzied parents than before.
+                  There's a lot of change that can make driving during the
+                  back-to-school time frame more dangerous.
+                </p>
+                <p>
+                  <a href="#">Read More</a>
+                </p>
+              </div>
+            </article>
+            <article class="col-lg-4 col-md-6">
+              <div class="article-img-outer-container">
+                <div class="article-img-inner-container">
+                  <a href="#"
+                    ><img
+                      src="./img/At The Scene of an Accident.jpg"
+                      class="article-img"
+                      alt="Two people examining their cars from an accident. "
+                  /></a>
+                </div>
+              </div>
+              <div class="article-content">
+                <h1>At the Scene of an Accident</h1>
+                <p>
+                  Knowing what to do if you are involved in an accident can save
+                  lives and also make the claims process more manageable.
+                </p>
+                <p>
+                  <a href="#">Read More</a>
+                </p>
+              </div>
+            </article>
+            <article class="col-lg-4 col-md-6">
+              <div class="article-img-outer-container">
+                <div class="article-img-inner-container">
+                  <a href="#"
+                    ><img
+                      src="./img//Distracted Driving.jpg"
+                      class="article-img"
+                      alt="A person checking their phone while driving."
+                  /></a>
+                </div>
+              </div>
+              <div class="article-content">
+                <h1>Distracted Driving</h1>
+                <p>
+                  According to the National Highway Traffic Safety
+                  Administration, in 2017 over 3,000 people were killed in
+                  vehicle accidents involving distracted drivers.
+                </p>
+                <p>
+                  <a href="#">Read More</a>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <!-- ********************* Our Mission End ********************* -->
+      </div>
+    </main>
+  </body>
+</html>

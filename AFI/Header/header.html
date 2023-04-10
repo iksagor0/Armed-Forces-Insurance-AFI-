@@ -367,7 +367,18 @@
           }
         });
       });
-      // console.log(navItem);
+
+      // Script to add Font Aweosme
+      window.onload = () => {
+        const head = document.getElementsByTagName("head")[0];
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href =
+          "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css";
+
+        head.appendChild(link);
+      };
     </script>
 
     <!-- ******************************************************************** -->
