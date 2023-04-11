@@ -1,0 +1,12 @@
+.landing-page-hero__wrapper {
+  text-align: center;
+  max-height: 32.5rem;
+  overflow: hidden;
+}
+.hero__image img {
+  width: 100%;
+  max-width: 1600px;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
