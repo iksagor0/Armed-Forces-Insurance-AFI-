@@ -49,8 +49,147 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/card-group.css" />
+    <!-- <link rel="stylesheet" href="css/card-group.css" /> -->
     <link rel="stylesheet" href="css/common.css" />
+
+    <style>
+      .overflow__hidden {
+        overflow: hidden;
+      }
+
+      .content-pod-group {
+        padding: 2rem 0;
+      }
+
+      .content-pod-group .content-pod {
+        background-color: #fff;
+        background-color: var(--color-white);
+        box-shadow: 0 0.0375rem 0.875rem hsla(0, 0%, 70%, 0.3);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+      }
+
+      .content-pod-group .content-pod img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+        width: 100%;
+      }
+
+      .content-pod-group .content-pod__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        padding: 1.75rem 1rem 2rem;
+        text-align: center;
+      }
+
+      .content-pod-group .content-pod__heading {
+        font-size: 1.375rem;
+        margin-bottom: 0.125rem;
+        /* transform: translateY(0); */
+      }
+
+      .content-pod-group .content-pod .button,
+      .content-pod-group .content-pod__heading {
+        transition: transform 0.25s;
+        transition: transform var(--anim-duration-half);
+      }
+
+      .content-pod-group .content-pod__description {
+        color: #363636;
+        color: var(--color-gray-30);
+        margin-bottom: 0;
+        transition: all height 0.5s;
+      }
+
+      .content-pod-group .content-pod .button {
+        margin-top: 0.5rem;
+        align-self: center;
+      }
+
+      .content-pod__content {
+        min-height: 300px;
+      }
+
+      .grid__item .button {
+        font-size: 12px;
+      }
+
+      .content-pod__heading {
+        transform: translateY(60px) !important;
+      }
+      .button {
+        transform: translateY(-60px) !important;
+      }
+
+      /* Responsive */
+      @media screen and (min-width: 64em) {
+        .content-pod-group .content-pod__heading {
+          font-size: 1.75rem;
+        }
+      }
+
+      @media screen and (min-width: 769px) {
+        .content-pod-group {
+          background-color: #f6f6f6;
+          background-color: var(--color-gray-10);
+          padding: 2rem 1rem 3rem;
+        }
+
+        /* .content-pod-group .grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+        } */
+
+        .content-pod__description {
+          opacity: 0;
+          height: 120px;
+        }
+
+        .grid__item:hover .content-pod__description {
+          opacity: 1;
+          height: auto;
+        }
+        .grid__item:hover .content-pod__heading {
+          transform: none !important;
+        }
+        .grid__item:hover .button {
+          transform: none !important;
+        }
+      }
+
+      /* Under 768px */
+      @media screen and (max-width: 48em) {
+        .content-pod__heading {
+          transform: translateY(0) !important;
+        }
+        .button {
+          transform: translateY(0) !important;
+        }
+
+        .content-pod__content {
+          min-height: auto;
+        }
+
+        .swiper-pagination-bullet {
+          cursor: pointer;
+          background: #0570c5;
+          width: 12px;
+          height: 12px;
+          opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+          background-color: #004976;
+          background-color: var(--color-blue-30);
+        }
+      }
+    </style>
   </head>
 
   <body class="body">
@@ -59,82 +198,99 @@
       <section class="content-pod-group">
         <div class="container overflow__hidden">
           <div class="grid_wrapper mySwiper">
-            <div class="grid js-carousel swiper-wrapper">
+            <div class="row swiper-wrapper">
               <!-- Item 01 -->
-              <div class="grid__item swiper-slide">
-                <div class="content-pod js-carousel-slide">
-                  <img
-                    src="./img//card-group/Home_gridpod.jpg"
-                    class="content-pod__image"
-                    alt="Home Insurance"
-                  />
-                  <div class="content-pod__content">
-                    <h2 class="content-pod__heading">Home</h2>
-                    <p class="content-pod__description js-peekaboo-text">
-                      Like all service members, you've worked hard for what you
-                      earned, and your home is often your biggest investment.
-                    </p>
-                    <a class="button button--small-text" href="#">Learn More</a>
+              <div class="col-md-3">
+                <div class="grid__item">
+                  <div class="content-pod">
+                    <img
+                      src="./img//card-group/Home_gridpod.jpg"
+                      class="content-pod__image"
+                      alt="Home Insurance"
+                    />
+                    <div class="content-pod__content">
+                      <h2 class="content-pod__heading">Home</h2>
+                      <p class="content-pod__description js-peekaboo-text">
+                        Like all service members, you've worked hard for what
+                        you earned, and your home is often your biggest
+                        investment.
+                      </p>
+                      <a class="button button--small-text" href="#"
+                        >Learn More</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Item 02 -->
-              <div class="grid__item swiper-slide">
-                <div class="content-pod js-carousel-slide">
-                  <img
-                    src="./img//card-group/Renter_gridpod.jpg"
-                    class="content-pod__image"
-                    alt="Renter Insurance"
-                  />
-                  <div class="content-pod__content">
-                    <h2 class="content-pod__heading">Renter</h2>
-                    <p class="content-pod__description js-peekaboo-text">
-                      Renter insurance covers damages to your possessions when
-                      you rent and includes liability insurance should someone
-                      get hurt at your residence.
-                    </p>
-                    <a class="button button--small-text" href="#">Learn More</a>
+              <div class="col-md-3">
+                <div class="grid__item">
+                  <div class="content-pod">
+                    <img
+                      src="./img//card-group/Renter_gridpod.jpg"
+                      class="content-pod__image"
+                      alt="Renter Insurance"
+                    />
+                    <div class="content-pod__content">
+                      <h2 class="content-pod__heading">Renter</h2>
+                      <p class="content-pod__description js-peekaboo-text">
+                        Renter insurance covers damages to your possessions when
+                        you rent and includes liability insurance should someone
+                        get hurt at your residence.
+                      </p>
+                      <a class="button button--small-text" href="#"
+                        >Learn More</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Item 03 -->
-              <div class="grid__item swiper-slide">
-                <div class="content-pod js-carousel-slide">
-                  <img
-                    src="./img//card-group/Auto_gridpod.jpg"
-                    class="content-pod__image"
-                    alt="Auto Insurance"
-                  />
-                  <div class="content-pod__content">
-                    <h2 class="content-pod__heading">Auto</h2>
-                    <p class="content-pod__description js-peekaboo-text">
-                      Armed Forces Insurance agents will work closely with our
-                      select partner companies to find an affordable auto policy
-                      that fits your needs.
-                    </p>
-                    <a class="button button--small-text" href="#">Learn More</a>
+              <div class="col-md-3">
+                <div class="grid__item">
+                  <div class="content-pod">
+                    <img
+                      src="./img//card-group/Auto_gridpod.jpg"
+                      class="content-pod__image"
+                      alt="Auto Insurance"
+                    />
+                    <div class="content-pod__content">
+                      <h2 class="content-pod__heading">Auto</h2>
+                      <p class="content-pod__description js-peekaboo-text">
+                        Armed Forces Insurance agents will work closely with our
+                        select partner companies to find an affordable auto
+                        policy that fits your needs.
+                      </p>
+                      <a class="button button--small-text" href="#"
+                        >Learn More</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Item 04 -->
-              <div class="grid__item swiper-slide">
-                <div class="content-pod js-carousel-slide">
-                  <img
-                    src="./img//card-group/Business_gridpod.jpg"
-                    class="content-pod__image"
-                    alt="Business Insurance"
-                  />
-                  <div class="content-pod__content">
-                    <h2 class="content-pod__heading">Business</h2>
-                    <p class="content-pod__description js-peekaboo-text">
-                      We are military specialists who provide exceptional and
-                      highly personalized care and offer insurance solutions for
-                      many different types of businesses.
-                    </p>
-                    <a class="button button--small-text" href="#">Learn More</a>
+              <div class="col-md-3">
+                <div class="grid__item">
+                  <div class="content-pod">
+                    <img
+                      src="./img//card-group/Business_gridpod.jpg"
+                      class="content-pod__image"
+                      alt="Business Insurance"
+                    />
+                    <div class="content-pod__content">
+                      <h2 class="content-pod__heading">Business</h2>
+                      <p class="content-pod__description js-peekaboo-text">
+                        We are military specialists who provide exceptional and
+                        highly personalized care and offer insurance solutions
+                        for many different types of businesses.
+                      </p>
+                      <a class="button button--small-text" href="#"
+                        >Learn More</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -149,24 +305,40 @@
     <!-- SCIPT -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-      if (screen.width <= 768) {
-        let swiper = new Swiper(".mySwiper", {
-          spaceBetween: 30,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
+      if (screen.width < 768) {
+        const slider = document.querySelectorAll(".swiper-wrapper .col-md-3");
+        // Remove Row Class
+        const gridRow = document.querySelector(".row.swiper-wrapper");
+        console.log(gridRow);
+        gridRow.classList.remove("row");
 
-          breakpoints: {
-            450: {
-              slidesPerView: 1,
-              spaceBetween: 40,
+        // Add Swiper Class
+        slider.forEach((element) => {
+          element.classList.add("swiper-slide");
+          console.log(element);
+        });
+
+        // Initiate Slider
+        window.addEventListener("load", () => {
+          const swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            // autoplay: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
             },
-            768: {
-              slidesPerView: 1,
-              spaceBetween: 40,
+
+            breakpoints: {
+              450: {
+                slidesPerView: 1,
+                spaceBetween: 40,
+              },
+              768: {
+                slidesPerView: 1,
+                spaceBetween: 40,
+              },
             },
-          },
+          });
         });
       }
     </script>

@@ -6,6 +6,13 @@
   padding: 2rem 0;
 }
 
+/* .content-pod-group .grid {
+  display: block;
+  overflow: visible !important;
+  -webkit-transform: translateX(-0.3125rem);
+  transform: translateX(-0.3125rem);
+} */
+
 .content-pod-group .content-pod {
   background-color: #fff;
   background-color: var(--color-white);
