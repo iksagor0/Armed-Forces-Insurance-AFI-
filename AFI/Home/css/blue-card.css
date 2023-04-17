@@ -1,15 +1,12 @@
-.blue__cards {
-  margin: 40px 0;
-}
+/* .blue__cards {
+        margin: 40px 0;
+      } */
 .blue__card__container {
   max-width: 966px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
 }
 
-.card__grid__item {
+.blue__card {
   background-color: #003864;
   background-color: var(--color-blue-40);
   color: #fff;
@@ -35,15 +32,8 @@
 }
 
 @media screen and (min-width: 48em) {
-  /* .blue__cards {
-          padding: 20px 100px;
-        } */
-
-  .blue__card__container {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .card__grid__item {
-    padding: 1.5rem 2.25rem 1rem;
+  .blue__cards .g-4 {
+    --bs-gutter-y: 2.5rem;
+    --bs-gutter-x: 2.5rem;
   }
 }

@@ -47,18 +47,15 @@
 
     <!-- INTERNAL CSS -->
     <style>
-      .blue__cards {
+      /* .blue__cards {
         margin: 40px 0;
-      }
+      } */
       .blue__card__container {
         max-width: 966px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
       }
 
-      .card__grid__item {
+      .blue__card {
         background-color: #003864;
         background-color: var(--color-blue-40);
         color: #fff;
@@ -84,16 +81,9 @@
       }
 
       @media screen and (min-width: 48em) {
-        /* .blue__cards {
-          padding: 20px 100px;
-        } */
-
-        .blue__card__container {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .card__grid__item {
-          padding: 1.5rem 2.25rem 1rem;
+        .blue__cards .g-4 {
+          --bs-gutter-y: 2.5rem;
+          --bs-gutter-x: 2.5rem;
         }
       }
     </style>
@@ -104,57 +94,67 @@
       <div class="container">
         <!-- ********************* Section Start ********************* -->
         <section class="blue__cards">
-          <div class="blue__card__container">
-            <section class="card__grid__item">
-              <h1>Auto</h1>
-              <p>
-                Armed Forces Insurance agents will work closely with our select
-                partner companies to find an affordable auto policy that fits
-                your needs.
-              </p>
-              <a class="button border__button" href="/insurance-products/auto"
-                >Learn More</a
-              >
-            </section>
+          <div class="blue__card__container row g-4">
+            <div class="col-md-6">
+              <section class="blue__card">
+                <h1>Auto</h1>
+                <p>
+                  Armed Forces Insurance agents will work closely with our
+                  select partner companies to find an affordable auto policy
+                  that fits your needs.
+                </p>
+                <a class="button border__button" href="/insurance-products/auto"
+                  >Learn More</a
+                >
+              </section>
+            </div>
 
-            <section class="card__grid__item">
-              <h1>Home</h1>
-              <p>
-                Like all service members, you've worked hard for what you
-                earned, and your home is often your biggest investment.
-              </p>
-              <a
-                class="button border__button"
-                href="/insurance-products/homeowner"
-                >Learn More</a
-              >
-            </section>
+            <div class="col-md-6">
+              <section class="blue__card">
+                <h1>Home</h1>
+                <p>
+                  Like all service members, you've worked hard for what you
+                  earned, and your home is often your biggest investment.
+                </p>
+                <a
+                  class="button border__button"
+                  href="/insurance-products/homeowner"
+                  >Learn More</a
+                >
+              </section>
+            </div>
 
-            <section class="card__grid__item">
-              <h1>Renter</h1>
-              <p>
-                Renter insurance covers damages to your possessions when you
-                rent and includes liability insurance should someone get hurt at
-                your residence.
-              </p>
-              <a class="button border__button" href="/insurance-products/renter"
-                >Learn More</a
-              >
-            </section>
+            <div class="col-md-6">
+              <section class="blue__card">
+                <h1>Renter</h1>
+                <p>
+                  Renter insurance covers damages to your possessions when you
+                  rent and includes liability insurance should someone get hurt
+                  at your residence.
+                </p>
+                <a
+                  class="button border__button"
+                  href="/insurance-products/renter"
+                  >Learn More</a
+                >
+              </section>
+            </div>
 
-            <section class="card__grid__item">
-              <h1>Business</h1>
-              <p>
-                We are military specialists who provide exceptional and highly
-                personalized care and offer insurance solutions for many
-                different types of businesses.
-              </p>
-              <a
-                class="button border__button"
-                href="/insurance-products/business"
-                >Learn More</a
-              >
-            </section>
+            <div class="col-md-6">
+              <section class="blue__card">
+                <h1>Business</h1>
+                <p>
+                  We are military specialists who provide exceptional and highly
+                  personalized care and offer insurance solutions for many
+                  different types of businesses.
+                </p>
+                <a
+                  class="button border__button"
+                  href="/insurance-products/business"
+                  >Learn More</a
+                >
+              </section>
+            </div>
           </div>
         </section>
         <!-- ********************* Section End ********************* -->
