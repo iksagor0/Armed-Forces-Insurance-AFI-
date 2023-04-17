@@ -27,12 +27,3 @@ window.onload = () => {
 
   head.appendChild(link);
 };
-
-// Remove Active Class when page reload
-window.onload(() => {
-  const active = document.querySelector(".level1.active");
-  console.log(active);
-  // if (active) {
-  //   active.classList.remove("active");
-  // }
-});
