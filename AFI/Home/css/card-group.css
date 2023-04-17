@@ -86,11 +86,11 @@
     padding: 2rem 1rem 3rem;
   }
 
-  .content-pod-group .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-  }
+  /* .content-pod-group .grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+        } */
 
   .content-pod__description {
     opacity: 0;
