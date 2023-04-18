@@ -86,10 +86,10 @@
   display: block !important;
 }
 
-.account-pod__content .position-left .button-acc {
+.account-pod__content .position-left .button {
   margin-left: 5px;
 }
-.account-pod__content .position-right .button-acc {
+.account-pod__content .position-right .button {
   margin-right: 5px;
 }
 

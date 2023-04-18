@@ -21,6 +21,7 @@
   display: block;
   padding: 10px 16px !important;
   font-size: 18px !important;
+  color: #fff !important;
 }
 .header__request-quote-button a:hover {
   color: #fff !important;
