@@ -15,6 +15,7 @@
   color: var(--color-blue-40);
   font-size: 1.75rem;
   margin-bottom: 15px;
+  font-weight: 400;
 }
 
 .content-panel.content-panel--one-column p {
@@ -31,10 +32,10 @@
     padding: 2.75rem 0;
   }
   .content-panel.content-panel--one-column h1 {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 
   .content-panel.content-panel--one-column p {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
 }
