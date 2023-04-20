@@ -24,12 +24,6 @@
   line-height: 1.625;
 }
 
-.arrow__link {
-  display: inline-block;
-  font-size: 1.125rem !important;
-  color: #0570c5 !important;
-}
-
 @media screen and (min-width: 48em) {
   .page__mission {
     background-color: #fff;
