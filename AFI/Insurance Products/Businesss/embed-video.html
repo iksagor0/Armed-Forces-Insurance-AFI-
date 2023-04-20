@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auto : Blue Card</title>
+    <title>Embed Video</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,40 +53,13 @@
         justify-content: space-between;
       }
 
-      .not__eligible__blue {
-        background: #004976;
-        border: none;
-        padding: 1.5rem;
-        border: 1px solid var(--afi-grey-700);
-        border-radius: 4px;
-        color: #fff;
+      .video__container {
+        margin-bottom: 4rem;
       }
 
-      .not__eligible__blue h2 {
-        color: #bbddf1;
-        font-size: 1.5rem;
-        font-weight: normal;
-        margin: 0;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .not__eligible__blue p {
-        font-size: 1rem;
-        margin: 0;
-        line-height: 1.5rem;
-      }
-
-      .not__eligible__blue .button {
-        color: #fff;
-        background-color: #cb2c30 !important;
-        border-color: #cb2c30 !important;
-      }
-
-      .not__eligible__blue .button__container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
+      .embed__video {
+        width: 100%;
+        aspect-ratio: 16/9;
       }
     </style>
   </head>
@@ -99,18 +72,13 @@
           <div class="col-md-7"><!-- Blank  --></div>
 
           <!-- ********************* Section Start ********************* -->
-          <div class="card__container col-md-4">
-            <div class="not__eligible__blue">
-              <h2>Not military? Not a problem!</h2>
-              <p>
-                Active-duty, veterans and their families are eligible for AFI
-                membership. We also shop top carriers for anyone who wants great
-                rates and service.
-              </p>
-              <div class="button__container">
-                <a href="#" class="button">Learn More</a>
-              </div>
-            </div>
+          <div class="video__container col-md-4">
+            <embed
+              src="https://www.youtube.com/embed/7NImKQeypG0?showinfo=1&controls=1"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              class="embed__video"
+            />
           </div>
           <!-- ********************* Section End ********************* -->
         </section>

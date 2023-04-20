@@ -49,15 +49,16 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  font-size: 100%;
+  font-size: 100% !important;
 }
 
 body {
   overflow-x: hidden;
-  background-color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-family: var(--font-family-primary);
+  background-color: #fff !important;
+  font-family: "Roboto", sans-serif !important;
+  font-family: var(--font-family-primary) !important;
   transition: transform 0.25s;
+  font-size: 16px !important;
 }
 
 /* body::-webkit-scrollbar {
@@ -78,7 +79,7 @@ img {
 ul {
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style: none !important;
 }
 
 h1,
@@ -87,8 +88,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 !important;
+  margin: 0;
   margin-bottom: 1.125rem;
+  font-weight: 500 !important;
 }
 
 h1,
@@ -107,9 +109,11 @@ h2 {
 }
 
 a {
-  text-decoration: none;
-  color: #0570c5;
-  color: var(--color-blue-10);
+  text-decoration: none !important;
+  /* color: #0570c5 !important;
+  color: var(--color-blue-10); */
+  font-family: "Roboto", sans-serif !important;
+  font-size: 16px !important;
 }
 
 button,
@@ -126,6 +130,7 @@ p {
   line-height: 1.8;
   margin: 0 0 1.5rem;
   margin: 0 0 var(--spacing-vertical);
+  font-size: 16px !important;
 }
 
 input[type="date"],
@@ -260,24 +265,21 @@ main.offscreen__darken:before {
   color: var(--color-blue-40);
 }
 
-.button--small-text {
-  font-size: 0.75rem;
-}
-
 .button {
-  background-color: #0570c5;
-  border-color: #0570c5;
-  color: #fff;
+  background-color: #0570c5 !important;
+  border-color: #0570c5 !important;
+  color: #fff !important;
   border-radius: 1.625rem;
   border-style: solid;
   cursor: pointer;
-  display: inline-block;
+  display: inline-block !important;
   font-size: 1rem;
   font-weight: 400;
-  min-width: 9.25rem;
+  width: 9.25rem;
   opacity: 1;
   padding: 8px 20px;
-  text-align: center;
+  /* padding: 12px 20px; */
+  text-align: center !important;
   transition: background-color 0.25s, border-color 0.25s, color 0.25s,
     opacity 0.25s;
 }
@@ -292,8 +294,8 @@ main.offscreen__darken:before {
 }
 
 .border__button {
-  background-color: transparent;
-  border: 0.125rem solid #fff;
+  background-color: transparent !important;
+  border: 0.125rem solid #fff !important;
   border: 0.125rem solid var(--color-white);
   color: #fff;
   color: var(--color-white);
@@ -319,17 +321,38 @@ main.offscreen__darken:before {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.button--small-text {
+  font-size: 0.75rem !important;
+}
+
 /* 10 April */
 .blue__text {
-  color: #004976;
+  color: #004976 !important;
+}
+
+.text-5xl {
+  font-size: 3rem !important;
+  line-height: 1.25 !important;
 }
 
 .text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
 }
 
 .text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+/*Mohi*/
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 14 April */
+.component-content,
+.component {
+  padding: 0 !important;
 }

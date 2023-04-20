@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auto : Blue Card</title>
+    <title>Additional Coverages Image</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,46 +47,26 @@
 
     <!-- CSS FOR THIS SECTION -->
     <style>
-      .auto_section__container {
+      .additional_coverages_container {
         max-width: 1150px;
         margin: auto;
         justify-content: space-between;
       }
-
-      .not__eligible__blue {
-        background: #004976;
-        border: none;
-        padding: 1.5rem;
-        border: 1px solid var(--afi-grey-700);
-        border-radius: 4px;
-        color: #fff;
+      .additional_coverages_container .right__content {
+        padding-right: 0;
       }
 
-      .not__eligible__blue h2 {
-        color: #bbddf1;
-        font-size: 1.5rem;
-        font-weight: normal;
-        margin: 0;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+      .additional_coverages_container .vertical-image {
+        position: relative;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        aspect-ratio: 9/10;
       }
 
-      .not__eligible__blue p {
-        font-size: 1rem;
-        margin: 0;
-        line-height: 1.5rem;
-      }
-
-      .not__eligible__blue .button {
-        color: #fff;
-        background-color: #cb2c30 !important;
-        border-color: #cb2c30 !important;
-      }
-
-      .not__eligible__blue .button__container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
+      .vertical-image img {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
       }
     </style>
   </head>
@@ -95,24 +75,19 @@
     <main class="offscreen__darken" role="main" id="main-content">
       <div class="container">
         <!-- Parent  -->
-        <section class="row g-0 auto_section__container">
-          <div class="col-md-7"><!-- Blank  --></div>
-
+        <section class="row g-5 additional_coverages_container">
           <!-- ********************* Section Start ********************* -->
-          <div class="card__container col-md-4">
-            <div class="not__eligible__blue">
-              <h2>Not military? Not a problem!</h2>
-              <p>
-                Active-duty, veterans and their families are eligible for AFI
-                membership. We also shop top carriers for anyone who wants great
-                rates and service.
-              </p>
-              <div class="button__container">
-                <a href="#" class="button">Learn More</a>
-              </div>
+          <div class="col-md-6 left__text__content"></div>
+          <!-- ********************* Section End ********************* -->
+
+          <div class="col-md-6 right__content">
+            <div class="vertical-image">
+              <img
+                src="./img/business.jpg"
+                alt="MIlitary Dad and daughter sitting on car protected with Auto Insurance."
+              />
             </div>
           </div>
-          <!-- ********************* Section End ********************* -->
         </section>
       </div>
     </main>

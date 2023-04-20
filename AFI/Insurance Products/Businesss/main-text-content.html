@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auto : Blue Card</title>
+    <title>Main Text</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,72 +47,52 @@
 
     <!-- CSS FOR THIS SECTION -->
     <style>
-      .auto_section__container {
-        max-width: 1150px;
-        margin: auto;
-        justify-content: space-between;
+      .main__text__content .title__text {
+        font-size: 3rem;
+        line-height: 1.25;
       }
 
-      .not__eligible__blue {
-        background: #004976;
-        border: none;
-        padding: 1.5rem;
-        border: 1px solid var(--afi-grey-700);
-        border-radius: 4px;
-        color: #fff;
-      }
-
-      .not__eligible__blue h2 {
-        color: #bbddf1;
-        font-size: 1.5rem;
-        font-weight: normal;
-        margin: 0;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .not__eligible__blue p {
-        font-size: 1rem;
-        margin: 0;
-        line-height: 1.5rem;
-      }
-
-      .not__eligible__blue .button {
-        color: #fff;
-        background-color: #cb2c30 !important;
-        border-color: #cb2c30 !important;
-      }
-
-      .not__eligible__blue .button__container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
+      @media screen and (min-width: 768px) {
+        .main__text__content {
+          padding-right: 20px;
+        }
       }
     </style>
   </head>
 
   <body class="body">
-    <main class="offscreen__darken" role="main" id="main-content">
+    <main class="offscreen__darken" role="main">
       <div class="container">
         <!-- Parent  -->
         <section class="row g-0 auto_section__container">
-          <div class="col-md-7"><!-- Blank  --></div>
-
           <!-- ********************* Section Start ********************* -->
-          <div class="card__container col-md-4">
-            <div class="not__eligible__blue">
-              <h2>Not military? Not a problem!</h2>
-              <p>
-                Active-duty, veterans and their families are eligible for AFI
-                membership. We also shop top carriers for anyone who wants great
-                rates and service.
-              </p>
-              <div class="button__container">
-                <a href="#" class="button">Learn More</a>
-              </div>
-            </div>
+          <div class="col-md-7 main__text__content">
+            <h1 class="title__text blue__text text-5xl">
+              Armed Forces Insurance: your military business insurance trusted
+              advisors
+            </h1>
+            <p>
+              You worked hard for your business. So, naturally, you want to
+              protect it. That's why Armed Forces Business Insurance offers
+              comprehensive veterans and military business insurance packages to
+              protect you as a business owner. We’re here to help protect your
+              business property and vehicles from liability.
+            </p>
+            <h2 class="blue__text">
+              Why get an Armed Forces Insurance Business Insurance policy?
+            </h2>
+            <p>
+              Protecting the businesses our military personnel and veterans
+              create is an honor. We work hard to reflect your commitment to
+              duty, honor and integrity, and we'll work just as hard for your
+              business. With AFI you'll get a personal insurance agent dedicated
+              to you, as well as business insurance coverage plans built with
+              the unique needs of your business in mind.
+            </p>
           </div>
           <!-- ********************* Section End ********************* -->
+
+          <div class="card__container col-md-4"><!-- Blank --></div>
         </section>
       </div>
     </main>
