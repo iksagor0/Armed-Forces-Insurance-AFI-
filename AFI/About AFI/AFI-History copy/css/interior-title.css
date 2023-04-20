@@ -1,0 +1,12 @@
+.interior__title {
+  background: linear-gradient(120deg, #cb2c30e6, #881b26e6);
+  height: 15.625rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.interior__title h1 {
+  margin-top: 4rem;
+}
