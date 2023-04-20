@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hero</title>
+    <title>Blue Pods</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,39 +44,69 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/common.css" />
-    <link rel="stylesheet" href="css/hero.css" />
+
+    <!-- CSS FOR THIS SECTION -->
+    <style>
+      .blue_pods {
+        background-color: #003864;
+        background-color: var(--color-blue-40);
+        color: #fff;
+        color: var(--color-white);
+      }
+      .blue_pods .blue_pods_container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+      .blue_pods .blue_pod_item {
+        flex-basis: 21rem;
+        padding: 2.25rem 1rem;
+        text-align: center;
+      }
+
+      .blue_pod_item__heading {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+      }
+
+      @media screen and (min-width: 48em) {
+        .blue_pods .blue_pod_item {
+          padding: 4.5rem 3.3rem;
+        }
+      }
+    </style>
   </head>
 
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
       <!-- ********************* Section Start ********************* -->
-      <section class="page__hero">
-        <!-- Hero Image -->
-        <img
-          src="./img/productpage.jpg"
-          class="hero__image"
-          alt="Angled headlight shot of a collector vehicle."
-        />
-
+      <section class="blue_pods">
         <div class="container">
-          <!-- Quote Box -->
-          <section class="quote__start">
-            <div class="quote__start__controls">
-              <div class="quote__start__upper-wrapper">
-                <img
-                  class="quote__start__type-image"
-                  src="./img/collectorvehicle.svg"
-                  alt=""
-                />
-                <h1 class="quote__start__heading">
-                  Collector Vehicle Insurance
-                </h1>
-              </div>
-              <button class="button button--large-text" type="button">
-                Request A Quote
-              </button>
+          <div class="blue_pods_container">
+            <div class="blue_pod_item">
+              <h2 class="blue_pod_item__heading">Request A Quote</h2>
+              <a class="button border__button" href="">Get Started</a>
             </div>
-          </section>
+
+            <div class="blue_pod_item">
+              <h2 class="blue_pod_item__heading">
+                Explore our Insurance Products
+              </h2>
+              <a
+                class="button border__button"
+                title="Learn more about AFI Insurance Products"
+                href=""
+                >Learn More</a
+              >
+            </div>
+
+            <div class="blue_pod_item">
+              <h2 class="blue_pod_item__heading">Need Help?</h2>
+              <a class="button border__button" href="">Contact AFI</a>
+            </div>
+          </div>
         </div>
       </section>
       <!-- ********************* Section End ********************* -->
