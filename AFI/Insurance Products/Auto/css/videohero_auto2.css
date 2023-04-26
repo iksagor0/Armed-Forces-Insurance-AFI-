@@ -4,7 +4,7 @@
   background: url(./img/videohero_auto1.jpg);
   max-width: 1600px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .auto__hero .video__container {
@@ -23,5 +23,11 @@
     height: 32.5rem;
     overflow: hidden;
     padding: 25px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .landing-page-hero__wrapper {
+    padding: 0;
   }
 }

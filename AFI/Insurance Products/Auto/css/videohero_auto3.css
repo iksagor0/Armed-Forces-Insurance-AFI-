@@ -4,7 +4,7 @@
   /* background: url(./img/videohero_auto1.jpg); */
   max-width: 1600px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .auto__hero .video__container {
@@ -95,9 +95,8 @@
     width: 120%;
   }
 }
-/* @media screen and (max-width: 500px) {
-        .auto__hero iframe.video {
-          transform: translate(-20%, -40%);
-          width: 140%;
-        } 
-      }*/
+@media screen and (max-width: 575px) {
+  .landing-page-hero__wrapper {
+    padding: 0;
+  }
+}
