@@ -84,6 +84,7 @@ ul {
 
 ul.disc {
   list-style: disc !important;
+  padding-left: 23px !important;
 }
 
 h1,
