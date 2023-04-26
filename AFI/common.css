@@ -114,15 +114,10 @@ h2 {
 
 a {
   text-decoration: none !important;
-  /* color: #0570c5 !important;
-  color: var(--color-blue-10); */
+  color: #0570c5 !important;
+  color: var(--color-blue-10) !important;
   font-family: "Roboto", sans-serif !important;
   font-size: 16px !important;
-}
-
-a.blue_10 {
-  color: #0570c5 !important;
-  color: var(--color-blue-10);
 }
 
 button,
@@ -274,6 +269,11 @@ main.offscreen__darken:before {
   color: var(--color-blue-40);
 }
 
+.blue_10 {
+  color: #0570c5 !important;
+  color: var(--color-blue-10);
+}
+
 .button {
   background-color: #0570c5 !important;
   border-color: #0570c5 !important;
@@ -364,4 +364,12 @@ main.offscreen__darken:before {
 .component-content,
 .component {
   padding: 0 !important;
+}
+
+/* For Header and Footer a tag */
+header a,
+footer a,
+.blue_30 {
+  color: #004976 !important;
+  color: var(--color-blue-30) !important;
 }
