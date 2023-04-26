@@ -1,5 +1,6 @@
 .articles__container {
   max-width: 1150px;
+  margin: auto;
 }
 .articles__container .resources__header {
   text-align: center;

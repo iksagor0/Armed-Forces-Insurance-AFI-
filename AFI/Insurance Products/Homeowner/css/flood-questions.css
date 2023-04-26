@@ -1,5 +1,6 @@
 .flood_questions {
   max-width: 1150px;
+  margin: auto;
 }
 .flood_questions .text__content h2 {
   color: #004976 !important;
