@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flood Questions</title>
+    <title>Additional Coverages Image</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,11 +47,26 @@
 
     <!-- CSS FOR THIS SECTION -->
     <style>
-      .flood_questions {
+      .additional_coverages_container {
         max-width: 1150px;
+        margin: auto;
+        justify-content: space-between;
       }
-      .flood_questions .text__content h2 {
-        color: #004976 !important;
+      .additional_coverages_container .right__content {
+        padding-right: 0;
+      }
+
+      .additional_coverages_container .vertical-image {
+        position: relative;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        aspect-ratio: 9/10;
+      }
+
+      .vertical-image img {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
       }
     </style>
   </head>
@@ -59,34 +74,20 @@
   <body class="body">
     <main class="offscreen__darken" role="main" id="main-content">
       <div class="container">
-        <!-- ********************* Section End ********************* -->
-        <section class="row g-5 flood_questions">
-          <div class="col-md-6">
-            <div class="text__content">
-              <h2>What about Federal Disaster Assistance?</h2>
-              <p>
-                Federal disaster assistance is only available if the President
-                declares a disaster. Less than 50 percent of all flooding
-                incidents are awarded a Federal Disaster Assistance declaration.
-                If the President declares a Federal Disaster Area, most disaster
-                assistance is provided in the form of a loan that must be repaid
-                - principal plus interest.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="text__content">
-              <h2>When should I buy flood insurance?</h2>
-              <p>
-                It's important to purchase flood insurance before a flood risk
-                occurs. In fact, most flood insurance policies require a 30-day
-                waiting period after purchasing before coverage will be
-                effective.
-              </p>
-            </div>
-          </div>
+        <!-- Parent  -->
+        <section class="row g-5 additional_coverages_container">
           <!-- ********************* Section Start ********************* -->
+          <div class="col-md-6 left__text__content"></div>
+          <!-- ********************* Section End ********************* -->
+
+          <div class="col-md-6 right__content">
+            <div class="vertical-image">
+              <img
+                src="./img/business.jpg"
+                alt="MIlitary Dad and daughter sitting on car protected with Auto Insurance."
+              />
+            </div>
+          </div>
         </section>
       </div>
     </main>

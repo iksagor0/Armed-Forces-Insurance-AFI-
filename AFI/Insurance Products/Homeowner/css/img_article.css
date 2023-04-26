@@ -7,7 +7,7 @@
 .img_article_section {
   max-width: 1150px;
   align-items: center;
-  padding: 3rem;
+  /* padding: 3rem; */
 }
 .img_article_section h2 {
   color: #004976 !important;
