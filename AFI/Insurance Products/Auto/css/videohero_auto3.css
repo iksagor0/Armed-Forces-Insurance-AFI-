@@ -12,6 +12,7 @@
   aspect-ratio: 16 / 8;
   overflow: hidden;
   position: relative;
+  padding: 0 !important;
 }
 
 .auto__hero .video__container::before {

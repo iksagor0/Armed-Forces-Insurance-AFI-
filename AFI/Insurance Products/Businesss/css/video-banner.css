@@ -10,6 +10,7 @@
 .auto__hero .video-wrapper {
   background-color: transparent;
   aspect-ratio: 16 / 9;
+  padding: 0 !important;
 }
 
 .auto__hero .video {
