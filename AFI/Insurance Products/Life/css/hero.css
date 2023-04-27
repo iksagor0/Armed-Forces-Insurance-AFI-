@@ -14,7 +14,7 @@
   width: 100%;
   object-fit: cover;
 }
-
+/* 
 .page__hero .quote__start {
   background-image: linear-gradient(120deg, #cb2c30, #881b26);
   background-image: linear-gradient(
@@ -43,7 +43,7 @@
 .page__hero .quote__start__controls .button {
   width: 100%;
   font-size: 1.125rem;
-}
+} */
 
 @media screen and (min-width: 992px) {
   .page__hero {
@@ -51,11 +51,11 @@
     overflow: hidden;
   }
 
-  .page__hero .quote__start {
+  /* .page__hero .quote__start {
     max-width: 18rem;
     margin-left: auto;
     max-height: 370px;
-  }
+  } */
 
   .hero__image {
     height: auto;
