@@ -27,10 +27,6 @@
   font-size: 18px !important;
 }
 
-.mission__container .small__text {
-  margin-top: 15px;
-}
-
 @media screen and (min-width: 48em) {
   .page__mission {
     background-color: #fff;
