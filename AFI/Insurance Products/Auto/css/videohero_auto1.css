@@ -1,16 +1,28 @@
 .landing-page-hero__wrapper {
   display: block;
   position: relative;
-  background: url(./img/videohero_auto1.jpg);
+  /* background: url(./img/videohero_auto1.jpg); */
   max-width: 1600px;
   margin: auto;
-  padding: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.auto__hero .backround_image img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.auto__hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 .auto__hero .video-wrapper {
   background-color: transparent;
   aspect-ratio: 16 / 9;
-  padding: 0 !important;
 }
 
 .auto__hero .video {
@@ -60,11 +72,5 @@
     max-width: 18rem;
     margin-left: auto;
     max-height: 370px;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .landing-page-hero__wrapper {
-    padding: 0;
   }
 }

@@ -84,6 +84,7 @@ ul {
 
 ul.disc {
   list-style: disc !important;
+  padding-left: 23px !important;
 }
 
 h1,
@@ -114,15 +115,10 @@ h2 {
 
 a {
   text-decoration: none !important;
-  /* color: #0570c5 !important;
-  color: var(--color-blue-10); */
+  color: #0570c5 !important;
+  color: var(--color-blue-10) !important;
   font-family: "Roboto", sans-serif !important;
   font-size: 16px !important;
-}
-
-a.blue_10 {
-  color: #0570c5 !important;
-  color: var(--color-blue-10);
 }
 
 button,
@@ -268,10 +264,17 @@ main.offscreen__darken:before {
   z-index: 9;
 }
 
-/* COMMON CLASSES WITH STYLES */
+/* ***************************************** */
+/*        COMMON CLASSES WITH STYLES          */
+/* ***************************************** */
 .heading-blue {
   color: #003864;
   color: var(--color-blue-40);
+}
+
+.blue_10 {
+  color: #0570c5 !important;
+  color: var(--color-blue-10);
 }
 
 .button {
@@ -295,7 +298,7 @@ main.offscreen__darken:before {
 
 .button:hover {
   background-color: #025699;
-  background-color: var(--color-blue-20);
+  background-color: var(--color-blue-20) !important;
   border-color: #025699;
   border-color: var(--color-blue-20);
   color: #fff;
@@ -311,8 +314,8 @@ main.offscreen__darken:before {
 }
 
 .border__button:hover {
-  background: #fff;
-  color: #003864;
+  background: #fff !important;
+  color: #003864 !important;
   color: var(--color-blue-40);
   border: 0.125rem solid #fff;
   border: 0.125rem solid var(--color-white);
@@ -364,4 +367,12 @@ main.offscreen__darken:before {
 .component-content,
 .component {
   padding: 0 !important;
+}
+
+/* For Header and Footer a tag */
+header a,
+footer a,
+.blue_30 {
+  color: #004976 !important;
+  color: var(--color-blue-30) !important;
 }

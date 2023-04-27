@@ -50,10 +50,23 @@
       .landing-page-hero__wrapper {
         display: block;
         position: relative;
-        background: url(./img/videohero_auto1.jpg);
+        /* background: url(./img/videohero_auto1.jpg); */
         max-width: 1600px;
         margin: auto;
         padding: 20px;
+        position: relative;
+      }
+
+      .auto__hero .backround_image img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      .auto__hero .container {
+        position: relative;
+        z-index: 2;
       }
 
       .auto__hero .video-wrapper {
@@ -119,6 +132,10 @@
       <section
         class="landing-page-hero__wrapper landing-page-hero__video-wrapper auto__hero"
       >
+        <div class="backround_image">
+          <img src="./img/videohero_auto1.jpg" alt="" />
+        </div>
+
         <div class="container">
           <!-- Video Box -->
           <div class="row align-items-center">

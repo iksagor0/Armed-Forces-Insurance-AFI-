@@ -99,7 +99,7 @@
   position: relative;
 }
 
-.account-pods::before,
+/* .account-pods::before,
 .account-pods::after {
   content: "";
   position: absolute;
@@ -114,4 +114,11 @@
 }
 .account-pods::after {
   right: -999px;
+} */
+
+/* 26 April */
+@media screen and (max-width: 767px) {
+  .account-pods .account_item {
+    padding: 30px 0;
+  }
 }

@@ -60,3 +60,10 @@
     padding: 1.5rem 2.25rem 1rem;
   }
 }
+
+/* 26 April */
+@media screen and (max-width: 767px) {
+  .mySwiper .grid__item .button {
+    transform: translateY(0) !important;
+  }
+}
