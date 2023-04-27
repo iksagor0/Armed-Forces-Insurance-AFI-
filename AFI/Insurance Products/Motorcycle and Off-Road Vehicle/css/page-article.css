@@ -9,3 +9,6 @@
 .page__article .heading-blue {
   font-weight: 400 !important;
 }
+.page__article .button--small-text {
+  font-style: italic;
+}
