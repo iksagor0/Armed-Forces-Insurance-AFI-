@@ -23,6 +23,13 @@
   font-weight: 200;
   line-height: 1.625;
 }
+.page__mission .arrow_link {
+  font-size: 18px !important;
+}
+
+.mission__container .small__text {
+  margin-top: 15px;
+}
 
 @media screen and (min-width: 48em) {
   .page__mission {
@@ -34,7 +41,8 @@
     font-size: 2rem !important;
   }
 
-  .page__mission p {
+  .page__mission p,
+  .page__mission p a {
     font-size: 1.25rem !important;
   }
 }
