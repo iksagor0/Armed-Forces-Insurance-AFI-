@@ -155,7 +155,8 @@ i.fa {
 .container {
   max-width: 1280px;
   width: calc(100% - 16px);
-  margin: 0 auto;
+  margin: 0 auto !important;
+  padding: 0 8px !important;
 }
 
 /* ***************************************** */

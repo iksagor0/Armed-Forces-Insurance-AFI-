@@ -79,14 +79,19 @@
   justify-content: flex-end;
   transition: border-color 0.25s;
   transition: border-color var(--anim-duration-half);
+  /* 28 April */
+  margin: 0 !important;
+  padding: 0 !important;
+  max-height: 105px !important;
+  padding-top: 25px !important;
 }
 
 .quote-selector__icon {
   height: 100%;
   left: 0;
-  position: absolute;
+  /* position: absolute; */
   top: 0.5rem;
-  width: 100%;
+  width: 60%;
 }
 
 .quote-selector__type-label-text {
@@ -224,9 +229,9 @@
     min-width: 6.3125rem;
   }
 
-  .quote-selector__type-label-text {
+  /* .quote-selector__type-label-text {
     margin-top: 1rem;
-  }
+  } */
 }
 
 /* =============== */
@@ -301,4 +306,12 @@ input[type="radio"] + label:after {
 
 .hero__image img {
   object-fit: cover;
+}
+
+/* 28 April */
+@media screen and (max-width: 768px) {
+  .hero_section {
+    margin: 20px 0 40px;
+    padding: 0 !important;
+  }
 }

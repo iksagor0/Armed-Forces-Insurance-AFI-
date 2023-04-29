@@ -340,3 +340,42 @@ footer .footer-disclaimer .footer-disclaimer__links a {
     max-width: none !important;
   }
 }
+
+/* 28 April */
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 0;
+  }
+  #footer {
+    padding: 40px 10px 0 !important;
+  }
+  .toggle_section_wrapper {
+    margin-bottom: 20px;
+  }
+  .toggle_section_wrapper ul {
+    column-count: 1;
+    display: none;
+  }
+  .toggle_section_wrapper .afi-footer-title.ul_open ul {
+    display: block;
+  }
+  .toggle_section_wrapper ul li {
+    margin-bottom: 0.5rem !important;
+  }
+
+  #footer h2,
+  #footer h3 {
+    border-bottom: 1px solid #363636 !important;
+    padding-bottom: 8px;
+  }
+  #footer h3:last-child {
+    /* border-bottom: none !important; Not Working */
+  }
+
+  .footer-disclaimer__content p,
+  .footer-disclaimer__links a {
+    font-size: 13px !important;
+  }
+}
+
+

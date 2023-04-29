@@ -237,3 +237,107 @@ footer a {
 header a:hover {
   color: #0570c5 !important;
 }
+
+/* 28 April */
+@media screen and (max-width: 991px) {
+  #header .col-lg-8.d-none.d-lg-block {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: -220px;
+    transition: 0.3s;
+    z-index: -9999;
+  }
+
+  #header .logo_wrapper {
+    text-align: center;
+  }
+
+  #header .logo_wrapper img {
+    max-width: 156px !important;
+    width: 110px;
+  }
+
+  .navigation.navigation-main.navigation-main-vertical nav,
+  .primary-nav {
+    margin-top: 0;
+  }
+  .primary-nav {
+    width: 220px;
+    overflow: hidden;
+  }
+
+  #header .primary-nav ul {
+    height: 100vh;
+    display: block;
+    background: #fff;
+    padding-top: 50px;
+  }
+
+  #header .primary-nav ul .level1 {
+    text-align: left;
+    width: 100%;
+  }
+  #header .primary-nav ul li a {
+    display: inline-block;
+  }
+
+  #header .primary-nav ul .level1 ul {
+    display: none;
+    height: auto;
+    column-count: 1;
+    padding: 0px;
+    /* padding-left: 10px; */
+  }
+  #header .primary-nav ul .level1 ul.sub_nav_open {
+    display: block;
+  }
+
+  .navigation.navigation-main.navigation-main-vertical .rel-level1 > ul > li {
+    padding: 5px !important;
+    max-width: 220px;
+  }
+
+  #hamburger {
+    font-size: 35px !important;
+    z-index: 888;
+    border: 0;
+    background: transparent;
+    width: auto;
+  }
+
+  .hamburger__close {
+    display: none;
+  }
+  body.screen_active {
+    transition: 0.3s;
+    position: relative;
+    left: 220px;
+  }
+
+  body.screen_active #header .col-lg-8.d-none.d-lg-block {
+    left: 0;
+    z-index: 9999;
+  }
+  body.screen_active #hamburger {
+    position: relative;
+    z-index: 999999999;
+    transition: 0.3s;
+  }
+  body.screen_active .hamburger__open {
+    display: none;
+  }
+  body.screen_active .hamburger__close {
+    display: block;
+  }
+
+  #header .login-link,
+  #hamburger {
+    padding-top: 20px;
+    color: #163a63 !important;
+  }
+  #header .login-link {
+    font-size: 25px !important;
+    padding-left: 70%;
+  }
+}

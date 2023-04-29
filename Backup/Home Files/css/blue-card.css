@@ -67,3 +67,16 @@
     transform: translateY(0) !important;
   }
 }
+
+/* 28 April */
+.blue__cards {
+  margin: 60px 0 20px !important;
+}
+.blue__card .button {
+  padding: 8px 20px !important;
+}
+@media screen and (max-width: 768px) {
+  .blue__card {
+    padding: 1.5rem !important;
+  }
+}
