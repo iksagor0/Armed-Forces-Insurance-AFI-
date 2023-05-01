@@ -156,6 +156,7 @@
       }
       .field__input {
         width: 100%;
+        padding: 4px 8px !important;
       }
 
       .fields-row .field.field--xlarge {
@@ -164,6 +165,14 @@
 
       .fields-row .field.field--medium {
         max-width: 7rem;
+      }
+
+      .field__note {
+        color: #4a4a4a;
+        font-size: 0.875rem !important;
+        font-style: italic;
+        line-height: 1.4;
+        margin-bottom: -1.1875rem;
       }
 
       .note {
@@ -189,7 +198,7 @@
 
       /* ******** ASIDE ******** */
       .quote_request_aside {
-        max-width: 200px;
+        /* max-width: 200px; */
         background-color: #003864;
         background-color: var(--color-blue-40);
         color: #fff;
@@ -255,7 +264,7 @@
         background-color: #d6d6d6 !important;
         background-color: var(--action-button-gray-10) !important;
         border-color: #d6d6d6 !important;
-        /* border-color: var(--action-button-gray-10) !important; */
+        border-color: var(--action-button-gray-10) !important;
         color: var(--color-gray-40) !important;
         transition: all 0.25s;
         transition: all var(--anim-duration-half);
@@ -284,10 +293,13 @@
         <ul class="steps__list">
           <li class="step active_step" data-text="Policy Holder Info">1</li>
           <li class="line"></li>
-          <li class="step" data-text="Business Info">2</li>
+
+          <li class="step active_step" data-text="Business Info">2</li>
           <li class="line"></li>
+
           <li class="step" data-text="Coverages">3</li>
           <li class="line"></li>
+
           <li class="step" data-text="Quote">4</li>
         </ul>
       </div>
@@ -295,160 +307,150 @@
       <div class="quote_request__section_wrapper">
         <!-- ******* FORM  *******-->
         <div class="form_container">
-          <h2 class="quote_request_heading">Business Owner Information</h2>
+          <h2 class="quote_request_heading">Policy Coverage Options</h2>
 
+          <!-- Policy Coverage Options -->
           <div class="fields-row">
-            <!-- First Name -->
-            <div class="field">
+            <div class="field field--full field--stacked">
               <div class="field__label-wrapper">
-                <label class="field__label" for="eligibilityFirstName"
-                  >First Name</label
+                <label class="field__label" for="typeOfInsurance"
+                  >Type of Insurance Needed (Select All Applicable Policy
+                  Options)</label
                 >
               </div>
-              <div class="field__input-wrapper">
-                <input
-                  class="field__input"
-                  id="eligibilityFirstName"
-                  name="eligibilityFirstName"
-                  type="text"
-                  required=""
-                  pattern="^[a-zA-Z]+$"
-                  maxlength="50"
-                  placeholder=""
-                  value=""
-                />
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Business Property"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Business Property"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--Business Property"
+                    >Business Property</label
+                  >
+                </div>
               </div>
-            </div>
-
-            <!-- Last Name -->
-            <div class="field">
-              <div class="field__label-wrapper">
-                <label class="field__label" for="eligibilityLastName"
-                  >Last Name</label
-                >
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Business Owner (BOP)"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Business Owner (BOP)"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--Business Owner (BOP)"
+                    >Business Owner (BOP)</label
+                  >
+                </div>
               </div>
-              <div class="field__input-wrapper">
-                <input
-                  class="field__input"
-                  id="eligibilityLastName"
-                  name="eligibilityLastName"
-                  type="text"
-                  required=""
-                  pattern="^[a-zA-Z]+$"
-                  maxlength="50"
-                  placeholder=""
-                  value=""
-                />
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--General, Professional, or Product Liability"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="General, Professional, or Product Liability"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--General, Professional, or Product Liability"
+                    >General, Professional, or Product Liability</label
+                  >
+                </div>
+              </div>
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Business Vehicles"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Business Vehicles"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--Business Vehicles"
+                    >Business Vehicles</label
+                  >
+                </div>
+              </div>
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Builder's Risk"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Builder's Risk"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--Builder's Risk"
+                    >Builder's Risk</label
+                  >
+                </div>
+              </div>
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Veteran Organizations (American Legion, VFW, etc.)"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Veteran Organizations (American Legion, VFW, etc.)"
+                  /><label
+                    class="field__label"
+                    for="typeOfInsurance--Veteran Organizations (American Legion, VFW, etc.)"
+                    >Veteran Organizations (American Legion, VFW, etc.)</label
+                  >
+                </div>
+              </div>
+              <div class="field-group">
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="typeOfInsurance--Other"
+                    name="typeOfInsurance"
+                    type="checkbox"
+                    required=""
+                    value="Other"
+                  /><label class="field__label" for="typeOfInsurance--Other"
+                    >Other</label
+                  >
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="fields-row">
-            <!-- Email -->
-            <div class="field field--xlarge">
-              <div class="field__label-wrapper">
-                <label class="field__label" for="policyHolderEmail"
-                  >Email Address</label
-                >
-              </div>
-              <div class="field__input-wrapper">
-                <input
-                  class="field__input"
-                  id="policyHolderEmail"
-                  name="policyHolderEmail"
-                  type="email"
-                  required=""
-                  maxlength="100"
-                  placeholder=""
-                  value=""
-                />
-              </div>
-            </div>
-
-            <!-- Phone Type -->
-            <div class="field field--medium">
-              <div class="field__label-wrapper">
-                <label class="field__label" for="policyHolderPhoneType"
-                  >Phone Type</label
-                >
-              </div>
-              <div class="field__input-wrapper">
-                <select
-                  class="field__input"
-                  id="policyHolderPhoneType"
-                  name="policyHolderPhoneType"
-                  type="select"
-                  required=""
-                >
-                  &gt;
-                  <option value="">--</option>
-                  <option value="Home">Home</option>
-                  <option value="Business">Business</option>
-                  <option value="Cell">Cell</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Phone Number -->
-            <div class="field">
-              <div class="field__label-wrapper">
-                <label class="field__label" for="policyHolderPhoneNumber"
-                  >Phone Number</label
-                >
-              </div>
-              <div class="field__input-wrapper">
-                <input
-                  class="field__input"
-                  id="policyHolderPhoneNumber"
-                  name="policyHolderPhoneNumber"
-                  type="text"
-                  required=""
-                  pattern="\(\d\d\d\) \d\d\d-?\d\d\d\d"
-                  placeholder=""
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <p class="note">
-            To offer you an accurate quote and/or policy, we (AFI and AFI
-            affiliates) may collect information from consumer reporting
-            agencies, such as credit history. Future reports may be used to
-            update or renew your insurance. By continuing with this quote
-            request, you agree to receive marketing materials&nbsp;and SMS
-            notifications&nbsp;from Armed Forces Insurance. You can request
-            removal&nbsp;or opt-out&nbsp;at any time.&nbsp;Please review our
-            <a href="#" target="_blank" alt="AFI Privacy Policy"
-              >Privacy Policy - Information Gathering.</a
-            >
-          </p>
         </div>
 
         <!-- ******* ASIDE  *******-->
-        <aside class="quote_request_aside" style="max-width: 200px">
-          <h2 class="quote_request_sidebar__heading">Helpful Tips</h2>
+        <!-- <aside class="quote_request_aside" style="max-width: 472px">
+          <h2 class="quote_request_sidebar__heading">
+            Why AFI For Your Business Insurance Needs?
+          </h2>
           <div class="quote_request_sidebar__content">
             <div class="quote_request_sidebar__item">
               <h3 class="quote_request_sidebar__item_heading">
-                Tell Us About Yourself
+                Let us do the legwork for you.
               </h3>
               <p class="quote_request_sidebar__item_description">
-                Providing this information will help our agents get you the most
-                accurate rate for your quote.
-              </p>
-            </div>
-            <div class="quote_request_sidebar__item">
-              <h3 class="quote_request_sidebar__item_heading">
-                Need Help Now?
-              </h3>
-              <p class="quote_request_sidebar__item_description">
-                Call us at 800-295-9649 from 7:30am-6:30pm CST M-F. Our
-                dedicated agents are standing by to help.
+                We have access to a network of national carriers to find the
+                best option for your business needs. Allowing AFI to do the
+                shopping for you saves you valuable time in order to get back to
+                what matters most.
               </p>
             </div>
           </div>
-        </aside>
+        </aside> -->
       </div>
     </div>
 
