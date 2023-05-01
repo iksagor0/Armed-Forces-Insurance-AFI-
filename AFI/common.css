@@ -1,6 +1,7 @@
 /*==============================
         COMMON CODE
  ==============================*/
+
 :root {
   --color-black: #000;
   --color-white: #fff;
@@ -165,8 +166,11 @@ i.fa {
 }
 
 /* ***************************************** */
+
 /*                      BODY                  */
+
 /* ***************************************** */
+
 body.offscreen-is-active {
   -webkit-transform: translateX(220px);
   -ms-transform: translateX(220px);
@@ -265,8 +269,11 @@ main.offscreen__darken:before {
 }
 
 /* ***************************************** */
+
 /*        COMMON CLASSES WITH STYLES          */
+
 /* ***************************************** */
+
 .heading-blue {
   color: #003864;
   color: var(--color-blue-40);
@@ -300,17 +307,18 @@ main.offscreen__darken:before {
   background-color: #025699;
   background-color: var(--color-blue-20) !important;
   border-color: #025699;
-  border-color: var(--color-blue-20);
+  border-color: var(--color-blue-20) !important;
   color: #fff;
   color: var(--color-white);
 }
 
-.border__button {
+.border__button,
+.border__button__blue {
   background-color: transparent !important;
   border: 0.125rem solid #fff !important;
-  border: 0.125rem solid var(--color-white);
-  color: #fff;
-  color: var(--color-white);
+  border: 0.125rem solid var(--color-white) !important;
+  color: #fff !important;
+  color: var(--color-white) !important;
 }
 
 .border__button:hover {
@@ -319,6 +327,12 @@ main.offscreen__darken:before {
   color: var(--color-blue-40);
   border: 0.125rem solid #fff;
   border: 0.125rem solid var(--color-white);
+}
+
+.border__button__blue:hover {
+  background: #025699 !important;
+  color: #fff !important;
+  border: 0.125rem solid #025699;
 }
 
 [class*="icon-"],
@@ -338,6 +352,7 @@ main.offscreen__darken:before {
 }
 
 /* 10 April */
+
 .blue__text {
   color: #004976 !important;
 }
@@ -358,18 +373,21 @@ main.offscreen__darken:before {
 }
 
 /*Mohi*/
+
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 /* 14 April */
+
 .component-content,
 .component {
   padding: 0 !important;
 }
 
 /* For Header and Footer a tag */
+
 header a,
 footer a,
 .blue_30 {
