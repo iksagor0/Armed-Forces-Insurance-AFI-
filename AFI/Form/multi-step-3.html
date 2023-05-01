@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Step 1</title>
+    <title>Step 3</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -144,6 +144,10 @@
         max-width: 11.5625rem;
       }
 
+      .fields-row .field:last-child {
+        margin-right: 0;
+      }
+
       .field__input,
       .field__label {
         display: block;
@@ -156,6 +160,7 @@
       }
       .field__input {
         width: 100%;
+        /* padding: 6px 8px !important; */
         padding: 4px 8px !important;
       }
 
@@ -166,6 +171,36 @@
       .fields-row .field.field--medium {
         max-width: 7rem;
       }
+
+      /* Step 3 Start */
+      .fields-row .field.field--full {
+        align-items: center;
+        display: flex;
+        max-width: 100%;
+      }
+
+      .fields-row .field.field--stacked {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        max-width: none;
+      }
+
+      /* .fields-row .cover_options_wrapper .field__label {
+        margin-bottom: 0;
+        line-height: 19px;
+      } */
+
+      .fields-row .field.field--full .field__input-wrapper {
+        display: flex;
+      }
+
+      .fields-row .field.field--full .field__input-wrapper .field__input {
+        margin-right: 0.25rem;
+        width: auto;
+      }
+
+      /* Step 3 End */
 
       .field__note {
         color: #4a4a4a;
@@ -197,8 +232,7 @@
       }
 
       /* ******** ASIDE ******** */
-      .quote_request_aside {
-        /* max-width: 200px; */
+      /* .quote_request_aside {
         background-color: #003864;
         background-color: var(--color-blue-40);
         color: #fff;
@@ -235,7 +269,7 @@
         .quote_request_aside {
           display: block;
         }
-      }
+      } */
 
       /* ******** Action Buttons ******** */
       .quote_request__action_buttons {
@@ -297,7 +331,7 @@
           <li class="step active_step" data-text="Business Info">2</li>
           <li class="line"></li>
 
-          <li class="step" data-text="Coverages">3</li>
+          <li class="step active_step" data-text="Coverages">3</li>
           <li class="line"></li>
 
           <li class="step" data-text="Quote">4</li>
@@ -311,7 +345,7 @@
 
           <!-- Policy Coverage Options -->
           <div class="fields-row">
-            <div class="field field--full field--stacked">
+            <div class="field field--full field--stacked cover_options_wrapper">
               <div class="field__label-wrapper">
                 <label class="field__label" for="typeOfInsurance"
                   >Type of Insurance Needed (Select All Applicable Policy
