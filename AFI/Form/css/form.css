@@ -230,6 +230,10 @@
   max-width: 17rem;
 }
 
+.fields-row .field.field--xxlarge {
+  max-width: 25rem;
+}
+
 .fields-row .field.field--medium {
   max-width: 7rem;
 }
