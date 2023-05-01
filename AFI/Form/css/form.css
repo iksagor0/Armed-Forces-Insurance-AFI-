@@ -56,6 +56,53 @@
 }
 
 /* *********************************
+             RADIO FORM
+********************************** */
+.radio__form_section {
+  margin-bottom: 2rem;
+}
+.radio__form_section .radio_field_label {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.radio__form_section .field-group {
+  background-color: #f6f6f6;
+  background-color: var(--color-gray-10);
+  position: relative;
+}
+
+.radio__form_section .field-group .field__input {
+  cursor: pointer;
+  margin: 0;
+  left: 1rem;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 1;
+  width: auto !important;
+}
+
+.radio__form_section .field-group .field__label {
+  cursor: pointer;
+  display: block;
+  padding: 1.25rem 1rem 1.25rem 2.5rem;
+  width: 100%;
+  color: #363636;
+  color: var(--color-gray-30);
+  margin-bottom: 0.25rem;
+}
+
+.radio__form_section .field-group .field__input:checked + .field__label {
+  background-color: #003864;
+  background-color: var(--color-blue-40);
+  color: #fff;
+  color: var(--color-white);
+}
+
+/* *********************************
                 STEP 
 ********************************** */
 .step__container {

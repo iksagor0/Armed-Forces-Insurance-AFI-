@@ -44,115 +44,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/common.css" />
-
-    <!-- CSS FOR THIS SECTION -->
-    <style>
-      .quote_request_heading {
-        font-size: 1.375rem !important;
-        margin-bottom: 1rem;
-        font-family: Roboto, sans-serif;
-        font-family: var(--font-family-primary) !important;
-        font-weight: 400 !important;
-      }
-
-      .quote_request__section_wrapper {
-        display: flex;
-        margin-bottom: 2rem;
-        align-items: center;
-      }
-
-      .form_container {
-        background-color: #f6f6f6;
-        background-color: var(--color-gray-10);
-        flex-grow: 1;
-        padding: 1.5rem 1rem;
-      }
-
-      .fields-row {
-        align-items: flex-start;
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .fields-row .field {
-        flex-grow: 1;
-        margin-bottom: 1.5rem;
-        margin-right: 1rem;
-        max-width: 11.5625rem;
-      }
-
-      .field__input,
-      .field__label {
-        display: block;
-      }
-
-      .field__label {
-        color: #363636;
-        color: var(--color-gray-30);
-        margin-bottom: 0.25rem;
-      }
-      .field__input {
-        width: 100%;
-      }
-      @media screen and (min-width: 48em) {
-        .quote_request_heading {
-          margin-bottom: 2rem;
-        }
-
-        .form_container {
-          padding: 2.625rem 2.25rem;
-        }
-
-        .fields-row {
-          margin-bottom: 2.125rem;
-        }
-
-        .fields-row .field {
-          margin-bottom: 0;
-        }
-      }
-
-      /* ASIDE */
-      .quote_request_aside {
-        max-width: 472px;
-        background-color: #003864;
-        background-color: var(--color-blue-40);
-        color: #fff;
-        color: var(--color-white);
-        display: none;
-        font-size: 0.875rem;
-        padding: 3rem 2.375rem;
-      }
-
-      .quote_request_sidebar__heading,
-      .quote_request_sidebar__item_heading {
-        font-family: Roboto, sans-serif !important;
-        font-family: var(--font-family-primary) !important;
-        font-weight: 700 !important;
-      }
-
-      .quote_request_sidebar__heading {
-        font-size: 1rem !important;
-        margin-bottom: 1rem;
-      }
-
-      .quote_request_sidebar__item_heading {
-        font-size: 0.875rem !important;
-        margin-bottom: 0.25rem;
-      }
-
-      .quote_request_sidebar__item_description {
-        font-size: 0.875rem !important;
-        line-height: 1.4 !important;
-        margin-bottom: 10px;
-      }
-
-      @media screen and (min-width: 48em) {
-        .quote_request_aside {
-          display: block;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./css/form.css" />
   </head>
 
   <body class="body">
@@ -360,7 +252,7 @@
         </div>
 
         <!-- ******* ASIDE  *******-->
-        <aside class="quote_request_aside" style="max-width: 472px">
+        <aside class="quote_request_aside">
           <h2 class="quote_request_sidebar__heading">Our Mission is You®</h2>
           <div class="quote_request_sidebar__content">
             <div class="quote_request_sidebar__item">
