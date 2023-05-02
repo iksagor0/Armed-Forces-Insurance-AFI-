@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Zilla+Slab:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css" />
+
+    <!-- CSS FOR THIS SECTION -->
+    <style>
+      .account-pods {
+        background-color: #f6f6f6;
+        background-color: var(--color-gray-10);
+        padding: 2.75rem 0;
+        text-align: center;
+      }
+
+      .account-pod {
+        padding: 2rem 0;
+      }
+      .account-pod__icon {
+        display: block;
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        color: #163a63;
+      }
+
+      .account-pod__content h1,
+      .account-pod__content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .account-pod__content p {
+        max-width: 16.5rem;
+      }
+
+      .button--small-text {
+        font-size: 0.75rem;
+      }
+
+      .button-group,
+      .button-group .button {
+        display: flex;
+        justify-content: center;
+      }
+
+      .button-group .button {
+        align-items: center;
+        margin: 0 0.25rem 1rem;
+      }
+
+      /* RESPONSIVE */
+      @media screen and (min-width: 64em) {
+        .account-pods {
+          padding: 3.625rem 0 2.75rem;
+        }
+      }
+      @media screen and (max-width: 64em) {
+        .connectBtn {
+          min-width: 7rem !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="body">
+    <main class="offscreen__darken" role="main" id="main-content">
+      <!-- ********************* Section Start ********************* -->
+      <section class="account-pods">
+        <div class="container">
+          <div class="row">
+            <div class="account_item col-md-4">
+              <section class="account-pod">
+                <span class="account-pod__icon icon-document"
+                  ><i class="fa-regular fa-file-lines"></i
+                ></span>
+                <div class="account-pod__content">
+                  <h1>Claims</h1>
+                  <p>Contact us at 800-255-0187 for claims service.</p>
+                  <a
+                    class="button button--small-text"
+                    href="http://aficonnect.afi.org/AFIConnect/SignIn"
+                    >Log In to File Claim</a
+                  >
+                </div>
+              </section>
+            </div>
+
+            <div class="account_item col-md-4">
+              <section class="account-pod">
+                <span class="account-pod__icon icon-calculator"
+                  ><i class="fa-solid fa-calculator"></i
+                ></span>
+                <div class="account-pod__content">
+                  <h1>Resources and Tools</h1>
+                  <p>
+                    Helpful information to make the right insurance decisions.
+                  </p>
+                  <a
+                    class="button button--small-text"
+                    href="/resources-and-tools"
+                    >Learn More</a
+                  >
+                </div>
+              </section>
+            </div>
+            <div class="account_item col-md-4">
+              <section class="account-pod">
+                <span class="account-pod__icon icon-person"
+                  ><i class="fa-solid fa-user"></i
+                ></span>
+                <div class="account-pod__content">
+                  <h1>AFIconnect</h1>
+                  <p></p>
+                  <div class="button-group">
+                    <a
+                      class="button button--small-text connectBtn"
+                      href="http://aficonnect.afi.org/AFIConnect/SignIn"
+                      >Login</a
+                    >
+                    <a
+                      class="button button--small-text connectBtn"
+                      href="http://aficonnect.afi.org/AFIConnect/Register"
+                      >Register</a
+                    >
+                  </div>
+                  <a href="http://aficonnect.afi.org/AFIConnect/SignIn"
+                    >Forgot Username or Password?</a
+                  >
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ********************* Section End ********************* -->
+    </main>
+  </body>
+</html>
