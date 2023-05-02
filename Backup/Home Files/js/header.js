@@ -18,8 +18,6 @@ itemWithSubItems.forEach((item) => {
   });
 });
 
-console.log(itemWithSubItems);
-
 // ******* Main Code *******
 // const body = document.body;
 // const hamburger = document.querySelector("#hamburger");

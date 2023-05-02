@@ -174,3 +174,24 @@
 .content-pod-group::after {
   right: -999px;
 } */
+
+/* ******** Think is different way ******** */
+.mySwiper .slider_wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mySwiper .slider_container {
+  width: 2000px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  transition: 0.5s;
+  /* transform: translateX(-380px); */
+}
+
+/* .mySwiper .slider_item {
+  margin-left: 400px;
+} */
+
+/* slider_pagination */
