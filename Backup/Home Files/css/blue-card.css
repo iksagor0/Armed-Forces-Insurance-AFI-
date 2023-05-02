@@ -1,6 +1,6 @@
-.blue__cards {
+/* .blue__cards {
   margin: 40px 0;
-}
+} */
 .blue__card__container {
   max-width: 966px;
   margin: 0 auto;
@@ -70,7 +70,9 @@
 
 /* 28 April */
 .blue__cards {
-  margin: 60px 0 20px !important;
+  /* margin: 60px 0 20px !important; */
+  margin-top: 60px;
+  margin-bottom: 20px;
 }
 .blue__card .button {
   padding: 8px 20px !important;

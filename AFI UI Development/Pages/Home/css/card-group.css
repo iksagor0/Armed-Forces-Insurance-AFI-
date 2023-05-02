@@ -69,7 +69,7 @@
   transform: translateY(60px) !important;
 }
 .content-pod-group .grid__item .button {
-  transform: translateY(-60px) !important;
+  transform: translateY(-60px);
 }
 
 /* Responsive */
