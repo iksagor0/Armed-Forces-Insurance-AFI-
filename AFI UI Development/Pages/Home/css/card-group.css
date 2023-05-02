@@ -68,8 +68,8 @@
 .content-pod__heading {
   transform: translateY(60px) !important;
 }
-.content-pod-group .grid__item .button {
-  transform: translateY(-60px);
+.button {
+  transform: translateY(-60px) !important;
 }
 
 /* Responsive */
@@ -133,4 +133,10 @@
     background-color: #004976;
     background-color: var(--color-blue-30);
   }
+}
+
+/* Swiper */
+
+.swiper-pagination {
+  position: relative;
 }
