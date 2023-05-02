@@ -394,3 +394,10 @@ footer a,
   color: #004976 !important;
   color: var(--color-blue-30) !important;
 }
+
+/* Mohi vai */
+.gray-pods {
+  background-color: #f6f6f6;
+  background-color: var(--color-gray-10);
+  padding: 2.75rem 0 !important;
+}
