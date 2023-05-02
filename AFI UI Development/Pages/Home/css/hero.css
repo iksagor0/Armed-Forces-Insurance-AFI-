@@ -175,8 +175,8 @@
 
 .quote-selector a {
   color: #fff;
-  color: var(--color-white);
-  text-decoration: underline;
+  color: var(--color-white) !important;
+  text-decoration: underline !important;
 }
 /* ======================================================== */
 
