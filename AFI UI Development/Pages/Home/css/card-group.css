@@ -68,7 +68,7 @@
 .content-pod__heading {
   transform: translateY(60px) !important;
 }
-.button {
+.content-pod-group .content-pod .button {
   transform: translateY(-60px) !important;
 }
 
