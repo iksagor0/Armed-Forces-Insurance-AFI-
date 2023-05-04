@@ -39,8 +39,12 @@ nextBtn.addEventListener("click", () => {
 
   if (formList.some((item) => additionalForm.includes(item))) {
     //   If additonal form has in arrayList
-    if (stepCount === 1) {
+    if (stepCount === 1 && formList.includes("military_information")) {
       if (militaryFormValidation()) return false;
+    }
+
+    if (stepCount === 1 && formList.includes("parent_information")) {
+      if (parentFormValidation()) return false;
     }
 
     if (stepCount === 2) {
@@ -227,7 +231,7 @@ function militaryFormValidation() {
 }
 
 // ********** Parent's Information ***********
-function militaryFormValidation() {
+function parentFormValidation() {
   const parentFirstName = document.querySelector("#parentFirstName");
   const parentLastName = document.querySelector("#parentLastName");
 
