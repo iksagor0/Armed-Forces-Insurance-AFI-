@@ -17,22 +17,29 @@ const nextBtn = document.querySelector("#next_btn");
 const backBtn = document.querySelector("#back_btn");
 
 let stepCount = 0;
+let maxStep = formList.length - 1;
 
 // Next ******************************************
 nextBtn.addEventListener("click", () => {
+  console.log(formList);
+  console.log(formList.includes("military_information"));
   const isSelecteligibility = eligibilityValidation();
 
-  if (stepCount === 0) if (!Boolean(isSelecteligibility)) return false;
-  if (stepCount === 1) {
-    if (isSelecteligibility === "military") {
-      if (militaryFormValidation()) return false;
-    }
+  if (stepCount === 0) {
+    if (!Boolean(isSelecteligibility)) return false;
   }
 
-  console.log(userData);
+  if (stepCount === 1) {
+    if (militaryFormValidation()) return false;
+  }
 
-  // stepCount State
-  const maxStep = formList.length - 1;
+  if (stepCount === 2) {
+    if (multiStep1Validation()) return false;
+  }
+
+  //   console.log(maxStep);
+  //   console.log(userData);
+
   stepCount >= maxStep ? stepCount : stepCount++;
 
   // Show Form
@@ -126,9 +133,11 @@ function eligibilityValidation() {
       formList = ["radio_select", "child_information", ...multStepForm];
     } else {
       formList = defalutForms;
+      //   stepCount++;
     }
     // stepCount = 1;
     // window.scrollTo(0, 0);
+    maxStep = formList.length - 1;
 
     // set eligibilityStatus to userData
     userData.eligibilityStatus = eligibilityStatus;
@@ -165,8 +174,8 @@ function militaryFormValidation() {
   userData.militaryStatus = militaryStatus?.value;
   userData.militaryRank = militaryRank?.value;
 
-  console.log(userData);
-  console.log(isAnyError);
+  //   console.log(userData);
+  //   console.log(isAnyError);
 
   return isAnyError;
 }
@@ -176,7 +185,39 @@ function militaryFormValidation() {
 // ********** Child's Information ***********
 
 // ********** MULTI-STEP 1 Validation ***********
+function multiStep1Validation() {
+  const policyHolderFirstName = document.querySelector(
+    "#policyHolderFirstName"
+  );
+  const policyHolderLastName = document.querySelector("#policyHolderLastName");
+  const policyHolderEmail = document.querySelector("#policyHolderEmail");
+  const policyHolderPhoneType = document.querySelector(
+    "#policyHolderPhoneType"
+  );
+  const policyHolderPhoneNumber = document.querySelector(
+    "#policyHolderPhoneNumber"
+  );
 
+  const validationResult = [];
+  validationResult[0] = isValueEmpty(policyHolderFirstName);
+  validationResult[1] = isValueEmpty(policyHolderLastName);
+  validationResult[2] = isValueEmpty(policyHolderEmail);
+  validationResult[3] = isValueEmpty(policyHolderPhoneType);
+  validationResult[4] = isValueEmpty(policyHolderPhoneNumber);
+
+  const isAnyError = validationResult.some((result) => result === false);
+
+  userData.policyHolderFirstName = policyHolderFirstName?.value;
+  userData.policyHolderLastName = policyHolderLastName?.value;
+  userData.policyHolderEmail = policyHolderEmail?.value;
+  userData.policyHolderPhoneType = policyHolderPhoneType?.value;
+  userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value;
+
+  console.log(userData);
+  console.log(isAnyError);
+
+  return isAnyError;
+}
 // ********** MULTI-STEP 2 Validation ***********
 
 // ********** MULTI-STEP 3 Validation ***********
