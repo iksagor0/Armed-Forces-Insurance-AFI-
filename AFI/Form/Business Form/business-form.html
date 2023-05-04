@@ -60,7 +60,7 @@
     <!-- ************************************************ -->
     <!------------------- Radio Section -------------------->
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section radio_select active_section">
       <div class="container">
         <section class="heading_text_section">
           <h1 class="quote_request_heading">Eligibility For Insurance</h1>
@@ -94,7 +94,6 @@
                 id="eligibilityStatus--military"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="military"
               /><label class="field__label" for="eligibilityStatus--military"
                 >Military (Active Duty, Former/ Separated, Retired, Disabled,
@@ -109,7 +108,6 @@
                 id="eligibilityStatus--dod"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="dod"
               /><label class="field__label" for="eligibilityStatus--dod"
                 >DoD Employee (Current or Retired)</label
@@ -123,8 +121,7 @@
                 id="eligibilityStatus--va"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
-                value="va"
+                value="veteransAffairs"
               /><label class="field__label" for="eligibilityStatus--va"
                 >Department of Veterans Affairs Employee (Current or
                 Retired)</label
@@ -138,7 +135,6 @@
                 id="eligibilityStatus--child"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="child"
               /><label class="field__label" for="eligibilityStatus--child"
                 >Child of AFI Member</label
@@ -152,7 +148,6 @@
                 id="eligibilityStatus--parent"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="parent"
               /><label class="field__label" for="eligibilityStatus--parent"
                 >Parent of AFI Member</label
@@ -166,7 +161,6 @@
                 id="eligibilityStatus--nonMilitary"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="nonMilitary"
               /><label class="field__label" for="eligibilityStatus--nonMilitary"
                 >Non-Military</label
@@ -180,7 +174,6 @@
                 id="eligibilityStatus--currentMember"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="currentMember"
               /><label
                 class="field__label"
@@ -196,7 +189,6 @@
                 id="eligibilityStatus--auxiliary"
                 name="eligibilityStatus"
                 type="radio"
-                required=""
                 value="auxiliary"
               /><label class="field__label" for="eligibilityStatus--auxiliary"
                 >Members of the Civilian Auxiliaries (Current or Retired)</label
@@ -210,7 +202,7 @@
     <!-- ************************************************ -->
     <!---------------- Military Information ---------------->
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section military_information">
       <div class="container">
         <h1 class="quote_request_heading">Military Information</h1>
         <div class="quote_request__section_wrapper">
@@ -232,7 +224,6 @@
                     id="eligibilityFirstName"
                     name="eligibilityFirstName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -254,7 +245,6 @@
                     id="eligibilityLastName"
                     name="eligibilityLastName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -278,7 +268,6 @@
                     id="branchOfService"
                     name="branchOfService"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="Army">Army</option>
@@ -314,7 +303,6 @@
                     id="militaryStatus"
                     name="militaryStatus"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="Active Duty">Active Duty</option>
@@ -338,7 +326,6 @@
                     id="militaryRank"
                     name="militaryRank"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="E-1 Private">E-1 Private</option>
@@ -452,7 +439,7 @@
     <!-- ************************************************ -->
     <!------------ Parent's Military Information ----------->
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section parent_information">
       <div class="container">
         <h1 class="quote_request_heading">Military Information</h1>
         <div class="quote_request__section_wrapper">
@@ -476,7 +463,6 @@
                     id="parentFirstName"
                     name="parentFirstName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -498,7 +484,6 @@
                     id="parentLastName"
                     name="parentLastName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -540,7 +525,7 @@
     <!-- ************************************************ -->
     <!------------- Child's Military Information ----------->
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section child_information">
       <div class="container">
         <h1 class="quote_request_heading">Military Information</h1>
         <div class="quote_request__section_wrapper">
@@ -564,7 +549,6 @@
                     id="childFirstName"
                     name="childFirstName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -586,7 +570,6 @@
                     id="childLastName"
                     name="childLastName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -628,7 +611,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 1 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section multi__step_1">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -662,7 +645,6 @@
                     id="eligibilityFirstName"
                     name="eligibilityFirstName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -684,7 +666,6 @@
                     id="eligibilityLastName"
                     name="eligibilityLastName"
                     type="text"
-                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -708,7 +689,6 @@
                     id="policyHolderEmail"
                     name="policyHolderEmail"
                     type="email"
-                    required=""
                     maxlength="100"
                     placeholder=""
                     value=""
@@ -729,7 +709,6 @@
                     id="policyHolderPhoneType"
                     name="policyHolderPhoneType"
                     type="select"
-                    required=""
                   >
                     <option value="">--</option>
                     <option value="Home">Home</option>
@@ -752,7 +731,6 @@
                     id="policyHolderPhoneNumber"
                     name="policyHolderPhoneNumber"
                     type="text"
-                    required=""
                     pattern="\(\d\d\d\) \d\d\d-?\d\d\d\d"
                     placeholder=""
                     value=""
@@ -806,7 +784,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 2 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section multi__step_2">
       <div class="container">
         <!-- <h1 class="quote_request_heading">Military Information</h1> -->
 
@@ -845,7 +823,6 @@
                     id="businessName"
                     name="businessName"
                     type="text"
-                    required=""
                     maxlength="100"
                     placeholder=""
                     value=""
@@ -887,7 +864,6 @@
                     id="businessType"
                     name="businessType"
                     type="text"
-                    required=""
                     maxlength="100"
                     placeholder=""
                     value=""
@@ -931,7 +907,6 @@
                     id="businessPhysicalAddress"
                     name="businessPhysicalAddress"
                     type="text"
-                    required=""
                     maxlength="100"
                     placeholder=""
                     value=""
@@ -952,7 +927,6 @@
                     id="city"
                     name="city"
                     type="text"
-                    required=""
                     maxlength="100"
                     placeholder=""
                     value="Hill AFB"
@@ -969,7 +943,6 @@
                     id="state"
                     name="state"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="AL">Alabama</option>
@@ -1050,7 +1023,6 @@
                     id="zip"
                     name="zip"
                     type="text"
-                    required=""
                     pattern="[0-9]{5}"
                     placeholder=""
                     value="84056"
@@ -1085,7 +1057,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 3 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section multi__step_3">
       <div class="container">
         <!-- <h1 class="quote_request_heading">Military Information</h1> -->
 
@@ -1128,7 +1100,6 @@
                       id="typeOfInsurance--Business Property"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Business Property"
                     /><label
                       class="field__label"
@@ -1144,7 +1115,6 @@
                       id="typeOfInsurance--Business Owner (BOP)"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Business Owner (BOP)"
                     /><label
                       class="field__label"
@@ -1160,7 +1130,6 @@
                       id="typeOfInsurance--General, Professional, or Product Liability"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="General, Professional, or Product Liability"
                     /><label
                       class="field__label"
@@ -1176,7 +1145,6 @@
                       id="typeOfInsurance--Business Vehicles"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Business Vehicles"
                     /><label
                       class="field__label"
@@ -1192,7 +1160,6 @@
                       id="typeOfInsurance--Builder's Risk"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Builder's Risk"
                     /><label
                       class="field__label"
@@ -1208,7 +1175,6 @@
                       id="typeOfInsurance--Veteran Organizations (American Legion, VFW, etc.)"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Veteran Organizations (American Legion, VFW, etc.)"
                     /><label
                       class="field__label"
@@ -1224,7 +1190,6 @@
                       id="typeOfInsurance--Other"
                       name="typeOfInsurance"
                       type="checkbox"
-                      required=""
                       value="Other"
                     /><label class="field__label" for="typeOfInsurance--Other"
                       >Other</label
@@ -1261,7 +1226,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 4 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section">
+    <section class="form_section multi__step_4">
       <div class="container">
         <!-- <h1 class="quote_request_heading">Military Information</h1> -->
 
@@ -1337,7 +1302,6 @@
                     id="insuranceCompany"
                     name="insuranceCompany"
                     type="text"
-                    required=""
                     placeholder=""
                     value=""
                   />
@@ -1403,10 +1367,18 @@
     <!-- ************************************************ -->
     <div class="quote_request__action_buttons">
       <div class="container d-flex">
-        <button class="button button__back button__left" type="button">
+        <button
+          id="back_btn"
+          class="button button__back button__left"
+          type="button"
+        >
           Back
         </button>
-        <button class="button button__next button__right" type="submit">
+        <button
+          id="next_btn"
+          class="button button__next button__right"
+          type="submit"
+        >
           Next
         </button>
       </div>

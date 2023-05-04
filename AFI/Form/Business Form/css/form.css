@@ -225,6 +225,7 @@
   color: var(--color-gray-30);
   margin-bottom: 0.25rem;
 }
+
 .field__input {
   width: 100%;
   /* padding: 6px 8px !important; */
@@ -243,7 +244,6 @@
   max-width: 7rem;
 }
 
-/* Step 3 Start */
 .fields-row .field.field--full {
   align-items: center;
   display: flex;
@@ -270,7 +270,6 @@
   margin-right: 0.25rem;
   width: auto;
 }
-/* Step 3 End */
 
 .field__note {
   color: #4a4a4a;
@@ -389,4 +388,18 @@
     min-width: 9.25rem;
     padding: 0.75rem 1.25rem;
   }
+}
+
+/* ************************************************* */
+/*                  FORM FUNCTIONITY                 */
+/* ************************************************* */
+.form_section {
+  display: none;
+}
+.form_section.active_section {
+  display: block;
+}
+
+.hide {
+  display: none !important;
 }
