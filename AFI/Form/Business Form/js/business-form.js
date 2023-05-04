@@ -1,3 +1,4 @@
+// DATA
 const userData = {
   eligibilityStatus: "",
 };
@@ -12,6 +13,9 @@ const multStepForm = [
 const defalutForms = ["radio_select", ...multStepForm];
 let formList = defalutForms;
 
+// *********************************************
+//       FORM SUBMITION AND STEP HANDLING
+// *********************************************
 // Selectors
 const nextBtn = document.querySelector("#next_btn");
 const backBtn = document.querySelector("#back_btn");
@@ -19,7 +23,7 @@ const backBtn = document.querySelector("#back_btn");
 let stepCount = 0;
 let maxStep = formList.length - 1;
 
-// Next ******************************************
+// ***** NEXT FUNCTIONALITY *****
 nextBtn.addEventListener("click", () => {
   const isSelectEligibility = eligibilityValidation();
 
@@ -100,8 +104,6 @@ nextBtn.addEventListener("click", () => {
   showActiveForm(stepCount);
 });
 
-// ***************************************************
-
 // Back
 backBtn.addEventListener("click", () => {
   stepCount <= 0 ? stepCount : stepCount--;
@@ -109,7 +111,9 @@ backBtn.addEventListener("click", () => {
   showActiveForm(stepCount);
 });
 
-// Show Form by Condition
+// *********************************************
+//           SHOW FORM BY CONDITION
+// *********************************************
 function showActiveForm(stepCount) {
   // remove active_section class from everywhere
   document.querySelector(".active_section").classList.remove("active_section");
@@ -134,6 +138,9 @@ function conditionForBackBtn() {
 conditionForBackBtn();
 
 // *********************************************
+//              ERROR HANDLING
+// *********************************************
+
 // Error Message if value user makes any mistake
 function eligibilityErrorMessage(data, selector) {
   const errorDiv = document.querySelector(selector);
@@ -169,7 +176,7 @@ function isValueEmpty(selector) {
 }
 
 // *********************************************
-// *********************************************
+//              FORM VALIDATION
 // *********************************************
 // ********** Eligibility Validation ***********
 function eligibilityValidation() {
@@ -227,9 +234,6 @@ function militaryFormValidation() {
   userData.branchOfService = branchOfService?.value;
   userData.militaryStatus = militaryStatus?.value;
   userData.militaryRank = militaryRank?.value;
-
-  //   console.log(userData);
-  //   console.log(isAnyError);
 
   return isAnyError;
 }
@@ -298,7 +302,6 @@ function multiStep1Validation() {
   userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value;
 
   console.log(userData);
-  console.log(isAnyError);
 
   return isAnyError;
 }
@@ -335,7 +338,6 @@ function multiStep2Validation() {
   userData.zip = zip?.value;
 
   console.log(userData);
-  console.log(isAnyError);
 
   return isAnyError;
 }
@@ -359,8 +361,6 @@ function multiStep3Validation() {
     eligibilityErrorMessage(false, ".multi__step_3 .field_message");
   }
 
-  console.log(isAnyError);
-
   return isAnyError;
 }
 
@@ -381,7 +381,7 @@ function multiStep4Validation() {
   let validationResult = false;
 
   if (currentInsuranceCompany?.value === "Other") {
-    // if currentInsuranceCompany = "Other" then need Insurance Company value
+    // if currentInsuranceCompany = "Other" then Insurance Company value id required
     validationResult = !isValueEmpty(insuranceCompany);
   }
 
@@ -390,7 +390,7 @@ function multiStep4Validation() {
   return validationResult;
 }
 
-//
+// if currentInsuranceCompany = "Other" then Insurance Company field will show
 const currentInsuranceCompany = document.querySelector(
   "#currentInsuranceCompany"
 );
