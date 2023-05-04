@@ -403,3 +403,15 @@
 .hide {
   display: none !important;
 }
+
+.field_message {
+  color: #cb2c30;
+  color: var(--color-red-10);
+  font-size: 0.875rem !important;
+  margin-top: 0.125rem;
+  display: none;
+}
+
+.field_message.error {
+  display: block;
+}

@@ -1,3 +1,8 @@
+const userData = {
+  eligibilityStatus: "",
+  additionalData: null,
+};
+
 // Forms
 const multStepForm = [
   "multi__step_1",
@@ -76,8 +81,30 @@ function eligibilityValidation() {
     }
     // stepCount = 1;
     // window.scrollTo(0, 0);
+
+    // set eligibilityStatus to userData
+    userData.eligibilityStatus = eligibilityStatus;
   }
 
-  console.log(eligibilityStatus);
+  console.log(userData);
+
+  // Error Message if value = null
+  errrMessage(
+    userData.eligibilityStatus,
+    ".radio__form_section .field_message"
+  );
   return eligibilityStatus;
+}
+
+// *********************************************
+// Error Message if value user makes any mistake
+function errrMessage(data, selector) {
+  const errorDiv = document.querySelector(selector);
+
+  console.log(errorDiv);
+  if (!data) {
+    errorDiv?.classList.add("error");
+  } else {
+    errorDiv?.classList.remove("error");
+  }
 }
