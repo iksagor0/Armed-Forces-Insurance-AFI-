@@ -1,6 +1,5 @@
 const userData = {
   eligibilityStatus: "",
-  additionalData: null,
 };
 
 // Forms
@@ -19,18 +18,28 @@ const backBtn = document.querySelector("#back_btn");
 
 let stepCount = 0;
 
-// Next
+// Next ******************************************
 nextBtn.addEventListener("click", () => {
   const isSelecteligibility = eligibilityValidation();
-  if (!Boolean(isSelecteligibility)) return false;
 
-  // stepCout State
+  if (stepCount === 0) if (!Boolean(isSelecteligibility)) return false;
+  if (stepCount === 1) {
+    if (isSelecteligibility === "military") {
+      if (militaryFormValidation()) return false;
+    }
+  }
+
+  console.log(userData);
+
+  // stepCount State
   const maxStep = formList.length - 1;
   stepCount >= maxStep ? stepCount : stepCount++;
 
   // Show Form
   showActiveForm(stepCount);
 });
+
+// ***************************************************
 
 // Back
 backBtn.addEventListener("click", () => {
@@ -39,6 +48,7 @@ backBtn.addEventListener("click", () => {
   showActiveForm(stepCount);
 });
 
+// Show Form by Condition
 function showActiveForm(stepCount) {
   // remove active_section class from everywhere
   document.querySelector(".active_section").classList.remove("active_section");
@@ -48,7 +58,7 @@ function showActiveForm(stepCount) {
     .querySelector(`.${formList[stepCount]}`)
     ?.classList.add("active_section");
 
-  console.log(stepCount);
+  //   console.log(stepCount);
   conditionForBackBtn();
 }
 
@@ -62,7 +72,45 @@ function conditionForBackBtn() {
 }
 conditionForBackBtn();
 
-// **************************
+// *********************************************
+// Error Message if value user makes any mistake
+function eligibilityErrrMessage(data, selector) {
+  const errorDiv = document.querySelector(selector);
+
+  if (!data) {
+    errorDiv?.classList.add("error");
+  } else {
+    errorDiv?.classList.remove("error");
+  }
+}
+
+function inputErrorMessage(selector, msg) {
+  const hasErrorField =
+    selector?.parentElement?.querySelector(".field_message");
+
+  if (!hasErrorField) {
+    // create error message field
+    const div = document.createElement("div");
+    div.className = "field_message error";
+    div.innerHTML = msg;
+    selector?.parentElement.appendChild(div);
+  }
+}
+
+// Check is input value is correct
+function isValueEmpty(selector) {
+  if (!selector?.value) {
+    inputErrorMessage(selector, "This field is required");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// *********************************************
+// *********************************************
+// *********************************************
+// ********** Eligibility Validation ***********
 function eligibilityValidation() {
   const eligibilityStatus = document.querySelector(
     'input[name="eligibilityStatus"]:checked'
@@ -86,25 +134,51 @@ function eligibilityValidation() {
     userData.eligibilityStatus = eligibilityStatus;
   }
 
-  console.log(userData);
-
   // Error Message if value = null
-  errrMessage(
+  eligibilityErrrMessage(
     userData.eligibilityStatus,
     ".radio__form_section .field_message"
   );
   return eligibilityStatus;
 }
 
-// *********************************************
-// Error Message if value user makes any mistake
-function errrMessage(data, selector) {
-  const errorDiv = document.querySelector(selector);
+// ********** Military Information ***********
+function militaryFormValidation() {
+  const militaryFirstName = document.querySelector("#militaryFirstName");
+  const militaryLastName = document.querySelector("#militaryLastName");
+  const branchOfService = document.querySelector("#branchOfService");
+  const militaryStatus = document.querySelector("#militaryStatus");
+  const militaryRank = document.querySelector("#militaryRank");
 
-  console.log(errorDiv);
-  if (!data) {
-    errorDiv?.classList.add("error");
-  } else {
-    errorDiv?.classList.remove("error");
-  }
+  const validationResult = [];
+  validationResult[0] = isValueEmpty(militaryFirstName);
+  validationResult[1] = isValueEmpty(militaryLastName);
+  validationResult[2] = isValueEmpty(branchOfService);
+  validationResult[3] = isValueEmpty(militaryStatus);
+  validationResult[4] = isValueEmpty(militaryRank);
+
+  const isAnyError = validationResult.some((result) => result === false);
+
+  userData.militaryFirstName = militaryFirstName?.value;
+  userData.militaryLastName = militaryLastName?.value;
+  userData.branchOfService = branchOfService?.value;
+  userData.militaryStatus = militaryStatus?.value;
+  userData.militaryRank = militaryRank?.value;
+
+  console.log(userData);
+  console.log(isAnyError);
+
+  return isAnyError;
 }
+
+// ********** Parent's Information ***********
+
+// ********** Child's Information ***********
+
+// ********** MULTI-STEP 1 Validation ***********
+
+// ********** MULTI-STEP 2 Validation ***********
+
+// ********** MULTI-STEP 3 Validation ***********
+
+// ********** MULTI-STEP 4 Validation ***********
