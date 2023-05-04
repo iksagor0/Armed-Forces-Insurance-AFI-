@@ -47,6 +47,10 @@ nextBtn.addEventListener("click", () => {
       if (parentFormValidation()) return false;
     }
 
+    if (stepCount === 1 && formList.includes("child_information")) {
+      if (childFormValidation()) return false;
+    }
+
     if (stepCount === 2) {
       if (multiStep1Validation()) return false;
     }
@@ -248,6 +252,21 @@ function parentFormValidation() {
 }
 
 // ********** Child's Information ***********
+function childFormValidation() {
+  const childFirstName = document.querySelector("#childFirstName");
+  const childLastName = document.querySelector("#childLastName");
+
+  const validationResult = [];
+  validationResult[0] = isValueEmpty(childFirstName);
+  validationResult[1] = isValueEmpty(childLastName);
+
+  const isAnyError = validationResult.some((result) => result === false);
+
+  userData.childFirstName = childFirstName?.value;
+  userData.childLastName = childLastName?.value;
+
+  return isAnyError;
+}
 
 // ********** MULTI-STEP 1 Validation ***********
 function multiStep1Validation() {
