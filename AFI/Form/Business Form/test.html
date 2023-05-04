@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="form_section multi__step_3">
+      <div class="container">
+        <!-- <h1 class="quote_request_heading">Military Information</h1> -->
+
+        <!-- ******** STEP ******** -->
+        <div class="step__container">
+          <ul class="steps__list">
+            <li class="step active_step" data-text="Policy Holder Info">1</li>
+            <li class="line"></li>
+
+            <li class="step active_step" data-text="Business Info">2</li>
+            <li class="line"></li>
+
+            <li class="step active_step" data-text="Coverages">3</li>
+            <li class="line"></li>
+
+            <li class="step" data-text="Quote">4</li>
+          </ul>
+        </div>
+
+        <div class="quote_request__section_wrapper">
+          <!-- ******* FORM  *******-->
+          <div class="form_container">
+            <h2 class="quote_request_heading">Policy Coverage Options</h2>
+
+            <!-- Policy Coverage Options -->
+            <div class="fields-row">
+              <div
+                class="field field--full field--stacked cover_options_wrapper"
+              >
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="typeOfInsurance"
+                    >Type of Insurance Needed (Select All Applicable Policy
+                    Options)</label
+                  >
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="B_Property"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="Business Property"
+                    /><label class="field__label" for="B_Property"
+                      >Business Property</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="B__Owner"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="Business Owner (BOP)"
+                    /><label class="field__label" for="B__Owner"
+                      >Business Owner (BOP)</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="GP_PL"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="General, Professional, or Product Liability"
+                    /><label class="field__label" for="GP_PL"
+                      >General, Professional, or Product Liability</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="B_Vehicles"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="Business Vehicles"
+                    /><label class="field__label" for="B_Vehicles"
+                      >Business Vehicles</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="B_Risk"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="Builder's Risk"
+                    /><label class="field__label" for="B_Risk"
+                      >Builder's Risk</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="Veteran_Org"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      value="Veteran Organizations (American Legion, VFW, etc.)"
+                    /><label class="field__label" for="Veteran_Org"
+                      >Veteran Organizations (American Legion, VFW, etc.)</label
+                    >
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field__input-wrapper">
+                    <input
+                      class="field__input"
+                      id="B_Other"
+                      name="typeOfInsurance"
+                      type="checkbox"
+                      checked
+                      value="Other"
+                    /><label class="field__label" for="B_Other">Other</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ******* ASIDE  *******-->
+          <!-- <aside class="quote_request_aside">
+          <h2 class="quote_request_sidebar__heading">
+            Why AFI For Your Business Insurance Needs?
+          </h2>
+          <div class="quote_request_sidebar__content">
+            <div class="quote_request_sidebar__item">
+              <h3 class="quote_request_sidebar__item_heading">
+                Let us do the legwork for you.
+              </h3>
+              <p class="quote_request_sidebar__item_description">
+                We have access to a network of national carriers to find the
+                best option for your business needs. Allowing AFI to do the
+                shopping for you saves you valuable time in order to get back to
+                what matters most.
+              </p>
+            </div>
+          </div>
+        </aside> -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const typeOfInsurance = document.getElementsByName("typeOfInsurance");
+
+      let policyCoverage = [];
+
+      typeOfInsurance.forEach((item) => {
+        if (item?.checked) {
+          policyCoverage.push(item?.value);
+        }
+      });
+
+      console.log(policyCoverage);
+
+      if (typeOfInsurance.length >= 0) {
+      }
+    </script>
+  </body>
+</html>

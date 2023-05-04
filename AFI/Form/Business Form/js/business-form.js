@@ -21,24 +21,51 @@ let maxStep = formList.length - 1;
 
 // Next ******************************************
 nextBtn.addEventListener("click", () => {
-  console.log(formList);
-  console.log(formList.includes("military_information"));
-  const isSelecteligibility = eligibilityValidation();
+  const isSelectEligibility = eligibilityValidation();
 
   if (stepCount === 0) {
-    if (!Boolean(isSelecteligibility)) return false;
+    if (!Boolean(isSelectEligibility)) return false;
   }
 
-  if (stepCount === 1) {
-    if (militaryFormValidation()) return false;
+  if (stepCount === 0) {
+    if (!Boolean(isSelectEligibility)) return false;
   }
 
-  if (stepCount === 2) {
-    if (multiStep1Validation()) return false;
+  const additionalForm = [
+    "military_information",
+    "parent_information",
+    "child_information",
+  ];
+
+  if (formList.some((item) => additionalForm.includes(item))) {
+    //   If additonal form has in arrayList
+    if (stepCount === 1) {
+      if (militaryFormValidation()) return false;
+    }
+
+    if (stepCount === 2) {
+      if (multiStep1Validation()) return false;
+    }
+    if (stepCount === 3) {
+      if (multiStep2Validation()) return false;
+    }
+    if (stepCount === 4) {
+      if (multiStep3Validation()) return false;
+    }
+  } else {
+    //   If no additonal form
+    if (stepCount === 1) {
+      if (multiStep1Validation()) return false;
+    }
+    if (stepCount === 2) {
+      if (multiStep2Validation()) return false;
+    }
+    if (stepCount === 3) {
+      if (multiStep3Validation()) return false;
+    }
   }
 
-  //   console.log(maxStep);
-  //   console.log(userData);
+  console.log(userData);
 
   stepCount >= maxStep ? stepCount : stepCount++;
 
@@ -81,7 +108,7 @@ conditionForBackBtn();
 
 // *********************************************
 // Error Message if value user makes any mistake
-function eligibilityErrrMessage(data, selector) {
+function eligibilityErrorMessage(data, selector) {
   const errorDiv = document.querySelector(selector);
 
   if (!data) {
@@ -144,7 +171,7 @@ function eligibilityValidation() {
   }
 
   // Error Message if value = null
-  eligibilityErrrMessage(
+  eligibilityErrorMessage(
     userData.eligibilityStatus,
     ".radio__form_section .field_message"
   );
@@ -218,8 +245,66 @@ function multiStep1Validation() {
 
   return isAnyError;
 }
+
 // ********** MULTI-STEP 2 Validation ***********
+function multiStep2Validation() {
+  const businessName = document.querySelector("#businessName");
+  const businessWebsite = document.querySelector("#businessWebsite");
+  const businessType = document.querySelector("#businessType");
+  const businessTaxId = document.querySelector("#businessTaxId");
+  const businessPhysicalAddress = document.querySelector(
+    "#businessPhysicalAddress"
+  );
+  const city = document.querySelector("#city");
+  const state = document.querySelector("#state");
+  const policyHolderPhoneNumber = document.querySelector("#zip");
+
+  const validationResult = [];
+  validationResult[0] = isValueEmpty(businessName);
+  validationResult[1] = isValueEmpty(businessType);
+  validationResult[2] = isValueEmpty(businessPhysicalAddress);
+  validationResult[3] = isValueEmpty(city);
+  validationResult[4] = isValueEmpty(state);
+  validationResult[5] = isValueEmpty(zip);
+
+  const isAnyError = validationResult.some((result) => result === false);
+
+  userData.businessName = businessName?.value;
+  userData.businessWebsite = businessWebsite?.value;
+  userData.businessType = businessType?.value;
+  userData.businessTaxId = businessTaxId?.value;
+  userData.city = city?.value;
+  userData.state = state?.value;
+  userData.zip = zip?.value;
+
+  console.log(userData);
+  console.log(isAnyError);
+
+  return isAnyError;
+}
 
 // ********** MULTI-STEP 3 Validation ***********
+function multiStep3Validation() {
+  const typeOfInsurance = document.getElementsByName("typeOfInsurance");
+
+  userData.policyCoverage = [];
+
+  typeOfInsurance.forEach((item) => {
+    if (item?.checked) {
+      userData.policyCoverage.push(item?.value);
+    }
+  });
+
+  const isAnyError = userData.policyCoverage.length <= 0;
+
+  if (isAnyError) {
+    // Error Message if value = null
+    eligibilityErrorMessage(false, ".multi__step_3 .field_message");
+  }
+
+  console.log(isAnyError);
+
+  return isAnyError;
+}
 
 // ********** MULTI-STEP 4 Validation ***********

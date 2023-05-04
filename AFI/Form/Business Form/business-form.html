@@ -932,7 +932,7 @@
                     type="text"
                     maxlength="100"
                     placeholder=""
-                    value="Hill AFB"
+                    value=""
                   />
                 </div>
               </div>
@@ -1028,7 +1028,7 @@
                     type="text"
                     pattern="[0-9]{5}"
                     placeholder=""
-                    value="84056"
+                    value=""
                   />
                 </div>
               </div>
@@ -1100,13 +1100,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Business Property"
+                      id="B_Property"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Business Property"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--Business Property"
+                    /><label class="field__label" for="B_Property"
                       >Business Property</label
                     >
                   </div>
@@ -1115,13 +1113,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Business Owner (BOP)"
+                      id="B__Owner"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Business Owner (BOP)"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--Business Owner (BOP)"
+                    /><label class="field__label" for="B__Owner"
                       >Business Owner (BOP)</label
                     >
                   </div>
@@ -1130,13 +1126,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--General, Professional, or Product Liability"
+                      id="GP_PL"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="General, Professional, or Product Liability"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--General, Professional, or Product Liability"
+                    /><label class="field__label" for="GP_PL"
                       >General, Professional, or Product Liability</label
                     >
                   </div>
@@ -1145,13 +1139,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Business Vehicles"
+                      id="B_Vehicles"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Business Vehicles"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--Business Vehicles"
+                    /><label class="field__label" for="B_Vehicles"
                       >Business Vehicles</label
                     >
                   </div>
@@ -1160,13 +1152,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Builder's Risk"
+                      id="B_Risk"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Builder's Risk"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--Builder's Risk"
+                    /><label class="field__label" for="B_Risk"
                       >Builder's Risk</label
                     >
                   </div>
@@ -1175,13 +1165,11 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Veteran Organizations (American Legion, VFW, etc.)"
+                      id="Veteran_Org"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Veteran Organizations (American Legion, VFW, etc.)"
-                    /><label
-                      class="field__label"
-                      for="typeOfInsurance--Veteran Organizations (American Legion, VFW, etc.)"
+                    /><label class="field__label" for="Veteran_Org"
                       >Veteran Organizations (American Legion, VFW, etc.)</label
                     >
                   </div>
@@ -1190,15 +1178,16 @@
                   <div class="field__input-wrapper">
                     <input
                       class="field__input"
-                      id="typeOfInsurance--Other"
+                      id="B_Other"
                       name="typeOfInsurance"
                       type="checkbox"
                       value="Other"
-                    /><label class="field__label" for="typeOfInsurance--Other"
-                      >Other</label
-                    >
+                    /><label class="field__label" for="B_Other">Other</label>
                   </div>
                 </div>
+
+                <!-- error message -->
+                <div class="field_message">This field is required</div>
               </div>
             </div>
           </div>

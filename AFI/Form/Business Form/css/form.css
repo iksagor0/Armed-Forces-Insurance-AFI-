@@ -276,7 +276,8 @@
   font-size: 0.875rem !important;
   font-style: italic;
   line-height: 1.4;
-  margin-bottom: -1.1875rem;
+  margin-bottom: 0;
+  /* margin-bottom: -1.1875rem; */
 }
 
 .note {
