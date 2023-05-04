@@ -416,6 +416,7 @@ footer a,
 /* 03 May */
 
 .content,
-.rich-text {
+.rich-text,
+.link a {
   border: none !important;
 }
