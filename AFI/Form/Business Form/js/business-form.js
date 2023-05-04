@@ -31,9 +31,10 @@ nextBtn.addEventListener("click", () => {
     if (!Boolean(isSelectEligibility)) return false;
   }
 
-  if (stepCount === 0) {
-    if (!Boolean(isSelectEligibility)) return false;
-  }
+  console.log(stepCount);
+  //   if (stepCount === 0) {
+  //     if (!Boolean(isSelectEligibility)) return false;
+  //   }
 
   const additionalForm = [
     "military_information",
@@ -162,6 +163,9 @@ function inputErrorMessage(selector, msg) {
     div.className = "field_message error";
     div.innerHTML = msg;
     selector?.parentElement.appendChild(div);
+  } else {
+    hasErrorField?.classList.add("error");
+    hasErrorField.innerHTML = msg;
   }
 }
 
@@ -175,6 +179,18 @@ function isValueEmpty(selector) {
   }
 }
 
+function emailValidation(selector = "a") {
+  console.log(selector.value);
+  const regEx =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (regEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter a valid email address");
+    alert("You have entered an invalid email address!");
+    return false;
+  }
+}
 // *********************************************
 //              FORM VALIDATION
 // *********************************************
@@ -289,9 +305,10 @@ function multiStep1Validation() {
   const validationResult = [];
   validationResult[0] = isValueEmpty(policyHolderFirstName);
   validationResult[1] = isValueEmpty(policyHolderLastName);
-  validationResult[2] = isValueEmpty(policyHolderEmail);
-  validationResult[3] = isValueEmpty(policyHolderPhoneType);
-  validationResult[4] = isValueEmpty(policyHolderPhoneNumber);
+  validationResult[2] = emailValidation(policyHolderEmail);
+  validationResult[3] = isValueEmpty(policyHolderEmail);
+  validationResult[4] = isValueEmpty(policyHolderPhoneType);
+  validationResult[5] = isValueEmpty(policyHolderPhoneNumber);
 
   const isAnyError = validationResult.some((result) => result === false);
 
@@ -404,4 +421,17 @@ currentInsuranceCompany.addEventListener("change", () => {
       .querySelector(".multi__step_4 .insuranceCompany")
       ?.classList.add("conditionally_hidden_field");
   }
+});
+
+//
+document.querySelectorAll(".form_section")?.forEach((section) => {
+  section.querySelectorAll(".field__input")?.forEach((input) => {
+    input.addEventListener("change", () => {
+      section
+        .querySelectorAll(".field_message.error")
+        ?.forEach((errorField) => {
+          errorField?.classList.remove("error");
+        });
+    });
+  });
 });
