@@ -179,7 +179,7 @@ function isValueEmpty(selector) {
   }
 }
 
-function emailValidation(selector = "a") {
+function emailValidation(selector) {
   console.log(selector.value);
   const regEx =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -187,7 +187,17 @@ function emailValidation(selector = "a") {
     return true;
   } else {
     inputErrorMessage(selector, "Please enter a valid email address");
-    alert("You have entered an invalid email address!");
+    return false;
+  }
+}
+
+function phoneValidation(selector) {
+  console.log(selector.value);
+  const regEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+  if (regEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter a valid phone number");
     return false;
   }
 }
@@ -308,7 +318,8 @@ function multiStep1Validation() {
   validationResult[2] = emailValidation(policyHolderEmail);
   validationResult[3] = isValueEmpty(policyHolderEmail);
   validationResult[4] = isValueEmpty(policyHolderPhoneType);
-  validationResult[5] = isValueEmpty(policyHolderPhoneNumber);
+  validationResult[5] = phoneValidation(policyHolderPhoneNumber);
+  validationResult[6] = isValueEmpty(policyHolderPhoneNumber);
 
   const isAnyError = validationResult.some((result) => result === false);
 
