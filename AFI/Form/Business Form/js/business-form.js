@@ -54,7 +54,13 @@ nextBtn.addEventListener("click", () => {
     }
 
     if (stepCount === 5) {
-      multiStep4Validation();
+      const finalFormError = multiStep4Validation();
+
+      console.log(finalFormError);
+      if (!finalFormError) {
+        // Go to Thank You Page
+        window.location.href = "https://afi.org/";
+      }
     }
   } else {
     //   If no additonal form
@@ -68,7 +74,13 @@ nextBtn.addEventListener("click", () => {
       if (multiStep3Validation()) return false;
     }
     if (stepCount === 4) {
-      multiStep4Validation();
+      const finalFormError = multiStep4Validation();
+
+      console.log(finalFormError);
+      if (!finalFormError) {
+        // Go to Thank You Page
+        window.location.href = "https://afi.org/";
+      }
     }
   }
 
@@ -215,6 +227,21 @@ function militaryFormValidation() {
 }
 
 // ********** Parent's Information ***********
+function militaryFormValidation() {
+  const parentFirstName = document.querySelector("#parentFirstName");
+  const parentLastName = document.querySelector("#parentLastName");
+
+  const validationResult = [];
+  validationResult[0] = isValueEmpty(parentFirstName);
+  validationResult[1] = isValueEmpty(parentLastName);
+
+  const isAnyError = validationResult.some((result) => result === false);
+
+  userData.parentFirstName = parentFirstName?.value;
+  userData.parentLastName = parentLastName?.value;
+
+  return isAnyError;
+}
 
 // ********** Child's Information ***********
 
@@ -328,8 +355,30 @@ function multiStep4Validation() {
   userData.insuranceCompany = insuranceCompany?.value;
   userData.policyRenewalDate = policyRenewalDate?.value;
 
+  let validationResult = false;
+
+  if (currentInsuranceCompany?.value === "Other") {
+    // if currentInsuranceCompany = "Other" then need Insurance Company value
+    validationResult = !isValueEmpty(insuranceCompany);
+  }
+
   console.log(userData);
 
-  // Go to Thank You Page
-  window.location.href = "https://afi.org/";
+  return validationResult;
 }
+
+//
+const currentInsuranceCompany = document.querySelector(
+  "#currentInsuranceCompany"
+);
+currentInsuranceCompany.addEventListener("change", () => {
+  if (currentInsuranceCompany?.value === "Other") {
+    document
+      .querySelector(".multi__step_4 .insuranceCompany")
+      ?.classList.remove("conditionally_hidden_field");
+  } else {
+    document
+      .querySelector(".multi__step_4 .insuranceCompany")
+      ?.classList.add("conditionally_hidden_field");
+  }
+});
