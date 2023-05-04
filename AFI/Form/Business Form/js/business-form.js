@@ -17,7 +17,7 @@ let stepCount = 0;
 // Next
 nextBtn.addEventListener("click", () => {
   const isSelecteligibility = eligibilityValidation();
-  if (!isSelecteligibility) return false;
+  if (!Boolean(isSelecteligibility)) return false;
 
   // stepCout State
   const maxStep = formList.length - 1;
@@ -63,9 +63,8 @@ function eligibilityValidation() {
     'input[name="eligibilityStatus"]:checked'
   )?.value;
 
-  const boolean = Boolean(eligibilityStatus);
-
-  if (boolean) {
+  // Select Formlist as user eligibilityStatus
+  if (Boolean(eligibilityStatus)) {
     if (eligibilityStatus === "military") {
       formList = ["radio_select", "military_information", ...multStepForm];
     } else if (eligibilityStatus === "child") {
@@ -80,5 +79,5 @@ function eligibilityValidation() {
   }
 
   console.log(eligibilityStatus);
-  return boolean;
+  return eligibilityStatus;
 }
