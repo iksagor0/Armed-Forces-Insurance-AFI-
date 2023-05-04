@@ -195,13 +195,33 @@
   min-height: 420px;
 }
 
-.form_container.extra_padding_bottom {
-  padding-bottom: 160px;
+.military_information .form_container {
+  min-height: 592px;
 }
+.multi__step_1 .form_container {
+  min-height: 530px;
+}
+.multi__step_1 .multi__step_2 {
+  min-height: 640px;
+}
+.multi__step_4 .form_container {
+  min-height: 370px;
+}
+
+/* .form_container.extra_padding_bottom {
+  padding-bottom: 160px;
+} */
+
 .fields-row {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
+}
+
+.form_container input[type="date"]::-webkit-inner-spin-button,
+.form_container input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
 }
 
 .fields-row .field {
@@ -293,7 +313,7 @@
   }
 
   .fields-row {
-    margin-bottom: 2.125rem;
+    margin-bottom: 30px;
   }
 
   .fields-row .field {
