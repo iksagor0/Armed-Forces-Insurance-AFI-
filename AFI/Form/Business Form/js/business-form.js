@@ -52,6 +52,10 @@ nextBtn.addEventListener("click", () => {
     if (stepCount === 4) {
       if (multiStep3Validation()) return false;
     }
+
+    if (stepCount === 5) {
+      multiStep4Validation();
+    }
   } else {
     //   If no additonal form
     if (stepCount === 1) {
@@ -62,6 +66,9 @@ nextBtn.addEventListener("click", () => {
     }
     if (stepCount === 3) {
       if (multiStep3Validation()) return false;
+    }
+    if (stepCount === 4) {
+      multiStep4Validation();
     }
   }
 
@@ -308,3 +315,21 @@ function multiStep3Validation() {
 }
 
 // ********** MULTI-STEP 4 Validation ***********
+function multiStep4Validation() {
+  const currentInsuranceCompany = document.querySelector(
+    "#currentInsuranceCompany"
+  );
+  const insuranceCompany = document.querySelector("#insuranceCompany");
+  const policyRenewalDate = document.querySelector("#policyRenewalDate");
+
+  //   const isAnyError = validationResult.some((result) => result === false);
+
+  userData.currentInsuranceCompany = currentInsuranceCompany?.value;
+  userData.insuranceCompany = insuranceCompany?.value;
+  userData.policyRenewalDate = policyRenewalDate?.value;
+
+  console.log(userData);
+
+  // Go to Thank You Page
+  window.location.href = "https://afi.org/";
+}
