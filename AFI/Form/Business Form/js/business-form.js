@@ -187,7 +187,6 @@ function emailValidation(selector) {
 }
 
 function phoneValidation(selector) {
-  console.log(selector.value);
   const regEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   if (regEx.test(selector?.value)) {
     return true;
@@ -196,7 +195,7 @@ function phoneValidation(selector) {
     return false;
   }
 }
-// Number Pattern
+// Phone Number Pattern
 document
   .getElementById("policyHolderPhoneNumber")
   .addEventListener("input", (e) => {
@@ -427,6 +426,7 @@ function multiStep4Validation() {
   return validationResult;
 }
 
+// ********** OTHERS FUNCTIONALITY ***********
 // if currentInsuranceCompany = "Other" then Insurance Company field will show
 const currentInsuranceCompany = document.querySelector(
   "#currentInsuranceCompany"
@@ -443,15 +443,27 @@ currentInsuranceCompany.addEventListener("change", () => {
   }
 });
 
-//
+// KeyPress remove all Error Message
 document.querySelectorAll(".form_section")?.forEach((section) => {
   section.querySelectorAll(".field__input")?.forEach((input) => {
-    input.addEventListener("change", () => {
+    input.addEventListener("keypress", () => {
       section
         .querySelectorAll(".field_message.error")
         ?.forEach((errorField) => {
           errorField?.classList.remove("error");
         });
     });
+  });
+});
+
+// Press Enter Submit Form
+document.querySelectorAll(".field__input")?.forEach((input) => {
+  input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      // Trigger the button element with a click
+      document.getElementById("next_btn").click();
+    }
   });
 });
