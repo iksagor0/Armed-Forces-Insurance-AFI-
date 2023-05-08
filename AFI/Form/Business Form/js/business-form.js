@@ -182,8 +182,19 @@ document.querySelectorAll(".field__input.numberOnly")?.forEach((input) => {
   });
 });
 
+// Alphabetic only
+function alphabeticOnly(selector) {
+  const letterRegEx = /^[A-Za-z]+$/;
+  if (letterRegEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter alphabetic characters only");
+    return false;
+  }
+}
+
+// Email validation
 function emailValidation(selector) {
-  console.log(selector.value);
   const regEx =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (regEx.test(selector?.value)) {
@@ -194,6 +205,7 @@ function emailValidation(selector) {
   }
 }
 
+// Phone Number validation
 function phoneValidation(selector) {
   const regEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   if (regEx.test(selector?.value)) {
@@ -265,6 +277,8 @@ function militaryFormValidation() {
   validationResult[2] = isValueEmpty(branchOfService);
   validationResult[3] = isValueEmpty(militaryStatus);
   validationResult[4] = isValueEmpty(militaryRank);
+  validationResult[5] = alphabeticOnly(militaryFirstName);
+  validationResult[6] = alphabeticOnly(militaryLastName);
 
   const isAnyError = validationResult.some((result) => result === false);
 
@@ -285,6 +299,8 @@ function parentFormValidation() {
   const validationResult = [];
   validationResult[0] = isValueEmpty(parentFirstName);
   validationResult[1] = isValueEmpty(parentLastName);
+  validationResult[2] = alphabeticOnly(parentFirstName);
+  validationResult[3] = alphabeticOnly(parentLastName);
 
   const isAnyError = validationResult.some((result) => result === false);
 
@@ -302,6 +318,8 @@ function childFormValidation() {
   const validationResult = [];
   validationResult[0] = isValueEmpty(childFirstName);
   validationResult[1] = isValueEmpty(childLastName);
+  validationResult[2] = alphabeticOnly(childFirstName);
+  validationResult[3] = alphabeticOnly(childLastName);
 
   const isAnyError = validationResult.some((result) => result === false);
 
@@ -333,6 +351,8 @@ function multiStep1Validation() {
   validationResult[4] = isValueEmpty(policyHolderPhoneType);
   validationResult[5] = phoneValidation(policyHolderPhoneNumber);
   validationResult[6] = isValueEmpty(policyHolderPhoneNumber);
+  validationResult[7] = alphabeticOnly(policyHolderFirstName);
+  validationResult[8] = alphabeticOnly(policyHolderLastName);
 
   const isAnyError = validationResult.some((result) => result === false);
 
