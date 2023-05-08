@@ -62,7 +62,7 @@
   margin-bottom: 2rem;
 }
 .radio__form_section .radio_field_label {
-  font-weight: 700;
+  font-weight: 700 !important;
   margin-bottom: 1.5rem;
 }
 
@@ -294,15 +294,21 @@
 .field__note {
   color: #4a4a4a;
   font-size: 0.875rem !important;
-  font-style: italic;
-  line-height: 1.4;
-  margin-bottom: 0;
+  font-style: italic !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
   /* margin-bottom: -1.1875rem; */
 }
 
 .note {
-  color: #6e7171;
+  color: #6e7171 !important;
 }
+.note a:hover {
+  color: #003864 !important;
+  color: var(--color-blue-40) !important;
+  text-decoration: underline !important;
+}
+
 @media screen and (min-width: 48em) {
   .quote_request_heading {
     margin-bottom: 2rem;

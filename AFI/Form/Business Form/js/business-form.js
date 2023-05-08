@@ -436,9 +436,9 @@ function multiStep3Validation() {
     }
   });
 
-  const isValidate = userData.policyCoverage.length >= 0;
+  const isValidate = userData.policyCoverage.length > 0;
 
-  if (isValidate) {
+  if (!isValidate) {
     // Error Message if value = null
     eligibilityErrorMessage(false, ".multi__step_3 .field_message");
   }
