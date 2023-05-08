@@ -419,7 +419,6 @@ function multiStep1Validation() {
       /\D/g,
       ""
     );
-    console.log(userData);
   }
 
   return isValidate;
@@ -458,8 +457,6 @@ function multiStep2Validation() {
     userData.city = city?.value;
     userData.state = state?.value;
     userData.zip = zip?.value;
-
-    console.log(userData);
   }
 
   return isValidate;
@@ -507,8 +504,6 @@ function multiStep4Validation() {
     // if currentInsuranceCompany = "Other" then Insurance Company value id required
     validationFields = !isValueEmpty(insuranceCompany);
   }
-
-  console.log(userData);
 
   return validationFields;
 }
