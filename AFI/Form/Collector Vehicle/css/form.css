@@ -270,6 +270,10 @@
   max-width: 100%;
 }
 
+.fields-row .field.field--small {
+  max-width: 5rem;
+}
+
 .fields-row .field.field--stacked {
   align-items: flex-start;
   display: flex;

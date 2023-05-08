@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form (Business)</title>
+    <title>Form (Collector Vehicle)</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,14 +53,14 @@
     <!-- ************************************************ -->
     <section class="title_hero">
       <div class="container">
-        <h1>Request a Business Insurance Quote</h1>
+        <h1>Request a Collector Vehicle Insurance Quote</h1>
       </div>
     </section>
 
     <!-- ************************************************ -->
     <!------------------- Radio Section -------------------->
     <!-- ************************************************ -->
-    <section class="form_section radio_select active_section">
+    <section class="form_section radio_select">
       <div class="container">
         <section class="heading_text_section">
           <h1 class="quote_request_heading">Eligibility For Insurance</h1>
@@ -614,7 +614,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 1 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section multi__step_1">
+    <section class="form_section multi__step_1 active_section">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -634,8 +634,8 @@
           <div class="form_container">
             <h2 class="quote_request_heading">Business Owner Information</h2>
 
+            <!-- First Name, Last Namem Suffix -->
             <div class="fields-row">
-              <!-- First Name -->
               <div class="field">
                 <div class="field__label-wrapper">
                   <label class="field__label" for="policyHolderFirstName"
@@ -648,6 +648,7 @@
                     id="policyHolderFirstName"
                     name="policyHolderFirstName"
                     type="text"
+                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
@@ -655,8 +656,6 @@
                   />
                 </div>
               </div>
-
-              <!-- Last Name -->
               <div class="field">
                 <div class="field__label-wrapper">
                   <label class="field__label" for="policyHolderLastName"
@@ -669,11 +668,34 @@
                     id="policyHolderLastName"
                     name="policyHolderLastName"
                     type="text"
+                    required=""
                     pattern="^[a-zA-Z]+$"
                     maxlength="50"
                     placeholder=""
                     value=""
                   />
+                </div>
+              </div>
+              <div class="field field--small">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="policyHolderSuffix"
+                    >Suffix</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <select
+                    class="field__input"
+                    id="policyHolderSuffix"
+                    name="policyHolderSuffix"
+                    type="select"
+                  >
+                    <option value="">--</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                  </select>
+                  <p class="field__note">Optional</p>
                 </div>
               </div>
             </div>
@@ -1380,6 +1402,6 @@
     </div>
 
     <!-- *********** JAVASCRIPT *********** -->
-    <script src="./js/business-form.js"></script>
+    <script src="./js/..collector-vehicle-form.js"></script>
   </body>
 </html>
