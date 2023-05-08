@@ -1,0 +1,61 @@
+.article__page h1.article_title {
+  color: #004976 !important;
+  color: var(--color-blue-30) !important;
+}
+
+.article__page p,
+.article__page li,
+.article__page a {
+  font-size: 18px !important;
+}
+
+.article__page h1,
+.article__page h2,
+.article__page h3,
+.article__page h4,
+.article__page h5 {
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+}
+
+.article__page .article_img {
+  margin-bottom: 2rem;
+}
+
+.article__page .gray-pods {
+  padding: 70px 0 !important;
+}
+
+.article__page .align__center {
+  display: grid;
+  place-content: center;
+}
+
+.article__page .more__articles .component-content {
+  border: 0 !important;
+}
+
+.article__page .more__articles .row {
+  gap: 30px;
+}
+
+.more-articles__item-heading {
+  font-family: Roboto, sans-serif;
+  font-family: var(--font-family-primary) !important;
+  font-size: 1.625rem !important;
+  margin-bottom: 0.5rem !important;
+  color: #000 !important;
+}
+.more-articles__item-description {
+  margin-bottom: 12px !important;
+}
+
+/* 
+**************************** NOTE *******************
+1. REMOVE class="landing-page-hero__wrapper container" THIS CLASS
+  -- add class in img tag = ""
+2. article_title SHOULD BE h1 TAG with "article_title" class
+*/
+
+/* Parent = .article__page */
+/* More Articles  = .more__articles */
