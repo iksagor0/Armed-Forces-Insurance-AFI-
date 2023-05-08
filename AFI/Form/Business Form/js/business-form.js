@@ -3,6 +3,8 @@ const userData = {
   eligibilityStatus: "",
 };
 
+const successRedirection = "https://afi.org/";
+
 // Forms
 const multStepForm = [
   "multi__step_1",
@@ -66,7 +68,7 @@ nextBtn.addEventListener("click", () => {
 
       if (isAllFine) {
         // Go to Thank You Page
-        window.location.href = "https://afi.org/";
+        window.location.href = successRedirection;
       }
     }
   } else {
@@ -85,7 +87,7 @@ nextBtn.addEventListener("click", () => {
 
       if (!finalFormError) {
         // Go to Thank You Page
-        window.location.href = "https://afi.org/";
+        window.location.href = successRedirection;
       }
     }
   }
@@ -191,9 +193,9 @@ function alphabeticOnly(selector) {
 }
 
 // Minimum value need
-function minValue(selector, minValue = 5) {
+function minValue(selector, minValue = 5, msg) {
   if (selector?.value.length != minValue) {
-    inputErrorMessage(selector, "Please enter a valid Zip code");
+    inputErrorMessage(selector, msg);
     return false;
   } else {
     return true;
@@ -233,6 +235,7 @@ document
       ? x[1]
       : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
   });
+
 // *********************************************
 //              FORM VALIDATION
 // *********************************************
@@ -403,7 +406,7 @@ function multiStep2Validation() {
     isValueEmpty(businessPhysicalAddress),
     isValueEmpty(city),
     isValueEmpty(state),
-    minValue(zip),
+    minValue(zip, 5, "Please enter a valid Zip code"),
     isValueEmpty(zip),
   ];
 
