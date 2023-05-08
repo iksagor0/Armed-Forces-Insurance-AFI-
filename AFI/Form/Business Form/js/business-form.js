@@ -31,11 +31,6 @@ nextBtn.addEventListener("click", () => {
     if (!Boolean(isSelectEligibility)) return false;
   }
 
-  console.log(stepCount);
-  //   if (stepCount === 0) {
-  //     if (!Boolean(isSelectEligibility)) return false;
-  //   }
-
   const additionalForm = [
     "military_information",
     "parent_information",
@@ -201,6 +196,17 @@ function phoneValidation(selector) {
     return false;
   }
 }
+// Number Pattern
+document
+  .getElementById("policyHolderPhoneNumber")
+  .addEventListener("input", (e) => {
+    var x = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2]
+      ? x[1]
+      : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
+  });
 // *********************************************
 //              FORM VALIDATION
 // *********************************************
@@ -327,7 +333,10 @@ function multiStep1Validation() {
   userData.policyHolderLastName = policyHolderLastName?.value;
   userData.policyHolderEmail = policyHolderEmail?.value;
   userData.policyHolderPhoneType = policyHolderPhoneType?.value;
-  userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value;
+  userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
+    /\D/g,
+    ""
+  );
 
   console.log(userData);
 
