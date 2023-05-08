@@ -18,7 +18,6 @@ let formList = defalutForms;
 // *********************************************
 //       FORM SUBMITION AND STEP HANDLING
 // *********************************************
-// Selectors
 const nextBtn = document.querySelector("#next_btn");
 const backBtn = document.querySelector("#back_btn");
 
@@ -128,7 +127,6 @@ function showActiveForm(stepCount) {
 // *********************************************
 //              ERROR HANDLING
 // *********************************************
-
 // Error Message if value user makes any mistake
 function eligibilityErrorMessage(data, selector) {
   const errorDiv = document.querySelector(selector);
@@ -283,11 +281,18 @@ function militaryFormValidation() {
   const isValidate = validationFields.every((result) => result === true);
 
   if (isValidate) {
-    userData.militaryFirstName = militaryFirstName?.value;
-    userData.militaryLastName = militaryLastName?.value;
+    userData.policyHolderFirstName = militaryFirstName?.value;
+    userData.policyHolderLastName = militaryLastName?.value;
     userData.branchOfService = branchOfService?.value;
     userData.militaryStatus = militaryStatus?.value;
     userData.militaryRank = militaryRank?.value;
+
+    // Set Name in Multi-step form field
+    document.querySelector("#policyHolderFirstName").value =
+      userData.policyHolderFirstName;
+
+    document.querySelector("#policyHolderLastName").value =
+      userData.policyHolderLastName;
   }
 
   return isValidate;
@@ -467,7 +472,9 @@ function multiStep4Validation() {
   return validationFields;
 }
 
-// ********** OTHERS FUNCTIONALITY ***********
+// *********************************************
+//            OTHERS FUNCTIONALITIES
+// *********************************************
 // if currentInsuranceCompany = "Other" then Insurance Company field will show
 const currentInsuranceCompany = document.querySelector(
   "#currentInsuranceCompany"
