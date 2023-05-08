@@ -446,7 +446,7 @@ currentInsuranceCompany.addEventListener("change", () => {
 // KeyPress remove all Error Message
 document.querySelectorAll(".form_section")?.forEach((section) => {
   section.querySelectorAll(".field__input")?.forEach((input) => {
-    input.addEventListener("keypress", () => {
+    input.addEventListener("input", () => {
       section
         .querySelectorAll(".field_message.error")
         ?.forEach((errorField) => {

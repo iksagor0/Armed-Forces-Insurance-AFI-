@@ -174,6 +174,14 @@ function isValueEmpty(selector) {
   }
 }
 
+// Input Number Only
+document.querySelectorAll(".field__input.numberOnly")?.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.target.value = e.target?.value.replace(/[^0-9]/g, "");
+    console.log(e.target.value);
+  });
+});
+
 function emailValidation(selector) {
   console.log(selector.value);
   const regEx =
