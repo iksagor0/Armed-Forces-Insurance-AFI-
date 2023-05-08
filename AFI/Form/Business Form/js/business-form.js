@@ -119,19 +119,11 @@ function showActiveForm(stepCount) {
     .querySelector(`.${formList[stepCount]}`)
     ?.classList.add("active_section");
 
-  //   console.log(stepCount);
-  conditionForBackBtn();
+  // Conditionally Hide Back Btn
+  stepCount <= 0
+    ? backBtn.classList.add("hide")
+    : backBtn.classList.remove("hide");
 }
-
-// Conditionally Hide Back Btn
-function conditionForBackBtn() {
-  if (stepCount <= 0) {
-    backBtn.classList.add("hide");
-  } else {
-    backBtn.classList.remove("hide");
-  }
-}
-conditionForBackBtn();
 
 // *********************************************
 //              ERROR HANDLING
