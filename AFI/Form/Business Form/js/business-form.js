@@ -40,32 +40,31 @@ nextBtn.addEventListener("click", () => {
   if (formList.some((item) => additionalForm.includes(item))) {
     //   If additonal form has in arrayList
     if (stepCount === 1 && formList.includes("military_information")) {
-      if (militaryFormValidation()) return false;
+      if (!militaryFormValidation()) return false;
     }
 
     if (stepCount === 1 && formList.includes("parent_information")) {
-      if (parentFormValidation()) return false;
+      if (!parentFormValidation()) return false;
     }
 
     if (stepCount === 1 && formList.includes("child_information")) {
-      if (childFormValidation()) return false;
+      if (!childFormValidation()) return false;
     }
 
     if (stepCount === 2) {
-      if (multiStep1Validation()) return false;
+      if (!multiStep1Validation()) return false;
     }
     if (stepCount === 3) {
-      if (multiStep2Validation()) return false;
+      if (!multiStep2Validation()) return false;
     }
     if (stepCount === 4) {
-      if (multiStep3Validation()) return false;
+      if (!multiStep3Validation()) return false;
     }
 
     if (stepCount === 5) {
-      const finalFormError = multiStep4Validation();
+      const isAllFine = multiStep4Validation();
 
-      console.log(finalFormError);
-      if (!finalFormError) {
+      if (isAllFine) {
         // Go to Thank You Page
         window.location.href = "https://afi.org/";
       }
@@ -73,18 +72,17 @@ nextBtn.addEventListener("click", () => {
   } else {
     //   If no additonal form
     if (stepCount === 1) {
-      if (multiStep1Validation()) return false;
+      if (!multiStep1Validation()) return false;
     }
     if (stepCount === 2) {
-      if (multiStep2Validation()) return false;
+      if (!multiStep2Validation()) return false;
     }
     if (stepCount === 3) {
-      if (multiStep3Validation()) return false;
+      if (!multiStep3Validation()) return false;
     }
     if (stepCount === 4) {
       const finalFormError = multiStep4Validation();
 
-      console.log(finalFormError);
       if (!finalFormError) {
         // Go to Thank You Page
         window.location.href = "https://afi.org/";
@@ -254,10 +252,7 @@ function eligibilityValidation() {
       formList = ["radio_select", "child_information", ...multStepForm];
     } else {
       formList = defalutForms;
-      //   stepCount++;
     }
-    // stepCount = 1;
-    // window.scrollTo(0, 0);
     maxStep = formList.length - 1;
 
     // set eligibilityStatus to userData
@@ -280,24 +275,27 @@ function militaryFormValidation() {
   const militaryStatus = document.querySelector("#militaryStatus");
   const militaryRank = document.querySelector("#militaryRank");
 
-  const validationResult = [];
-  validationResult[0] = isValueEmpty(militaryFirstName);
-  validationResult[1] = isValueEmpty(militaryLastName);
-  validationResult[2] = isValueEmpty(branchOfService);
-  validationResult[3] = isValueEmpty(militaryStatus);
-  validationResult[4] = isValueEmpty(militaryRank);
-  validationResult[5] = alphabeticOnly(militaryFirstName);
-  validationResult[6] = alphabeticOnly(militaryLastName);
+  const validationFields = [
+    alphabeticOnly(militaryFirstName),
+    isValueEmpty(militaryFirstName),
+    alphabeticOnly(militaryLastName),
+    isValueEmpty(militaryLastName),
+    isValueEmpty(branchOfService),
+    isValueEmpty(militaryStatus),
+    isValueEmpty(militaryRank),
+  ];
 
-  const isAnyError = validationResult.some((result) => result === false);
+  const isValidate = validationFields.every((result) => result === true);
 
-  userData.militaryFirstName = militaryFirstName?.value;
-  userData.militaryLastName = militaryLastName?.value;
-  userData.branchOfService = branchOfService?.value;
-  userData.militaryStatus = militaryStatus?.value;
-  userData.militaryRank = militaryRank?.value;
+  if (isValidate) {
+    userData.militaryFirstName = militaryFirstName?.value;
+    userData.militaryLastName = militaryLastName?.value;
+    userData.branchOfService = branchOfService?.value;
+    userData.militaryStatus = militaryStatus?.value;
+    userData.militaryRank = militaryRank?.value;
+  }
 
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** Parent's Information ***********
@@ -305,18 +303,21 @@ function parentFormValidation() {
   const parentFirstName = document.querySelector("#parentFirstName");
   const parentLastName = document.querySelector("#parentLastName");
 
-  const validationResult = [];
-  validationResult[0] = isValueEmpty(parentFirstName);
-  validationResult[1] = isValueEmpty(parentLastName);
-  validationResult[2] = alphabeticOnly(parentFirstName);
-  validationResult[3] = alphabeticOnly(parentLastName);
+  const validationFields = [
+    alphabeticOnly(parentFirstName),
+    alphabeticOnly(parentLastName),
+    isValueEmpty(parentFirstName),
+    isValueEmpty(parentLastName),
+  ];
 
-  const isAnyError = validationResult.some((result) => result === false);
+  const isValidate = validationFields.every((result) => result === true);
 
-  userData.parentFirstName = parentFirstName?.value;
-  userData.parentLastName = parentLastName?.value;
+  if (isValidate) {
+    userData.parentFirstName = parentFirstName?.value;
+    userData.parentLastName = parentLastName?.value;
+  }
 
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** Child's Information ***********
@@ -324,18 +325,21 @@ function childFormValidation() {
   const childFirstName = document.querySelector("#childFirstName");
   const childLastName = document.querySelector("#childLastName");
 
-  const validationResult = [];
-  validationResult[0] = isValueEmpty(childFirstName);
-  validationResult[1] = isValueEmpty(childLastName);
-  validationResult[2] = alphabeticOnly(childFirstName);
-  validationResult[3] = alphabeticOnly(childLastName);
+  const validationFields = [
+    alphabeticOnly(childFirstName),
+    alphabeticOnly(childLastName),
+    isValueEmpty(childFirstName),
+    isValueEmpty(childLastName),
+  ];
 
-  const isAnyError = validationResult.some((result) => result === false);
+  const isValidate = validationFields.every((result) => result === true);
 
-  userData.childFirstName = childFirstName?.value;
-  userData.childLastName = childLastName?.value;
+  if (isValidate) {
+    userData.childFirstName = childFirstName?.value;
+    userData.childLastName = childLastName?.value;
+  }
 
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** MULTI-STEP 1 Validation ***********
@@ -352,31 +356,32 @@ function multiStep1Validation() {
     "#policyHolderPhoneNumber"
   );
 
-  const validationResult = [];
-  validationResult[0] = isValueEmpty(policyHolderFirstName);
-  validationResult[1] = isValueEmpty(policyHolderLastName);
-  validationResult[2] = emailValidation(policyHolderEmail);
-  validationResult[3] = isValueEmpty(policyHolderEmail);
-  validationResult[4] = isValueEmpty(policyHolderPhoneType);
-  validationResult[5] = phoneValidation(policyHolderPhoneNumber);
-  validationResult[6] = isValueEmpty(policyHolderPhoneNumber);
-  validationResult[7] = alphabeticOnly(policyHolderFirstName);
-  validationResult[8] = alphabeticOnly(policyHolderLastName);
+  const validationFields = [
+    alphabeticOnly(policyHolderFirstName),
+    alphabeticOnly(policyHolderLastName),
+    isValueEmpty(policyHolderFirstName),
+    emailValidation(policyHolderEmail),
+    isValueEmpty(policyHolderEmail),
+    isValueEmpty(policyHolderPhoneType),
+    phoneValidation(policyHolderPhoneNumber),
+    isValueEmpty(policyHolderPhoneNumber),
+  ];
 
-  const isAnyError = validationResult.some((result) => result === false);
+  const isValidate = validationFields.every((result) => result === true);
 
-  userData.policyHolderFirstName = policyHolderFirstName?.value;
-  userData.policyHolderLastName = policyHolderLastName?.value;
-  userData.policyHolderEmail = policyHolderEmail?.value;
-  userData.policyHolderPhoneType = policyHolderPhoneType?.value;
-  userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
-    /\D/g,
-    ""
-  );
+  if (isValidate) {
+    userData.policyHolderFirstName = policyHolderFirstName?.value;
+    userData.policyHolderLastName = policyHolderLastName?.value;
+    userData.policyHolderEmail = policyHolderEmail?.value;
+    userData.policyHolderPhoneType = policyHolderPhoneType?.value;
+    userData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
+      /\D/g,
+      ""
+    );
+    console.log(userData);
+  }
 
-  console.log(userData);
-
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** MULTI-STEP 2 Validation ***********
@@ -392,28 +397,31 @@ function multiStep2Validation() {
   const state = document.querySelector("#state");
   const zip = document.querySelector("#zip");
 
-  const validationResult = [];
-  validationResult[0] = isValueEmpty(businessName);
-  validationResult[1] = isValueEmpty(businessType);
-  validationResult[2] = isValueEmpty(businessPhysicalAddress);
-  validationResult[3] = isValueEmpty(city);
-  validationResult[4] = isValueEmpty(state);
-  validationResult[5] = minValue(zip, 5);
-  validationResult[6] = isValueEmpty(zip);
+  const validationFields = [
+    isValueEmpty(businessName),
+    isValueEmpty(businessType),
+    isValueEmpty(businessPhysicalAddress),
+    isValueEmpty(city),
+    isValueEmpty(state),
+    minValue(zip),
+    isValueEmpty(zip),
+  ];
 
-  const isAnyError = validationResult.some((result) => result === false);
+  const isValidate = validationFields.every((result) => result === true);
 
-  userData.businessName = businessName?.value;
-  userData.businessWebsite = businessWebsite?.value;
-  userData.businessType = businessType?.value;
-  userData.businessTaxId = businessTaxId?.value;
-  userData.city = city?.value;
-  userData.state = state?.value;
-  userData.zip = zip?.value;
+  if (isValidate) {
+    userData.businessName = businessName?.value;
+    userData.businessWebsite = businessWebsite?.value;
+    userData.businessType = businessType?.value;
+    userData.businessTaxId = businessTaxId?.value;
+    userData.city = city?.value;
+    userData.state = state?.value;
+    userData.zip = zip?.value;
 
-  console.log(userData);
+    console.log(userData);
+  }
 
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** MULTI-STEP 3 Validation ***********
@@ -428,14 +436,14 @@ function multiStep3Validation() {
     }
   });
 
-  const isAnyError = userData.policyCoverage.length <= 0;
+  const isValidate = userData.policyCoverage.length >= 0;
 
-  if (isAnyError) {
+  if (isValidate) {
     // Error Message if value = null
     eligibilityErrorMessage(false, ".multi__step_3 .field_message");
   }
 
-  return isAnyError;
+  return isValidate;
 }
 
 // ********** MULTI-STEP 4 Validation ***********
@@ -446,22 +454,22 @@ function multiStep4Validation() {
   const insuranceCompany = document.querySelector("#insuranceCompany");
   const policyRenewalDate = document.querySelector("#policyRenewalDate");
 
-  //   const isAnyError = validationResult.some((result) => result === false);
+  //   const isValidate = validationFields.every((result) => result === true);
 
   userData.currentInsuranceCompany = currentInsuranceCompany?.value;
   userData.insuranceCompany = insuranceCompany?.value;
   userData.policyRenewalDate = policyRenewalDate?.value;
 
-  let validationResult = false;
+  let validationFields = false;
 
   if (currentInsuranceCompany?.value === "Other") {
     // if currentInsuranceCompany = "Other" then Insurance Company value id required
-    validationResult = !isValueEmpty(insuranceCompany);
+    validationFields = !isValueEmpty(insuranceCompany);
   }
 
   console.log(userData);
 
-  return validationResult;
+  return validationFields;
 }
 
 // ********** OTHERS FUNCTIONALITY ***********
