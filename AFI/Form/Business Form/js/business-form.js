@@ -178,7 +178,6 @@ function isValueEmpty(selector) {
 document.querySelectorAll(".field__input.numberOnly")?.forEach((input) => {
   input.addEventListener("input", (e) => {
     e.target.value = e.target?.value.replace(/[^0-9]/g, "");
-    console.log(e.target.value);
   });
 });
 
@@ -190,6 +189,16 @@ function alphabeticOnly(selector) {
   } else {
     inputErrorMessage(selector, "Please enter alphabetic characters only");
     return false;
+  }
+}
+
+// Minimum value need
+function minValue(selector, minValue = 5) {
+  if (selector?.value.length != minValue) {
+    inputErrorMessage(selector, "Please enter a valid Zip code");
+    return false;
+  } else {
+    return true;
   }
 }
 
@@ -381,7 +390,7 @@ function multiStep2Validation() {
   );
   const city = document.querySelector("#city");
   const state = document.querySelector("#state");
-  const policyHolderPhoneNumber = document.querySelector("#zip");
+  const zip = document.querySelector("#zip");
 
   const validationResult = [];
   validationResult[0] = isValueEmpty(businessName);
@@ -389,7 +398,8 @@ function multiStep2Validation() {
   validationResult[2] = isValueEmpty(businessPhysicalAddress);
   validationResult[3] = isValueEmpty(city);
   validationResult[4] = isValueEmpty(state);
-  validationResult[5] = isValueEmpty(zip);
+  validationResult[5] = minValue(zip, 5);
+  validationResult[6] = isValueEmpty(zip);
 
   const isAnyError = validationResult.some((result) => result === false);
 
