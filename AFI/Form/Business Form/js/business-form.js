@@ -484,7 +484,17 @@ currentInsuranceCompany.addEventListener("change", () => {
 // KeyPress remove all Error Message
 document.querySelectorAll(".form_section")?.forEach((section) => {
   section.querySelectorAll(".field__input")?.forEach((input) => {
+    // Remove errors if input text type update
     input.addEventListener("keypress", () => {
+      section
+        .querySelectorAll(".field_message.error")
+        ?.forEach((errorField) => {
+          errorField?.classList.remove("error");
+        });
+    });
+
+    // Remove errors if select dropdown change
+    input.addEventListener("change", () => {
       section
         .querySelectorAll(".field_message.error")
         ?.forEach((errorField) => {
