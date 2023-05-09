@@ -291,6 +291,10 @@
   width: auto;
 }
 
+.cover_options_wrapper .field__input {
+  margin-bottom: 5px;
+}
+
 .field__note {
   color: #4a4a4a;
   font-size: 0.875rem !important;

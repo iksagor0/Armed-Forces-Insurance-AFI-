@@ -527,27 +527,18 @@ currentInsuranceCompany.addEventListener("change", () => {
   }
 });
 
-// KeyPress remove all Error Message
-document.querySelectorAll(".form_section")?.forEach((section) => {
-  section.querySelectorAll(".field__input")?.forEach((input) => {
-    // Remove errors if input text type update
-    input.addEventListener("keypress", () => {
-      section
-        .querySelectorAll(".field_message.error")
-        ?.forEach((errorField) => {
-          errorField?.classList.remove("error");
-        });
-    });
+// KeyPress only remove field Error Message
+document.querySelectorAll(".form_container .field")?.forEach((fieldWrapper) => {
+  const removeFieldError = () => {
+    const errorField = fieldWrapper.querySelector(".field_message");
+    errorField?.classList.remove("error");
+  };
 
-    // Remove errors if select dropdown change
-    input.addEventListener("change", () => {
-      section
-        .querySelectorAll(".field_message.error")
-        ?.forEach((errorField) => {
-          errorField?.classList.remove("error");
-        });
-    });
-  });
+  fieldWrapper
+    .querySelectorAll(".field__input")
+    .forEach((inputField) =>
+      inputField.addEventListener("input", removeFieldError)
+    );
 });
 
 // Press Enter Submit Form
@@ -561,3 +552,26 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
     }
   });
 });
+
+// // KeyPress remove all Error Message
+// document.querySelectorAll(".form_container field")?.forEach((section) => {
+//   section.querySelectorAll(".field__input")?.forEach((input) => {
+//     // Remove errors if input text type update
+//     input.addEventListener("keypress", () => {
+//       section
+//         .querySelectorAll(".field_message.error")
+//         ?.forEach((errorField) => {
+//           errorField?.classList.remove("error");
+//         });
+//     });
+
+//     // Remove errors if select dropdown change
+//     input.addEventListener("change", () => {
+//       section
+//         .querySelectorAll(".field_message.error")
+//         ?.forEach((errorField) => {
+//           errorField?.classList.remove("error");
+//         });
+//     });
+//   });
+// });
