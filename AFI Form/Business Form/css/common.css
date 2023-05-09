@@ -76,12 +76,14 @@ footer {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 ul {
   margin: 0;
   padding: 0;
   list-style: none !important;
+  list-style-position: outside !important;
 }
 
 ul.disc {
@@ -349,6 +351,10 @@ main.offscreen__darken:before {
 
 .button--small-text {
   font-size: 0.75rem !important;
+}
+
+.button--large-text {
+  font-size: 1.125rem !important;
 }
 
 .small_italic_text {
