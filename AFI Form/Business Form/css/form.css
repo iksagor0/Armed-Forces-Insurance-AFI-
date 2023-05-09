@@ -450,3 +450,38 @@
 .conditionally_hidden_field {
   display: none;
 }
+
+/* ********************************
+      Loading Animation
+************************************/
+
+.field__input-wrapper.loading__field {
+  position: relative;
+}
+.field__input-wrapper.loading__field .field__input {
+  background: #00000098;
+  opacity: 0.5;
+}
+
+@keyframes circle {
+  0% {
+    transform: translate(-50%, -50%), rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.field__input-wrapper.loading__field::after {
+  content: "";
+  width: 20px;
+  aspect-ratio: 1/1;
+  border: 3px solid red;
+  border-left: 3px solid green;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: circle 0.5s linear infinite;
+}

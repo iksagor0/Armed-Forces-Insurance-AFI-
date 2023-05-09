@@ -245,9 +245,9 @@ dateField.addEventListener("input", (e) => {
   if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
   else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
   else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
-  else if (DD.length === 2 && Number(MM) == 02 && Number(DD) > 29)
+  else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
     value[2] = DD[0];
-  else if ([04, 06, 09, 11].includes(Number(MM)) && Number(DD) > 30)
+  else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
     value[2] = DD[0];
 
   // Year validation
@@ -575,3 +575,30 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
 //     });
 //   });
 // });
+
+// *********************************************
+//            FETCH DATA FROM JSON
+// *********************************************
+fetch("data.json")
+  .then((response) => response.json())
+  .then((json) => getData(json));
+
+function getData(data) {
+  const branchOfServiceElement = document.getElementById("branchOfService");
+  branchOfServiceElement?.parentElement.classList.add("loading__field");
+
+  const branchOfService = data?.branchOfService;
+
+  if (branchOfService && branchOfService?.length > 0) {
+    branchOfService?.forEach((value) => {
+      let option = document.createElement("option");
+      option.value = value;
+      option.innerText = value;
+
+      branchOfServiceElement.appendChild(option);
+    });
+
+    // branchOfServiceElement.disabled = false;
+    // branchOfServiceElement?.parentElement.classList.remove("loading__field");
+  }
+}
