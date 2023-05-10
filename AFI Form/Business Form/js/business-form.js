@@ -579,12 +579,14 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
 // *********************************************
 //            FETCH DATA FROM JSON
 // *********************************************
-fetch("./js/data.json")
+const branchOfServiceElement = document.getElementById("branchOfService");
+
+fetch("./json/branchOfService.json")
   .then((response) => response.json())
-  .then((json) => getData(json));
+  .then((json) => getData(json))
+  .catch((err) => console.log(err));
 
 function getData(data) {
-  const branchOfServiceElement = document.getElementById("branchOfService");
   branchOfServiceElement?.parentElement.classList.add("loading__field");
 
   const branchOfService = data?.branchOfService;
@@ -598,7 +600,7 @@ function getData(data) {
       branchOfServiceElement.appendChild(option);
     });
 
-    branchOfServiceElement.disabled = false;
+    // branchOfServiceElement.disabled = false;
     // branchOfServiceElement?.parentElement.classList.remove("loading__field");
   }
 }
