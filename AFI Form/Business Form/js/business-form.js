@@ -579,7 +579,7 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
 // *********************************************
 //            FETCH DATA FROM JSON
 // *********************************************
-fetch("data.json")
+fetch("./js/data.json")
   .then((response) => response.json())
   .then((json) => getData(json));
 
@@ -598,7 +598,7 @@ function getData(data) {
       branchOfServiceElement.appendChild(option);
     });
 
-    // branchOfServiceElement.disabled = false;
+    branchOfServiceElement.disabled = false;
     // branchOfServiceElement?.parentElement.classList.remove("loading__field");
   }
 }

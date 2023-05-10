@@ -476,8 +476,8 @@
   content: "";
   width: 20px;
   aspect-ratio: 1/1;
-  border: 3px solid red;
-  border-left: 3px solid green;
+  border: 3px solid #fff;
+  border-left: 3px solid #cc4044;
   border-radius: 50%;
   position: absolute;
   top: 50%;
