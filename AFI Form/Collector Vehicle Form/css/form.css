@@ -240,7 +240,8 @@
   display: block;
 }
 
-input.field__input:focus {
+input.field__input:focus,
+textarea.field__input:focus {
   border: 2px solid #000;
 }
 
@@ -273,6 +274,15 @@ input.field__input:focus {
   display: flex;
   max-width: 100%;
 }
+.field__label-wrapper.gap_30 {
+  margin-right: 30px;
+}
+
+.field-group.flex_gap_10 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
 .fields-row .field.field--small {
   max-width: 5rem;
@@ -283,6 +293,15 @@ input.field__input:focus {
   display: flex;
   flex-direction: column;
   max-width: none;
+}
+
+.fields-row .field textarea.field__input {
+  height: 10rem;
+}
+
+.fields-row .field.field--extended-label .field__label {
+  position: relative;
+  width: 150%;
 }
 
 /* .fields-row .cover_options_wrapper .field__label {
@@ -362,18 +381,18 @@ input.field__input:focus {
 
 .quote_request_sidebar__heading {
   font-size: 1rem !important;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .quote_request_sidebar__item_heading {
   font-size: 0.875rem !important;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem !important;
 }
 
 .quote_request_sidebar__item_description {
   font-size: 0.875rem !important;
   line-height: 1.4 !important;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
 }
 
 @media screen and (min-width: 48em) {
@@ -492,4 +511,124 @@ input.field__input:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: circle 0.5s linear infinite;
+}
+
+/* ********************************
+      COLLECTOR VEHICLES PAGE
+************************************/
+/* COLLECTOR VEHICLES */
+.quote_request_heading.extra_mb {
+  margin-bottom: 30px !important;
+}
+
+.quote-request__section-columns {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.quote-request__fields {
+  background-color: #f6f6f6;
+  background-color: var(--color-gray-10);
+  flex-grow: 1;
+  padding: 1.5rem 1rem;
+}
+
+.quote-request__fields--separated {
+  background: transparent;
+  left: 0;
+  padding: 0;
+}
+
+.quote-request__fields--separated .field {
+  display: flex;
+  justify-content: space-between;
+  max-width: none;
+}
+
+.quote-request__fields--separated .field__label {
+  font-weight: 700;
+}
+
+.quote-request__fields--separated .field__sublabel {
+  display: block;
+  font-weight: 400;
+  /* margin-top: 0.25rem; */
+}
+
+.quote-request__fields--separated .field__label-wrapper {
+  padding-right: 2rem;
+}
+
+.quote-request__fields--separated .field__input-wrapper {
+  flex-basis: 12rem;
+}
+
+.fields-row .qrf-accordion {
+  max-width: 40rem;
+}
+
+.fields-row .qrf-accordion .button-bare.qrf-accordion__trigger {
+  margin-top: 0.2rem;
+  /* margin-top: 0.5rem; */
+  /* padding-left: 0.75rem; */
+  position: relative;
+}
+.fields-row .qrf-accordion .button-bare.qrf-accordion__trigger:hover {
+  text-decoration: underline;
+}
+
+.fields-row .qrf-accordion .qrf-accordion__heading {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
+}
+
+@media screen and (min-width: 48em) {
+  .quote-request__fields {
+    padding: 2.625rem 2.25rem;
+  }
+  .quote-request__fields--separated {
+    padding: 0;
+  }
+}
+
+.quote_request__summary {
+  margin-bottom: 4rem;
+}
+
+.quote_request__summary_item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote_request__summary_item_info {
+  color: #4a4a4a !important;
+  font-weight: bold !important;
+}
+
+.button-bare {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #004976;
+  color: var(--color-blue-30);
+  cursor: pointer;
+  display: inline;
+  font-size: 1rem;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+.quote_request__summary_item_actions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Hidden */
+.hidden_area,
+.__hide {
+  display: none;
 }
