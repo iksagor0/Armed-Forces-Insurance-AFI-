@@ -3,8 +3,8 @@ const formData = {
   eligibilityStatus: "",
 };
 
-// const successRedirection = "/Quote-Form/thank-you.html";
-const successRedirection = "https://afi.org/";
+// const successRedirection = "https://afi.org/";
+const successRedirection = "/Quote-Form/thank-you.html";
 
 // Forms
 const multStepForm = [
