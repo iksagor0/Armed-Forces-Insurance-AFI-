@@ -480,7 +480,7 @@ function multiStep4Validation() {
   formData.insuranceCompany = insuranceCompany?.value;
   formData.policyRenewalDate = policyRenewalDate?.value;
 
-  let validationFields = false;
+  let validationFields = true;
 
   // if currentInsuranceCompany = "Other" then Insurance Company value id required
   if (currentInsuranceCompany?.value === "Other") {
