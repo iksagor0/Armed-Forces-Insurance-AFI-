@@ -1,0 +1,14 @@
+.page__article .mt_30 {
+  margin-top: 30px;
+}
+.page__article ul.disc {
+  list-style: disc !important;
+  padding-left: 40px !important;
+}
+
+.page__article .heading-blue {
+  font-weight: 400 !important;
+}
+.page__article .button--small-text {
+  font-style: italic;
+}

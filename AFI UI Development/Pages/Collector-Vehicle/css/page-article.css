@@ -1,0 +1,12 @@
+.page__article ul {
+  padding-left: 40px;
+}
+
+.page__article .small_text {
+  font-size: 13px !important;
+  font-style: italic !important;
+}
+
+.page__article .second_h2 {
+  margin-top: 30px;
+}

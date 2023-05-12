@@ -125,13 +125,13 @@
   gap: 20px;
 }
 
-.footer .footer-disclaimer__links li+li {
+.footer .footer-disclaimer__links li + li {
   margin-top: 0;
   margin-bottom: 0.825rem;
   position: relative;
 }
 
-.footer .footer-disclaimer__links li+li::before {
+.footer .footer-disclaimer__links li + li::before {
   background-color: #363636;
   background-color: var(--color-gray-30);
   content: "";
@@ -156,7 +156,7 @@
   font-family: Roboto, sans-serif;
   font-family: var(--font-family-primary);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 700 !important;
   padding: 0.5rem 0;
 }
 
@@ -265,4 +265,11 @@
   .footer .social-links__list {
     margin: 40px 0;
   }
+}
+
+/*  */
+.footer .footer__heading a {
+  font-size: 24px !important;
+  font-family: Zilla Slab, serif !important ;
+  color: #363636 !important;
 }

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeowner</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Zilla+Slab:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link as="font" rel="stylesheet preload prefetch"
+    href="https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2" type="font/woff2"
+    crossorigin="anonymous" />
+  <link as="font" rel="stylesheet preload prefetch"
+    href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2" type="font/woff2"
+    crossorigin="anonymous" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../../common.css" />
+  <link rel="stylesheet" href="../../../Header/css/header.css" />
+  <link rel="stylesheet" href="../../../Footer/css/footer.css" />
+  <link rel="stylesheet" href="../css/additional_coverages-image.css" />
+  <link rel="stylesheet" href="../css/additional_coverages-red_card.css" />
+  <link rel="stylesheet" href="../css/additional_coverages-text.css" />
+  <link rel="stylesheet" href="../css/blue-pods.css" />
+  <link rel="stylesheet" href="../css/eligible-blue-card.css" />
+  <link rel="stylesheet" href="../css/embed-video.css" />
+  <link rel="stylesheet" href="../css/flood-questions.css" />
+  <link rel="stylesheet" href="../css/img_article.css" />
+  <link rel="stylesheet" href="../css/main-text-content.css" />
+  <link rel="stylesheet" href="../css/policy-cover-tiles.css" />
+  <link rel="stylesheet" href="../css/related-articles.css" />
+  <link rel="stylesheet" href="../css/video-banner.css" />
+</head>
+
+<body class="body">
+  <!-- ******************************************************************** -->
+  <!--                                 HEADER                               -->
+  <!-- ******************************************************************** -->
+  <header class="header" id="header">
+    <div class="wrapper">
+      <!-- ******** TOP HEADER ******** -->
+      <div class="header__utility-wrapper">
+        <form class="utility-search" action="/search-page" method="get">
+          <input class="utility-search__input" name="search" type="text" placeholder="Search" />
+          <button class="utility-search__submit" type="submit">
+            <span class="is-vishidden">Submit</span><span class="icon-search">
+              <i class="fas fa-search"></i>
+            </span>
+          </button>
+        </form>
+        <nav class="utility-nav">
+          <ul class="utility-nav__list">
+            <li class="utility-nav__list-item">
+              <a class="utility-nav__link" href="/contact-us">Contact Us
+                <span class="icon-phone">
+                  <i class="fa-solid fa-phone"></i> </span></a>
+            </li>
+            <li class="utility-nav__list-item">
+              <a class="utility-nav__link" href="http://aficonnect.afi.org/AFIConnect/SignIn">Login
+                <span class="icon-lock">
+                  <i class="fa-solid fa-lock"></i> </span></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- ******** MAIN HEADER ******** -->
+      <div class="header__main-wrapper">
+        <!-- HAMBURGER -->
+        <button id="hamburger" class="hamburger hamburger--spring js-offscreen-trigger" type="button">
+          <span class="hamburger__box">
+            <span class="hamburger__inner"></span>
+          </span>
+        </button>
+        <!-- LOGO -->
+        <a class="logo__link" href="/">
+          <img src="../../../Header/logo.png" class="logo" alt="Armed Forces Insurance Logo" width="156" height="85" />
+        </a>
+        <!-- HIDDEN LOGIN ICON FOR MOBILE -->
+        <a class="login-link" href="#" target=""><span class="icon-lock"> <i class="fa-solid fa-lock"></i></span><span
+            class="login-link__text"></span></a>
+
+        <!-- *** NAV *** -->
+        <nav class="primary-nav">
+          <ul class="primary-nav__list">
+            <li class="primary-nav__list-item">
+              <a href="#" class="primary-nav__link">Is AFI For You?</a>
+            </li>
+            <li class="primary-nav__list-item has-children js-togglesection-wrapper">
+              <a href="#" class="primary-nav__link has-children js-togglesection-trigger">About AFI <i
+                  class="fa-sharp fa-solid fa-chevron-up"></i></a>
+              <div class="secondary-nav js-togglesection-target">
+                <ul class="secondary-nav__list">
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">AFI History</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Leadership</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Mission Statement</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Annual Report</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">AFI Foundation</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Corporate Citizenship</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Preferred Partners</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="/about-afi/insurance-ratings-affiliations" class="secondary-nav__link">Ratings &amp;
+                      Affiliations</a>
+                  </li>
+                  <li class="#">
+                    <a href="#" class="secondary-nav__link">President&#39;s Message</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Member Reviews</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Newsletters</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Press Releases</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Careers</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="primary-nav__list-item has-children js-togglesection-wrapper active">
+              <a href="#" class="primary-nav__link has-children js-togglesection-trigger">Insurance Products
+                <i class="fa-sharp fa-solid fa-chevron-up"></i></a>
+              <div class="secondary-nav js-togglesection-target">
+                <ul class="secondary-nav__list">
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Auto</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Business</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#-vehicle" class="secondary-nav__link">Collector Vehicle</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Condo</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#-fire" class="secondary-nav__link">Dwelling Fire</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Flood</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Homeowner</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Life</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#-home" class="secondary-nav__link">Mobile Home</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Motorcycle/Off-Road Vehicle</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Motorhome/Travel Trailer</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Pet Health</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Renter</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Umbrella</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Valuable Items</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Watercraft</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="primary-nav__list-item">
+              <a href="#" class="primary-nav__link">Claims</a>
+            </li>
+            <li class="primary-nav__list-item has-children js-togglesection-wrapper">
+              <a href="#" class="primary-nav__link has-children js-togglesection-trigger">Resources and Tools
+                <i class="fa-sharp fa-solid fa-chevron-up"></i></a>
+              <div class="secondary-nav js-togglesection-target">
+                <ul class="secondary-nav__list">
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Homeowner Insurance</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Renter Insurance</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Auto Insurance</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Insurance 101</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">PCS</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Post Traumatic Stress Disorder PTSD</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Fraud Protection</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">FAQs</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="primary-nav__list-item has-children js-togglesection-wrapper">
+              <a href="#" class="primary-nav__link has-children js-togglesection-trigger">Contact Us <i
+                  class="fa-sharp fa-solid fa-chevron-up"></i></a>
+              <div class="secondary-nav js-togglesection-target">
+                <ul class="secondary-nav__list">
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link" target="">Contact Information</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link" target="">Pay Bill</a>
+                  </li>
+                  <li class="secondary-nav__list-item">
+                    <a href="#" class="secondary-nav__link">Payment Options</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- QUOTE BUTTON -->
+        <a class="button button--large-text header__request-quote-button text-white" href="/request-a-quote">Request A
+          Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    const body = document.body;
+    const hamburger = document.querySelector("#hamburger");
+    const navHasChildItems = document.querySelectorAll(
+      ".primary-nav__list .primary-nav__list-item.has-children"
+    );
+
+    hamburger.addEventListener("click", () => {
+      body.classList.toggle("offscreen-is-active");
+    });
+
+    navHasChildItems.forEach((navItem) => {
+      navItem.addEventListener("click", function () {
+        if (screen.width < 1080) {
+          this.classList.toggle("toggle-is-open");
+          console.log(screen.width);
+        }
+      });
+    });
+
+    // Script to add Font Aweosme
+    window.onload = () => {
+      const head = document.getElementsByTagName("head")[0];
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href =
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css";
+
+      head.appendChild(link);
+    };
+  </script>
+
+  <main class="offscreen__darken" role="main" id="main-content">
+    <!-- ******************************************************************** -->
+    <!--                                 HERO IMAGE                           -->
+    <!-- ******************************************************************** -->
+    <section class="landing-page-hero__wrapper landing-page-hero__video-wrapper auto__hero">
+      <div class="container">
+        <!-- Video Box -->
+        <div class="row align-items-center">
+          <section class="video-wrapper col-lg-8">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/KZ3naP7PAck?&amp;modestbranding=0&amp;autohide=1&amp;showinfo=0&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&playlist=KZ3naP7PAck"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen="" class="video"></iframe>
+            </div>
+          </section>
+
+          <!-- Quote Box -->
+          <section class="quote-start col-lg-4">
+            <div class="quote-start__controls">
+              <div class="quote-start__upper-wrapper">
+                <img class="quote-start__type-image" src="../img/home.svg" alt="" />
+                <h1 class="quote-start__heading">Homeowner Insurance</h1>
+                <p class="quote-start__heading">
+                  Let us help you protect your business. Get a free quote now.
+                </p>
+              </div>
+              <div class="quote-start__lower-wrapper">
+                <div class="field" style="display: none">
+                  <input class="js-shortzip-mask zip" id="quote-zip" type="text" autocomplete="off" required=""
+                    name="quoteZip" alt="Auto" />
+                  <label for="quote-zip"></label>
+                </div>
+                <button class="button button--large-text Click-here" type="button">
+                  Get a Quote
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ******************************************************************** -->
+    <!--                                Protect your home                    -->
+    <!-- ******************************************************************** -->
+    <div class="container">
+      <section class="row g-0 main_section__container">
+        <!-- ********************* Section Start ********************* -->
+        <div class="col-md-7 main__text__content">
+          <h1 class="title__text blue__text text-5xl">
+            Protect your home with a Homeowner policy from Armed Forces
+            Insurance
+          </h1>
+          <p>
+            You worked hard to get your home, and it's likely your biggest
+            investment. So, naturally, you want to protect it. That's why
+            Armed Forces Insurance offers a comprehensive homeowner insurance
+            package that protects your dwelling, personal property and
+            personal liability.
+          </p>
+
+          <h2 class="blue__text">Why insure with AFI?</h2>
+          <p>
+            Protecting the homes of our military is an honor. We work hard to
+            reflect your commitment to duty, honor and integrity, and we'll
+            work just as hard for you. With AFI you'll get a personal
+            insurance agent dedicated to you, coverage plans built with the
+            unique needs of the military in mind, and flexible options to
+            protect your home and budget.
+          </p>
+        </div>
+        <!-- ********************* Section End ********************* -->
+
+        <div class="card__container col-md-4">
+          <embed src="https://www.youtube.com/embed/KtKKz6HpzLU?showinfo=1&controls=1" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            class="embed__video" />
+          <div class="not__eligible__blue">
+            <h2>Not military? Not a problem!</h2>
+            <p>
+              Active-duty, veterans and their families are eligible for AFI
+              membership. We also shop top carriers for anyone who wants great
+              rates and service.
+            </p>
+            <div class="button__container">
+              <a href="#" class="button">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- ******************************************************************** -->
+    <!--                                policy cover                         -->
+    <!-- ******************************************************************** -->
+    <div class="container">
+      <section class="row policy__cover">
+        <h2 class="text-4xl blue__text">
+          What does a homeowners insurance policy cover?
+        </h2>
+
+        <div class="row gx-4 tiles_container">
+          <!-- 01 -->
+          <div class="col-md-6">
+            <div class="coverage_icon">
+              <img alt="AFI Homeowner Insurance covers the dwelling and other structures"
+                src="../img/icon_coverage-dwelling.svg" />
+            </div>
+            <h3 class="blue__text">Dwelling & Other Structures</h3>
+            <p>
+              Dwelling coverage covers your house and other permanent
+              structures on your property from damage caused by fire, severe
+              weather, and other covered perils.
+            </p>
+          </div>
+
+          <!-- 02 -->
+          <div class="col-md-6">
+            <div class="coverage_icon">
+              <img alt="Homeowner insurance covers personal property" src="../img/icon_coverage-property.svg" />
+            </div>
+            <h3 class="blue__text">Personal Property</h3>
+            <p>
+              Personal property coverage helps pay to repair or replace
+              furniture, clothing and uniforms, electronics, tools, and other
+              belongings if they're destroyed in a covered loss.
+            </p>
+          </div>
+
+          <!-- 03 -->
+          <div class="col-md-6">
+            <div class="coverage_icon">
+              <img alt="Homeowners Insurance helps cover expenses when you suffer a loss"
+                src="../img/icon_coverage-loss-of-use.svg" />
+            </div>
+            <h3 class="blue__text">Loss of Use</h3>
+            <p>
+              Coverage for necessary additional living expenses that you incur
+              if your home is damaged by a covered loss requiring you to
+              reside elsewhere during the repairs, up to your policy's limits.
+            </p>
+          </div>
+
+          <!-- 04 -->
+          <div class="col-md-6">
+            <div class="coverage_icon">
+              <img
+                alt="Homeowners Insurance can help cover medical costs and liability costs if someone is injured on your property"
+                src="../img/icon_coverage-medical.svg" />
+            </div>
+            <h3 class="blue__text">Liability & Medical</h3>
+            <p>
+              Personal liability coverage helps protect your assets if you or
+              your family members are liable for someone else's damage or
+              injuries. Medical coverage covers medical expenses for guests
+              who are accidentally injured at your home.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ******************************************************************** -->
+    <!--                               Articles                          -->
+    <!-- ******************************************************************** -->
+    <div class="container">
+      <section class="row img_article_section">
+        <div class="col-md-7 image_container">
+          <img src="../img/homeowner-small.jpg"
+            alt="AFI Agents can help you customize your homeowners insurance policy" />
+        </div>
+        <div class="col-md-5">
+          <article class="content-column">
+            <h2 class="text-3xl">
+              Homeowner insurance for your unique needs, from a company you
+              can trust.
+            </h2>
+            <p>
+              Our agents work to understand your unique needs so they can help
+              you get the coverage that fits your life and home. Specifically,
+              AFI agents can:
+            </p>
+            <ul>
+              <li>Explain your home insurance coverage options</li>
+              <li>Find discounts to save on your home insurance premium</li>
+              <li>Help you understand the home claims process</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ******************************************************************** -->
+    <!--                               dditional coverages                        -->
+    <!-- ******************************************************************** -->
+
+    <div class="container">
+      <!-- Parent  -->
+      <section class="row g-5 additional_coverages_container">
+        <!-- ********************* Section Start ********************* -->
+        <div class="col-md-6 left__text__content">
+          <h2 class="text-5xl blue__text">
+            Additional coverages with the military life in mind.
+          </h2>
+          <p>
+            Homeowner insurance isn't a “one size fits all” policy. That's why
+            you have an option to add additional coverages that allow you to
+            customize your policy to your unique needs.
+          </p>
+
+          <div class="dl">
+            <p class="bold">Earthquake coverage</p>
+            <p>Covers damage and loss caused by an earthquake.</p>
+
+            <p class="bold">Animal liability coverage</p>
+            <p>
+              Protects you in the event of damages or injuries caused by your
+              dog or other pet that you own.
+            </p>
+
+            <p class="bold">Identity theft expense coverage</p>
+            <p>
+              Covers additional causes of water damage including water that
+              backs up through sewer or drains or overflows or is discharged
+              from a sump pump.
+            </p>
+
+            <p class="bold">Water backup and sump overflow coverages</p>
+            <p>
+              Covers additional causes of water damage including water that
+              backs up through sewer or drains or overflows or is discharged
+              from a sump pump.
+            </p>
+
+            <p class="bold">… and many more</p>
+            <p>
+              An AFI agent can help identify which coverages would benefit
+              you.
+            </p>
+          </div>
+
+          <div class="visible_992">
+            <h2 class="blue__text">Save more with discounts and credits.</h2>
+            <p>
+              Many credits and discounts may be available on your homeowner
+              policy. These include:
+            </p>
+            <ul class="disc">
+              <li>Central Station Burglar and Fire Alarm Discounts</li>
+              <li>New Home Credit</li>
+              <li>Gated or Guarded Community Discount</li>
+              <li>Building Code Effectiveness Grading Credit</li>
+              <li>Windstorm Mitigation Feature Credits</li>
+              <li>New Roof Credit</li>
+              <li>Companion Policy Credit</li>
+            </ul>
+          </div>
+        </div>
+        <!-- ********************* Section End ********************* -->
+
+        <div class="col-md-6 right__text__content">
+          <div class="vertical-image">
+            <img src="../img/military-mom.jpg" alt="Military Mom with homeowner insurance from AFI" />
+          </div>
+
+          <div class="visible_991">
+            <h2 class="blue__text">Save more with discounts and credits.</h2>
+            <p>
+              Many credits and discounts may be available on your homeowner
+              policy. These include:
+            </p>
+            <ul class="disc">
+              <li>Central Station Burglar and Fire Alarm Discounts</li>
+              <li>New Home Credit</li>
+              <li>Gated or Guarded Community Discount</li>
+              <li>Building Code Effectiveness Grading Credit</li>
+              <li>Windstorm Mitigation Feature Credits</li>
+              <li>New Roof Credit</li>
+              <li>Companion Policy Credit</li>
+            </ul>
+          </div>
+
+          <div class="quote-cta">
+            <div class="quote-cta-inner">
+              <h2 class="text-4xl">Get a free auto quote</h2>
+              <p>
+                Let us help you protect what matters most. <br />
+                Get your free quote in minutes.
+              </p>
+            </div>
+            <div class="btn_container">
+              <a href="#" class="button start-btn">Request A Quote Online</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+
+
+    <!-- ******************************************************************** -->
+    <!--                                Reviews                           -->
+    <!-- ******************************************************************** -->
+    <div class="container">
+      <!-- ********************* Section Start ********************* -->
+      <div class="articles__container">
+        <h2 class="resources__header blue__text">Homeowner Resources:</h2>
+        <div class="articles__wrapper row">
+          <!-- 01 -->
+          <article class="col-lg-4 col-md-6">
+            <div class="article-img-outer-container">
+              <div class="article-img-inner-container">
+                <a href="#"><img src="../img/flood-280x280.jpeg" class="article-img"
+                    alt="Kids getting into a yellow school bus." /></a>
+              </div>
+            </div>
+            <div class="article-content">
+              <h1>Do I need Flood Insurance?</h1>
+              <p>
+                Flood insurance coverage is not typically included in a
+                regular homeowner policy. Wondering if you really need Flood
+                insurance, and how to justify the extra expense? This
+                article's for you.
+              </p>
+
+              <p>
+                <a href="#">Read More</a>
+              </p>
+            </div>
+          </article>
+
+          <!-- 02 -->
+          <article class="col-lg-4 col-md-6">
+            <div class="article-img-outer-container">
+              <div class="article-img-inner-container">
+                <a href="#"><img src="../img/cooking-safety.jpg" class="article-img"
+                    alt="Two people examining their cars from an accident. " /></a>
+              </div>
+            </div>
+            <div class="article-content">
+              <h1>Cooking Safety Tips</h1>
+              <p>
+                Taking measures to avoid cooking fires and learning what can
+                be done in the event one starts will keep your family and your
+                home safer.
+              </p>
+              <p>
+                <a href="#">Read More</a>
+              </p>
+            </div>
+          </article>
+
+          <!-- 03 -->
+          <article class="col-lg-4 col-md-6">
+            <div class="article-img-outer-container">
+              <div class="article-img-inner-container">
+                <a href="#"><img src="../img/garagedoor.jpg" class="article-img"
+                    alt="A person checking their phone while driving." /></a>
+              </div>
+            </div>
+            <div class="article-content">
+              <h1>Top 10 Garage Door Security Tips</h1>
+              <p>
+                Garage doors are a common weak point when looking at security
+                in a whole-home approach and an easy target for thieves. Here
+                are the 10 most important things you can do to secure your
+                garage.
+              </p>
+              <p>
+                <a href="#">Read More</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <p class="button--small-text">
+        Insurance products are provided by Armed Forces Insurance Exchange
+        (AFIE), Armed Forces Insurance Agency (AFIA) and its affiliated
+        partners. All policies and endorsements are subject to underwriting
+        approval. Coverages, deductibles, limits, and discounts vary by state.
+      </p>
+      <!-- ********************* Section End ********************* -->
+    </div>
+
+
+    <!-- ******************************************************************** -->
+    <!--                                 BLUE PODS                            -->
+    <!-- ******************************************************************** -->
+    <section class="blue_pods">
+      <div class="container">
+        <div class="blue_pods_container">
+          <div class="blue_pod_item">
+            <h2 class="blue_pod_item__heading">Request A Quote</h2>
+            <a class="button border__button" href="">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ******************************************************************** -->
+  <!--                                 FOOTER                               -->
+  <!-- ******************************************************************** -->
+  <footer class="footer offscreen__darken" id="footer">
+    <div class="container">
+      <div class="wrapper">
+        <!-- ********* FOOTER NAV ********* -->
+        <nav class="footer-nav">
+          <div class="section_container row">
+            <!--  COL-6 -->
+            <div class="col-md-6 toggle_section_wrapper">
+              <h2 class="footer__heading">
+                About AFI <i class="fa-sharp fa-solid fa-angle-down"></i>
+              </h2>
+              <ul class="list-bare toggle_section columns--2">
+                <li><a href="#">Leadership</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">AFI Military Spouse of the Year</a></li>
+                <li><a href="#">Insurance Ratings &amp; Affiliations</a></li>
+                <li><a href="#">Affinity Programs</a></li>
+              </ul>
+            </div>
+
+            <!--  COL-3 -->
+            <div class="col-md-3 toggle_section_wrapper">
+              <h2 class="footer__heading">
+                Customer Service
+                <i class="fa-sharp fa-solid fa-angle-down"></i>
+              </h2>
+              <ul class="list-bare toggle_section">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Billing/Payment Options</a></li>
+              </ul>
+            </div>
+
+            <!--  COL-3 -->
+            <div class="col-md-3 headeing_section">
+              <h3 class="footer__heading"><a href="#">Careers</a></h3>
+
+              <h3 class="footer__heading"><a href="#">Newsletter</a></h3>
+
+              <h3 class="footer__heading"><a href="#">Referrals</a></h3>
+            </div>
+          </div>
+        </nav>
+
+        <!-- ********* SOCIAL MEIDA LINKS ********* -->
+        <ul class="social-links__list list-bare">
+          <li class="social-links__list-item">
+            <a href="#" class="social-links__link" target="_blank"><span class="is-vishidden"></span><span
+                class="icon-facebook"><i class="fa-brands fa-facebook-f"></i></span></a>
+          </li>
+
+          <li class="social-links__list-item">
+            <a href="#" class="social-links__link" target="_blank"><span class="is-vishidden"></span><span
+                class="icon-linkedin"><i class="fa-brands fa-linkedin-in"></i></span></a>
+          </li>
+
+          <li class="social-links__list-item">
+            <a href="#" class="social-links__link" target="_blank"><span class="is-vishidden"></span><span
+                class="icon-twitter"><i class="fa-brands fa-twitter"></i></span></a>
+          </li>
+        </ul>
+
+        <!-- ********* FOOTER DISCLAIMER ********* -->
+        <div class="footer-disclaimer">
+          <div class="footer-disclaimer__content">
+            <div class="wrapper">
+              <section class="rte-wrapper">
+                <p style="
+                      color: var(--color-gray-30);
+                      margin-bottom: 0.75rem;
+                      padding: 0px;
+                      border: 0px;
+                      text-align: center;
+                    ">
+                  Insurance products are provided by Armed Forces Insurance
+                  Exchange (AFIE), Armed Forces Insurance Agency (AFIA) and
+                  its affiliated partners.
+                </p>
+                <p style="
+                      color: var(--color-gray-30);
+                      margin-bottom: 0.75rem;
+                      padding: 0px;
+                      border: 0px;
+                      text-align: center;
+                    ">
+                  Our Mission is You<sup>&reg;</sup>, The Winged Eagle, Armed
+                  Forces Insurance Corporation<sup>&reg;</sup>, Armed Forces
+                  Insurance<sup>&reg;</sup>, AFI<sup>&reg;</sup>, Armed Forces
+                  Insurance Agency<sup>&reg;</sup>, AFIA<sup>&reg;</sup> and
+                  AFI Insurance Agency<sup>&reg;</sup> are all registered
+                  trademarks of Armed Forces Insurance Corporation. Armed
+                  Forces Insurance Exchange<sup>&reg;</sup>, AFIE<sup>&reg;</sup>
+                  and Military Spouse of the Year<sup>&reg;</sup> are all
+                  registered trademarks of Armed Forces Insurance Exchange.
+                </p>
+              </section>
+            </div>
+            <p>&copy; Copyright 2010-2023 Armed Forces Insurance</p>
+          </div>
+          <ul class="footer-disclaimer__links list-horizontal list-bare">
+            <li><a href="#">Privacy Statement</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ******* FOOTER JS ******* -->
+  <script>
+    const section_wrapper = document.querySelectorAll(
+      ".toggle_section_wrapper"
+    );
+
+    if (screen.width <= 768) {
+      section_wrapper.forEach((section) => {
+        const heading = section.querySelector(".footer__heading");
+
+        heading.addEventListener("click", () =>
+          section.classList.toggle("show_toggle")
+        );
+      });
+    }
+  </script>
+</body>
+
+</html>

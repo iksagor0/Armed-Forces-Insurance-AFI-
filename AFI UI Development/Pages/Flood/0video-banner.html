@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Hero</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Zilla+Slab:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link as="font" rel="stylesheet preload prefetch"
+    href="https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2" type="font/woff2"
+    crossorigin="anonymous" />
+  <link as="font" rel="stylesheet preload prefetch"
+    href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2" type="font/woff2"
+    crossorigin="anonymous" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../common.css" />
+
+  <!-- CSS FOR THIS SECTION -->
+  <style>
+    .landing-page-hero__wrapper {
+      display: block;
+      position: relative;
+      background: url(./img/bg_renter-hero__blue.jpg);
+      max-width: 1600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .auto__hero .video-wrapper {
+      background-color: transparent;
+      aspect-ratio: 16 / 9;
+    }
+
+    .auto__hero .video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .auto__hero .quote-start {
+      background-image: linear-gradient(120deg, #cb2c30, #881b26);
+      background-image: linear-gradient(120deg,
+          var(--color-red-10),
+          var(--color-red-20));
+      color: #fff;
+      color: var(--color-white);
+      padding: 2.75rem 2.25rem;
+    }
+
+    .auto__hero .quote-start__type-image {
+      height: 2.9375rem;
+      width: auto;
+    }
+
+    .auto__hero .quote-start__heading {
+      margin-top: 0.8rem !important;
+    }
+
+    .auto__hero .quote-start__upper-wrapper p {
+      line-height: 2 !important;
+    }
+
+    .auto__hero .quote-start__controls .button {
+      width: 100%;
+      font-size: 1.125rem;
+    }
+
+    @media screen and (min-width: 992px) {
+      .landing-page-hero__wrapper {
+        display: block;
+        height: 32.5rem;
+        overflow: hidden;
+        padding: 25px;
+      }
+
+      .landing-page-hero__video-wrapper .quote-start {
+        max-width: 18rem;
+        margin-left: auto;
+        min-height: 370px;
+      }
+    }
+  </style>
+</head>
+
+<body class="body">
+  <main class="offscreen__darken" role="main" id="main-content">
+    <!-- ********************* Section Start ********************* -->
+    <section class="landing-page-hero__wrapper landing-page-hero__video-wrapper auto__hero">
+      <div class="container">
+        <!-- Video Box -->
+        <div class="row align-items-center">
+          <section class="video-wrapper col-lg-8">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/RarLXw2UIQQ?&amp;modestbranding=0&amp;autohide=1&amp;showinfo=0&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&playlist=RarLXw2UIQQ"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen="" class="video"></iframe>
+            </div>
+          </section>
+
+          <!-- Quote Box -->
+          <section class="quote-start col-lg-4">
+            <div class="quote-start__controls">
+              <div class="quote-start__upper-wrapper">
+                <img class="quote-start__type-image" src="./img/flood.svg" alt="" />
+                <h1 class="quote-start__heading">Flood Insurance</h1>
+                <p class="quote-start__heading">
+                  Let us help you protect your business. Get a free quote now.
+                </p>
+              </div>
+              <div class="quote-start__lower-wrapper">
+                <div class="field" style="display: none">
+                  <input class="js-shortzip-mask zip" id="quote-zip" type="text" autocomplete="off" required=""
+                    name="quoteZip" alt="Auto" />
+                  <label for="quote-zip"></label>
+                </div>
+                <button class="button button--large-text Click-here" type="button">
+                  Get a Quote
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    <!-- ********************* Section End ********************* -->
+  </main>
+</body>
+
+</html>
