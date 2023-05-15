@@ -1,6 +1,5 @@
 .make_sound_section .row,
-.make_sound_section .col-md-7,
-.make_sound_section .col-md-5 {
+.make_sound_section .col-md-7 {
   padding: 0 !important;
 }
 
@@ -16,7 +15,7 @@
 
 .content-column {
   background-color: var(--afi-blue-200);
-  padding: 1rem 2rem;
+  padding: 1rem 2rem !important;
 }
 
 .content-column ul {
@@ -24,13 +23,18 @@
   padding-left: 20px;
 }
 
-.flood_policy_cover {
-  background-color: var(--afi-blue-200);
-  padding: 1rem 2rem !important;
+/* 15 May */
+.make_sound_section {
+  padding-left: 30px;
 }
 
-.flood_policy_cover ul {
-  margin: 0 !important;
-  margin-bottom: 1rem !important;
-  padding: 0 !important;
+.make_sound_section .flood_article_img {
+  width: 100%;
+  height: 100%;
+}
+
+.make_sound_section .flood_article_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

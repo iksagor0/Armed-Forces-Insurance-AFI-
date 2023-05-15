@@ -23,6 +23,7 @@
 }
 .blue__card h1 {
   font-weight: 500;
+  color: #fff !important;
 }
 
 .border__button {

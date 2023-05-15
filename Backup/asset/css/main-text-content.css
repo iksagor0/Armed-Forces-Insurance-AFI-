@@ -1,5 +1,13 @@
+.auto_section__container {
+  margin: 30px auto !important;
+  /* margin: 50px auto !important; */
+}
+.main__text__content {
+  justify-content: space-between !important;
+}
+
 .main__text__content .title__text {
-  font-size: 3rem;
+  font-size: 3rem !important;
   line-height: 1.25;
   padding: 0;
 }

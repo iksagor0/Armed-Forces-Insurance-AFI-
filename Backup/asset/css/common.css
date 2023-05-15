@@ -1,7 +1,6 @@
 /*==============================
         COMMON CODE
  ==============================*/
-
 :root {
   --color-black: #000;
   --color-white: #fff;
@@ -21,6 +20,17 @@
   --color-green-20: #104a12;
   --color-pink-10: #fee8e9;
   --color-pink-20: #e8bebe;
+
+  --afi-blue-900: #003864;
+  --afi-blue-700: #004976;
+  --afi-blue-500: #0570c5;
+  --afi-blue-300: #9bc6ea;
+  --afi-blue-200: #f6fbff;
+  --afi-blue-100: #e3edff;
+  --afi-red-500: #cb2c30;
+  --afi-red-700: #881b26;
+  --afi-grey-700: #898d8d;
+
   --font-family-primary: "Roboto", sans-serif;
   --font-family-secondary: "Zilla Slab", serif;
   --font-family-icons: "afi-icon";
@@ -101,10 +111,10 @@ h3,
 h4,
 h5,
 h6 {
-  padding: 0 !important;
   margin: 0 !important;
   margin-bottom: 1.125rem !important;
   font-weight: 400 !important;
+  padding: 0 !important;
 }
 
 h1,
@@ -174,9 +184,9 @@ i.fa {
 }
 
 /* ***************************************** */
-/*                     BODY                  */
+/*                    BODY                  */
 /* ***************************************** */
-
+/* 
 body.offscreen-is-active {
   -webkit-transform: translateX(220px);
   -ms-transform: translateX(220px);
@@ -272,13 +282,12 @@ main.offscreen__darken:before {
   transition: opacity var(--anim-duration-half);
   width: 0;
   z-index: 9;
-}
+} */
 
 /* ***************************************** */
-
-/*        COMMON CLASSES WITH STYLES          */
-
+/*        COMMON CLASSES WITH STYLES         */
 /* ***************************************** */
+
 .heading-blue {
   color: #003864;
   color: var(--color-blue-40);
@@ -383,18 +392,21 @@ main.offscreen__darken:before {
 }
 
 /*Mohi*/
+
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 /* 14 April */
+
 .component-content,
 .component {
   padding: 0 !important;
 }
 
 /* For Header and Footer a tag */
+
 header a,
 footer a {
   color: #363636 !important;
@@ -407,6 +419,7 @@ footer a {
 }
 
 /* Mohi vai  */
+
 .gray-pods {
   background-color: #f6f6f6;
   background-color: var(--color-gray-10);
@@ -414,12 +427,14 @@ footer a {
 }
 
 /* 01 May */
+
 .content,
 .rich-text {
   border: none !important;
 }
 
 /* Mohi vai */
+
 .landing-page-hero__wrapper {
   text-align: center;
   /*   max-height: 32.5rem;*/
@@ -430,6 +445,7 @@ footer a {
   max-width: 1600px;
   margin: auto;
   height: 32.5rem;
+  margin-bottom: 50px;
 }
 
 .component-space-top-bottom {
@@ -437,6 +453,7 @@ footer a {
 }
 
 /* 03 May */
+
 .component-content {
   color: #000 !important;
   border: 0 !important;
@@ -450,7 +467,35 @@ footer a {
   font-size: 16px !important;
   overflow: hidden;
 }
+
 .content li,
 .rich-text li {
   font-size: 16px !important;
+}
+
+/* 12 May */
+.parent_50_50 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.parent_50_50 .col-6,
+.parent_50_50 .col-md-6,
+.parent_50_50 .col-lg-6 {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 991px) {
+  .parent_50_50 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* 15 May */
+.place__center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }

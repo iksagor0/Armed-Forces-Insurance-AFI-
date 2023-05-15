@@ -1,5 +1,6 @@
 .articles__container {
-  margin: 50px auto 20px !important;
+  margin: 0 auto 20px !important;
+  /* margin: 50px auto 20px !important; */
   max-width: 1170px;
 }
 
@@ -54,4 +55,27 @@
   margin-top: 0 !important;
   line-height: 1.5;
   font-size: 1rem;
+}
+
+/* 15 May */
+.related_article__container {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.related_article__container .related_article__item {
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .related_article__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .related_article__container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

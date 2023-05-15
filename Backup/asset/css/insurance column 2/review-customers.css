@@ -12,7 +12,6 @@
 }
 
 .customer_review {
-  max-width: none;
   margin-bottom: 1.7rem;
 }
 
@@ -20,8 +19,4 @@
 .customer_review__quote {
   font-style: italic;
   margin-bottom: 0.3rem !important;
-}
-
-.customer_review .component-content {
-  color: #fff !important;
 }
