@@ -1,0 +1,94 @@
+.insurance__hero {
+  display: block;
+  position: relative;
+  /* background: url(./img/videohero_auto1.jpg); */
+  max-width: 1600px;
+  margin: auto;
+  padding: 20px;
+  position: relative;
+}
+
+.insurance__hero .backround_image img {
+  width: 100%;
+}
+
+.insurance__hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.insurance__hero .video-wrapper {
+  background-color: transparent;
+  aspect-ratio: 16 / 9;
+}
+
+.insurance__hero .video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.insurance__hero .quote-start {
+  background-image: linear-gradient(120deg, #cb2c30, #881b26);
+  background-image: linear-gradient(
+    120deg,
+    var(--color-red-10),
+    var(--color-red-20)
+  );
+  color: #fff;
+  color: var(--color-white);
+  padding: 2.75rem 2.25rem;
+}
+.insurance__hero .quote-start__controls {
+  text-align: left;
+}
+.insurance__hero form {
+  max-width: 260px;
+  margin: auto;
+}
+.insurance__hero .quote-start__type-image {
+  height: 2.9375rem;
+  width: auto;
+}
+
+.insurance__hero .quote-start__heading {
+  margin-top: 0.8rem !important;
+}
+
+.insurance__hero .quote-start__upper-wrapper p {
+  line-height: 2 !important;
+}
+
+.insurance__hero .quote-start__controls .button {
+  width: 100%;
+  font-size: 1.125rem;
+}
+
+@media screen and (min-width: 992px) {
+  .insurance__hero {
+    display: block;
+    height: 32.5rem;
+    overflow: hidden;
+    padding: 25px;
+  }
+
+  .insurance__hero .quote-start {
+    max-width: 18rem;
+    margin-left: auto;
+    max-height: 370px;
+    position: absolute;
+    right: 0;
+    top: 90px;
+  }
+
+  .insurance__hero .backround_image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* for Homeowner page */
+  .insurance__hero.homeowner_hero .quote-start {
+    max-height: 400px;
+    top: 45px;
+  }
+}
