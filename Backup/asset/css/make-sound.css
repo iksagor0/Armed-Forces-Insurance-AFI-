@@ -7,8 +7,9 @@
   /* align-items: center;
   padding: 3rem; */
   max-width: 1150px;
-  margin: 10px auto 70px;
+  /* margin: 10px auto 70px; */
 }
+
 .make_sound_section h2 {
   color: #004976 !important;
 }

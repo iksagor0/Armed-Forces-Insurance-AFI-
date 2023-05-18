@@ -1,7 +1,8 @@
-.auto_section__container {
-  margin: 30px auto !important;
-  /* margin: 50px auto !important; */
-}
+/* .auto_section__container { */
+/* margin: 30px auto !important; */
+/* margin: 50px auto !important; */
+/* } */
+
 .main__text__content {
   justify-content: space-between !important;
 }
@@ -11,6 +12,7 @@
   line-height: 1.25;
   padding: 0;
 }
+
 .video__container .sxa-video-wrapper {
   overflow: hidden;
   aspect-ratio: 16/9;

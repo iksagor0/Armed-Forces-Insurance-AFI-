@@ -1,6 +1,6 @@
 .policy__cover {
   max-width: 1150px;
-  margin: 50px auto 20px !important;
+  /* margin: 50px auto 20px !important; */
   text-align: center !important;
 }
 
@@ -8,18 +8,21 @@
   width: 80px;
   margin-bottom: 10px;
 }
+
 .policy__cover h1 {
   font-size: 2.25rem !important;
   line-height: 2.5rem !important;
   color: var(--afi-blue-700);
 }
 
-.policy__cover h2 {
+.policy__cover h2,
+.policy__cover h3 {
   color: #004976 !important;
+  font-size: 24px !important;
 }
 
-.policy__cover .policy__cover_title {
-  font-size: 3rem !important;
+.policy__cover .policy_cover_title h2 {
+  font-size: 36px !important;
   line-height: 2.5rem;
 }
 

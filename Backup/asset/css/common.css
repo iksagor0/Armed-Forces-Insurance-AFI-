@@ -140,6 +140,12 @@ a {
   font-size: 16px !important;
 }
 
+a:hover {
+  color: #003864 !important;
+  color: var(--color-blue-40) !important;
+  text-decoration: underline !important;
+}
+
 button,
 button:focus,
 input,
@@ -179,7 +185,7 @@ i.fa {
 
 .container {
   max-width: 1280px;
-  width: calc(100% - 16px);
+  width: calc(100% - 50px);
   margin: 0 auto;
 }
 
@@ -317,13 +323,15 @@ main.offscreen__darken:before {
     opacity 0.25s;
 }
 
-.button:hover {
+.button:hover,
+.button a:hover {
   background-color: #025699;
   background-color: var(--color-blue-20) !important;
   border-color: #025699;
   border-color: var(--color-blue-20) !important;
   color: #fff;
-  color: var(--color-white);
+  color: var(--color-white) !important;
+  text-decoration: none !important;
 }
 
 .border__button,
@@ -442,10 +450,16 @@ footer a {
 }
 
 .landing-page-hero_maxwidth {
-  max-width: 1600px;
-  margin: auto;
-  height: 32.5rem;
-  margin-bottom: 50px;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width:1200px) {
+  .landing-page-hero_maxwidth {
+    max-width: 1600px;
+    margin: auto;
+    height: 32.5rem;
+  }
 }
 
 .component-space-top-bottom {
@@ -480,6 +494,17 @@ footer a {
   gap: 40px;
 }
 
+.parent_75_25 {
+  display: grid !important;
+  grid-template-columns: 9fr 3fr;
+  gap: 40px;
+}
+
+.parent_75_25 .item_75,
+.parent_75_25 .item_25 {
+  width: 100%;
+}
+
 .parent_50_50 .col-6,
 .parent_50_50 .col-md-6,
 .parent_50_50 .col-lg-6 {
@@ -487,7 +512,9 @@ footer a {
 }
 
 @media screen and (max-width: 991px) {
-  .parent_50_50 {
+
+  .parent_50_50,
+  .parent_75_25 {
     grid-template-columns: 1fr;
     gap: 30px;
   }

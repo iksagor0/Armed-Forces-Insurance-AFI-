@@ -50,3 +50,15 @@
   background-color: #0570c5 !important;
   border-color: #0570c5 !important;
 }
+
+
+/* Life Page Logos */
+
+.life_logo_image_parent {
+  justify-content: center;
+  gap: 60px;
+}
+
+.life_logo_image {
+  width: auto !important;
+}
