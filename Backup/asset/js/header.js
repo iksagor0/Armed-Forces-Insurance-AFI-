@@ -1,23 +1,23 @@
 window.addEventListener("load", () => {
-    var body = document.body;
-    var hamburger = document.querySelector("#hamburger");
+  var body = document.body;
+  var hamburger = document.querySelector("#hamburger");
 
-    hamburger.addEventListener("click", () => {
-        body.classList.toggle("screen_active");
-    });
+  hamburger.addEventListener("click", () => {
+    body.classList.toggle("screen_active");
+  });
 
-    // Nav Item
-    const itemWithSubItems = document.querySelectorAll(
-        ".primary-nav .level1.submenu"
-    );
-    itemWithSubItems.forEach((item) => {
-        item.addEventListener("click", () => {
-            if (screen.width < 991) {
-                itemWithSubItems.querySelector("ul").classList.toggle("sub_nav_open");
-            }
-        });
+  // Nav Item
+  const itemWithSubItems = document.querySelectorAll(
+    ".primary-nav .level1.submenu"
+  );
+  itemWithSubItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      if (screen.width < 991) {
+        itemWithSubItems.querySelector("ul").classList.toggle("sub_nav_open");
+      }
     });
-})
+  });
+});
 // ******* Main Code *******
 // const body = document.body;
 // const hamburger = document.querySelector("#hamburger");
@@ -50,7 +50,6 @@ window.onload = () => {
 };
 
 window.addEventListener("load", () => {
-
-    const activeNav = document.querySelector(".level1.active");
-    activeNav.classList.remove("active");
-})
+  const activeNav = document.querySelector(".level1.active");
+  activeNav?.classList.remove("active");
+});

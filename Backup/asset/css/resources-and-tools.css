@@ -12,7 +12,7 @@
     object-fit: cover;
 }
 
-.image_link__wrapper .link_image {
+.image_link__wrapper_item .link_image {
     position: absolute;
     height: 100%;
 }

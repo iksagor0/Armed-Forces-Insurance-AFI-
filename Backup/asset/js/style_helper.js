@@ -1,3 +1,6 @@
+// // remove the container class from header main element
+// document.getElementById("header")?.classList.remove("container");
+
 function addClassToParent(target, parentClass) {
   const mainText = document.querySelector(`.${target}`);
   mainText?.parentElement?.classList.add(parentClass);
@@ -11,8 +14,6 @@ function parent50x50(target, extraClass) {
   if (extraClass) {
     parent?.classList.add(extraClass);
   }
-
-  console.log(mainText);
 }
 
 // To add class parent
@@ -27,4 +28,3 @@ addClassToParent("life_logo_image", "life_logo_image_parent");
 
 // To make 50-50 grid column
 parent50x50("left__text__content", "TypesOfBusiness");
-parent50x50("policy_cover_item", "related_article__container");

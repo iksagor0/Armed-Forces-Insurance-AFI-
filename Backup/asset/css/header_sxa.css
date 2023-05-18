@@ -1,3 +1,7 @@
+#header {
+  width: 100% !important;
+}
+
 .header {
   z-index: 999;
   padding-bottom: 15px !important;
@@ -255,13 +259,24 @@ header a:hover {
 
 /* 28 April */
 @media screen and (max-width: 991px) {
-  #header .col-lg-8.d-none.d-lg-block {
-    display: block !important;
+  #header img {
+    max-width: 120px !important;
+  }
+
+
+  /* #header .col-lg-8.d-none.d-lg-block, */
+  #header .nav_menus {
+    display: none !important;
     position: fixed;
     top: 0;
     left: -220px;
     transition: 0.3s;
     z-index: -9999;
+    padding: 10px;
+  }
+
+  #header .nav_menus>.row:first-child {
+    max-width: 200px;
   }
 
   #header .logo_wrapper {
@@ -331,13 +346,25 @@ header a:hover {
   }
 
   body.screen_active {
-    transition: transform 0.3s;
     position: relative;
-    transform: translateX(220px);
+    transition: transform 0.3s;
+    /* transform: translateX(220px); */
     /* left: 220px; */
   }
 
-  body.screen_active::before {
+  #wrapper {
+    overflow: unset !important;
+    transition: transform 0.3s;
+    overflow: unset !important;
+  }
+
+  body.screen_active #wrapper {
+    position: relative;
+    transition: transform 0.3s;
+    transform: translateX(220px);
+  }
+
+  body.screen_active main::before {
     content: "";
     width: 100%;
     height: 100%;
@@ -348,10 +375,14 @@ header a:hover {
     z-index: 555;
   }
 
-  body.screen_active #header .col-lg-8.d-none.d-lg-block {
+  body.screen_active #header .col-lg-8.d-none.d-lg-block,
+  body.screen_active #header .nav_menus {
     /* left: 0; */
+    display: block !important;
     z-index: 9999;
   }
+
+  /* body.screen_active #header .nav_menus {} */
 
   body.screen_active #hamburger {
     position: relative;
@@ -384,10 +415,6 @@ header a:hover {
 .header__main-wrapper,
 .header__top_wrapper {
   width: 100% !important;
-}
-
-.navigation.navigation-main .component-content>nav ul:after {
-  display: none !important;
 }
 
 

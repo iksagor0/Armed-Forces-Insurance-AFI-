@@ -32,6 +32,10 @@
   width: 100%;
 }
 
+.content-pod .content-pod__image a {
+  display: block !important;
+}
+
 .content-pod__content {
   display: flex;
   flex-direction: column;
@@ -112,9 +116,11 @@
     opacity: 1;
     height: auto;
   }
+
   .grid__item:hover .content-pod__heading {
     transform: none !important;
   }
+
   .grid__item:hover .button {
     transform: none !important;
   }
@@ -125,6 +131,7 @@
   .content-pod__heading {
     transform: translateY(0) !important;
   }
+
   .button {
     transform: translateY(0) !important;
   }
@@ -140,6 +147,7 @@
     height: 12px;
     opacity: 1;
   }
+
   .swiper-pagination-bullet-active {
     background-color: #004976;
     background-color: var(--color-blue-30);

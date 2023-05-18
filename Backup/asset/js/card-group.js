@@ -42,13 +42,13 @@
 // }
 
 // ******* 28 April ********
-const parents = document.querySelectorAll(".afi-footer-title");
+// const parents = document.querySelectorAll(".afi-footer-title");
 
-parents.forEach((parent) => {
-  parent.querySelector("h2").addEventListener("click", () => {
-    parent.classList.toggle("ul_open");
-  });
-});
+// parents.forEach((parent) => {
+//   parent.querySelector("h2").addEventListener("click", () => {
+//     parent.classList.toggle("ul_open");
+//   });
+// });
 
 // ****** 02 May ******
 
@@ -63,11 +63,11 @@ if (screen.width < 768) {
   swiperWrapper?.classList.add("swiper-wrapper");
 
   // Add "swiper-slide" class in sliderItems
-   //  const sliderItems = document.querySelectorAll(".mySwiper .slider_item");
-    const sliderItems = document.querySelectorAll(".swiper-wrapper .col-lg-3");
-   
+  //  const sliderItems = document.querySelectorAll(".mySwiper .slider_item");
+  const sliderItems = document.querySelectorAll(".swiper-wrapper .col-lg-3");
+
   if (sliderItems) {
-      sliderItems?.forEach((item) => {
+    sliderItems?.forEach((item) => {
       item?.classList.add("swiper-slide");
     });
   }

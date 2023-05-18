@@ -8,6 +8,7 @@
   text-align: center;
   margin: 50px 0 !important;
 }
+
 .account-pod__icon {
   display: block;
   font-size: 3.5rem;
@@ -48,9 +49,11 @@
 .loginbtn .field-link {
   text-align: right !important;
 }
+
 .registerbtn .field-link {
   text-align: left !important;
 }
+
 .acc-btn .field-link {
   margin-top: 25px;
 }
@@ -60,6 +63,7 @@
   font-weight: 500;
   border-bottom: none !important;
 }
+
 /* cng end */
 
 /* RESPONSIVE */
@@ -68,6 +72,7 @@
     padding: 3.625rem 0 2.75rem !important;
   }
 }
+
 @media screen and (max-width: 64em) {
   .connectBtn {
     min-width: 7rem !important;
@@ -77,19 +82,19 @@
 .account-pod__content .button {
   font-size: 12px !important;
 }
+
 .account-pod__content .button-group {
   font-size: 12px !important;
 }
 
-.button-acc.acount__pods_forgot {
-  margin-top: 10px !important;
-  display: block !important;
-  color: #0570c5 !important;
+.button-acc.account__pods_forgot {
+  border: none !important;
 }
 
 .account-pod__content .position-left .button {
   margin-left: 5px;
 }
+
 .account-pod__content .position-right .button {
   margin-right: 5px;
 }
