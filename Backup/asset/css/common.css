@@ -80,6 +80,10 @@ body {
   footer {
     padding: 0 10px;
   }
+
+  footer {
+    padding: 0 30px;
+  }
 }
 
 /* body::-webkit-scrollbar {
@@ -440,7 +444,7 @@ footer a {
 .gray-pods {
   background-color: #f6f6f6;
   background-color: var(--color-gray-10);
-  padding: 2.75rem 0 !important;
+  /* padding: 2.75rem 0 !important; */
 }
 
 /* 01 May */
@@ -534,4 +538,9 @@ footer a {
   display: grid;
   justify-content: center;
   align-items: center;
+}
+
+/* 18 May */
+.row {
+  --bs-gutter-x: 0 !important;
 }

@@ -1,7 +1,8 @@
 footer {
   margin-top: auto;
   background-color: #f0f0f0;
-  padding: 0 0 2rem;
+  /* padding: 0 0 2rem; */
+  padding-bottom: 30px !important;
   width: 100% !important;
 }
 
@@ -380,5 +381,12 @@ footer .footer-disclaimer .footer-disclaimer__links a {
   .footer-disclaimer__content p,
   .footer-disclaimer__links a {
     font-size: 13px !important;
+  }
+}
+
+@media screen and (max-width:1300px) {
+  footer {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

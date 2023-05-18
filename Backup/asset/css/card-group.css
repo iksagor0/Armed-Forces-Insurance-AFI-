@@ -182,3 +182,15 @@
 .content-pod-group::after {
   right: -999px;
 } */
+
+@media screen and (min-width:992px) {
+  .card_group_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .card_group_item {
+    width: 100%;
+  }
+}

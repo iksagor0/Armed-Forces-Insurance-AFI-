@@ -265,7 +265,7 @@ header a:hover {
 
 
   /* #header .col-lg-8.d-none.d-lg-block, */
-  #header .nav_menus {
+  #header .nav_menu {
     display: none !important;
     position: fixed;
     top: 0;
@@ -275,7 +275,7 @@ header a:hover {
     padding: 10px;
   }
 
-  #header .nav_menus>.row:first-child {
+  #header .nav_menu>.row:first-child {
     max-width: 200px;
   }
 
@@ -355,7 +355,6 @@ header a:hover {
   #wrapper {
     overflow: unset !important;
     transition: transform 0.3s;
-    overflow: unset !important;
   }
 
   body.screen_active #wrapper {
@@ -376,13 +375,13 @@ header a:hover {
   }
 
   body.screen_active #header .col-lg-8.d-none.d-lg-block,
-  body.screen_active #header .nav_menus {
+  body.screen_active #header .nav_menu {
     /* left: 0; */
     display: block !important;
     z-index: 9999;
   }
 
-  /* body.screen_active #header .nav_menus {} */
+  /* body.screen_active #header .nav_menu {} */
 
   body.screen_active #hamburger {
     position: relative;

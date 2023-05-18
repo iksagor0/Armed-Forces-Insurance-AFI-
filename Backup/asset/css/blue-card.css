@@ -17,10 +17,12 @@
   padding: 2.5rem !important;
   height: 100%;
 }
+
 .blue__card p {
   color: #fff !important;
   margin-bottom: 20px;
 }
+
 .blue__card h1 {
   font-weight: 500;
   color: #fff !important;
@@ -74,11 +76,33 @@
   margin-top: 60px !important;
   margin-bottom: 20px !important;
 }
+
 .blue__card .button {
   padding: 8px 20px !important;
 }
+
 @media screen and (max-width: 768px) {
   .blue__card {
     padding: 1.5rem !important;
+  }
+}
+
+
+/* 18 May */
+.home_blue_cards_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.home_blue_card_item {
+  width: 100%;
+}
+
+@media screen and (max-width:768px) {
+  .home_blue_cards_grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
 }
