@@ -97,7 +97,7 @@
   .insurance__hero .quote-start {
     max-width: 18rem;
     margin-left: auto;
-    max-height: 370px;
+    /* max-height: 370px; */
     position: absolute;
     right: 0;
     top: 50%;

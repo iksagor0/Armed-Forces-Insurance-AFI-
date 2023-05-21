@@ -345,6 +345,7 @@ main.offscreen__darken:before {
   color: #fff;
   color: var(--color-white) !important;
   text-decoration: none !important;
+  border-radius: 1.625rem !important;
 }
 
 .border__button,
@@ -537,6 +538,11 @@ footer a {
 .place__center {
   display: grid;
   justify-content: center;
+  align-items: center;
+}
+
+.align__center {
+  display: grid;
   align-items: center;
 }
 

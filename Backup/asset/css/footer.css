@@ -157,7 +157,7 @@ footer .footer-disclaimer .footer-disclaimer__links a {
   font-family: Roboto, sans-serif;
   font-family: var(--font-family-primary);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 700 !important;
   padding: 0.5rem 0;
 }
 
@@ -261,6 +261,12 @@ footer .footer-disclaimer .footer-disclaimer__links a {
     font-weight: bold;
     color: #025699;
     color: var(--color-blue-20);
+  }
+
+  #footer .afi-footer-title h2,
+  #footer .afi-footer-title-cs h2 {
+    font-weight: 700 !important;
+    font-family: "Roboto", sans-serif !important;
   }
 
   #footer .social-links__list {

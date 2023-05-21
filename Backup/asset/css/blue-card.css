@@ -97,6 +97,8 @@
 
 .home_blue_card_item {
   width: 100%;
+  background-color: #003864 !important;
+  background-color: var(--color-blue-40) !important;
 }
 
 @media screen and (max-width:768px) {

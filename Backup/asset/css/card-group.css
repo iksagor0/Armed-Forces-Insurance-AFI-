@@ -75,7 +75,7 @@
 }
 
 .content-pod__content {
-  min-height: 300px;
+  min-height: 315px;
 }
 
 .grid__item .button {
@@ -192,5 +192,6 @@
 
   .card_group_item {
     width: 100%;
+    max-width: 305px;
   }
 }

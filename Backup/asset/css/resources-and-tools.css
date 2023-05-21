@@ -9,6 +9,8 @@
 
 .image_link__wrapper_item {
     min-height: 330px;
+    padding: 0 !important;
+    background: #e1f1ff;
 }
 
 .image_link__wrapper .link_image img,
@@ -52,8 +54,7 @@
 }
 
 .image_link__wrapper .title__link.bottom a,
-.image_link__wrapper_item .title__link.bottom a,
-.image_link__wrapper_item .title__link.top .field-title {
+.image_link__wrapper_item .title__link.bottom a {
     bottom: 5%;
     min-height: 65px;
 }
@@ -303,4 +304,37 @@
     .grid__article_9-3 {
         grid-template-columns: 1fr;
     }
+}
+
+/******************* Article Resources *******************/
+.article_resources {
+    padding: 1rem !important;
+}
+
+.article_resources .text__content h2 {
+    font-weight: 600 !important;
+}
+
+.article_resources .place__center {
+    justify-content: start;
+}
+
+@media screen and (min-width:991px) {
+    .article_resources .text__content {
+        padding-right: 25px !important;
+    }
+}
+
+/*  */
+.article_insurance_quote {
+    background-color: #f4f4f4 !important;
+}
+
+.article_insurance_quote__css {
+    padding: 2.75rem 2.25rem !important;
+}
+
+.article_insurance_quote h1,
+.article_insurance_quote h4 {
+    font-weight: 600 !important;
 }
