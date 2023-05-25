@@ -2,35 +2,9 @@
 const formData = {
   eligibilityStatus: "",
   policyHolder: {},
-  mainVehicleInfo: {
-    year: "",
-    make: "",
-    model: "",
-    // type: "Stock",
-    // estimateValue: "3000",
-    // vehicleStorage: "Private Garage",
-    // howVehicleDrive: "lol",
-    // NumberOfLicensedDrivers: "2",
-    // NumberOfDailyUseVehicle: "2",
-    // liabilityData: {},
-  },
-
-  moreVehiclesInfo: [
-    // {
-    //   year: "33",
-    //   make: "33",
-    //   model: "33",
-    //   type: "Stock",
-    //   estimateValue: "33",
-    //   vehicleStorage: "Private Garage",
-    //   howVehicleDrive: "33",
-    //   // liabilityData: {},
-    // },
-  ],
   vehicleInfo: {
     vehicles: [],
   },
-  householdViolations: "No violations in last 5 years",
 };
 
 const successRedirection = "https://afi.org/";
@@ -657,7 +631,7 @@ function runVehicleItemsFunctionality() {
         // Assign the values
         function editFormWithValue(id, value) {
           document.getElementById(id).value =
-            formData.moreVehiclesInfo[itemIndex][value];
+            formData.vehicleInfo.vehicles[itemIndex + 1][value];
         }
 
         editFormWithValue("moreVehicleYear", "year");
@@ -681,9 +655,10 @@ function runVehicleItemsFunctionality() {
     });
 
     deleteYes.addEventListener("click", () => {
-      formData.moreVehiclesInfo.splice(itemIndex, 1);
+      formData.vehicleInfo.vehicles[itemIndex + 1] = "deleted";
       item.classList.add("__hide");
-      // item.remove();
+      // item.remove(); // delete elements
+      console.log(formData.vehicleInfo.vehicles);
     });
   });
 }
@@ -714,14 +689,21 @@ function summaryValidation() {
   } else {
     formList = formList.filter((form) => form != "add_vehicle__form");
     // show data in Summary
-    const { year, make, model } = formData.mainVehicleInfo;
+    const { year, make, model } = formData.vehicleInfo.vehicles[0];
     document.querySelector(
       ".quote_request__summary_main_item_info"
     ).innerText = `${year} ${make} ${model}`;
   }
 
   // Add all data to moreVehicles sections
-  const moreVehicles = formData.moreVehiclesInfo;
+  formData.vehicleInfo.vehicles = formData.vehicleInfo.vehicles.filter(
+    (item) => item !== "deleted"
+  );
+
+  const moreVehicles = formData.vehicleInfo.vehicles.filter(
+    (item, index) => index > 0
+  );
+
   const addedSummary = document.querySelector("#moreVehicles");
   const totalAdded = addedSummary.children?.length;
 
@@ -793,6 +775,7 @@ function addVehicleValidation() {
     stepCount = summaryFormIndex - 1;
   }
 
+  return true;
   return isValidate;
 }
 
@@ -832,10 +815,10 @@ function addMoreVehicleValidation() {
 
     // UPDATE or CREATE Vehicle Data
     if (editVehicleIndex >= 0) {
-      formData.moreVehiclesInfo[editVehicleIndex] = vehicle;
+      formData.vehicleInfo.vehicles[editVehicleIndex + 1] = vehicle;
       editVehicleIndex = -1;
     } else {
-      formData.moreVehiclesInfo.push(vehicle);
+      formData.vehicleInfo.vehicles.push(vehicle);
     }
 
     // REDUCE stepCount and REMOVE add_more_vehicle_form from the formList
@@ -910,7 +893,8 @@ function functionalityForEachDamageForm() {
   const DamageFormWrapper = document.getElementById(
     "physical_damage_form_wrapper"
   );
-  const vehicleList = [formData.mainVehicleInfo, ...formData.moreVehiclesInfo];
+  const vehicleList = formData.vehicleInfo.vehicles;
+  // const vehicleList = [formData.mainVehicleInfo, ...formData.moreVehiclesInfo];
 
   // Clear DamageFormWrapper Children
   DamageFormWrapper.innerHTML = "";
@@ -953,9 +937,12 @@ function functionalityForEachDamageForm() {
 // *********************************************
 function violationsValidation() {
   if (getViolationsValue() === "No") {
+    formData.householdViolations = "No violations in last 5 years";
     return true;
   } else {
     const fieldsWrapper = document.querySelectorAll(".violation_info_fields");
+
+    const violations = [];
 
     fieldsWrapper.forEach((field) => {
       const driverField = field.querySelector("#householdViolationsDriver");
@@ -972,7 +959,6 @@ function violationsValidation() {
 
       const isValidate = validationFields.every((result) => result === true);
 
-      const violations = [];
       if (isValidate) {
         const violationData = {
           driver: driverField.value,
@@ -983,8 +969,17 @@ function violationsValidation() {
       }
     });
 
+    const checkedYes = document.getElementById(
+      "householdViolationsPreviousClaims--Yes"
+    ).checked;
+
+    // if (checkedYes) {
     formData.householdViolations = violations;
     return fieldsWrapper.length === violations.length;
+    // } else {
+    //   formData.householdViolations = "No violations in last 5 years";
+    //   return true;
+    // }
   }
 }
 
@@ -1069,13 +1064,8 @@ function physicalDamageValidation() {
   // If all sections are field and data is valid then set date to formData Vehicle
   const isAllDataValid = liabilityData.length === damageFieldSections.length;
   if (isAllDataValid) {
-    liabilityData.forEach((data, index) => {
-      if (index === 0)
-        formData.mainVehicleInfo.liabilityData = liabilityData[0];
-      else {
-        formData.moreVehiclesInfo[index - 1].liabilityData =
-          liabilityData[index];
-      }
+    liabilityData.forEach((data, i) => {
+      formData.vehicleInfo.vehicles[i].liabilityData = liabilityData[i];
     });
   }
 
