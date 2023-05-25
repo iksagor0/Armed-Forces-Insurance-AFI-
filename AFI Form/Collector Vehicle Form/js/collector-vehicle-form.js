@@ -7,6 +7,7 @@ const formData = {
   },
   householdViolations: null,
   policyCoverageLimits: {},
+  coverageHistory: {},
 };
 
 const successRedirection = "https://afi.org/";
@@ -1085,10 +1086,11 @@ function coverageHistoryValidation() {
   const policyRenewalDate = document.querySelector("#policyRenewalDate");
 
   //   const isValidate = validationFields.every((result) => result === true);
+  const history = formData.coverageHistory;
 
-  formData.currentInsuranceCompany = currentInsuranceCompany?.value;
-  formData.insuranceCompany = insuranceCompany?.value;
-  formData.policyRenewalDate = policyRenewalDate?.value;
+  history.currentInsuranceCompany = currentInsuranceCompany?.value;
+  history.insuranceCompany = insuranceCompany?.value;
+  history.policyRenewalDate = policyRenewalDate?.value;
 
   let validationFields = true;
 
