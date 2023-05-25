@@ -37,7 +37,7 @@ document
   .getElementById("content")
   ?.firstElementChild?.classList.add("flex-column");
 
-//
+//addClassByPagePath
 function addClassByPagePath(pagePath, classname) {
   const path = location.pathname.toLocaleLowerCase();
   if (path === pagePath) {
@@ -47,3 +47,11 @@ function addClassByPagePath(pagePath, classname) {
 }
 
 addClassByPagePath("/articles/auto", "article_insurance_quote");
+
+// ARTICLE PAGE SHARE FUNCTIONALITY
+const shareBadges = document.querySelector(".share-badges.js-share-badges");
+if (shareBadges) {
+  shareBadges.addEventListener("click", () =>
+    shareBadges.classList.toggle("triggered")
+  );
+}

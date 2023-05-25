@@ -3,45 +3,32 @@ const formData = {
   eligibilityStatus: "",
   policyHolderMaritalStatus: null,
   mainVehicleInfo: {
-    year: "2022",
-    make: "22",
-    model: "22",
-    type: "22",
-    estimateValue: "",
-    vehicleStorage: "22",
-    howVehicleDrive: "22",
-    NumberOfLicensedDrivers: "22",
-    NumberOfDailyUseVehicle: "22",
+    year: "2023",
+    make: "HP",
+    model: "Proton Saga",
+    type: "Stock",
+    estimateValue: "3000",
+    vehicleStorage: "Private Garage",
+    howVehicleDrive: "lol",
+    NumberOfLicensedDrivers: "2",
+    NumberOfDailyUseVehicle: "2",
   },
+
   moreVehiclesInfo: [
-    // {
-    //   year: "33",
-    //   make: "33",
-    //   model: "33",
-    //   type: "33",
-    //   estimateValue: "33",
-    //   vehicleStorage: "33",
-    //   howVehicleDrive: "33",
-    // },
-    // {
-    //   year: "2022",
-    //   make: "22",
-    //   model: "22",
-    //   type: "22",
-    //   estimateValue: "22",
-    //   vehicleStorage: "22",
-    //   howVehicleDrive: "22",
-    // },
+    {
+      year: "33",
+      make: "33",
+      model: "33",
+      type: "Stock",
+      estimateValue: "33",
+      vehicleStorage: "Private Garage",
+      howVehicleDrive: "33",
+    },
   ],
+  householdViolations: [],
 };
 
 const successRedirection = "https://afi.org/";
-
-const additionalForm = [
-  "military_information",
-  "parent_information",
-  "child_information",
-];
 
 // Forms
 const multiStepForm = [
@@ -50,20 +37,20 @@ const multiStepForm = [
   "summary__form",
   "violations__form",
   "coverage_limits_form",
+  "physical_damage_form",
   "coverage__history_form",
 ];
 
 const defaultForms = ["radio_select", ...multiStepForm];
 let formList = defaultForms;
 
-// =*********************************************
+// *********************************************
 //       FORM SUBMISSION AND STEP HANDLING
-// =*********************************************
+// *********************************************
 const nextBtn = document.querySelector("#next_btn");
 const backBtn = document.querySelector("#back_btn");
 
 let stepCount = 0;
-let subStepCount = 0;
 let maxStep = formList.length - 1;
 
 // ***** NEXT FUNCTIONALITY *****
@@ -118,23 +105,34 @@ function handleMultiStepForm(step) {
   }
   if (step === formList.indexOf("add_vehicle__form")) {
     if (!addVehicleValidation()) return false;
-  }
-  if (step === formList.indexOf("summary__form") - 1) {
-    if (!summaryValidation()) return false;
-  }
-  if (step === formList.indexOf("summary__form")) {
-    // When add_more_vehicle_form submit
-    formList = formList.filter((item) => item != "add_more_vehicle_form");
+    summaryValidation();
   }
   if (step === formList.indexOf("add_more_vehicle_form")) {
     if (!addMoreVehicleValidation()) return false;
+    summaryValidation();
+  }
+  if (
+    step === formList.indexOf("summary__form") ||
+    step === formList.indexOf("summary__form") - 1
+  ) {
+    summaryValidation();
   }
   if (step === formList.indexOf("violations__form")) {
-    if (!spouseValidation()) return false;
+    if (!violationsValidation()) return false;
+  }
+
+  if (step === formList.indexOf("coverage_limits_form")) {
+    if (!coverageLimitsValidation()) return false;
+    functionalityForEachDamageForm();
+  }
+  if (step === formList.indexOf("physical_damage_form")) {
+    if (!physicalHistoryValidation()) return false;
   }
   if (step === formList.indexOf("coverage__history_form")) {
-    if (!spouseValidation()) return false;
+    if (!coverageHistoryValidation()) return false;
   }
+
+  runVehicleItemsFunctionality();
 
   return true;
 }
@@ -152,7 +150,7 @@ function showActiveForm(step) {
   document.querySelector(`.${formList[step]}`)?.classList.add("active_form");
 
   console.log({ stepCount });
-  console.log(formList);
+  console.log(formData);
 
   // Conditionally Hide Back Btn
   stepCount <= 0
@@ -207,7 +205,14 @@ document.querySelectorAll(".field__input.numberOnly")?.forEach((input) => {
   });
 });
 
-// Alphabetic only
+// Input Alphabet Only
+document.querySelectorAll(".field__input.alphabeticOnly")?.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.target.value = e.target?.value.replace(/[^a-zA-z]/g, "");
+  });
+});
+
+// Alphabetic only Validation after Submit
 function alphabeticOnly(selector) {
   const letterRegEx = /^[A-Za-z]+$/;
   if (letterRegEx.test(selector?.value)) {
@@ -263,49 +268,75 @@ document
       : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
   });
 
-// Date Validation
-const dateField = document.querySelector("#policyRenewalDate");
-dateField.addEventListener("input", (e) => {
-  let value = e.target.value
-    .replace(/\D/g, "")
-    .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
-
-  let [fullData, MM, DD, YYYY] = value;
-
-  // Month Validation
-  if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
-  else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
-  else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
-
-  // Date Validation
-  if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
-  else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
-  else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
-  else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
-    value[2] = DD[0];
-  else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
-    value[2] = DD[0];
-
-  // Year validation
-  const maxYear = String(new Date().getFullYear() + 2);
-
-  if (Number(YYYY) <= 0) value[3] = "";
-  else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
-  else if (YYYY.length === 2 && Number(YYYY) > 20) value[3] = YYYY[0];
-  else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
-    value[3] = YYYY.slice(0, 2);
-  else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
-    value[3] = YYYY.slice(0, 3);
-
-  // Result
-  e.target.value = !value[2]
-    ? value[1]
-    : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+// Social Security Number Pattern
+document.querySelectorAll(".SSN").forEach((field) => {
+  field.addEventListener("input", (e) => {
+    var x = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+    e.target.value = !x[2]
+      ? x[1]
+      : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+  });
 });
 
-// =*********************************************
+// Date Validation
+function dateValidation(field, getMaxYear) {
+  field?.addEventListener("input", (e) => {
+    let value = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
+
+    let [fullData, MM, DD, YYYY] = value;
+
+    // Month Validation
+    if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
+    else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
+    else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
+
+    // Date Validation
+    if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
+    else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
+    else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
+    else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
+      value[2] = DD[0];
+    else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
+      value[2] = DD[0];
+
+    // Year validation
+    const maxYear = String(getMaxYear);
+    // const maxYear = String(new Date().getFullYear() + 2);
+
+    if (Number(YYYY) <= 0) value[3] = "";
+    else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+    else if (YYYY.length === 2 && Number(YYYY) > 20) value[3] = YYYY[0];
+    else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+    else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+      value[3] = YYYY.slice(0, 2);
+    else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+      value[3] = YYYY.slice(0, 3);
+
+    // Result
+    e.target.value = !value[2]
+      ? value[1]
+      : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+  });
+}
+
+const policyRenewalDate = document.querySelector("#policyRenewalDate");
+const DOB = document.querySelector("#policyHolderDob");
+const violationsDates = document.querySelectorAll(".householdViolationsDate");
+const spouseDOB = document.querySelector("#cohabitantDob");
+
+const thisYear = new Date().getFullYear();
+dateValidation(policyRenewalDate, thisYear + 2);
+dateValidation(DOB, thisYear - 17);
+dateValidation(spouseDOB, thisYear - 17);
+violationsDates.forEach((vDate) => dateValidation(vDate, thisYear));
+
+// *********************************************
 //              FORM VALIDATION
-// =*********************************************
+// *********************************************
 // / ********** Eligibility Validation ***********
 function eligibilityValidation() {
   const eligibilityStatus = document.querySelector(
@@ -373,10 +404,18 @@ function militaryFormValidation() {
       formData?.policyHolderLastName;
   }
 
-  // return isValidate;
-  return true;
+  return isValidate;
 }
-
+// Military Rank should be disabled if branchOfService value none
+const branchOfService = document.getElementById("branchOfService");
+branchOfService.addEventListener("change", () => {
+  const militaryRank = document.getElementById("militaryRank");
+  if (Boolean(branchOfService?.value)) {
+    militaryRank.disabled = false;
+  } else {
+    militaryRank.disabled = true;
+  }
+});
 // / ********** Parent's Information ***********
 function parentFormValidation() {
   const parentFirstName = document.querySelector("#parentFirstName");
@@ -421,12 +460,27 @@ function childFormValidation() {
   return isValidate;
 }
 
-// / ********** MULTI-STEP 1 Validation ***********
+// *********************************************
+//             STEP-1 VALIDATION
+// *********************************************
 function policyholderValidation(step) {
   const policyHolderFirstName = document.querySelector(
     "#policyHolderFirstName"
   );
   const policyHolderLastName = document.querySelector("#policyHolderLastName");
+  const policyHolderSuffix = document.querySelector("#policyHolderSuffix");
+  const policyHolderMailingAddress = document.querySelector(
+    "#policyHolderMailingAddress"
+  );
+  const policyHolderCity = document.querySelector("#policyHolderCity");
+  const policyHolderState = document.querySelector("#policyHolderState");
+  const policyHolderZip = document.querySelector("#policyHolderZip");
+  const policyHolderSsn = document.querySelector("#policyHolderSsn");
+  const policyHolderDob = document.querySelector("#policyHolderDob");
+  const policyHolderGender = document.querySelector("#policyHolderGender");
+  const policyHolderMaritalStatus = document.querySelector(
+    "#policyHolderMaritalStatus"
+  );
   const policyHolderEmail = document.querySelector("#policyHolderEmail");
   const policyHolderPhoneType = document.querySelector(
     "#policyHolderPhoneType"
@@ -434,37 +488,55 @@ function policyholderValidation(step) {
   const policyHolderPhoneNumber = document.querySelector(
     "#policyHolderPhoneNumber"
   );
-  const policyHolderMaritalStatus = document.querySelector(
-    "#policyHolderMaritalStatus"
+  const policyHolderResidenceStatus = document.querySelector(
+    "#policyHolderResidenceStatus"
   );
 
-  formData.policyHolderMaritalStatus = policyHolderMaritalStatus?.value;
+  const validationFields = [
+    alphabeticOnly(policyHolderFirstName),
+    alphabeticOnly(policyHolderLastName),
+    isValueEmpty(policyHolderFirstName),
+    isValueEmpty(policyHolderLastName),
+    isValueEmpty(policyHolderMailingAddress),
+    isValueEmpty(policyHolderCity),
+    isValueEmpty(policyHolderState),
+    minValue(policyHolderZip, 5, "Please enter a valid Zip code"),
+    isValueEmpty(policyHolderZip),
+    minValue(policyHolderDob, 10, "Please enter a valid Date"),
+    isValueEmpty(policyHolderDob),
+    isValueEmpty(policyHolderGender),
+    isValueEmpty(policyHolderMaritalStatus),
+    isValueEmpty(policyHolderEmail),
+    emailValidation(policyHolderEmail),
+    isValueEmpty(policyHolderEmail),
+    isValueEmpty(policyHolderPhoneType),
+    phoneValidation(policyHolderPhoneNumber),
+    isValueEmpty(policyHolderResidenceStatus),
+  ];
 
-  // const validationFields = [
-  //   alphabeticOnly(policyHolderFirstName),
-  //   alphabeticOnly(policyHolderLastName),
-  //   isValueEmpty(policyHolderFirstName),
-  //   emailValidation(policyHolderEmail),
-  //   isValueEmpty(policyHolderEmail),
-  //   isValueEmpty(policyHolderPhoneType),
-  //   phoneValidation(policyHolderPhoneNumber),
-  //   isValueEmpty(policyHolderPhoneNumber),
-  // ];
-
-  // const isValidate = validationFields.every((result) => result === true);
+  const isValidate = validationFields.every((result) => result === true);
 
   // if (isValidate) {
-  //   formData.policyHolderFirstName = policyHolderFirstName?.value;
-  //   formData.policyHolderLastName = policyHolderLastName?.value;
-  //   formData.policyHolderEmail = policyHolderEmail?.value;
-  //   formData.policyHolderPhoneType = policyHolderPhoneType?.value;
-  //   formData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
-  //     /\D/g,
-  //     ""
-  //   );
-  // }
+  formData.policyHolderFirstName = policyHolderFirstName?.value;
+  formData.policyHolderLastName = policyHolderLastName?.value;
+  formData.policyHolderSuffix = policyHolderSuffix?.value;
+  formData.policyHolderMailingAddress = policyHolderMailingAddress?.value;
+  formData.policyHolderCity = policyHolderCity?.value;
+  formData.policyHolderState = policyHolderState?.value;
+  formData.policyHolderZip = policyHolderZip?.value;
+  formData.policyHolderSsn = policyHolderSsn?.value.replace(/\D/g, "");
+  formData.policyHolderDob = policyHolderDob?.value;
+  formData.policyHolderGender = policyHolderGender?.value;
+  formData.policyHolderMaritalStatus = policyHolderMaritalStatus?.value;
+  formData.policyHolderEmail = policyHolderEmail?.value;
+  formData.policyHolderPhoneType = policyHolderPhoneType?.value;
+  formData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
+    /\D/g,
+    ""
+  );
+  formData.policyHolderResidenceStatus = policyHolderResidenceStatus?.value;
 
-  //
+  // SHOW SPOUSE INFORMATION FORM, IF HAVE
   const spouseValues = [
     "Married",
     "Cohabitant",
@@ -480,78 +552,154 @@ function policyholderValidation(step) {
     formList = formList.filter((form) => form != "spouse_information");
     console.log("aaaaaaaaaaaa spouse_information");
   }
-
-  // return isValidate;
-  return true;
-}
-
-function spouseValidation() {
-  const policyHolderFirstName = document.querySelector(
-    "#policyHolderFirstName"
-  );
-  const policyHolderLastName = document.querySelector("#policyHolderLastName");
-  const policyHolderEmail = document.querySelector("#policyHolderEmail");
-  const policyHolderPhoneType = document.querySelector(
-    "#policyHolderPhoneType"
-  );
-  const policyHolderPhoneNumber = document.querySelector(
-    "#policyHolderPhoneNumber"
-  );
-  const policyHolderMaritalStatus = document.querySelector(
-    "#policyHolderMaritalStatus"
-  );
-
-  formData.policyHolderMaritalStatus = policyHolderMaritalStatus?.value;
-
-  // const validationFields = [
-  //   alphabeticOnly(policyHolderFirstName),
-  //   alphabeticOnly(policyHolderLastName),
-  //   isValueEmpty(policyHolderFirstName),
-  //   emailValidation(policyHolderEmail),
-  //   isValueEmpty(policyHolderEmail),
-  //   isValueEmpty(policyHolderPhoneType),
-  //   phoneValidation(policyHolderPhoneNumber),
-  //   isValueEmpty(policyHolderPhoneNumber),
-  // ];
-
-  // const isValidate = validationFields.every((result) => result === true);
-
-  // if (isValidate) {
-  //   formData.policyHolderFirstName = policyHolderFirstName?.value;
-  //   formData.policyHolderLastName = policyHolderLastName?.value;
-  //   formData.policyHolderEmail = policyHolderEmail?.value;
-  //   formData.policyHolderPhoneType = policyHolderPhoneType?.value;
-  //   formData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
-  //     /\D/g,
-  //     ""
-  //   );
   // }
 
   // return isValidate;
   return true;
 }
 
-// / ********** MULTI-STEP 2 Validation ***********
-const placeIndex = formList.indexOf("summary__form");
-let isVehicleSummaryAppended = false;
+function spouseValidation() {
+  const cohabitantFirstName = document.querySelector("#cohabitantFirstName");
+  const cohabitantLastName = document.querySelector("#cohabitantLastName");
+  const cohabitantSuffix = document.querySelector("#cohabitantSuffix");
+  const cohabitantSsn = document.querySelector("#cohabitantSsn");
+  const cohabitantDob = document.querySelector("#cohabitantDob");
+  const cohabitantGender = document.querySelector("#cohabitantGender");
 
+  const validationFields = [
+    alphabeticOnly(cohabitantFirstName),
+    alphabeticOnly(cohabitantLastName),
+    isValueEmpty(cohabitantFirstName),
+    isValueEmpty(cohabitantLastName),
+    minValue(cohabitantDob, 10, "Please enter a valid Date"),
+    isValueEmpty(cohabitantDob),
+    isValueEmpty(cohabitantGender),
+  ];
+
+  const isValidate = validationFields.every((result) => result === true);
+
+  if (isValidate) {
+    formData.cohabitantFirstName = cohabitantFirstName?.value;
+    formData.cohabitantLastName = cohabitantLastName?.value;
+    formData.cohabitantSuffix = cohabitantSuffix?.value;
+    formData.cohabitantSsn = cohabitantSsn?.value.replace(/\D/g, "");
+    formData.cohabitantDob = cohabitantDob?.value;
+    formData.cohabitantGender = cohabitantGender?.value;
+  }
+
+  return isValidate;
+  // return true;
+}
+
+// *********************************************
+//              STEP-2 FUNCTIONALITY
+// *********************************************
+const summaryFormIndex = formList.indexOf("summary__form");
+let editVehicleIndex = -1;
+
+// ********** "+ Add Vehicle" BUTTON FUNCTIONALITY  ***********
+const addVehicle = document.getElementById("addVehicle");
+
+addVehicle.addEventListener("click", () => {
+  const fields = document.querySelectorAll(
+    ".add_more_vehicle_form .field__input"
+  );
+  fields.forEach((field) => (field.value = ""));
+
+  if (!formList.includes("add_more_vehicle_form")) {
+    formList.splice(summaryFormIndex, 0, "add_more_vehicle_form");
+  }
+  showActiveForm(stepCount);
+});
+
+// ********** FUNCTIONALITY OF VEHICLE FORM : Edit ***********
+const mainVehicleEditBtn = document.getElementById("mainVehicleEditBtn");
+mainVehicleEditBtn.addEventListener("click", () => {
+  if (!formList.includes("add_vehicle__form")) {
+    formList.splice(summaryFormIndex, 0, "add_vehicle__form");
+  }
+
+  showActiveForm(stepCount);
+});
+
+// ********** FUNCTIONALITY OF MORE VEHICLE FORMS : Edit, Delete ***********
+function runVehicleItemsFunctionality() {
+  const moreVehicles = document.getElementById("moreVehicles");
+  const moreVehicleItems = moreVehicles.querySelectorAll(
+    ".quote_request__summary_item"
+  );
+
+  moreVehicleItems.forEach((item, itemIndex) => {
+    const editBtn = item.querySelector("#editBtn");
+    const deleteBtn = item.querySelector("#deleteBtn");
+    const deleteYes = item.querySelector("#deleteYes");
+    const deleteNo = item.querySelector("#deleteNo");
+
+    editBtn?.addEventListener("click", () => {
+      editVehicleIndex = itemIndex;
+
+      if (!formList.includes("add_more_vehicle_form")) {
+        formList.splice(summaryFormIndex, 0, "add_more_vehicle_form");
+
+        showActiveForm(stepCount);
+
+        // Assign the values
+        function editFormWithValue(id, value) {
+          document.getElementById(id).value =
+            formData.moreVehiclesInfo[itemIndex][value];
+        }
+
+        editFormWithValue("moreVehicleYear", "year");
+        editFormWithValue("moreVehicleMake", "make");
+        editFormWithValue("moreVehicleModel", "model");
+        editFormWithValue("moreVehicleType", "type");
+        editFormWithValue("moreVehicleEstimatedValue", "estimateValue");
+        editFormWithValue("moreVehicleStorage", "vehicleStorage");
+        editFormWithValue("moreVehicleDriveDescription", "howVehicleDrive");
+      }
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      item.querySelector(".yes_no")?.classList.remove("__hide");
+      item.querySelector(".delete_edit")?.classList.add("__hide");
+    });
+
+    deleteNo.addEventListener("click", () => {
+      item.querySelector(".yes_no")?.classList.add("__hide");
+      item.querySelector(".delete_edit")?.classList.remove("__hide");
+    });
+
+    deleteYes.addEventListener("click", () => {
+      formData.moreVehiclesInfo.splice(itemIndex, 1);
+      item.classList.add("__hide");
+      // item.remove();
+    });
+  });
+}
+
+// *********************************************
+//              STEP-2 VALIDATION
+// *********************************************
 function summaryValidation() {
   // Check Main Vehicle data OKK or Not
   const mainVehicleValues = [];
   for (const key in formData.mainVehicleInfo) {
     mainVehicleValues.push(formData.mainVehicleInfo[key]);
   }
-  const haveAllMainVehicleValues = mainVehicleValues.every((v) => Boolean(v));
+  const haveAllMainVehicleValues = mainVehicleValues.every(
+    (v) => Boolean(v) === true
+  );
 
   // If Main Vehicle Data OKK then direct show SUMMARY neither show add_vehicle__form
   if (!haveAllMainVehicleValues) {
     if (!formList.includes("add_vehicle__form")) {
-      formList.splice(placeIndex, 0, "add_vehicle__form");
+      formList.splice(summaryFormIndex, 0, "add_vehicle__form");
     }
+
+    showActiveForm(stepCount);
   } else {
     formList = formList.filter((form) => form != "add_vehicle__form");
-    console.log("aaaaaaaaaaaa add_vehicle__form");
-    //
+    // show data in Summary
     const { year, make, model } = formData.mainVehicleInfo;
     document.querySelector(
       ".quote_request__summary_main_item_info"
@@ -564,7 +712,8 @@ function summaryValidation() {
   const totalAdded = addedSummary.children?.length;
 
   // if all data not appended then Append Data to #moreVehicles
-  if (!isVehicleSummaryAppended) {
+  if (moreVehicles.length > 0) {
+    addedSummary.innerHTML = "";
     const demoItem = document.querySelector(
       ".quote_request__summary_item.demoItem"
     );
@@ -576,111 +725,146 @@ function summaryValidation() {
         ".quote_request__summary_item_info"
       ).innerHTML = `${info?.year} ${info?.make} ${info?.model}`;
 
+      // append clone element in Summary
       addedSummary.appendChild(clonedItem);
     });
-    // after first time appending  make is TRUE to stop repeat appending
-    isVehicleSummaryAppended = true;
   }
-
-  // addedSummary
-  //   .querySelectorAll(".quote_request__summary_item")
-  //   .forEach((item, itemIndex) => {
-  //     moreVehicles.forEach((value, valueIndex) => {
-  //       if (itemIndex === valueIndex) {
-  //         item.innerText = `${value?.year} ${value?.make} ${value?.model}`;
-  //       }
-  //     });
-  //   });
-
-  return true;
 }
 
 function addVehicleValidation() {
-  // const mainVehicleYear = document.querySelector("#mainVehicleYear");
-  // const businessWebsite = document.querySelector("#businessWebsite");
-  // const businessType = document.querySelector("#businessType");
-  // const businessTaxId = document.querySelector("#businessTaxId");
-  // const businessPhysicalAddress = document.querySelector(
-  //   "#businessPhysicalAddress"
-  // );
-  // const city = document.querySelector("#city");
-  // const state = document.querySelector("#state");
-  // const zip = document.querySelector("#zip");
+  const Year = document.querySelector("#mainVehicleYear");
+  const Make = document.querySelector("#mainVehicleMake");
+  const Model = document.querySelector("#mainVehicleModel");
+  const Type = document.querySelector("#mainVehicleType");
+  const EstimatedValue = document.querySelector("#mainVehicleEstimatedValue");
+  const Storage = document.querySelector("#mainVehicleStorage");
+  const DriveDescription = document.querySelector(
+    "#mainVehicleDriveDescription"
+  );
+  const LicensedDriverCount = document.querySelector(
+    "#mainVehicleLicensedDriverCount"
+  );
+  const NumberOfDailyUse = document.querySelector(
+    "#mainVehicleNumberOfDailyUse"
+  );
 
-  // const validationFields = [
-  //   isValueEmpty(businessName),
-  //   isValueEmpty(businessType),
-  //   isValueEmpty(businessPhysicalAddress),
-  //   isValueEmpty(city),
-  //   isValueEmpty(state),
-  //   minValue(zip, 5, "Please enter a valid Zip code"),
-  //   isValueEmpty(zip),
-  // ];
+  const validationFields = [
+    isValueEmpty(Year),
+    isValueEmpty(Make),
+    isValueEmpty(Model),
+    isValueEmpty(Type),
+    isValueEmpty(EstimatedValue),
+    isValueEmpty(Storage),
+    isValueEmpty(DriveDescription),
+    isValueEmpty(LicensedDriverCount),
+    isValueEmpty(NumberOfDailyUse),
+  ];
 
-  // const isValidate = validationFields.every((result) => result === true);
+  const isValidate = validationFields.every((result) => result === true);
 
-  // if (isValidate) {
-  //   formData.businessName = businessName?.value;
-  //   formData.businessWebsite = businessWebsite?.value;
-  //   formData.businessType = businessType?.value;
-  //   formData.businessTaxId = businessTaxId?.value;
-  //   formData.city = city?.value;
-  //   formData.state = state?.value;
-  //   formData.zip = zip?.value;
-  // }
+  if (isValidate) {
+    formData.mainVehicleInfo.year = Year?.value;
+    formData.mainVehicleInfo.make = Make?.value;
+    formData.mainVehicleInfo.model = Model?.value;
+    formData.mainVehicleInfo.type = Type?.value;
+    formData.mainVehicleInfo.estimateValue = EstimatedValue?.value;
+    formData.mainVehicleInfo.vehicleStorage = Storage?.value;
+    formData.mainVehicleInfo.howVehicleDrive = DriveDescription?.value;
+    formData.mainVehicleInfo.NumberOfLicensedDrivers =
+      LicensedDriverCount?.value;
+    formData.mainVehicleInfo.NumberOfDailyUseVehicle = NumberOfDailyUse?.value;
 
-  // return isValidate;
-  return true;
-}
-
-const addVehicle = document.getElementById("addVehicle");
-addVehicle.addEventListener("click", () => {
-  if (!formList.includes("add_more_vehicle_form")) {
-    formList.splice(placeIndex, 0, "add_more_vehicle_form");
+    // REDUCE stepCount cz add_vehicle__form will remove from the formList
+    stepCount = summaryFormIndex - 1;
   }
 
-  showActiveForm(stepCount);
-
-  console.log(formList.indexOf("add_more_vehicle_form"));
-});
+  return isValidate;
+}
 
 function addMoreVehicleValidation() {
-  const isFormSubmitted = true;
+  const Year = document.querySelector("#moreVehicleYear");
+  const Make = document.querySelector("#moreVehicleMake");
+  const Model = document.querySelector("#moreVehicleModel");
+  const Type = document.querySelector("#moreVehicleType");
+  const EstimatedValue = document.querySelector("#moreVehicleEstimatedValue");
+  const Storage = document.querySelector("#moreVehicleStorage");
+  const DriveDescription = document.querySelector(
+    "#moreVehicleDriveDescription"
+  );
 
-  if (isFormSubmitted) {
+  const validationFields = [
+    isValueEmpty(Year),
+    isValueEmpty(Make),
+    isValueEmpty(Model),
+    isValueEmpty(Type),
+    isValueEmpty(EstimatedValue),
+    isValueEmpty(Storage),
+    isValueEmpty(DriveDescription),
+  ];
+
+  const isValidate = validationFields.every((result) => result === true);
+
+  if (isValidate) {
+    const vehicle = {
+      year: Year?.value,
+      make: Make?.value,
+      model: Model?.value,
+      type: Type?.value,
+      estimateValue: EstimatedValue?.value,
+      vehicleStorage: Storage?.value,
+      howVehicleDrive: DriveDescription?.value,
+    };
+
+    // UPDATE or CREATE Vehicle Data
+    if (editVehicleIndex >= 0) {
+      formData.moreVehiclesInfo[editVehicleIndex] = vehicle;
+      editVehicleIndex = -1;
+    } else {
+      formData.moreVehiclesInfo.push(vehicle);
+    }
+
+    // REDUCE stepCount and REMOVE add_more_vehicle_form from the formList
+    stepCount = summaryFormIndex - 1;
     formList = formList.filter((item) => item != "add_more_vehicle_form");
-    stepCount = stepCount - 1;
   }
-  // return isValidate;
-  return true;
+
+  return isValidate;
+  // return true;
 }
 
-// / ********** MULTI-STEP 3 Validation ***********
+// *********************************************
+//              STEP-3 FUNCTIONALITY
+// *********************************************
 const addViolationBtn = document.getElementById("add_violation_btn");
 const violationsFields = document.querySelector(".violation_info_fields");
 const violationWrapper = document.getElementById(
   "violation_info_fields_wrapper"
 );
 
-// ******************* ADD MORE VIOLATIONS FIELDS *******************
+// ******************* Violation Form Functionality *******************
+// ADD MORE VIOLATIONS FIELDS
 addViolationBtn.addEventListener("click", () => {
   const newFields = violationsFields.cloneNode(true);
   violationWrapper.appendChild(newFields);
-});
 
-//
+  // Data Validator added
+  document
+    .querySelectorAll(".householdViolationsDate")
+    .forEach((vDate) => dateValidation(vDate, thisYear));
+
+  clearFieldErrorMsg();
+});
 
 const hasViolationsFields = document.getElementsByName(
   "householdViolationsPreviousClaims"
 );
 
-// ******************* IF householdViolationsPreviousClaims value not== Yes, then disable all *******************
+// IF householdViolationsPreviousClaims value not== Yes, then disable all
 function disableViolationInputs(disable = true) {
   const violationInputs = violationWrapper.querySelectorAll(".field__input");
   violationInputs.forEach((input) => (input.disabled = disable));
   addViolationBtn.disabled = disable;
 }
-
 disableViolationInputs(true);
 
 const getViolationsValue = () => {
@@ -692,6 +876,7 @@ const getViolationsValue = () => {
   return value;
 };
 
+// Get every violation Radio field's value
 hasViolationsFields.forEach((fields) => {
   fields.addEventListener("change", () => {
     let getValue = getViolationsValue();
@@ -704,17 +889,105 @@ hasViolationsFields.forEach((fields) => {
   });
 });
 
-console.log(getViolationsValue());
+// ********* FUNCTIONALITY physical_damage_form *********
+function functionalityForEachDamageForm() {
+  const damageForm = document.querySelector(".damage__form.__hide");
+  const DamageFormWrapper = document.getElementById(
+    "physical_damage_form_wrapper"
+  );
+  const vehicleList = [formData.mainVehicleInfo, ...formData.moreVehiclesInfo];
 
-// ******************* Violation Form Validation *******************
+  // Clear DamageFormWrapper Children
+  DamageFormWrapper.innerHTML = "";
+
+  // Add Vehicle data to DamageFormWrapper with other fields
+  vehicleList.forEach((vehicleData, index) => {
+    const clonedItem = damageForm.cloneNode(true);
+
+    clonedItem.classList.remove("__hide");
+    clonedItem.querySelector(
+      ".vehicle_name"
+    ).innerHTML = `${vehicleData.year} ${vehicleData.make} ${vehicleData.model}`;
+
+    // ------------------------------------------
+    const liabilityYes = clonedItem.querySelector("#liability--Yes");
+    const liabilityNo = clonedItem.querySelector("#liability--No");
+
+    liabilityYes.name = liabilityNo.name = `liability_${index}`;
+
+    liabilityNo?.addEventListener("change", toggleDisability);
+    liabilityYes?.addEventListener("change", toggleDisability);
+
+    function toggleDisability() {
+      const disabledFields = clonedItem.querySelectorAll(
+        ".field__input.damage"
+      );
+      if (liabilityNo.checked) {
+        disabledFields.forEach((field) => (field.disabled = false));
+      } else {
+        disabledFields.forEach((field) => (field.disabled = true));
+      }
+    }
+
+    DamageFormWrapper.appendChild(clonedItem);
+  });
+}
+
+// *********************************************
+//              STEP-3 VALIDATION
+// *********************************************
 function violationsValidation() {
+  if (getViolationsValue() === "No") {
+    return true;
+  } else {
+    const fieldsWrapper = document.querySelectorAll(".violation_info_fields");
+
+    const violations = [];
+    fieldsWrapper.forEach((field) => {
+      const driverField = field.querySelector("#householdViolationsDriver");
+      const typeField = field.querySelector("#householdViolationsType");
+      const dateField = field.querySelector("#householdViolationsDate");
+
+      const validationFields = [
+        alphabeticOnly(driverField),
+        isValueEmpty(driverField),
+        isValueEmpty(typeField),
+        minValue(dateField, 10, "Please enter a valid Date"),
+        isValueEmpty(dateField),
+      ];
+
+      const isValidate = validationFields.every((result) => result === true);
+
+      if (isValidate) {
+        const violationData = {
+          driver: driverField.value,
+          type: typeField.value,
+          date: dateField.value,
+        };
+        violations.push(violationData);
+      }
+    });
+
+    formData.householdViolations = violations;
+    return fieldsWrapper.length === violations.length;
+  }
+}
+
+function coverageLimitsValidation() {
   // Form Validation here
 
   return true;
 }
 
-// / ********** MULTI-STEP 4 Validation ***********
-function summary___alidation() {
+function physicalDamageValidation() {
+  // Form Validation here
+
+  return true;
+}
+// *********************************************
+//              STEP-4 VALIDATION
+// *********************************************
+function coverageHistoryValidation() {
   const currentInsuranceCompany = document.querySelector(
     "#currentInsuranceCompany"
   );
@@ -737,9 +1010,6 @@ function summary___alidation() {
   return validationFields;
 }
 
-// =*********************************************
-//            OTHERS FUNCTIONALITIES
-// =*********************************************
 // if currentInsuranceCompany = "Other" then Insurance Company field will show
 const currentInsuranceCompany = document.querySelector(
   "#currentInsuranceCompany"
@@ -756,19 +1026,27 @@ currentInsuranceCompany.addEventListener("change", () => {
   }
 });
 
+// =*********************************************
+//            OTHERS FUNCTIONALITIES
+// =*********************************************
 // KeyPress only remove field Error Message
-document.querySelectorAll(".form_container .field")?.forEach((fieldWrapper) => {
-  const removeFieldError = () => {
-    const errorField = fieldWrapper.querySelector(".field_message");
-    errorField?.classList.remove("error");
-  };
+function clearFieldErrorMsg() {
+  document
+    .querySelectorAll(".form_container .field")
+    ?.forEach((fieldWrapper) => {
+      const removeFieldError = () => {
+        const errorField = fieldWrapper.querySelector(".field_message");
+        errorField?.classList.remove("error");
+      };
 
-  fieldWrapper
-    .querySelectorAll(".field__input")
-    .forEach((inputField) =>
-      inputField.addEventListener("input", removeFieldError)
-    );
-});
+      fieldWrapper
+        .querySelectorAll(".field__input")
+        .forEach((inputField) =>
+          inputField.addEventListener("input", removeFieldError)
+        );
+    });
+}
+clearFieldErrorMsg();
 
 // Press Enter Submit Form
 document.querySelectorAll(".field__input")?.forEach((input) => {
@@ -781,32 +1059,3 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
     }
   });
 });
-
-// =*********************************************
-//            FETCH DATA FROM JSON
-// =*********************************************
-// const branchOfServiceElement = document.getElementById("branchOfService");
-
-// fetch("./json/branchOfService.json")
-//   .then((response) => response.json())
-//   .then((json) => getData(json))
-//   .catch((err) => console.log(err));
-
-// function getData(data) {
-//   branchOfServiceElement?.parentElement.classList.add("loading__field");
-
-//   const branchOfService = data?.branchOfService;
-
-//   if (branchOfService && branchOfService?.length > 0) {
-//     branchOfService?.forEach((value) => {
-//       let option = document.createElement("option");
-//       option.value = value;
-//       option.innerText = value;
-
-//       branchOfServiceElement.appendChild(option);
-//     });
-
-//      branchOfServiceElement.disabled = false;
-//      branchOfServiceElement?.parentElement.classList.remove("loading__field");
-//   }
-// }

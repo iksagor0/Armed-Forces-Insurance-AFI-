@@ -111,6 +111,7 @@
                 data-name="eligibilityStatus"
                 type="radio"
                 value="dod"
+                checked
               /><label class="field__label" for="eligibilityStatus--dod"
                 >DoD Employee (Current or Retired)</label
               >
@@ -231,7 +232,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="militaryFirstName"
                     name="militaryFirstName"
                     data-name="militaryFirstName"
@@ -253,7 +254,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="militaryLastName"
                     name="militaryLastName"
                     data-name="militaryLastName"
@@ -342,6 +343,7 @@
                     name="militaryRank"
                     data-name="militaryRank"
                     type="select"
+                    disabled
                   >
                     <option value="">Choose One</option>
                     <option value="E-1 Private">E-1 Private</option>
@@ -475,7 +477,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="parentFirstName"
                     name="parentFirstName"
                     data-name="parentFirstName"
@@ -497,7 +499,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="parentLastName"
                     name="parentLastName"
                     data-name="parentLastName"
@@ -563,7 +565,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="childFirstName"
                     name="childFirstName"
                     data-name="childFirstName"
@@ -585,7 +587,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="childLastName"
                     name="childLastName"
                     data-name="childLastName"
@@ -631,182 +633,6 @@
     <!-- ************************************************ -->
     <!------------- Spouse Information ----------->
     <!-- ************************************************ -->
-    <section class="form_section multi__step_1 spouse_information">
-      <div class="container">
-        <!-- ******** STEP ******** -->
-        <div class="step__container">
-          <ul class="steps__list">
-            <li class="step active_step" data-text="Driver Information">1</li>
-            <li class="line"></li>
-            <li class="step" data-text="Vehicle">2</li>
-            <li class="line"></li>
-            <li class="step" data-text="Coverages">3</li>
-            <li class="line"></li>
-            <li class="step" data-text="Quote">4</li>
-          </ul>
-        </div>
-
-        <div class="quote_request__section_wrapper">
-          <!-- ******* FORM  *******-->
-          <div class="form_container min_height">
-            <h2 class="quote_request_heading">Spouse Information</h2>
-
-            <!-- First Name, Last Name, Suffix -->
-            <div class="fields-row">
-              <div class="field">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantFirstName"
-                    >First Name</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <input
-                    class="field__input"
-                    id="cohabitantFirstName"
-                    name="cohabitantFirstName"
-                    type="text"
-                    pattern="^[a-zA-Z]+$"
-                    maxlength="50"
-                    placeholder=""
-                    value=""
-                  />
-                </div>
-              </div>
-              <div class="field">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantLastName"
-                    >Last Name</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <input
-                    class="field__input"
-                    id="cohabitantLastName"
-                    name="cohabitantLastName"
-                    type="text"
-                    pattern="^[a-zA-Z]+$"
-                    maxlength="50"
-                    placeholder=""
-                    value=""
-                  />
-                </div>
-              </div>
-              <div class="field field--small">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantSuffix"
-                    >Suffix</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <select
-                    class="field__input"
-                    id="cohabitantSuffix"
-                    name="cohabitantSuffix"
-                    type="select"
-                  >
-                    <option value="">--</option>
-                    <option value="Jr.">Jr.</option>
-                    <option value="Sr.">Sr.</option>
-                    <option value="III">III</option>
-                    <option value="IV">IV</option>
-                  </select>
-                  <p class="field__note">Optional</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Security Number, Date of Birth -->
-            <div class="fields-row">
-              <div class="field">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantSsn"
-                    >Social Security Number</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <input
-                    class="field__input"
-                    id="cohabitantSsn"
-                    name="cohabitantSsn"
-                    type="text"
-                    maxlength="11"
-                    placeholder="xxx-xx-xxxx"
-                    value=""
-                  />
-                  <p class="field__note">Optional</p>
-                </div>
-              </div>
-              <div class="field">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantDob"
-                    >Date of Birth</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <input
-                    class="field__input"
-                    id="cohabitantDob"
-                    name="cohabitantDob"
-                    type="text"
-                    pattern="\d{1,2}/\d{1,2}/\d{4}"
-                    placeholder="MM/DD/YYYY"
-                    value=""
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- Gender -->
-            <div class="fields-row">
-              <div class="field field--small">
-                <div class="field__label-wrapper">
-                  <label class="field__label" for="cohabitantGender"
-                    >Gender</label
-                  >
-                </div>
-                <div class="field__input-wrapper">
-                  <select
-                    class="field__input"
-                    id="cohabitantGender"
-                    name="cohabitantGender"
-                    type="select"
-                  >
-                    <option value="">--</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ******* ASIDE  *******-->
-          <aside class="quote_request_aside">
-            <h2 class="quote_request_sidebar__heading">Our Mission is You®</h2>
-            <div class="quote_request_sidebar__content">
-              <div class="quote_request_sidebar__item">
-                <h3 class="quote_request_sidebar__item_heading">
-                  Exclusive Savings
-                </h3>
-                <p class="quote_request_sidebar__item_description">
-                  Armed Forces Insurance offers special rates for military
-                  members.
-                </p>
-              </div>
-              <div class="quote_request_sidebar__item">
-                <h3 class="quote_request_sidebar__item_heading">
-                  We Shop for You
-                </h3>
-                <p class="quote_request_sidebar__item_description">
-                  AFI agents will shop across our network of providers to save
-                  you time and help you get the best value.
-                </p>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
 
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 1 ------------------>
@@ -841,7 +667,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="policyHolderFirstName"
                     name="policyHolderFirstName"
                     type="text"
@@ -860,7 +686,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input alphabeticOnly"
                     id="policyHolderLastName"
                     name="policyHolderLastName"
                     type="text"
@@ -897,7 +723,7 @@
 
             <!-- Physical Address, City -->
             <div class="fields-row">
-              <div class="field field--xlarge">
+              <div class="field field--xlarge extra_message_margin">
                 <div class="field__label-wrapper">
                   <label class="field__label" for="policyHolderMailingAddress"
                     >Physical Address
@@ -1030,7 +856,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input numberOnly"
                     id="policyHolderZip"
                     name="policyHolderZip"
                     type="text"
@@ -1054,7 +880,7 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input SSN"
                     id="policyHolderSsn"
                     name="policyHolderSsn"
                     type="text"
@@ -1263,6 +1089,182 @@
       </div>
     </section>
 
+    <section class="form_section multi__step_1 spouse_information">
+      <div class="container">
+        <!-- ******** STEP ******** -->
+        <div class="step__container">
+          <ul class="steps__list">
+            <li class="step active_step" data-text="Driver Information">1</li>
+            <li class="line"></li>
+            <li class="step" data-text="Vehicle">2</li>
+            <li class="line"></li>
+            <li class="step" data-text="Coverages">3</li>
+            <li class="line"></li>
+            <li class="step" data-text="Quote">4</li>
+          </ul>
+        </div>
+
+        <div class="quote_request__section_wrapper">
+          <!-- ******* FORM  *******-->
+          <div class="form_container min_height">
+            <h2 class="quote_request_heading">Spouse Information</h2>
+
+            <!-- First Name, Last Name, Suffix -->
+            <div class="fields-row">
+              <div class="field">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantFirstName"
+                    >First Name</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input alphabeticOnly"
+                    id="cohabitantFirstName"
+                    name="cohabitantFirstName"
+                    type="text"
+                    pattern="^[a-zA-Z]+$"
+                    maxlength="50"
+                    placeholder=""
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantLastName"
+                    >Last Name</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input alphabeticOnly"
+                    id="cohabitantLastName"
+                    name="cohabitantLastName"
+                    type="text"
+                    pattern="^[a-zA-Z]+$"
+                    maxlength="50"
+                    placeholder=""
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="field field--small">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantSuffix"
+                    >Suffix</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <select
+                    class="field__input"
+                    id="cohabitantSuffix"
+                    name="cohabitantSuffix"
+                    type="select"
+                  >
+                    <option value="">--</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                  </select>
+                  <p class="field__note">Optional</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Security Number, Date of Birth -->
+            <div class="fields-row">
+              <div class="field">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantSsn"
+                    >Social Security Number</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input SSN"
+                    id="cohabitantSsn"
+                    name="cohabitantSsn"
+                    type="text"
+                    maxlength="11"
+                    placeholder="xxx-xx-xxxx"
+                    value=""
+                  />
+                  <p class="field__note">Optional</p>
+                </div>
+              </div>
+              <div class="field">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantDob"
+                    >Date of Birth</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <input
+                    class="field__input"
+                    id="cohabitantDob"
+                    name="cohabitantDob"
+                    type="text"
+                    pattern="\d{1,2}/\d{1,2}/\d{4}"
+                    placeholder="MM/DD/YYYY"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="fields-row">
+              <div class="field">
+                <div class="field__label-wrapper">
+                  <label class="field__label" for="cohabitantGender"
+                    >Gender</label
+                  >
+                </div>
+                <div class="field__input-wrapper">
+                  <select
+                    class="field__input"
+                    id="cohabitantGender"
+                    name="cohabitantGender"
+                    type="select"
+                  >
+                    <option value="">--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ******* ASIDE  *******-->
+          <aside class="quote_request_aside">
+            <h2 class="quote_request_sidebar__heading">Our Mission is You®</h2>
+            <div class="quote_request_sidebar__content">
+              <div class="quote_request_sidebar__item">
+                <h3 class="quote_request_sidebar__item_heading">
+                  Exclusive Savings
+                </h3>
+                <p class="quote_request_sidebar__item_description">
+                  Armed Forces Insurance offers special rates for military
+                  members.
+                </p>
+              </div>
+              <div class="quote_request_sidebar__item">
+                <h3 class="quote_request_sidebar__item_heading">
+                  We Shop for You
+                </h3>
+                <p class="quote_request_sidebar__item_description">
+                  AFI agents will shop across our network of providers to save
+                  you time and help you get the best value.
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 2 ------------------>
     <!-- ************************************************ -->
@@ -1298,7 +1300,13 @@
                   class="quote_request__summary_item_info quote_request__summary_main_item_info"
                 ></p>
                 <div class="quote_request__summary_item_actions delete_edit">
-                  <button class="button-bare" type="button">Edit</button>
+                  <button
+                    id="mainVehicleEditBtn"
+                    class="button-bare"
+                    type="button"
+                  >
+                    Edit
+                  </button>
                 </div>
               </div>
 
@@ -1306,15 +1314,25 @@
               <div class="quote_request__summary_item demoItem __hide">
                 <p class="quote_request__summary_item_info"></p>
                 <div class="quote_request__summary_item_actions delete_edit">
-                  <button class="button-bare deleteBtn" type="button">
+                  <button
+                    id="deleteBtn"
+                    class="button-bare deleteBtn"
+                    type="button"
+                  >
                     Delete
                   </button>
-                  <button class="button-bare" type="button">Edit</button>
+                  <button id="editBtn" class="button-bare" type="button">
+                    Edit
+                  </button>
                 </div>
                 <div class="quote_request__summary_item_actions yes_no __hide">
                   <span>Are you sure?</span>
-                  <button class="button-bare" type="button">Yes</button>
-                  <button class="button-bare" type="button">No</button>
+                  <button id="deleteYes" class="button-bare" type="button">
+                    Yes
+                  </button>
+                  <button id="deleteNo" class="button-bare" type="button">
+                    No
+                  </button>
                 </div>
               </div>
               <!-- More Vehicles Items -->
@@ -1333,8 +1351,6 @@
     <!-- MAIN VEHICLE FORM -->
     <section class="form_section multi__step_2 add_vehicle__form">
       <div class="container">
-        <!-- <h1 class="quote_request_heading">Military Information</h1> -->
-
         <!-- ******** STEP ******** -->
         <div class="step__container">
           <ul class="steps__list">
@@ -1367,7 +1383,7 @@
                     class="field__input"
                     id="mainVehicleYear"
                     name="mainVehicleYear"
-                    type="number"
+                    type="text"
                     maxlength="4"
                     placeholder=""
                     value=""
@@ -1429,7 +1445,7 @@
                   </select>
                 </div>
               </div>
-              <div class="field">
+              <div class="field extra_message_margin">
                 <div class="field__label-wrapper">
                   <label class="field__label" for="mainVehicleEstimatedValue"
                     >Estimate Value of Vehicle</label
@@ -1602,14 +1618,14 @@
             <div class="fields-row">
               <div class="field field--small">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0Year">Year</label>
+                  <label class="field__label" for="moreVehicleYear">Year</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
-                    id="vehicle0Year"
-                    name="vehicle0Year"
-                    type="number"
+                    class="field__input numberOnly"
+                    id="moreVehicleYear"
+                    name="moreVehicleYear"
+                    type="text"
                     maxlength="4"
                     placeholder=""
                     value=""
@@ -1618,13 +1634,13 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0Make">Make</label>
+                  <label class="field__label" for="moreVehicleMake">Make</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input"
-                    id="vehicle0Make"
-                    name="vehicle0Make"
+                    id="moreVehicleMake"
+                    name="moreVehicleMake"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1634,13 +1650,15 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0Model">Model</label>
+                  <label class="field__label" for="moreVehicleModel"
+                    >Model</label
+                  >
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input"
-                    id="vehicle0Model"
-                    name="vehicle0Model"
+                    id="moreVehicleModel"
+                    name="moreVehicleModel"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1654,13 +1672,13 @@
             <div class="fields-row">
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0Type">Type</label>
+                  <label class="field__label" for="moreVehicleType">Type</label>
                 </div>
                 <div class="field__input-wrapper">
                   <select
                     class="field__input"
-                    id="vehicle0Type"
-                    name="vehicle0Type"
+                    id="moreVehicleType"
+                    name="moreVehicleType"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1669,17 +1687,17 @@
                   </select>
                 </div>
               </div>
-              <div class="field">
+              <div class="field extra_message_margin">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0EstimatedValue"
+                  <label class="field__label" for="moreVehicleEstimatedValue"
                     >Estimate Value of Vehicle</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
-                    id="vehicle0EstimatedValue"
-                    name="vehicle0EstimatedValue"
+                    class="field__input numberOnly"
+                    id="moreVehicleEstimatedValue"
+                    name="moreVehicleEstimatedValue"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1694,15 +1712,15 @@
             <div class="fields-row">
               <div class="field field--xlarge">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0Storage"
+                  <label class="field__label" for="moreVehicleStorage"
                     >Vehicle Storage</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <select
                     class="field__input"
-                    id="vehicle0Storage"
-                    name="vehicle0Storage"
+                    id="moreVehicleStorage"
+                    name="moreVehicleStorage"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1721,7 +1739,7 @@
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="vehicle0DriveDescription"
+                  <label class="field__label" for="moreVehicleDriveDescription"
                     >Describe how vehicle is driven, i.e. where to, how often,
                     etc.</label
                   >
@@ -1729,8 +1747,8 @@
                 <div class="field__input-wrapper">
                   <textarea
                     class="field__input"
-                    id="vehicle0DriveDescription"
-                    name="vehicle0DriveDescription"
+                    id="moreVehicleDriveDescription"
+                    name="moreVehicleDriveDescription"
                     placeholder=""
                   ></textarea>
                 </div>
@@ -1803,7 +1821,6 @@
                       name="householdViolationsPreviousClaims"
                       type="radio"
                       value="Yes"
-                      checked
                     /><label
                       class="field__label"
                       for="householdViolationsPreviousClaims--Yes"
@@ -1818,6 +1835,7 @@
                       name="householdViolationsPreviousClaims"
                       type="radio"
                       value="No"
+                      checked
                     /><label
                       class="field__label"
                       for="householdViolationsPreviousClaims--No"
@@ -1834,15 +1852,15 @@
               <div class="fields-row violation_info_fields">
                 <div class="field">
                   <div class="field__label-wrapper">
-                    <label class="field__label" for="householdViolations0Driver"
+                    <label class="field__label" for="householdViolationsDriver"
                       >Driver</label
                     >
                   </div>
                   <div class="field__input-wrapper">
                     <input
-                      class="field__input"
-                      id="householdViolations0Driver"
-                      name="householdViolations0Driver"
+                      class="field__input alphabeticOnly"
+                      id="householdViolationsDriver"
+                      name="householdViolationsDriver"
                       type="text"
                       pattern="^[a-zA-Z]+$"
                       maxlength="50"
@@ -1853,15 +1871,15 @@
                 </div>
                 <div class="field field--xlarge">
                   <div class="field__label-wrapper">
-                    <label class="field__label" for="householdViolations0Type"
+                    <label class="field__label" for="householdViolationsType"
                       >Type</label
                     >
                   </div>
                   <div class="field__input-wrapper">
                     <select
                       class="field__input"
-                      id="householdViolations0Type"
-                      name="householdViolations0Type"
+                      id="householdViolationsType"
+                      name="householdViolationsType"
                       type="select"
                     >
                       <option value="">Choose One</option>
@@ -1948,15 +1966,15 @@
                 </div>
                 <div class="field field--large">
                   <div class="field__label-wrapper">
-                    <label class="field__label" for="householdViolations0Date"
+                    <label class="field__label" for="householdViolationsDate"
                       >Date</label
                     >
                   </div>
                   <div class="field__input-wrapper">
                     <input
-                      class="field__input"
-                      id="householdViolations0Date"
-                      name="householdViolations0Date"
+                      class="field__input householdViolationsDate"
+                      id="householdViolationsDate"
+                      name="householdViolationsDate"
                       type="text"
                       pattern="\d{1,2}/\d{1,2}/\d{4}"
                       placeholder="MM/DD/YYYY"
@@ -2234,20 +2252,22 @@
         </div>
 
         <div class="quote_request__section_wrapper">
-          <!-- ******* FORM  *******-->
+          <!-- TODO ******* FORM  *******-->
+          <!-- TODO ******* FORM  *******-->
+          <!-- TODO ******* FORM  *******-->
+          <!-- TODO ******* FORM  *******-->
           <div class="form_container">
-            <section class="vehicle__liabilty">
+            <section class="damage__form __hide">
               <h1 class="quote_request_heading extra_mb">
                 Physical Damage Coverage for
-                <span class="vehicle_name">2020 Toyota V-22</span>
+                <span class="vehicle_name"><!-- 2020 Toyota V-22 --></span>
               </h1>
+
               <!-- Comprehensive Deductible -->
               <div class="fields-row">
                 <div class="field field--full">
                   <div class="field__label-wrapper gap_30">
-                    <label
-                      class="field__label"
-                      for="vehicle0LiabilityOnlyCoverage"
+                    <label class="field__label" for="empty"
                       >Liability Only Coverage</label
                     >
                   </div>
@@ -2255,14 +2275,12 @@
                     <div class="field__input-wrapper">
                       <input
                         class="field__input"
-                        id="vehicle0LiabilityOnlyCoverage--Yes"
-                        name="vehicle0LiabilityOnlyCoverage"
+                        id="liability--Yes"
+                        name="liability"
                         type="radio"
                         value="Yes"
-                        checked=""
-                      /><label
-                        class="field__label"
-                        for="vehicle0LiabilityOnlyCoverage--Yes"
+                        checked
+                      /><label class="field__label" for="liability--Yes"
                         >Yes</label
                       >
                     </div>
@@ -2270,13 +2288,11 @@
                     <div class="field__input-wrapper">
                       <input
                         class="field__input"
-                        id="vehicle0LiabilityOnlyCoverage--No"
-                        name="vehicle0LiabilityOnlyCoverage"
+                        id="liability--No"
+                        name="liability"
                         type="radio"
                         value="No"
-                      /><label
-                        class="field__label"
-                        for="vehicle0LiabilityOnlyCoverage--No"
+                      /><label class="field__label" for="liability--No"
                         >No</label
                       >
                     </div>
@@ -2290,16 +2306,17 @@
                   <div class="field__label-wrapper">
                     <label
                       class="field__label"
-                      for="vehicle0ComprehensiveDeductible"
+                      for="vehicleComprehensiveDeductible"
                       >Comprehensive Deductible</label
                     >
                   </div>
                   <div class="field__input-wrapper">
                     <select
-                      class="field__input"
-                      id="vehicle0ComprehensiveDeductible"
-                      name="vehicle0ComprehensiveDeductible"
+                      class="field__input damage"
+                      id="vehicleComprehensiveDeductible"
+                      name="vehicleComprehensiveDeductible"
                       type="select"
+                      disabled
                     >
                       <option value="">Choose One</option>
                       <option value="100">$100</option>
@@ -2311,18 +2328,17 @@
                 </div>
                 <div class="field field--xlarge">
                   <div class="field__label-wrapper">
-                    <label
-                      class="field__label"
-                      for="vehicle0CollisionDeductible"
+                    <label class="field__label" for="vehicleCollisionDeductible"
                       >Collision Deductible</label
                     >
                   </div>
                   <div class="field__input-wrapper">
                     <select
-                      class="field__input"
-                      id="vehicle0CollisionDeductible"
-                      name="vehicle0CollisionDeductible"
+                      class="field__input damage"
+                      id="vehicleCollisionDeductible"
+                      name="vehicleCollisionDeductible"
                       type="select"
+                      disabled
                     >
                       <option value="">Choose One</option>
                       <option value="No Coverage">No Coverage</option>
@@ -2335,6 +2351,8 @@
                 </div>
               </div>
             </section>
+
+            <div id="physical_damage_form_wrapper"></div>
           </div>
 
           <!-- ******* ASIDE  *******-->

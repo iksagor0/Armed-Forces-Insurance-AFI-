@@ -33,13 +33,7 @@ nextBtn.addEventListener("click", () => {
     if (!Boolean(isSelectEligibility)) return false;
   }
 
-  const additionalForm = [
-    "military_information",
-    "parent_information",
-    "child_information",
-  ];
-
-  //   If additonal form has in arrayList
+  //   If additional form has in arrayList
   if (stepCount === formList.indexOf("military_information")) {
     if (!militaryFormValidation()) return false;
   }
@@ -235,11 +229,15 @@ dateField.addEventListener("input", (e) => {
     value[2] = DD[0];
 
   // Year validation
-  const maxYear = String(new Date().getFullYear() + 2);
+  const thisYear = new Date().getFullYear();
+  const maxYear = String(thisYear + 2);
 
-  if (Number(YYYY) <= 0) value[3] = "";
+  if (Number(YYYY) <= 1) value[3] = "";
   else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
   else if (YYYY.length === 2 && Number(YYYY) > 20) value[3] = YYYY[0];
+  else if (YYYY.length === 2 && Number(YYYY) < 20) value[3] = YYYY[0];
+  else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+    value[3] = YYYY.slice(0, 2);
   else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
     value[3] = YYYY.slice(0, 2);
   else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
@@ -536,6 +534,7 @@ document.querySelectorAll(".field__input")?.forEach((input) => {
   });
 });
 
+// Military Rank should be disabled if branchOfService value none
 const branchOfService = document.getElementById("branchOfService");
 branchOfService.addEventListener("change", () => {
   const militaryRank = document.getElementById("militaryRank");

@@ -413,6 +413,11 @@ main.offscreen__darken:before {
   line-height: 2.25rem !important;
 }
 
+.heading_normal {
+  color: #000 !important;
+  border: none !important;
+}
+
 /*Mohi*/
 
 .container-fluid {
@@ -549,4 +554,9 @@ footer a {
 /* 18 May */
 .row {
   --bs-gutter-x: 0 !important;
+}
+
+.borderless_table,
+.borderless_table td {
+  border: none !important;
 }
