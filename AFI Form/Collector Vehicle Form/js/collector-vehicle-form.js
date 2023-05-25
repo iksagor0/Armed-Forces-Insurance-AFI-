@@ -1,32 +1,36 @@
 // DATA
 const formData = {
   eligibilityStatus: "",
-  policyHolderMaritalStatus: null,
+  policyHolder: {},
   mainVehicleInfo: {
-    year: "2023",
-    make: "HP",
-    model: "Proton Saga",
-    type: "Stock",
-    estimateValue: "3000",
-    vehicleStorage: "Private Garage",
-    howVehicleDrive: "lol",
-    NumberOfLicensedDrivers: "2",
-    NumberOfDailyUseVehicle: "2",
+    year: "",
+    make: "",
+    model: "",
+    // type: "Stock",
+    // estimateValue: "3000",
+    // vehicleStorage: "Private Garage",
+    // howVehicleDrive: "lol",
+    // NumberOfLicensedDrivers: "2",
+    // NumberOfDailyUseVehicle: "2",
     // liabilityData: {},
   },
 
   moreVehiclesInfo: [
-    {
-      year: "33",
-      make: "33",
-      model: "33",
-      type: "Stock",
-      estimateValue: "33",
-      vehicleStorage: "Private Garage",
-      howVehicleDrive: "33",
-      // liabilityData: {},
-    },
+    // {
+    //   year: "33",
+    //   make: "33",
+    //   model: "33",
+    //   type: "Stock",
+    //   estimateValue: "33",
+    //   vehicleStorage: "Private Garage",
+    //   howVehicleDrive: "33",
+    //   // liabilityData: {},
+    // },
   ],
+  vehicleInfo: {
+    mainVehicle: {},
+    moreVehicle: {},
+  },
   householdViolations: "No violations in last 5 years",
 };
 
@@ -525,24 +529,23 @@ function policyholderValidation(step) {
   const isValidate = validationFields.every((result) => result === true);
 
   // if (isValidate) {
-  formData.policyHolderFirstName = policyHolderFirstName?.value;
-  formData.policyHolderLastName = policyHolderLastName?.value;
-  formData.policyHolderSuffix = policyHolderSuffix?.value;
-  formData.policyHolderMailingAddress = policyHolderMailingAddress?.value;
-  formData.policyHolderCity = policyHolderCity?.value;
-  formData.policyHolderState = policyHolderState?.value;
-  formData.policyHolderZip = policyHolderZip?.value;
-  formData.policyHolderSsn = policyHolderSsn?.value.replace(/\D/g, "");
-  formData.policyHolderDob = policyHolderDob?.value;
-  formData.policyHolderGender = policyHolderGender?.value;
-  formData.policyHolderMaritalStatus = policyHolderMaritalStatus?.value;
-  formData.policyHolderEmail = policyHolderEmail?.value;
-  formData.policyHolderPhoneType = policyHolderPhoneType?.value;
-  formData.policyHolderPhoneNumber = policyHolderPhoneNumber?.value.replace(
-    /\D/g,
-    ""
-  );
-  formData.policyHolderResidenceStatus = policyHolderResidenceStatus?.value;
+  const policyHolder = formData.policyHolder;
+
+  policyHolder.firstName = policyHolderFirstName?.value;
+  policyHolder.lastName = policyHolderLastName?.value;
+  policyHolder.suffix = policyHolderSuffix?.value;
+  policyHolder.mailingAddress = policyHolderMailingAddress?.value;
+  policyHolder.city = policyHolderCity?.value;
+  policyHolder.state = policyHolderState?.value;
+  policyHolder.zip = policyHolderZip?.value;
+  policyHolder.ssn = policyHolderSsn?.value.replace(/\D/g, "");
+  policyHolder.dob = policyHolderDob?.value;
+  policyHolder.gender = policyHolderGender?.value;
+  policyHolder.maritalStatus = policyHolderMaritalStatus?.value;
+  policyHolder.email = policyHolderEmail?.value;
+  policyHolder.phoneType = policyHolderPhoneType?.value;
+  policyHolder.phoneNumber = policyHolderPhoneNumber?.value.replace(/\D/g, "");
+  policyHolder.residenceStatus = policyHolderResidenceStatus?.value;
 
   // SHOW SPOUSE INFORMATION FORM, IF HAVE
   const spouseValues = [
@@ -551,12 +554,12 @@ function policyholderValidation(step) {
     "Civil Union Or Domestic Partner",
   ];
 
-  if (spouseValues.includes(formData?.policyHolderMaritalStatus)) {
+  if (spouseValues.includes(formData.policyHolder?.maritalStatus)) {
     if (!formList.includes("spouse_information")) {
       formList.splice(step + 1, 0, "spouse_information");
     }
   }
-  if (!spouseValues.includes(formData?.policyHolderMaritalStatus)) {
+  if (!spouseValues.includes(formData.policyHolder?.maritalStatus)) {
     formList = formList.filter((form) => form != "spouse_information");
     console.log("aaaaaaaaaaaa spouse_information");
   }
@@ -587,16 +590,17 @@ function spouseValidation() {
   const isValidate = validationFields.every((result) => result === true);
 
   if (isValidate) {
-    formData.cohabitantFirstName = cohabitantFirstName?.value;
-    formData.cohabitantLastName = cohabitantLastName?.value;
-    formData.cohabitantSuffix = cohabitantSuffix?.value;
-    formData.cohabitantSsn = cohabitantSsn?.value.replace(/\D/g, "");
-    formData.cohabitantDob = cohabitantDob?.value;
-    formData.cohabitantGender = cohabitantGender?.value;
+    const cohabitant = (formData.cohabitantInfo = {});
+
+    cohabitant.firstName = cohabitantFirstName?.value;
+    cohabitant.lastName = cohabitantLastName?.value;
+    cohabitant.suffix = cohabitantSuffix?.value;
+    cohabitant.ssn = cohabitantSsn?.value.replace(/\D/g, "");
+    cohabitant.dob = cohabitantDob?.value;
+    cohabitant.gender = cohabitantGender?.value;
   }
 
   return isValidate;
-  // return true;
 }
 
 // *********************************************
@@ -690,10 +694,13 @@ function runVehicleItemsFunctionality() {
 // *********************************************
 function summaryValidation() {
   // Check Main Vehicle data OKK or Not
+  const mainVehicleFields = document.querySelectorAll(
+    ".add_vehicle__form .field__input"
+  );
+
   const mainVehicleValues = [];
-  for (const key in formData.mainVehicleInfo) {
-    mainVehicleValues.push(formData.mainVehicleInfo[key]);
-  }
+  mainVehicleFields.forEach((field) => mainVehicleValues.push(field.value));
+
   const haveAllMainVehicleValues = mainVehicleValues.every(
     (v) => Boolean(v) === true
   );
@@ -1037,9 +1044,7 @@ function physicalDamageValidation() {
         inputErrorMessage(field, "", true);
         inputErrorMessage(field, "", true);
       } else {
-        field.addEventListener("input", () =>
-          inputErrorMessage(field, "", true)
-        );
+        clearFieldErrorMsg();
 
         // If field is enabled then check validation and get data
         const isFieldValid = isValueEmpty(field);
