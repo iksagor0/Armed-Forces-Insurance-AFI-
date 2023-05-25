@@ -394,6 +394,7 @@ function militaryFormValidation() {
 
   return isValidate;
 }
+
 // Military Rank should be disabled if branchOfService value none
 const branchOfService = document.getElementById("branchOfService");
 branchOfService.addEventListener("change", () => {
@@ -404,27 +405,6 @@ branchOfService.addEventListener("change", () => {
     militaryRank.disabled = true;
   }
 });
-// / ********** Parent's Information ***********
-function parentFormValidation() {
-  const parentFirstName = document.querySelector("#parentFirstName");
-  const parentLastName = document.querySelector("#parentLastName");
-
-  const validationFields = [
-    alphabeticOnly(parentFirstName),
-    alphabeticOnly(parentLastName),
-    isValueEmpty(parentFirstName),
-    isValueEmpty(parentLastName),
-  ];
-
-  const isValidate = validationFields.every((result) => result === true);
-
-  if (isValidate) {
-    formData.parentFirstName = parentFirstName?.value;
-    formData.parentLastName = parentLastName?.value;
-  }
-
-  return isValidate;
-}
 
 // / ********** Child's Information ***********
 function childFormValidation() {
@@ -441,8 +421,32 @@ function childFormValidation() {
   const isValidate = validationFields.every((result) => result === true);
 
   if (isValidate) {
-    formData.childFirstName = childFirstName?.value;
-    formData.childLastName = childLastName?.value;
+    const child = (formData.childInfo = {});
+
+    child.childFirstName = childFirstName?.value;
+    child.childLastName = childLastName?.value;
+  }
+
+  return isValidate;
+}
+
+// / ********** Child's Information ***********
+function parentFormValidation() {
+  const parentFirstName = document.querySelector("#parentFirstName");
+  const parentLastName = document.querySelector("#parentLastName");
+
+  const validationFields = [
+    alphabeticOnly(parentFirstName),
+    alphabeticOnly(parentLastName),
+    isValueEmpty(parentFirstName),
+    isValueEmpty(parentLastName),
+  ];
+
+  const isValidate = validationFields.every((result) => result === true);
+
+  if (isValidate) {
+    formData.parentFirstName = parentFirstName?.value;
+    formData.parentLastName = parentLastName?.value;
   }
 
   return isValidate;
