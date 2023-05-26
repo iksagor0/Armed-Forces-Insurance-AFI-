@@ -560,3 +560,9 @@ footer a {
 .borderless_table td {
   border: none !important;
 }
+
+/* 23 May from Taylor */
+.content-panel.content-panel--one-column p {
+  font-weight: normal !important;
+  color: #545959 !important;
+}
