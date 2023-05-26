@@ -1,5 +1,5 @@
 .article__page {
-    margin: 30px auto;
+    margin: 30px auto 0;
 }
 
 .article__page .heading-blue.field-title {
@@ -50,37 +50,64 @@
     padding: 30px 0 !important;
 }
 
-.more__articles .align__center {
+@media screen and (min-width:991px) {
+    .more__articles {
+        margin: 70px auto;
+    }
+}
+
+.more-articles .wrapper {
     display: grid;
-    place-content: center;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
-.more__articles .component-content {
-    border: 0 !important;
+.more-articles__heading {
+    font-size: 2.375rem !important;
+    text-align: center;
 }
 
-.more__articles .more-articles__list .row {
-    gap: 30px;
-}
-
-.more__articles .more-articles__list .promo {
-    background: transparent !important;
+.more-articles__list {
+    display: grid;
+    gap: 2rem;
 }
 
 .more-articles__item-heading {
     font-family: Roboto, sans-serif;
     font-family: var(--font-family-primary) !important;
-    font-size: 1.625rem !important;
+    font-size: 2.375rem !important;
     margin-bottom: 0.5rem !important;
     color: #000 !important;
 }
 
-.more-articles__item-description {
+.more-articles__item-description,
+.more-articles__item p {
+    margin-bottom: 0 !important;
+}
+
+.more-articles__paragraph {
     margin-bottom: 12px !important;
 }
 
 .more__articles .more-articles__list a:hover {
     text-decoration: underline !important;
+}
+
+.more-articles__link {
+    display: flex;
+    gap: 5px;
+}
+
+.more-articles__link:hover {
+    text-decoration: underline;
+}
+
+.more-articles__link a:hover {
+    color: var(--color-blue-10) !important;
+}
+
+.more-articles__item .arrow-link {
+    font-size: 18px !important;
 }
 
 .more__articles .more-articles__list i {
@@ -97,31 +124,51 @@
 }
 
 /* 22 May */
+.article__page .share-badges__container .row {
+    height: 100%;
+}
+
 .article__page .share-badges {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     overflow: hidden;
+    position: relative;
+    height: 100%;
 }
 
 .article__page .share-badges button {
     background: none !important;
     transition: .3s;
+    opacity: .5;
+    margin-top: 10px;
 }
 
 .article__page .share-badges ul {
     display: flex;
     gap: 10px;
     transition: .3s;
-    transform: translateY(30px);
+    position: absolute;
+    bottom: -30px;
 }
 
 .article__page .share-badges ul li a {
     font-size: 21px !important;
 }
 
+.article__page .share-badges ul li a i {
+    color: #000;
+    opacity: .5;
+    transition: .3s;
+}
+
+.article__page .share-badges.triggered ul li a i {
+    color: unset;
+    opacity: 1;
+}
+
 .article__page .share-badges.triggered ul {
-    transform: translateY(0px);
+    bottom: 0;
 }
 
 .article__page .share-badges.triggered button {
