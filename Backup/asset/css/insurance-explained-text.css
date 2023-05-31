@@ -24,3 +24,74 @@
   margin-bottom: 1.5rem;
   line-height: 1.3;
 }
+
+
+/* Insurance Page */
+.product_item_wrapper {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.product_item {
+  width: 100% !important;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: self-start;
+}
+
+.product_item .product_item--icon {
+  filter: invert(33%) sepia(66%) saturate(7499%) hue-rotate(194deg) brightness(94%) contrast(96%);
+}
+
+.product_text .product_item--icon img {
+  width: 96px;
+}
+
+.top-products_item p,
+.product_item p {
+  margin-top: 0.25rem;
+  font-weight: 400;
+  color: rgb(107 114 128) !important;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+p.product_item--title {
+  color: rgb(55, 65, 81) !important;
+  font-weight: 600 !important;
+}
+
+@media screen and (max-width:991px) {
+  .product_item_wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width:575px) {
+  .product_item_wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* product_text */
+.product_text h2 {
+  font-size: 32px !important;
+  color: #003864;
+  color: var(--color-blue-40);
+}
+
+.product_text p {
+  font-size: 16px !important;
+}
+
+.product_text .field-link a {
+  border: none !important;
+  text-decoration: underline !important;
+}
+
+.article-content a {
+  text-decoration: underline !important;
+}

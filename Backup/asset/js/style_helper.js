@@ -28,6 +28,7 @@ addClassToParent("item_75", "parent_75_25");
 addClassToParent("life_logo_image", "life_logo_image_parent");
 addClassToParent("home_blue_card_item", "home_blue_cards_grid");
 addClassToParent("card_group_item", "card_group_grid");
+addClassToParent("product_item", "product_item_wrapper");
 
 // To make 50-50 grid column
 parent50x50("left__text__content", "TypesOfBusiness");

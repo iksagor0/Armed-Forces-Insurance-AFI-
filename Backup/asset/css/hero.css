@@ -322,3 +322,19 @@ input[type="radio"]+label:after {
     padding: 0 !important;
   }
 }
+
+.quote-selector_friend_form fieldset {
+  text-align: center;
+}
+
+.quote-selector_friend_heading {
+  margin-bottom: 30px !important;
+}
+
+.quote-selector_friend_form .input_field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 30px;
+  width: 230px;
+}

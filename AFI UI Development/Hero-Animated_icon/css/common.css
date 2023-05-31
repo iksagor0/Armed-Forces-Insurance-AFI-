@@ -64,8 +64,8 @@ body {
 }
 
 /* body::-webkit-scrollbar {
-    display: none;
-  } */
+  display: none;
+} */
 
 section,
 header,
@@ -87,8 +87,6 @@ ul {
 ul.disc {
   list-style: disc !important;
   padding-left: 23px !important;
-  list-style-position: outside !important;
-  margin-left: 0 !important;
 }
 
 h1,
@@ -97,8 +95,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 !important;
-  margin-bottom: 1.125rem !important;
+  margin: 0;
+  margin-bottom: 1.125rem;
   font-weight: 400 !important;
 }
 
@@ -136,9 +134,9 @@ textarea:focus {
 }
 
 p {
-  line-height: 1.8 !important;
+  line-height: 1.8;
   margin: 0 0 1.5rem;
-  margin: 0 0 var(--spacing-vertical) !important;
+  margin: 0 0 var(--spacing-vertical);
   font-size: 16px !important;
 }
 
@@ -276,6 +274,7 @@ main.offscreen__darken:before {
 /*        COMMON CLASSES WITH STYLES          */
 
 /* ***************************************** */
+
 .heading-blue {
   color: #003864;
   color: var(--color-blue-40);
@@ -353,12 +352,7 @@ main.offscreen__darken:before {
   font-size: 0.75rem !important;
 }
 
-.small_italic_text {
-  font-style: italic !important;
-  font-size: 13px !important;
-  font-family: "Roboto", sans-serif !important;
-  font-family: var(--font-family-primary) !important;
-}
+/* 10 April */
 
 .blue__text {
   color: #004976 !important;
@@ -380,56 +374,32 @@ main.offscreen__darken:before {
 }
 
 /*Mohi*/
+
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 /* 14 April */
+
 .component-content,
 .component {
   padding: 0 !important;
 }
 
 /* For Header and Footer a tag */
+
 header a,
-footer a {
-  color: #363636 !important;
+footer a,
+.blue_30 {
+  color: #004976 !important;
   color: var(--color-gray-30) !important;
 }
 
-.blue_30 {
-  color: #004976;
-  color: var(--color-blue-30);
-}
-
-/* Mohi vai  */
+/* Mohi vai */
 .gray-pods {
   background-color: #f6f6f6;
   background-color: var(--color-gray-10);
-  padding: 2.75rem 0 !important;
-}
-
-/* 01 May */
-.content,
-.rich-text {
-  border: none !important;
-}
-
-/* Mohi vai */
-.landing-page-hero__wrapper {
-  text-align: center;
-  /*   max-height: 32.5rem;*/
-  overflow: hidden;
-}
-
-.landing-page-hero_maxwidth {
-  max-width: 1600px;
-  margin: auto;
-  height: 32.5rem;
-}
-
-.component-space-top-bottom {
   padding: 2.75rem 0 !important;
 }
 
@@ -438,15 +408,10 @@ footer a {
   color: #000 !important;
 }
 
-.content,
-.rich-text {
-  color: #000 !important;
-  border: none !important;
-  line-height: 24px !important;
-  font-size: 16px !important;
-  overflow: hidden;
-}
-.content li,
-.rich-text li {
-  font-size: 16px !important;
+/* 05 may  */
+.small_italic_text {
+  font-style: italic !important;
+  font-size: 13px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-family: var(--font-family-primary) !important;
 }
