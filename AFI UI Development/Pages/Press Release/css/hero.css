@@ -1,0 +1,8 @@
+/* Hero CSS */
+.page__hero .hero__image {
+  max-width: 100rem;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}

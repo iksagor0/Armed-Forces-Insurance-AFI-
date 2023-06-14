@@ -1,0 +1,49 @@
+.interior__title_h1 {
+    cursor: auto !important;
+}
+
+.news__letter {
+    margin: 50px auto;
+}
+
+.news__letter .news__article_item.promo.component {
+    padding: 0 14px 32px !important;
+    border: 0 !important;
+}
+
+.news__letter .button {
+    font-size: 18px !important;
+    width: 255px;
+}
+
+.news__letter .news__article_item a,
+.news__letter .news__article_item i {
+    font-size: 18px;
+}
+
+.news__letter .news__article_item a:hover {
+    text-decoration: underline !important;
+}
+
+.news__letter .news__article_item i {
+    padding-left: 5px;
+    color: #0570c5 !important;
+    color: var(--color-blue-10) !important;
+}
+
+.news__letter .news__article_item p {
+    margin-bottom: 1rem !important;
+}
+
+.news__letter .news__article_item .article-grid-item__heading {
+    color: black !important;
+}
+
+
+/* Button = button button--large-text */
+
+
+/* Promo =  news__article_item */
+
+
+/* Parent = news__letter */

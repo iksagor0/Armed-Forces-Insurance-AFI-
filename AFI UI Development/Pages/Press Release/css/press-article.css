@@ -1,0 +1,34 @@
+/* Article CSS */
+.press_release_articles .press_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.press_release_articles .press_title {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.press_release_articles .press_title h1 {
+  margin: 0 !important;
+}
+
+.press_release_articles {
+  padding: 2rem 0;
+}
+
+.press_article p,
+.press_article h2 {
+  margin-bottom: 5px;
+}
+
+.press_article .read_more_btn {
+  font-size: 1.125rem !important;
+  line-height: 24px;
+}
+
+.read_more_btn:hover {
+  text-decoration: underline !important;
+}

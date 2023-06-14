@@ -1,0 +1,105 @@
+.article__page {
+    margin: 30px auto;
+}
+
+.article__page .heading-blue.field-title {
+    color: #004976 !important;
+    color: var(--color-blue-30) !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.article__page .article_page_share {
+    margin-top: 10px;
+}
+
+.article__page .article_page_share i,
+.article__page .article_page_share a {
+    color: #000 !important;
+    opacity: .5;
+    border: 0 !important;
+    font-size: 1rem !important;
+}
+
+.article__page .article_page_share:hover i,
+.article__page .article_page_share:hover a {
+    opacity: 1;
+}
+
+.article__page p,
+.article__page li,
+.article__page a,
+.more__articles .articles__list a {
+    font-size: 18px !important;
+}
+
+.article__page h1,
+.article__page h2,
+.article__page h3,
+.article__page h4,
+.article__page h5 {
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+.article__page .article__image {
+    margin-bottom: 2rem;
+}
+
+.more__articles {
+    padding: 30px 0 !important;
+}
+
+.more__articles .align__center {
+    display: grid;
+    place-content: center;
+}
+
+.more__articles .component-content {
+    border: 0 !important;
+}
+
+.more__articles .more-articles__list .row {
+    gap: 30px;
+}
+
+.more__articles .more-articles__list .promo {
+    background: transparent !important;
+}
+
+.more-articles__item-heading {
+    font-family: Roboto, sans-serif;
+    font-family: var(--font-family-primary) !important;
+    font-size: 1.625rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #000 !important;
+}
+
+.more-articles__item-description {
+    margin-bottom: 12px !important;
+}
+
+.more__articles .more-articles__list a:hover {
+    text-decoration: underline !important;
+}
+
+.more__articles .more-articles__list i {
+    color: #0570c5 !important;
+    color: var(--color-blue-10) !important;
+    font-size: 18px !important;
+    padding-left: 5px !important;
+}
+
+
+/* 
+**************************** NOTE *******************
+1. REMOVE class="landing-page-hero__wrapper container" THIS CLASS
+  -- add class in img tag = ""
+2. article_title SHOULD BE h1 TAG with "article_title" class
+*/
+
+
+/* Parent = .article__page */
+
+
+/* More Articles  = .more__articles */
