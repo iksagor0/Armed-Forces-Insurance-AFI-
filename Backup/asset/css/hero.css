@@ -338,3 +338,16 @@ input[type="radio"]+label:after {
   margin-bottom: 30px;
   width: 230px;
 }
+
+.quote-selector__left,
+.quote-selector__right {
+  left: 0 !important;
+  transform: translateX(0) !important;
+  max-width: 19rem !important;
+  bottom: 3rem !important;
+}
+
+.quote-selector__right {
+  left: unset !important;
+  right: 0 !important;
+}

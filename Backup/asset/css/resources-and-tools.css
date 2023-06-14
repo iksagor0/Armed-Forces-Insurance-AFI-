@@ -1,7 +1,22 @@
 /* / *********************************
         Knowledge-On-Demand
 **************************************/
+h1.category_page__title {
+    color: #000 !important;
+    font-size: 1.125rem !important;
+    font-family: 'Roboto' !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+h1.category_page__title::before {
+    content: attr(data-before);
+    font-weight: normal !important;
+    cursor: auto;
+}
+
 .image_link__wrapper,
+.image_link_wrapper_item,
 .image_link__wrapper_item {
     position: relative;
     width: 100%;
@@ -10,6 +25,10 @@
 .image_link__wrapper_item {
     min-height: 330px;
     padding: 0 !important;
+    /* background: #e1f1ff; */
+}
+
+.bg_light_blue {
     background: #e1f1ff;
 }
 
@@ -40,6 +59,7 @@
     z-index: 55;
     max-width: 320px;
     min-width: 305px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
 .image_link__wrapper .title__link.top a,
@@ -71,6 +91,27 @@
     gap: 30px;
     margin-top: 2rem !important;
     margin-bottom: 3rem !important;
+}
+
+.text_link__wrapper_item {
+    width: 100%;
+    text-align: center;
+    padding: 30px !important;
+    background-color: #e1f1ff;
+}
+
+.text_link__wrapper_item h2 {
+    font-size: 40px !important;
+    line-height: 50px;
+    font-weight: normal !important;
+}
+
+.text_link__wrapper_item a {
+    border-bottom: none !important;
+    position: unset;
+    background: none !important;
+    color: #000 !important;
+    font-size: 14px !important;
 }
 
 /* .all_categories_section {
@@ -111,7 +152,6 @@
         grid-template-columns: repeat(1, 1fr);
     }
 }
-
 
 /* / *********************************
         Homeowner-Insurance
@@ -196,15 +236,11 @@
     opacity: 1;
 }
 
-
-
 .list-pagination>.component-content nav {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
-
-
 
 /* / *********************************
              FAQs
@@ -240,10 +276,6 @@
     margin-left: 18px !important;
 }
 
-
-
-
-
 /* / *********************************
  Article Pages of Homeowner-Insurance
 **************************************/
@@ -272,9 +304,6 @@
     }
 }
 
-/*  single_image_article - single_image
- img style="float: right; margin-left: 2rem; width: 600px; max-width: 50% */
-
 /********************************************************
  *                   GRID ARTICLE 9-3
  ********************************************************/
@@ -283,6 +312,7 @@
     display: grid !important;
     grid-template-columns: 9fr 3fr;
     gap: 30px;
+    margin-top: 20px;
 }
 
 .grid__article,
@@ -296,14 +326,120 @@
 }
 
 .grid__article_aside .button,
-.grid__article_aside ul {
+.grid__article_aside ul,
+.grid__article ul {
     margin-bottom: 20px;
+}
+
+
+.grid__article_aside .cta_widget_start,
+.grid__article_aside .cta_widget_star__dark,
+.cta_widget_start_wide,
+.article_insurance_quote {
+    background-color: #f4f4f4 !important;
+    padding: 2.75rem 2.25rem !important;
+    margin: 20px 0 30px;
+}
+
+.article_insurance_quote {
+    margin: 20px auto !important;
+}
+
+.grid__article_aside .cta_widget_start .button,
+.grid__article_aside .cta_widget_star__dark .button {
+    padding: 12px 20px !important;
+    font-size: 18px !important;
+}
+
+.grid__article_aside .cta_widget_star__dark {
+    background-color: #212529 !important;
+}
+
+.grid__article_aside .cta_widget_star__dark {
+    background-color: #212529 !important;
+}
+
+.grid__article_aside .cta_widget_star__dark h4 {
+    color: #FB542B !important;
+}
+
+.grid__article_aside .cta_widget_star__dark h1 {
+    color: #fff !important;
+}
+
+.cta_widget_start_wide h1,
+.cta_widget_start_wide h4 {
+    font-weight: 700 !important;
+}
+
+
+
+.grid__article .italic_bordered_text {
+    font-size: 1.5rem !important;
+    font-style: italic;
+    line-height: 1.5;
+    color: #999;
+    font-family: georgia, serif;
+    border-top: 2px solid #999;
+    border-bottom: 2px solid #999;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 @media screen and (max-width:991px) {
     .grid__article_9-3 {
         grid-template-columns: 1fr;
     }
+}
+
+.article_link_container ul,
+.article_link_container ul li {
+    margin-bottom: 0 !important;
+}
+
+.coverage_options_container {
+    background-color: #f1f1f2;
+    box-sizing: border-box;
+    padding: 30px !important;
+}
+
+.coverage_options_container h2 {
+    box-sizing: border-box;
+    color: #004976;
+    font-family: 'Zilla Slab', Helvetica, Arial, sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    margin: 30px 0 !important;
+    text-align: center;
+}
+
+.coverage_options_container .h__33 {
+    height: 33% !important;
+}
+
+.grid__article .logo__image_wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.grid__article .logo__image {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.article_resources .col-lg-4.place__center {
+    padding: 20px !important;
+}
+
+.article_resources a,
+.article_resources a:hover {
+    color: #000 !important;
+    text-decoration: underline !important;
 }
 
 /******************* Article Resources *******************/
@@ -336,5 +472,18 @@
 
 .article_insurance_quote h1,
 .article_insurance_quote h4 {
+    font-weight: 600 !important;
+}
+
+/* Auto */
+.padding_h1_h4 h1 {
+    padding: 30px !important;
+    padding-top: 0 !important;
+    font-weight: 600 !important;
+}
+
+.padding_h1_h4 h4 {
+    padding: 30px !important;
+    padding-bottom: 0 !important;
     font-weight: 600 !important;
 }

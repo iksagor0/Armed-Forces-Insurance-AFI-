@@ -16,7 +16,7 @@
 
 .additional_coverages_container dt {
   font-weight: bold !important;
-  color: #004976;
+  /* color: #004976; */
 }
 
 .additional_coverages_container dd {
@@ -29,9 +29,9 @@
 /* Insurance Page */
 .product_item_wrapper {
   margin-top: 30px;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 0 30px;
 }
 
 .product_item {
@@ -45,17 +45,22 @@
   filter: invert(33%) sepia(66%) saturate(7499%) hue-rotate(194deg) brightness(94%) contrast(96%);
 }
 
+.product_item--icon:hover {
+  filter: invert(12%) sepia(73%) saturate(4307%) hue-rotate(189deg) brightness(93%) contrast(101%);
+}
+
 .product_text .product_item--icon img {
   width: 96px;
 }
 
 .top-products_item p,
 .product_item p {
-  margin-top: 0.25rem;
-  font-weight: 400;
+  /* margin-top: 0.25rem; */
+  font-weight: 400 !important;
   color: rgb(107 114 128) !important;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+  margin-bottom: 12px !important;
 }
 
 p.product_item--title {
@@ -83,15 +88,20 @@ p.product_item--title {
   color: var(--color-blue-40);
 }
 
-.product_text p {
-  font-size: 16px !important;
-}
 
 .product_text .field-link a {
   border: none !important;
   text-decoration: underline !important;
 }
 
-.article-content a {
+.product_item_wrapper a {
   text-decoration: underline !important;
+}
+
+.article-content h3 {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem;
+  font-weight: 600 !important;
+  color: rgb(55 65 81) !important;
+  margin-bottom: 16px !important;
 }

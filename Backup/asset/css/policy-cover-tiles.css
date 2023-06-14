@@ -1,7 +1,7 @@
 .policy__cover {
   max-width: 1150px;
   /* margin: 50px auto 20px !important; */
-  text-align: center !important;
+  /* text-align: center !important; */
 }
 
 .policy__cover .coverage_icon img {
@@ -18,7 +18,11 @@
 .policy__cover h2,
 .policy__cover h3 {
   color: #004976 !important;
-  font-size: 24px !important;
+  font-size: 36px !important;
+}
+
+.policy__cover h2 {
+  text-align: center !important;
 }
 
 .policy__cover .policy_cover_title h2 {

@@ -322,11 +322,13 @@ footer .footer-disclaimer .footer-disclaimer__links a {
   column-count: 1;
 }
 
-.afi-footer-title h2 {
+.afi-footer-title h2,
+.afi-footer-title-cs h2 {
   font-family: "Roboto", sans-serif !important;
   font-size: 20px !important;
   margin-bottom: 18px !important;
   color: #363636 !important;
+  font-weight: 700 !important;
 }
 
 #footer a:hover {

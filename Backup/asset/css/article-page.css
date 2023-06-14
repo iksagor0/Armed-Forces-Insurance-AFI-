@@ -128,7 +128,7 @@
 
 /* 22 May */
 .article__page .share-badges__container .row {
-    height: 100%;
+    height: 50px;
 }
 
 .article__page .share-badges {

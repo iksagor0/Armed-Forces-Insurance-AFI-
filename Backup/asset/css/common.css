@@ -466,3 +466,61 @@ footer a {
   font-weight: normal !important;
   color: #545959 !important;
 }
+
+/* 7 June */
+.alerts-banner {
+  background: #003864;
+  background: var(--color-blue-40);
+  box-shadow: -.3125rem .1875rem .625rem rgba(0, 0, 0, .6);
+  padding: 1.25rem 1.375rem;
+  position: relative;
+  z-index: 3;
+}
+
+.alerts-banner__heading {
+  color: #fff;
+  color: var(--color-white);
+  font-family: Roboto, sans-serif !important;
+  font-family: var(--font-family-primary) !important;
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+}
+
+.alerts-banner a {
+  display: inline-block;
+  color: #69a9dc !important;
+  /* position: relative; */
+}
+
+.alerts-banner a,
+.alerts-banner__heading {
+  font-size: .875rem !important;
+  font-weight: 400 !important;
+}
+
+@media screen and (min-width: 48em) {
+  .alerts-banner {
+    padding: 1.25rem 0;
+  }
+
+  .alerts-banner__heading {
+    font-size: 1.25rem !important;
+  }
+}
+
+
+/* HIDE video-caption, video-description */
+.video-caption,
+.video-description {
+  display: none;
+}
+
+/* 13 June */
+.gray_bg {
+  background: #f4f4f4;
+}
+
+.Mtag {
+  /* color: #c51c1c; */
+  text-decoration: underline;
+}

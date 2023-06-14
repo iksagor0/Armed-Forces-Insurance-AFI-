@@ -15,10 +15,9 @@
 }
 
 .afi_for_you__text_section .paragraph__container p {
-  color: #898d8d;
-  color: var(--color-gray-20);
-  font-weight: 200;
-  line-height: 1.625;
+  color: #545959 !important;
+  font-weight: normal;
+  line-height: 1.625 !important;
 }
 
 @media screen and (min-width: 48em) {

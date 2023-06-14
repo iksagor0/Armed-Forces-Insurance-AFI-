@@ -60,7 +60,7 @@
 /* 15 May */
 .related_article__container {
   display: grid;
-  gap: 30px;
+  gap: 24px;
   grid-template-columns: repeat(3, 1fr);
 }
 
