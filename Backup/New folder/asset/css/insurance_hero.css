@@ -1,0 +1,124 @@
+.insurance__hero {
+  display: block;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0;
+  position: relative;
+}
+
+.insurance__hero .backround_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* display: none; */
+}
+
+.insurance__hero .container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.insurance__hero .video-wrapper {
+  background-color: transparent;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+}
+
+.insurance__hero .video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.insurance__hero .quote-start {
+  background-image: linear-gradient(120deg, #cb2c30, #881b26);
+  background-image: linear-gradient(120deg,
+      var(--color-red-10),
+      var(--color-red-20));
+  color: #fff;
+  color: var(--color-white);
+  padding: 2.75rem 2.25rem;
+}
+
+.insurance__hero .quote-start__controls {
+  text-align: left;
+}
+
+.insurance__hero form {
+  max-width: 260px;
+  margin: auto;
+}
+
+.insurance__hero .quote-start__type-image {
+  height: 2.9375rem;
+  width: auto;
+}
+
+.insurance__hero .quote-start__heading {
+  margin-top: 0.8rem !important;
+}
+
+.insurance__hero .quote-start__upper-wrapper p {
+  line-height: 2 !important;
+}
+
+.insurance__hero .quote-start__controls .button {
+  width: 100%;
+  font-size: 1.125rem;
+  /* padding: 12px 20px !important; */
+}
+
+@media screen and (min-width: 992px) {
+  .insurance__hero {
+    display: block;
+    height: 32.5rem;
+    overflow: hidden;
+    padding: 25px;
+  }
+
+  .insurance__hero .align-items-center {
+    align-items: center !important;
+    height: 100%;
+    padding: 12px !important;
+  }
+
+  .insurance__hero .video-wrapper {
+    max-width: 800px;
+  }
+
+  .insurance__hero .backround_image img {
+    display: block;
+  }
+
+  .insurance__hero .quote-start {
+    max-width: 18rem;
+    margin-left: auto;
+    /* max-height: 370px; */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .insurance__hero .backround_image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* for Homeowner page */
+  .insurance__hero.homeowner_hero .quote-start {
+    max-height: 400px;
+    top: 45px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .insurance__hero .video-wrapper {
+    padding: 0;
+  }
+}

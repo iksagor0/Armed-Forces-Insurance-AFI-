@@ -1,0 +1,489 @@
+/* / *********************************
+        Knowledge-On-Demand
+**************************************/
+h1.category_page__title {
+    color: #000 !important;
+    font-size: 1.125rem !important;
+    font-family: 'Roboto' !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+h1.category_page__title::before {
+    content: attr(data-before);
+    font-weight: normal !important;
+    cursor: auto;
+}
+
+.image_link__wrapper,
+.image_link_wrapper_item,
+.image_link__wrapper_item {
+    position: relative;
+    width: 100%;
+}
+
+.image_link__wrapper_item {
+    min-height: 330px;
+    padding: 0 !important;
+    /* background: #e1f1ff; */
+}
+
+.bg_light_blue {
+    background: #e1f1ff;
+}
+
+.image_link__wrapper .link_image img,
+.image_link__wrapper_item .link_image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.image_link__wrapper_item .link_image img {
+    height: 100%;
+}
+
+.image_link__wrapper_item .link_image {
+    position: absolute;
+    height: 100%;
+}
+
+.image_link__wrapper .title__link a,
+.image_link__wrapper_item .title__link a,
+.image_link__wrapper_item .title__link .field-title {
+    position: absolute;
+    left: 5%;
+    background: #fff;
+    color: #000 !important;
+    padding: 8px 12px;
+    border: none !important;
+    z-index: 55;
+    max-width: 320px;
+    min-width: 305px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.image_link__wrapper .title__link.top a,
+.image_link__wrapper_item .title__link.top a,
+.image_link__wrapper_item .title__link.top .field-title {
+    top: 5%;
+    /* font-variant: all-petite-caps; */
+    font-weight: 500;
+    text-decoration: none !important;
+    border-radius: 3px !important;
+    cursor: auto;
+}
+
+.image_link__wrapper .title__link.bottom a,
+.image_link__wrapper_item .title__link.bottom a {
+    bottom: 5%;
+    min-height: 65px;
+}
+
+.image_link__wrapper .title__link.top a:hover,
+.image_link__wrapper_item .title__link.top a:hover,
+.image_link__wrapper_item .title__link.top .field-title:hover {
+    text-decoration: none !important;
+}
+
+.image_link__grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+}
+
+.text_link__wrapper_item {
+    width: 100%;
+    text-align: center;
+    padding: 30px !important;
+    background-color: #e1f1ff;
+}
+
+.text_link__wrapper_item h2 {
+    font-size: 40px !important;
+    line-height: 50px;
+    font-weight: normal !important;
+}
+
+.text_link__wrapper_item a {
+    border-bottom: none !important;
+    position: unset;
+    background: none !important;
+    color: #000 !important;
+    font-size: 14px !important;
+}
+
+/* .all_categories_section {
+    margin: 50px 0;
+} */
+
+.all_categories_section h2 {
+    margin: 30px 0 !important;
+}
+
+.all_categories_section .category_links_container {
+    padding: 0 10px !important;
+}
+
+.category_links_container .category_link a {
+    padding: 0.75rem 1rem;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .05);
+    border: 1px solid #eee;
+    display: block;
+    margin: 10px;
+}
+
+.category_links_container .category_link a:hover {
+    text-decoration: underline !important;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    .image_link__grid_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .image_link__grid_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* / *********************************
+        Homeowner-Insurance
+**************************************/
+.page_list_container ul.items {
+    /* list-style: disc !important; */
+    background: transparent;
+    border: none !important;
+    padding-left: 20px !important;
+}
+
+.page_list_container ul.items li.item {
+    padding: 0 !important;
+    border: none !important;
+    position: relative;
+    padding-left: 15px !important;
+}
+
+.page_list_container ul.items li.item::before {
+    content: "";
+    width: 7px;
+    aspect-ratio: 1/1;
+    background: #000;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.page_list_container ul.items li.item a {
+    margin: 5px 0;
+    margin-left: 10px;
+    display: inline-block;
+    font-weight: 400 !important;
+    border: none !important;
+}
+
+.page_list_container ul.items li.item a:hover {
+    color: #003864 !important;
+    color: var(--color-blue-40) !important;
+    text-decoration: underline !important;
+}
+
+/*/ Pagination  */
+.list-pagination {
+    margin: 30px 0;
+}
+
+.list-pagination>.component-content nav>span,
+.list-pagination>.component-content nav>a {
+    height: 40px;
+    display: inline-grid;
+    place-content: center;
+    color: #000 !important;
+    margin: 0 !important;
+    background-color: #eaeaea !important;
+    letter-spacing: .3px;
+}
+
+.list-pagination>.component-content nav>span {
+    opacity: .7;
+}
+
+.list-pagination>.component-content nav .sxa-paginationnumber {
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-content: center;
+    border-radius: 50% !important;
+    margin: 0 5px !important;
+    border: none !important;
+    font-size: 16px !important;
+}
+
+.list-pagination>.component-content nav>span.active {
+    font-weight: 600;
+    background: #99333C !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+    opacity: 1;
+}
+
+.list-pagination>.component-content nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* / *********************************
+             FAQs
+**************************************/
+.afi__faqs {
+    margin-bottom: 40px;
+}
+
+.afi__faqs h4 {
+    margin-top: 40px !important;
+    margin-bottom: 8px !important;
+    color: #606363 !important;
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+}
+
+.afi__faqs details {
+    padding: 10px 0 !important;
+}
+
+.afi__faqs details summary {
+    color: #881b26;
+}
+
+.afi__faqs details p {
+    margin-bottom: 8px !important;
+}
+
+
+.afi__faqs details p,
+.afi__faqs details ul,
+.afi__faqs details span {
+    margin-left: 18px !important;
+}
+
+/* / *********************************
+ Article Pages of Homeowner-Insurance
+**************************************/
+.heading-red.field-title {
+    font-size: 32px !important;
+    font-weight: bold !important;
+    color: #c00 !important;
+    /* margin-top: 4rem !important; */
+    margin-bottom: 0 !important;
+    border: none !important;
+}
+
+.single_image_article ul,
+.paragraph__container ul {
+    margin-bottom: 20px !important;
+}
+
+@media screen and (max-width:991px) {
+
+    .single_image_article img,
+    .single_image_article .single_image {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/********************************************************
+ *                   GRID ARTICLE 9-3
+ ********************************************************/
+
+.grid__article_9-3 {
+    display: grid !important;
+    grid-template-columns: 9fr 3fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.grid__article,
+.grid__article_aside {
+    width: 100% !important;
+}
+
+.grid__article_aside h4,
+.grid__article_aside h1 {
+    font-weight: 700 !important;
+}
+
+.grid__article_aside .button,
+.grid__article_aside ul,
+.grid__article ul {
+    margin-bottom: 20px;
+}
+
+
+.grid__article_aside .cta_widget_start,
+.grid__article_aside .cta_widget_star__dark,
+.cta_widget_start_wide,
+.article_insurance_quote {
+    background-color: #f4f4f4 !important;
+    padding: 2.75rem 2.25rem !important;
+    margin: 20px 0 30px;
+}
+
+.article_insurance_quote {
+    margin: 20px auto !important;
+}
+
+.grid__article_aside .cta_widget_start .button,
+.grid__article_aside .cta_widget_star__dark .button {
+    padding: 12px 20px !important;
+    font-size: 18px !important;
+}
+
+.grid__article_aside .cta_widget_star__dark {
+    background-color: #212529 !important;
+}
+
+.grid__article_aside .cta_widget_star__dark {
+    background-color: #212529 !important;
+}
+
+.grid__article_aside .cta_widget_star__dark h4 {
+    color: #FB542B !important;
+}
+
+.grid__article_aside .cta_widget_star__dark h1 {
+    color: #fff !important;
+}
+
+.cta_widget_start_wide h1,
+.cta_widget_start_wide h4 {
+    font-weight: 700 !important;
+}
+
+
+
+.grid__article .italic_bordered_text {
+    font-size: 1.5rem !important;
+    font-style: italic;
+    line-height: 1.5;
+    color: #999;
+    font-family: georgia, serif;
+    border-top: 2px solid #999;
+    border-bottom: 2px solid #999;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width:991px) {
+    .grid__article_9-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.article_link_container ul,
+.article_link_container ul li {
+    margin-bottom: 0 !important;
+}
+
+.coverage_options_container {
+    background-color: #f1f1f2;
+    box-sizing: border-box;
+    padding: 30px !important;
+}
+
+.coverage_options_container h2 {
+    box-sizing: border-box;
+    color: #004976;
+    font-family: 'Zilla Slab', Helvetica, Arial, sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    margin: 30px 0 !important;
+    text-align: center;
+}
+
+.coverage_options_container .h__33 {
+    height: 33% !important;
+}
+
+.grid__article .logo__image_wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.grid__article .logo__image {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.article_resources .col-lg-4.place__center {
+    padding: 20px !important;
+}
+
+.article_resources a,
+.article_resources a:hover {
+    color: #000 !important;
+    text-decoration: underline !important;
+}
+
+/******************* Article Resources *******************/
+.article_resources {
+    padding: 1rem !important;
+}
+
+.article_resources .text__content h2 {
+    font-weight: 600 !important;
+}
+
+.article_resources .place__center {
+    justify-content: start;
+}
+
+@media screen and (min-width:991px) {
+    .article_resources .text__content {
+        padding-right: 25px !important;
+    }
+}
+
+/*  */
+.article_insurance_quote {
+    background-color: #f4f4f4 !important;
+}
+
+.article_insurance_quote__css {
+    padding: 2.75rem 2.25rem !important;
+}
+
+.article_insurance_quote h1,
+.article_insurance_quote h4 {
+    font-weight: 600 !important;
+}
+
+/* Auto */
+.padding_h1_h4 h1 {
+    padding: 30px !important;
+    padding-top: 0 !important;
+    font-weight: 600 !important;
+}
+
+.padding_h1_h4 h4 {
+    padding: 30px !important;
+    padding-bottom: 0 !important;
+    font-weight: 600 !important;
+}
