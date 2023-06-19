@@ -1,9 +1,21 @@
+// DATA
+const formData = {
+  eligibilityStatus: "",
+  policyHolder: {},
+  vehicleInfo: {
+    vehicles: [],
+  },
+  householdViolations: null,
+  policyCoverageLimits: {},
+  coverageHistory: {},
+};
+
 // const successRedirection = "https://afi.org/";
 // const successRedirection = "../--Model/thank-you.html";
 
 // Forms
-const vehicleForms = [
-  "policyholder_form",
+const multiStepForm = [
+  "policyholder__form",
   // "add_vehicle__form",
   "summary__form",
   "violations__form",
@@ -12,73 +24,67 @@ const vehicleForms = [
   "coverage__history_form",
 ];
 
+let formList = ["radio_select", ...multiStepForm];
+
 // *********************************************
 //       FORM SUBMISSION AND STEP HANDLING
 // *********************************************
-const vehicleNextBtn = document.querySelector("#vehicleNextBtn");
-const vehicleBackBtn = document.querySelector("#vehicleBackBtn");
+const nextBtn = document.querySelector("#next_btn");
+const backBtn = document.querySelector("#back_btn");
 
-let vehicleStep = 0;
-let vehicleMaxStep = formList.length - 1;
+let stepCount = 0;
+let maxStep = formList.length - 1;
 
 // ***** NEXT FUNCTIONALITY *****
-pressEnterToSubmit(vehicleNextBtn);
-vehicleNextBtn.addEventListener("click", () => {
-  if (vehicleStep === 0) {
-    const isSelectEligibility = eligibilityValidation(vehicleForms);
+nextBtn.addEventListener("click", () => {
+  if (stepCount === 0) {
+    const isSelectEligibility = eligibilityValidation();
     if (!Boolean(isSelectEligibility)) return false;
-    vehicleMaxStep = formList.length - 1;
-    militaryFormFunc();
   }
+
   //  HANDLE ALL FORM SUBMISSIONS AND STEP VALIDATION
-  if (!handleVehicleStepForm(vehicleStep)) return false;
+  if (!handleMultiStepForm(stepCount)) return false;
 
   // Step Increment
-  vehicleStep >= vehicleMaxStep ? vehicleStep : vehicleStep++;
+  stepCount >= maxStep ? stepCount : stepCount++;
 
   // Show Form
-  showActiveForm(vehicleStep, vehicleBackBtn);
+  showActiveForm(stepCount);
 });
 
 // Back
-vehicleBackBtn.addEventListener("click", () => {
+backBtn.addEventListener("click", () => {
   // Step Decrement
-  vehicleStep <= 0 ? vehicleStep : vehicleStep--;
+  stepCount <= 0 ? stepCount : stepCount--;
 
   // 2 side back for add_more_vehicle_form
-  if (vehicleStep + 1 === formList.indexOf("add_more_vehicle_form")) {
+  if (stepCount + 1 === formList.indexOf("add_more_vehicle_form")) {
     formList = formList.filter((item) => item != "add_more_vehicle_form");
-    vehicleStep = formList.indexOf("summary__form");
+    stepCount = formList.indexOf("summary__form");
   }
-  showActiveForm(vehicleStep, vehicleBackBtn);
+  showActiveForm(stepCount);
 });
 
 // =*********************************************
 //       HANDLING MULTI-STEP FORMS
 // =*********************************************
-function handleVehicleStepForm(step) {
+function handleMultiStepForm(step) {
   // =*********************************************************
   if (step === formList.indexOf("military_information")) {
-    if (!militaryValidation()) return false;
+    if (!militaryFormValidation()) return false;
   }
-
   if (step === formList.indexOf("parent_information")) {
-    if (!validateForm("parent_information")) return false;
+    if (!parentFormValidation()) return false;
   }
-
   if (step === formList.indexOf("child_information")) {
-    if (!validateForm("child_information")) return false;
+    if (!childFormValidation()) return false;
   }
-
-  if (step === formList.indexOf("policyholder_form")) {
+  if (step === formList.indexOf("policyholder__form")) {
     if (!policyholderValidation(step)) return false;
-    //  floodPropertyQuotedFormFunc();
   }
   if (step === formList.indexOf("spouse_information")) {
-    if (!validateForm("spouse_information")) return false;
+    if (!spouseValidation()) return false;
   }
-
-  //
   if (step === formList.indexOf("add_vehicle__form")) {
     if (!addVehicleValidation()) return false;
     summaryFunctionality();
@@ -91,7 +97,7 @@ function handleVehicleStepForm(step) {
     step === formList.indexOf("summary__form") ||
     step === formList.indexOf("summary__form") - 1
   ) {
-    // summaryFunctionality();
+    summaryFunctionality();
   }
   if (step === formList.indexOf("violations__form")) {
     if (!violationsValidation()) return false;
@@ -120,69 +126,298 @@ function handleVehicleStepForm(step) {
   return true;
 }
 
-// Date Validation
-// const policyRenewalDate = document.querySelector("#policyRenewalDate");
-// const DOB = document.querySelector("#policyHolderDob");
-// const violationsDates = document.querySelectorAll(".householdViolationsDate");
-// const spouseDOB = document.querySelector("#cohabitantDob");
+// =*********************************************
+//           SHOW FORM BY CONDITION
+// =*********************************************
+function showActiveForm(step) {
+  maxStep = formList.length - 1;
 
-// const thisYear = new Date().getFullYear();
-// dateValidation(policyRenewalDate, thisYear + 2);
-// dateValidation(DOB, thisYear - 17);
-// dateValidation(spouseDOB, thisYear - 17);
-// violationsDates.forEach((vDate) => dateValidation(vDate, thisYear));
+  // remove active_form class from everywhere
+  document.querySelector(".active_form")?.classList.remove("active_form");
+
+  // set active_form class
+  document.querySelector(`.${formList[step]}`)?.classList.add("active_form");
+
+  console.log({ stepCount });
+  console.log(formData);
+
+  // Conditionally Hide Back Btn
+  stepCount <= 0
+    ? backBtn.classList.add("hide")
+    : backBtn.classList.remove("hide");
+}
+
+// =*********************************************
+//              ERROR HANDLING
+// =*********************************************
+// Error Message if value user makes any mistake
+function eligibilityErrorMessage(data, selector) {
+  const errorDiv = document.querySelector(selector);
+
+  if (!data) {
+    errorDiv?.classList.add("error");
+  } else {
+    errorDiv?.classList.remove("error");
+  }
+}
+
+function inputErrorMessage(selector, msg, removeError) {
+  const hasErrorField =
+    selector?.parentElement?.querySelector(".field_message");
+
+  if (!hasErrorField) {
+    // create error message field
+    const div = document.createElement("div");
+    div.className = "field_message error";
+    div.innerHTML = msg;
+    selector?.parentElement.appendChild(div);
+  } else {
+    hasErrorField?.classList.add("error");
+    hasErrorField.innerHTML = msg;
+  }
+
+  if (removeError === true) {
+    hasErrorField?.remove();
+  }
+}
+
+// Check is input value is correct
+function isValueEmpty(selector) {
+  if (!selector?.value) {
+    inputErrorMessage(selector, "This field is required");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Input Number Only
+document.querySelectorAll(".field__input.numberOnly")?.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.target.value = e.target?.value.replace(/[^0-9]/g, "");
+  });
+});
+
+// Input Alphabet Only
+document.querySelectorAll(".field__input.alphabeticOnly")?.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.target.value = e.target?.value.replace(/[^a-zA-z]/g, "");
+  });
+});
+
+// Alphabetic only Validation after Submit
+function alphabeticOnly(selector) {
+  const letterRegEx = /^[A-Za-z]+$/;
+  if (letterRegEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter alphabetic characters only");
+    return false;
+  }
+}
+
+// Minimum value need
+function minValue(selector, minValue = 5, msg) {
+  if (selector?.value.length != minValue) {
+    inputErrorMessage(selector, msg);
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Email validation
+function emailValidation(selector) {
+  const regEx =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (regEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter a valid email address");
+    return false;
+  }
+}
+
+// Phone Number validation
+function phoneValidation(selector) {
+  const regEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+  if (regEx.test(selector?.value)) {
+    return true;
+  } else {
+    inputErrorMessage(selector, "Please enter a valid phone number");
+    return false;
+  }
+}
+
+// Phone Number Pattern
+document
+  .getElementById("policyHolderPhoneNumber")
+  .addEventListener("input", (e) => {
+    var x = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2]
+      ? x[1]
+      : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
+  });
+
+// Social Security Number Pattern
+document.querySelectorAll(".SSN").forEach((field) => {
+  field.addEventListener("input", (e) => {
+    var x = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+    e.target.value = !x[2]
+      ? x[1]
+      : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+  });
+});
+
+// Dollar Field Pattern
+const dollarField = document.querySelector(".field__input.dollar_field");
+
+dollarField.addEventListener("input", (e) => {
+  if (e.target.value) {
+    let modifiedValue = e.target.value.match(/.{1,3}/g).join(",");
+    e.target.value = `$${modifiedValue}`;
+  }
+});
+
+// Date Validation
+function dateValidation(field, getMaxYear) {
+  field?.addEventListener("input", (e) => {
+    let value = e.target.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
+
+    let [fullData, MM, DD, YYYY] = value;
+
+    // Month Validation
+    if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
+    else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
+    else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
+
+    // Date Validation
+    if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
+    else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
+    else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
+    else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
+      value[2] = DD[0];
+    else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
+      value[2] = DD[0];
+
+    // Year validation
+    const maxYear = String(getMaxYear);
+    // const maxYear = String(new Date().getFullYear() + 2);
+
+    if (Number(YYYY) <= 0) value[3] = "";
+    else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+    else if (YYYY.length === 2 && Number(YYYY) > 20) value[3] = YYYY[0];
+    else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+    else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+      value[3] = YYYY.slice(0, 2);
+    else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+      value[3] = YYYY.slice(0, 3);
+
+    // Result
+    e.target.value = !value[2]
+      ? value[1]
+      : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+  });
+}
+const policyRenewalDate = document.querySelector("#policyRenewalDate");
+const DOB = document.querySelector("#policyHolderDob");
+const violationsDates = document.querySelectorAll(".householdViolationsDate");
+const spouseDOB = document.querySelector("#cohabitantDob");
+
+const thisYear = new Date().getFullYear();
+dateValidation(policyRenewalDate, thisYear + 2);
+dateValidation(DOB, thisYear - 17);
+dateValidation(spouseDOB, thisYear - 17);
+violationsDates.forEach((vDate) => dateValidation(vDate, thisYear));
 
 // *********************************************
 //              FORM VALIDATION
 // *********************************************
+// / ********** Eligibility Validation ***********
+function eligibilityValidation() {
+  const eligibilityStatus = document.querySelector(
+    'input[name="eligibilityStatus"]:checked'
+  )?.value;
 
-// // / ********** Military Information ***********
-// function militaryFormValidation() {
-//   const militaryFirstName = document.querySelector("#militaryFirstName");
-//   const militaryLastName = document.querySelector("#militaryLastName");
-//   const branchOfService = document.querySelector("#branchOfService");
-//   const militaryStatus = document.querySelector("#militaryStatus");
-//   const militaryRank = document.querySelector("#militaryRank");
+  // Select Formlist as user eligibilityStatus
+  if (Boolean(eligibilityStatus)) {
+    if (eligibilityStatus === "military") {
+      formList = ["radio_select", "military_information", ...multiStepForm];
+    } else if (eligibilityStatus === "child") {
+      formList = ["radio_select", "parent_information", ...multiStepForm];
+    } else if (eligibilityStatus === "parent") {
+      formList = ["radio_select", "child_information", ...multiStepForm];
+    } else {
+      formList = ["radio_select", ...multiStepForm];
+    }
+    maxStep = formList.length - 1;
 
-//   const validationFields = [
-//     alphabeticOnly(militaryFirstName),
-//     isValueEmpty(militaryFirstName),
-//     alphabeticOnly(militaryLastName),
-//     isValueEmpty(militaryLastName),
-//     isValueEmpty(branchOfService),
-//     isValueEmpty(militaryStatus),
-//     isValueEmpty(militaryRank),
-//   ];
+    // set eligibilityStatus to formData
+    formData.eligibilityStatus = eligibilityStatus;
+  }
 
-//   const isValidate = validationFields.every((result) => result === true);
+  // Error Message if value = null
+  eligibilityErrorMessage(
+    formData.eligibilityStatus,
+    ".radio__form_section .field_message"
+  );
+  subStepCount = 0;
+  return eligibilityStatus;
+}
 
-//   if (isValidate) {
-//     const military = (formData.militaryInfo = {});
+// / ********** Military Information ***********
+function militaryFormValidation() {
+  const militaryFirstName = document.querySelector("#militaryFirstName");
+  const militaryLastName = document.querySelector("#militaryLastName");
+  const branchOfService = document.querySelector("#branchOfService");
+  const militaryStatus = document.querySelector("#militaryStatus");
+  const militaryRank = document.querySelector("#militaryRank");
 
-//     military.firstName = militaryFirstName?.value;
-//     military.lastName = militaryLastName?.value;
-//     military.branchOfService = branchOfService?.value;
-//     military.status = militaryStatus?.value;
-//     military.rank = militaryRank?.value;
+  const validationFields = [
+    alphabeticOnly(militaryFirstName),
+    isValueEmpty(militaryFirstName),
+    alphabeticOnly(militaryLastName),
+    isValueEmpty(militaryLastName),
+    isValueEmpty(branchOfService),
+    isValueEmpty(militaryStatus),
+    isValueEmpty(militaryRank),
+  ];
 
-//     // Set Name in Multi-step form field
-//     document.querySelector("#policyHolderFirstName").value = military.firstName;
-//     document.querySelector("#policyHolderLastName").value = military.lastName;
-//   }
+  const isValidate = validationFields.every((result) => result === true);
 
-//   return isValidate;
-// }
+  if (isValidate) {
+    const military = (formData.militaryInfo = {});
 
-// // Military Rank should be disabled if branchOfService value none
-// const branchOfService = document.getElementById("branchOfService");
-// branchOfService.addEventListener("change", () => {
-//   const militaryRank = document.getElementById("militaryRank");
-//   if (Boolean(branchOfService?.value)) {
-//     militaryRank.disabled = false;
-//   } else {
-//     militaryRank.disabled = true;
-//   }
-// });
+    military.firstName = militaryFirstName?.value;
+    military.lastName = militaryLastName?.value;
+    military.branchOfService = branchOfService?.value;
+    military.status = militaryStatus?.value;
+    military.rank = militaryRank?.value;
+
+    // Set Name in Multi-step form field
+    document.querySelector("#policyHolderFirstName").value = military.firstName;
+    document.querySelector("#policyHolderLastName").value = military.lastName;
+  }
+
+  return isValidate;
+}
+
+// Military Rank should be disabled if branchOfService value none
+const branchOfService = document.getElementById("branchOfService");
+branchOfService.addEventListener("change", () => {
+  const militaryRank = document.getElementById("militaryRank");
+  if (Boolean(branchOfService?.value)) {
+    militaryRank.disabled = false;
+  } else {
+    militaryRank.disabled = true;
+  }
+});
 
 // / ********** Child's Information ***********
 function childFormValidation() {
@@ -235,135 +470,135 @@ function parentFormValidation() {
 // *********************************************
 //             STEP-1 VALIDATION
 // *********************************************
-// function policyholderValidation(step) {
-//   const policyHolderFirstName = document.querySelector(
-//     "#policyHolderFirstName"
-//   );
-//   const policyHolderLastName = document.querySelector("#policyHolderLastName");
-//   const policyHolderSuffix = document.querySelector("#policyHolderSuffix");
-//   const policyHolderMailingAddress = document.querySelector(
-//     "#policyHolderMailingAddress"
-//   );
-//   const policyHolderCity = document.querySelector("#policyHolderCity");
-//   const policyHolderState = document.querySelector("#policyHolderState");
-//   const policyHolderZip = document.querySelector("#policyHolderZip");
-//   const policyHolderSsn = document.querySelector("#policyHolderSsn");
-//   const policyHolderDob = document.querySelector("#policyHolderDob");
-//   const policyHolderGender = document.querySelector("#policyHolderGender");
-//   const policyHolderMaritalStatus = document.querySelector(
-//     "#policyHolderMaritalStatus"
-//   );
-//   const policyHolderEmail = document.querySelector("#policyHolderEmail");
-//   const policyHolderPhoneType = document.querySelector(
-//     "#policyHolderPhoneType"
-//   );
-//   const policyHolderPhoneNumber = document.querySelector(
-//     "#policyHolderPhoneNumber"
-//   );
-//   const policyHolderResidenceStatus = document.querySelector(
-//     "#policyHolderResidenceStatus"
-//   );
+function policyholderValidation(step) {
+  const policyHolderFirstName = document.querySelector(
+    "#policyHolderFirstName"
+  );
+  const policyHolderLastName = document.querySelector("#policyHolderLastName");
+  const policyHolderSuffix = document.querySelector("#policyHolderSuffix");
+  const policyHolderMailingAddress = document.querySelector(
+    "#policyHolderMailingAddress"
+  );
+  const policyHolderCity = document.querySelector("#policyHolderCity");
+  const policyHolderState = document.querySelector("#policyHolderState");
+  const policyHolderZip = document.querySelector("#policyHolderZip");
+  const policyHolderSsn = document.querySelector("#policyHolderSsn");
+  const policyHolderDob = document.querySelector("#policyHolderDob");
+  const policyHolderGender = document.querySelector("#policyHolderGender");
+  const policyHolderMaritalStatus = document.querySelector(
+    "#policyHolderMaritalStatus"
+  );
+  const policyHolderEmail = document.querySelector("#policyHolderEmail");
+  const policyHolderPhoneType = document.querySelector(
+    "#policyHolderPhoneType"
+  );
+  const policyHolderPhoneNumber = document.querySelector(
+    "#policyHolderPhoneNumber"
+  );
+  const policyHolderResidenceStatus = document.querySelector(
+    "#policyHolderResidenceStatus"
+  );
 
-//   const validationFields = [
-//     alphabeticOnly(policyHolderFirstName),
-//     alphabeticOnly(policyHolderLastName),
-//     isValueEmpty(policyHolderFirstName),
-//     isValueEmpty(policyHolderLastName),
-//     isValueEmpty(policyHolderMailingAddress),
-//     isValueEmpty(policyHolderCity),
-//     isValueEmpty(policyHolderState),
-//     minValue(policyHolderZip, 5, "Please enter a valid Zip code"),
-//     isValueEmpty(policyHolderZip),
-//     minValue(policyHolderDob, 10, "Please enter a valid Date"),
-//     isValueEmpty(policyHolderDob),
-//     isValueEmpty(policyHolderGender),
-//     isValueEmpty(policyHolderMaritalStatus),
-//     isValueEmpty(policyHolderEmail),
-//     emailValidation(policyHolderEmail),
-//     isValueEmpty(policyHolderEmail),
-//     isValueEmpty(policyHolderPhoneType),
-//     phoneValidation(policyHolderPhoneNumber),
-//     isValueEmpty(policyHolderResidenceStatus),
-//   ];
+  const validationFields = [
+    alphabeticOnly(policyHolderFirstName),
+    alphabeticOnly(policyHolderLastName),
+    isValueEmpty(policyHolderFirstName),
+    isValueEmpty(policyHolderLastName),
+    isValueEmpty(policyHolderMailingAddress),
+    isValueEmpty(policyHolderCity),
+    isValueEmpty(policyHolderState),
+    minValue(policyHolderZip, 5, "Please enter a valid Zip code"),
+    isValueEmpty(policyHolderZip),
+    minValue(policyHolderDob, 10, "Please enter a valid Date"),
+    isValueEmpty(policyHolderDob),
+    isValueEmpty(policyHolderGender),
+    isValueEmpty(policyHolderMaritalStatus),
+    isValueEmpty(policyHolderEmail),
+    emailValidation(policyHolderEmail),
+    isValueEmpty(policyHolderEmail),
+    isValueEmpty(policyHolderPhoneType),
+    phoneValidation(policyHolderPhoneNumber),
+    isValueEmpty(policyHolderResidenceStatus),
+  ];
 
-//   const isValidate = validationFields.every((result) => result === true);
+  const isValidate = validationFields.every((result) => result === true);
 
-//   if (isValidate) {
-//     const policyHolder = formData.policyHolder;
+  if (isValidate) {
+    const policyHolder = formData.policyHolder;
 
-//     policyHolder.firstName = policyHolderFirstName?.value;
-//     policyHolder.lastName = policyHolderLastName?.value;
-//     policyHolder.suffix = policyHolderSuffix?.value;
-//     policyHolder.mailingAddress = policyHolderMailingAddress?.value;
-//     policyHolder.city = policyHolderCity?.value;
-//     policyHolder.state = policyHolderState?.value;
-//     policyHolder.zip = policyHolderZip?.value;
-//     policyHolder.ssn = policyHolderSsn?.value.replace(/\D/g, "");
-//     policyHolder.dob = policyHolderDob?.value;
-//     policyHolder.gender = policyHolderGender?.value;
-//     policyHolder.maritalStatus = policyHolderMaritalStatus?.value;
-//     policyHolder.email = policyHolderEmail?.value;
-//     policyHolder.phoneType = policyHolderPhoneType?.value;
-//     policyHolder.phoneNumber = policyHolderPhoneNumber?.value.replace(
-//       /\D/g,
-//       ""
-//     );
-//     policyHolder.residenceStatus = policyHolderResidenceStatus?.value;
+    policyHolder.firstName = policyHolderFirstName?.value;
+    policyHolder.lastName = policyHolderLastName?.value;
+    policyHolder.suffix = policyHolderSuffix?.value;
+    policyHolder.mailingAddress = policyHolderMailingAddress?.value;
+    policyHolder.city = policyHolderCity?.value;
+    policyHolder.state = policyHolderState?.value;
+    policyHolder.zip = policyHolderZip?.value;
+    policyHolder.ssn = policyHolderSsn?.value.replace(/\D/g, "");
+    policyHolder.dob = policyHolderDob?.value;
+    policyHolder.gender = policyHolderGender?.value;
+    policyHolder.maritalStatus = policyHolderMaritalStatus?.value;
+    policyHolder.email = policyHolderEmail?.value;
+    policyHolder.phoneType = policyHolderPhoneType?.value;
+    policyHolder.phoneNumber = policyHolderPhoneNumber?.value.replace(
+      /\D/g,
+      ""
+    );
+    policyHolder.residenceStatus = policyHolderResidenceStatus?.value;
 
-//     // SHOW SPOUSE INFORMATION FORM, IF HAVE
-//     const spouseValues = [
-//       "Married",
-//       "Cohabitant",
-//       "Civil Union Or Domestic Partner",
-//     ];
+    // SHOW SPOUSE INFORMATION FORM, IF HAVE
+    const spouseValues = [
+      "Married",
+      "Cohabitant",
+      "Civil Union Or Domestic Partner",
+    ];
 
-//     if (spouseValues.includes(formData.policyHolder?.maritalStatus)) {
-//       if (!formList.includes("spouse_information")) {
-//         formList.splice(step + 1, 0, "spouse_information");
-//       }
-//     }
-//     if (!spouseValues.includes(formData.policyHolder?.maritalStatus)) {
-//       formList = formList.filter((form) => form != "spouse_information");
-//       console.log("aaaaaaaaaaaa spouse_information");
-//     }
-//   }
+    if (spouseValues.includes(formData.policyHolder?.maritalStatus)) {
+      if (!formList.includes("spouse_information")) {
+        formList.splice(step + 1, 0, "spouse_information");
+      }
+    }
+    if (!spouseValues.includes(formData.policyHolder?.maritalStatus)) {
+      formList = formList.filter((form) => form != "spouse_information");
+      console.log("aaaaaaaaaaaa spouse_information");
+    }
+  }
 
-//   return isValidate;
-// }
+  return isValidate;
+}
 
-// function spouseValidation() {
-//   const cohabitantFirstName = document.querySelector("#cohabitantFirstName");
-//   const cohabitantLastName = document.querySelector("#cohabitantLastName");
-//   const cohabitantSuffix = document.querySelector("#cohabitantSuffix");
-//   const cohabitantSsn = document.querySelector("#cohabitantSsn");
-//   const cohabitantDob = document.querySelector("#cohabitantDob");
-//   const cohabitantGender = document.querySelector("#cohabitantGender");
+function spouseValidation() {
+  const cohabitantFirstName = document.querySelector("#cohabitantFirstName");
+  const cohabitantLastName = document.querySelector("#cohabitantLastName");
+  const cohabitantSuffix = document.querySelector("#cohabitantSuffix");
+  const cohabitantSsn = document.querySelector("#cohabitantSsn");
+  const cohabitantDob = document.querySelector("#cohabitantDob");
+  const cohabitantGender = document.querySelector("#cohabitantGender");
 
-//   const validationFields = [
-//     alphabeticOnly(cohabitantFirstName),
-//     alphabeticOnly(cohabitantLastName),
-//     isValueEmpty(cohabitantFirstName),
-//     isValueEmpty(cohabitantLastName),
-//     minValue(cohabitantDob, 10, "Please enter a valid Date"),
-//     isValueEmpty(cohabitantDob),
-//     isValueEmpty(cohabitantGender),
-//   ];
+  const validationFields = [
+    alphabeticOnly(cohabitantFirstName),
+    alphabeticOnly(cohabitantLastName),
+    isValueEmpty(cohabitantFirstName),
+    isValueEmpty(cohabitantLastName),
+    minValue(cohabitantDob, 10, "Please enter a valid Date"),
+    isValueEmpty(cohabitantDob),
+    isValueEmpty(cohabitantGender),
+  ];
 
-//   const isValidate = validationFields.every((result) => result === true);
+  const isValidate = validationFields.every((result) => result === true);
 
-//   if (isValidate) {
-//     const cohabitant = (formData.cohabitantInfo = {});
+  if (isValidate) {
+    const cohabitant = (formData.cohabitantInfo = {});
 
-//     cohabitant.firstName = cohabitantFirstName?.value;
-//     cohabitant.lastName = cohabitantLastName?.value;
-//     cohabitant.suffix = cohabitantSuffix?.value;
-//     cohabitant.ssn = cohabitantSsn?.value.replace(/\D/g, "");
-//     cohabitant.dob = cohabitantDob?.value;
-//     cohabitant.gender = cohabitantGender?.value;
-//   }
+    cohabitant.firstName = cohabitantFirstName?.value;
+    cohabitant.lastName = cohabitantLastName?.value;
+    cohabitant.suffix = cohabitantSuffix?.value;
+    cohabitant.ssn = cohabitantSsn?.value.replace(/\D/g, "");
+    cohabitant.dob = cohabitantDob?.value;
+    cohabitant.gender = cohabitantGender?.value;
+  }
 
-//   return isValidate;
-// }
+  return isValidate;
+}
 
 // *********************************************
 //              STEP-2 FUNCTIONALITY
@@ -383,7 +618,7 @@ addVehicle.addEventListener("click", () => {
     const summaryIndex = formList.indexOf("summary__form");
     formList.splice(summaryIndex, 0, "add_more_vehicle_form");
   }
-  showActiveForm(vehicleStep, vehicleBackBtn);
+  showActiveForm(stepCount);
 });
 
 // ********** FUNCTIONALITY OF VEHICLE FORM : Edit ***********
@@ -395,7 +630,7 @@ mainVehicleEditBtn.addEventListener("click", () => {
     formList.splice(summaryIndex, 0, "add_vehicle__form");
   }
 
-  showActiveForm(vehicleStep, vehicleBackBtn);
+  showActiveForm(stepCount);
 });
 
 // ********** FUNCTIONALITY OF MORE VEHICLE FORMS : Edit, Delete ***********
@@ -418,7 +653,7 @@ function runVehicleItemsFunctionality() {
         const summaryIndex = formList.indexOf("summary__form");
         formList.splice(summaryIndex, 0, "add_more_vehicle_form");
 
-        showActiveForm(vehicleStep, vehicleBackBtn);
+        showActiveForm(stepCount);
 
         // Assign the values
         function editFormWithValue(id, value) {
@@ -458,70 +693,70 @@ function runVehicleItemsFunctionality() {
 // *********************************************
 //              STEP-2 VALIDATION
 // *********************************************
-// function summaryFunctionality() {
-//   // Check Main Vehicle data OKK or Not
-//   const mainVehicleFields = document.querySelectorAll(
-//     ".add_vehicle__form .field__input"
-//   );
+function summaryFunctionality() {
+  // Check Main Vehicle data OKK or Not
+  const mainVehicleFields = document.querySelectorAll(
+    ".add_vehicle__form .field__input"
+  );
 
-//   const mainVehicleValues = [];
-//   mainVehicleFields.forEach((field) => mainVehicleValues.push(field.value));
+  const mainVehicleValues = [];
+  mainVehicleFields.forEach((field) => mainVehicleValues.push(field.value));
 
-//   const haveAllMainVehicleValues = mainVehicleValues.every(
-//     (v) => Boolean(v) === true
-//   );
+  const haveAllMainVehicleValues = mainVehicleValues.every(
+    (v) => Boolean(v) === true
+  );
 
-//   // If Main Vehicle Data OKK then direct show SUMMARY neither show add_vehicle__form
-//   if (!haveAllMainVehicleValues) {
-//     if (!formList.includes("add_vehicle__form")) {
-//       const summaryIndex = formList.indexOf("summary__form");
+  // If Main Vehicle Data OKK then direct show SUMMARY neither show add_vehicle__form
+  if (!haveAllMainVehicleValues) {
+    if (!formList.includes("add_vehicle__form")) {
+      const summaryIndex = formList.indexOf("summary__form");
 
-//       formList.splice(summaryIndex, 0, "add_vehicle__form");
-//     }
+      formList.splice(summaryIndex, 0, "add_vehicle__form");
+    }
 
-//     showActiveForm(vehicleStep, vehicleBackBtn);
-//   } else {
-//     formList = formList.filter((form) => form != "add_vehicle__form");
-//     // show data in Summary
-//     if (formData.vehicleInfo.vehicles.length > 0) {
-//       const { year, make, model } = formData.vehicleInfo.vehicles[0];
-//       document.querySelector(
-//         ".quote_request__summary_main_item_info"
-//       ).innerText = `${year} ${make} ${model}`;
-//     }
-//   }
+    showActiveForm(stepCount);
+  } else {
+    formList = formList.filter((form) => form != "add_vehicle__form");
+    // show data in Summary
+    if (formData.vehicleInfo.vehicles.length > 0) {
+      const { year, make, model } = formData.vehicleInfo.vehicles[0];
+      document.querySelector(
+        ".quote_request__summary_main_item_info"
+      ).innerText = `${year} ${make} ${model}`;
+    }
+  }
 
-//   // Add all data to moreVehicles sections
-//   formData.vehicleInfo.vehicles = formData.vehicleInfo.vehicles.filter(
-//     (item) => item !== "deleted"
-//   );
+  // Add all data to moreVehicles sections
+  formData.vehicleInfo.vehicles = formData.vehicleInfo.vehicles.filter(
+    (item) => item !== "deleted"
+  );
 
-//   const moreVehicles = formData.vehicleInfo.vehicles.filter(
-//     (item, index) => index > 0
-//   );
+  const moreVehicles = formData.vehicleInfo.vehicles.filter(
+    (item, index) => index > 0
+  );
 
-//   const addedSummary = document.querySelector("#moreVehicles");
-//   const totalAdded = addedSummary.children?.length;
+  const addedSummary = document.querySelector("#moreVehicles");
+  const totalAdded = addedSummary.children?.length;
 
-//   // if all data not appended then Append Data to #moreVehicles
-//   if (moreVehicles.length > 0) {
-//     addedSummary.innerHTML = "";
-//     const demoItem = document.querySelector(
-//       ".quote_request__summary_item.demoItem"
-//     );
-//     // Clone the demo, create and append
-//     moreVehicles.forEach((info) => {
-//       const clonedItem = demoItem.cloneNode(true);
-//       clonedItem.classList.remove("__hide", "demoItem");
-//       clonedItem.querySelector(
-//         ".quote_request__summary_item_info"
-//       ).innerHTML = `${info?.year} ${info?.make} ${info?.model}`;
+  // if all data not appended then Append Data to #moreVehicles
+  if (moreVehicles.length > 0) {
+    addedSummary.innerHTML = "";
+    const demoItem = document.querySelector(
+      ".quote_request__summary_item.demoItem"
+    );
+    // Clone the demo, create and append
+    moreVehicles.forEach((info) => {
+      const clonedItem = demoItem.cloneNode(true);
+      clonedItem.classList.remove("__hide", "demoItem");
+      clonedItem.querySelector(
+        ".quote_request__summary_item_info"
+      ).innerHTML = `${info?.year} ${info?.make} ${info?.model}`;
 
-//       // append clone element in Summary
-//       addedSummary.appendChild(clonedItem);
-//     });
-//   }
-// }
+      // append clone element in Summary
+      addedSummary.appendChild(clonedItem);
+    });
+  }
+}
 
 function addVehicleValidation() {
   const Year = document.querySelector("#mainVehicleYear");
@@ -567,9 +802,9 @@ function addVehicleValidation() {
     formData.vehicleInfo.numberOfLicensedDrivers = LicensedDriverCount?.value;
     formData.vehicleInfo.numberOfDailyUseVehicle = NumberOfDailyUse?.value;
 
-    // REDUCE vehicleStep cz add_vehicle__form will remove from the formList
+    // REDUCE stepCount cz add_vehicle__form will remove from the formList
     const summaryIndex = formList.indexOf("summary__form");
-    vehicleStep = summaryIndex - 2;
+    stepCount = summaryIndex - 2;
   }
 
   return isValidate;
@@ -617,9 +852,9 @@ function addMoreVehicleValidation() {
       formData.vehicleInfo.vehicles.push(vehicle);
     }
 
-    // REDUCE vehicleStep and REMOVE add_more_vehicle_form from the formList
+    // REDUCE stepCount and REMOVE add_more_vehicle_form from the formList
     const summaryIndex = formList.indexOf("summary__form");
-    vehicleStep = summaryIndex - 2;
+    stepCount = summaryIndex - 2;
     formList = formList.filter((item) => item != "add_more_vehicle_form");
   }
 
