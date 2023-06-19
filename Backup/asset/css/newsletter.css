@@ -72,9 +72,9 @@
     margin-bottom: .5rem !important;
 }
 
-.article-list-item__description {
+/* .article-list-item__description {
     display: none;
-}
+} */
 
 .pagination {
     margin: 2rem 0 4rem;

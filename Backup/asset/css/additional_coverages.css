@@ -93,13 +93,14 @@
 .icon_content_section {
   background-color: var(--afi-blue-200);
   text-align: center;
-  padding: 30px !important;
+  /* padding: 30px !important; */
 }
 
 .icon_content_section .content-column {
   max-width: 800px;
   margin: auto;
   background: none !important;
+  padding: 40px !important;
 }
 
 .icon_content_section h2 {

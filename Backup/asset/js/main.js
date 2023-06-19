@@ -21,6 +21,11 @@ window.addEventListener("load", () => {
   });
 });
 
+window.addEventListener("load", () => {
+  const activeNav = document.querySelector(".level1.active");
+  activeNav?.classList.remove("active");
+});
+
 // // Script to add Font AwesOme
 // window.onload = () => {
 //   const head = document.getElementsByTagName("head")[0];
@@ -33,10 +38,10 @@ window.addEventListener("load", () => {
 //   head.appendChild(link);
 // };
 
-// window.addEventListener("load", () => {
-//   const activeNav = document.querySelector(".level1.active");
-//   activeNav?.classList.remove("active");
-// });
+window.addEventListener("load", () => {
+  const activeNav = document.querySelector(".level1.active");
+  activeNav?.classList.remove("active");
+});
 
 /********************************************************
  *                   FOOTER
@@ -54,7 +59,7 @@ window.addEventListener("load", () => {
  *                  HOME CARD GROUP
  ********************************************************/
 window.addEventListener("load", () => {
-  if (screen.width < 768) {
+  if (screen.width <= 991) {
     const mySlider = document.querySelector(".mySlider");
 
     const mySwiper = mySlider?.firstElementChild;
@@ -81,26 +86,24 @@ window.addEventListener("load", () => {
     mySwiper.appendChild(pagination);
 
     // Initiate Slider
-    window.addEventListener("load", () => {
-      const swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        // autoplay: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
+    const swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      // autoplay: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
 
-        breakpoints: {
-          450: {
-            slidesPerView: 1,
-            spaceBetween: 40,
-          },
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 40,
-          },
+      breakpoints: {
+        450: {
+          slidesPerView: 1,
+          spaceBetween: 40,
         },
-      });
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+        },
+      },
     });
   }
 });

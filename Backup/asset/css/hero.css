@@ -313,6 +313,7 @@ input[type="radio"]+label:after {
 
 .hero__image img {
   object-fit: cover;
+  width: 100%;
 }
 
 /* 28 April */

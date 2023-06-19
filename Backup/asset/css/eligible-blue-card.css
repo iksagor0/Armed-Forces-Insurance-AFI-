@@ -36,6 +36,7 @@
   border-color: #cb2c30 !important;
   margin: 1rem auto 0;
   display: block !important;
+  width: 150px !important;
 }
 
 .not__eligible__blue .button__container {

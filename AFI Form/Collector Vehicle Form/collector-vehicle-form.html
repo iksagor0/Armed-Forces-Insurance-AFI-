@@ -1178,16 +1178,28 @@
                   >
                     Delete
                   </button>
-                  <button id="editBtn" class="button-bare" type="button">
+                  <button
+                    id="editBtn"
+                    class="button-bare editBtn"
+                    type="button"
+                  >
                     Edit
                   </button>
                 </div>
                 <div class="quote_request__summary_item_actions yes_no __hide">
                   <span>Are you sure?</span>
-                  <button id="deleteYes" class="button-bare" type="button">
+                  <button
+                    id="deleteYes"
+                    class="button-bare deleteYes"
+                    type="button"
+                  >
                     Yes
                   </button>
-                  <button id="deleteNo" class="button-bare" type="button">
+                  <button
+                    id="deleteNo"
+                    class="button-bare deleteNo"
+                    type="button"
+                  >
                     No
                   </button>
                 </div>
@@ -1233,13 +1245,13 @@
             <div class="fields-row">
               <div class="field field--small">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleYear">Year</label>
+                  <label class="field__label" for="vehicle0Year">Year</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
-                    id="mainVehicleYear"
-                    name="mainVehicleYear"
+                    class="field__input required"
+                    id="vehicle0Year"
+                    name="vehicle0Year"
                     type="text"
                     maxlength="4"
                     placeholder=""
@@ -1249,13 +1261,13 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleMake">Make</label>
+                  <label class="field__label" for="vehicle0Make">Make</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
-                    id="mainVehicleMake"
-                    name="mainVehicleMake"
+                    class="field__input required"
+                    id="vehicle0Make"
+                    name="vehicle0Make"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1265,15 +1277,13 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleModel"
-                    >Model</label
-                  >
+                  <label class="field__label" for="vehicle0Model">Model</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
-                    id="mainVehicleModel"
-                    name="mainVehicleModel"
+                    class="field__input required"
+                    id="vehicle0Model"
+                    name="vehicle0Model"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1287,13 +1297,13 @@
             <div class="fields-row">
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleType">Type</label>
+                  <label class="field__label" for="vehicle0Type">Type</label>
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
-                    id="mainVehicleType"
-                    name="mainVehicleType"
+                    class="field__input required"
+                    id="vehicle0Type"
+                    name="vehicle0Type"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1304,15 +1314,15 @@
               </div>
               <div class="field extra_message_margin">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleEstimatedValue"
+                  <label class="field__label" for="vehicle0EstimatedValue"
                     >Estimate Value of Vehicle</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input numberOnly dollar_field"
-                    id="mainVehicleEstimatedValue"
-                    name="mainVehicleEstimatedValue"
+                    class="field__input required numberOnly dollar_field"
+                    id="vehicle0EstimatedValue"
+                    name="vehicle0EstimatedValue"
                     type="text"
                     maxlength="20"
                     placeholder=""
@@ -1327,15 +1337,15 @@
             <div class="fields-row">
               <div class="field field--xlarge">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleStorage"
+                  <label class="field__label" for="vehicle0Storage"
                     >Vehicle Storage</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
-                    id="mainVehicleStorage"
-                    name="mainVehicleStorage"
+                    class="field__input required"
+                    id="vehicle0Storage"
+                    name="vehicle0Storage"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1354,16 +1364,16 @@
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleDriveDescription"
+                  <label class="field__label" for="vehicle0DriveDescription"
                     >Describe how vehicle is driven, i.e. where to, how often,
                     etc.</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <textarea
-                    class="field__input"
-                    id="mainVehicleDriveDescription"
-                    name="mainVehicleDriveDescription"
+                    class="field__input required"
+                    id="vehicle0DriveDescription"
+                    name="vehicle0DriveDescription"
                     placeholder=""
                   ></textarea>
                 </div>
@@ -1374,17 +1384,15 @@
             <div class="fields-row">
               <div class="field field--xlarge field--extended-label">
                 <div class="field__label-wrapper">
-                  <label
-                    class="field__label"
-                    for="mainVehicleLicensedDriverCount"
+                  <label class="field__label" for="vehicle0LicensedDriverCount"
                     >Number of Licensed Drivers Living in Household</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
-                    id="mainVehicleLicensedDriverCount"
-                    name="mainVehicleLicensedDriverCount"
+                    class="field__input required"
+                    id="vehicle0LicensedDriverCount"
+                    name="vehicle0LicensedDriverCount"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1403,15 +1411,17 @@
             <div class="fields-row">
               <div class="field field--xlarge field--extended-label">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="mainVehicleNumberOfDailyUse"
+                  <label
+                    class="field__label"
+                    for="vehicle0NumberOfDailyUseVehiclesInHousehold"
                     >Number Of Daily Use Vehicles In Household</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
-                    id="mainVehicleNumberOfDailyUse"
-                    name="mainVehicleNumberOfDailyUse"
+                    class="field__input required"
+                    id="vehicle0NumberOfDailyUseVehiclesInHousehold"
+                    name="vehicle0NumberOfDailyUseVehiclesInHousehold"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1475,13 +1485,13 @@
             <div class="fields-row">
               <div class="field field--small">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleYear">Year</label>
+                  <label class="field__label" for="vehicle-Year">Year</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input numberOnly"
-                    id="moreVehicleYear"
-                    name="moreVehicleYear"
+                    id="vehicle-Year"
+                    name="vehicle-Year"
                     type="text"
                     maxlength="4"
                     placeholder=""
@@ -1491,13 +1501,13 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleMake">Make</label>
+                  <label class="field__label" for="vehicle-Make">Make</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input"
-                    id="moreVehicleMake"
-                    name="moreVehicleMake"
+                    id="vehicle-Make"
+                    name="vehicle-Make"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1507,15 +1517,13 @@
               </div>
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleModel"
-                    >Model</label
-                  >
+                  <label class="field__label" for="vehicle-Model">Model</label>
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input"
-                    id="moreVehicleModel"
-                    name="moreVehicleModel"
+                    id="vehicle-Model"
+                    name="vehicle-Model"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1529,13 +1537,13 @@
             <div class="fields-row">
               <div class="field">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleType">Type</label>
+                  <label class="field__label" for="vehicle-Type">Type</label>
                 </div>
                 <div class="field__input-wrapper">
                   <select
                     class="field__input"
-                    id="moreVehicleType"
-                    name="moreVehicleType"
+                    id="vehicle-Type"
+                    name="vehicle-Type"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1546,15 +1554,15 @@
               </div>
               <div class="field extra_message_margin">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleEstimatedValue"
+                  <label class="field__label" for="vehicle-EstimatedValue"
                     >Estimate Value of Vehicle</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <input
                     class="field__input numberOnly"
-                    id="moreVehicleEstimatedValue"
-                    name="moreVehicleEstimatedValue"
+                    id="vehicle-EstimatedValue"
+                    name="vehicle-EstimatedValue"
                     type="text"
                     maxlength="50"
                     placeholder=""
@@ -1569,15 +1577,15 @@
             <div class="fields-row">
               <div class="field field--xlarge">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleStorage"
+                  <label class="field__label" for="vehicle-Storage"
                     >Vehicle Storage</label
                   >
                 </div>
                 <div class="field__input-wrapper">
                   <select
                     class="field__input"
-                    id="moreVehicleStorage"
-                    name="moreVehicleStorage"
+                    id="vehicle-Storage"
+                    name="vehicle-Storage"
                     type="select"
                   >
                     <option value="">Choose One</option>
@@ -1596,7 +1604,7 @@
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
                 <div class="field__label-wrapper">
-                  <label class="field__label" for="moreVehicleDriveDescription"
+                  <label class="field__label" for="vehicle-DriveDescription"
                     >Describe how vehicle is driven, i.e. where to, how often,
                     etc.</label
                   >
@@ -1604,8 +1612,8 @@
                 <div class="field__input-wrapper">
                   <textarea
                     class="field__input"
-                    id="moreVehicleDriveDescription"
-                    name="moreVehicleDriveDescription"
+                    id="vehicle-DriveDescription"
+                    name="vehicle-DriveDescription"
                     placeholder=""
                   ></textarea>
                 </div>
