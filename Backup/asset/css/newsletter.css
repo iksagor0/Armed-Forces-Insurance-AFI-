@@ -3,7 +3,13 @@
 }
 
 .news__letter {
-    margin: 50px auto;
+    margin: 10px auto;
+}
+
+@media screen and (min-width:991px) {
+    .news__letter {
+        margin: 50px auto;
+    }
 }
 
 .news__letter .news__article_item.promo.component {
@@ -142,4 +148,9 @@
     .pagination__list-item--static.pagination__link--previous {
         padding: .75rem 1rem;
     }
+}
+
+/* Year Button broke the whole page layout */
+.js-submitonchange button.button.is-vishidden {
+    width: 0;
 }

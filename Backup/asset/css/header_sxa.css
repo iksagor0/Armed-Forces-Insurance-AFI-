@@ -272,11 +272,11 @@ header a:hover {
     left: -220px;
     transition: 0.3s;
     z-index: -9999;
-    padding: 10px;
+    /* padding: 10px; */
   }
 
   #header .nav_menu>.row:first-child {
-    max-width: 200px;
+    max-width: 220px;
   }
 
   #header .logo_wrapper {
@@ -291,6 +291,7 @@ header a:hover {
   .navigation.navigation-main.navigation-main-vertical nav,
   .primary-nav {
     margin-top: 0;
+    background: #f6f6f6;
   }
 
   .primary-nav {
@@ -301,8 +302,9 @@ header a:hover {
   #header .primary-nav ul {
     height: 100vh;
     display: block;
-    background: #fff;
-    padding-top: 50px;
+    background: none;
+    /* background: #fff; */
+    padding-top: 80px;
     /* margin: control 18 May */
     margin: 0 !important;
   }
@@ -310,10 +312,17 @@ header a:hover {
   #header .primary-nav ul .level1 {
     text-align: left;
     width: 100%;
+    border-bottom: 0.0625rem solid #898d8d;
+    background: none !important;
+  }
+
+  #header .primary-nav ul .level1:last-child {
+    border-bottom: none;
   }
 
   #header .primary-nav ul li a {
-    display: inline-block;
+    display: block;
+    padding: 13px 16px !important;
   }
 
   #header .primary-nav ul .level1 ul {
@@ -326,6 +335,7 @@ header a:hover {
 
   #header .primary-nav ul .level1 ul.sub_nav_open {
     display: block;
+    color: #003864 !important;
   }
 
   .navigation.navigation-main.navigation-main-vertical .rel-level1>ul>li {

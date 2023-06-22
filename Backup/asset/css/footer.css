@@ -370,6 +370,7 @@ footer .footer-disclaimer .footer-disclaimer__links a {
 
   .toggle_section_wrapper.ul_open ul {
     display: block;
+    margin-top: 20px;
   }
 
   .toggle_section_wrapper ul li {
@@ -379,7 +380,7 @@ footer .footer-disclaimer .footer-disclaimer__links a {
   #footer h2,
   #footer h3 {
     border-bottom: 1px solid #363636 !important;
-    padding-bottom: 8px;
+    padding-bottom: 8px !important;
   }
 
   /* #footer h3:last-child {

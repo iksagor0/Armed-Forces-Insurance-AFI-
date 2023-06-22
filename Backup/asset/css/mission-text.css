@@ -3,7 +3,7 @@
   background-color: var(--color-gray-10);
   padding: 2.5rem 1.5rem;
   text-align: center;
-  margin: 40px 0px;
+  padding: 2.75rem 0 !important;
 }
 
 .page__mission>* {
@@ -15,8 +15,9 @@
 .page__mission h1 {
   color: #003864;
   color: var(--color-blue-40);
-  font-size: 1.75rem;
+  font-size: 1.75rem !important;
   font-weight: 400 !important;
+  border-bottom: none !important;
   /* margin-bottom: 15px; */
 }
 
@@ -40,7 +41,6 @@
   .page__mission {
     background-color: #fff;
     background-color: var(--color-white);
-    padding: 2.75rem 0;
   }
 
   .page__mission h1 {

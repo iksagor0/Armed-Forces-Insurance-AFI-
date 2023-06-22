@@ -443,9 +443,9 @@ h1.category_page__title::before {
 }
 
 /******************* Article Resources *******************/
-.article_resources {
+/* .article_resources {
     padding: 1rem !important;
-}
+} */
 
 .article_resources .text__content h2 {
     font-weight: 600 !important;

@@ -73,19 +73,6 @@ body {
   color: #000;
 }
 
-@media screen and (max-width:1300px) {
-
-  main,
-  header,
-  footer {
-    padding: 0 10px;
-  }
-
-  footer {
-    padding: 0 30px;
-  }
-}
-
 /* body::-webkit-scrollbar {
     display: none;
   } */
@@ -467,6 +454,9 @@ footer a {
   color: #545959 !important;
 }
 
+/********************************************************
+*                   ALERT BANNER
+********************************************************/
 /* 7 June */
 .alerts-banner {
   background: #003864;
@@ -523,4 +513,51 @@ footer a {
 .Mtag {
   /* color: #c51c1c; */
   text-decoration: underline;
+}
+
+.rich_wrapper {
+  margin-bottom: 30px !important;
+}
+
+/********************************************************
+*               All Pages Responsive Styles
+********************************************************/
+@media screen and (max-width:1300px) {
+  header {
+    padding: 0 10px;
+  }
+
+  footer {
+    padding: 0 30px;
+  }
+
+  #interior__title {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .single_image_article,
+  .heading-red,
+  .page_list_container,
+  .content-panel--one-column,
+  .download__app,
+  .page__mission,
+  .news__letter,
+  .rich_wrapper {
+    padding-left: 0 25px !important;
+    padding-right: 0 25px !important;
+  }
+
+  .page_list_container,
+  .more__articles,
+  .article__page {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .page_list_container ul.items {
+    padding: 0 !important;
+  }
+
+
 }

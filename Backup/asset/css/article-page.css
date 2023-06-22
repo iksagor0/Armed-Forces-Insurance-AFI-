@@ -128,7 +128,7 @@
 
 /* 22 May */
 .article__page .share-badges__container .row {
-    height: 50px;
+    height: 60px;
 }
 
 .article__page .share-badges {
@@ -172,7 +172,7 @@
 }
 
 .article__page .share-badges.triggered ul {
-    bottom: 0;
+    bottom: 5px;
 }
 
 .article__page .share-badges.triggered button {
@@ -183,4 +183,11 @@
 .article__page .share-badges.triggered .icon-share {
     opacity: 0;
     transition: .3s;
+}
+
+@media screen and (max-width:500px) {
+    .logo-item {
+        display: block;
+        text-align: center;
+    }
 }
