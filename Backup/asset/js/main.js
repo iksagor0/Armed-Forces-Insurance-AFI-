@@ -4,7 +4,7 @@
 window.addEventListener("load", () => {
   const hamburger = document.querySelector("#hamburger");
 
-  hamburger.addEventListener("click", () => {
+  hamburger?.addEventListener("click", () => {
     document.body.classList.toggle("screen_active");
   });
 
@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
   const itemWithSubItems = document.querySelectorAll(
     ".primary-nav .level1.submenu"
   );
-  itemWithSubItems.forEach((item) => {
+  itemWithSubItems?.forEach((item) => {
     item.addEventListener("click", () => {
       if (screen.width < 991) {
         itemWithSubItems.querySelector("ul").classList.toggle("sub_nav_open");
@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
  ********************************************************/
 window.addEventListener("load", () => {
   const section_wrapper = document.querySelectorAll(".toggle_section_wrapper");
-  section_wrapper.forEach((parent) => {
+  section_wrapper?.forEach((parent) => {
     parent.querySelector("h2").addEventListener("click", () => {
       parent.classList.toggle("ul_open");
     });
@@ -74,8 +74,8 @@ window.addEventListener("load", () => {
     const sliderItems = document.querySelectorAll(".swiper-wrapper .col-lg-3");
 
     if (sliderItems) {
-      sliderItems?.forEach((item) => {
-        item?.classList.add("swiper-slide");
+      sliderItems.forEach((item) => {
+        item.classList.add("swiper-slide");
       });
     }
 
@@ -83,7 +83,7 @@ window.addEventListener("load", () => {
     const pagination = document.createElement("div");
     pagination.classList.add("swiper-pagination");
 
-    mySwiper.appendChild(pagination);
+    mySwiper?.appendChild(pagination);
 
     // Initiate Slider
     const swiper = new Swiper(".mySwiper", {
