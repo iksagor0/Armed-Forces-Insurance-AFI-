@@ -47,6 +47,7 @@ h1.category_page__title::before {
     height: 100%;
 }
 
+.image_link__wrapper .title__link,
 .image_link__wrapper .title__link a,
 .image_link__wrapper_item .title__link a,
 .image_link__wrapper_item .title__link .field-title {

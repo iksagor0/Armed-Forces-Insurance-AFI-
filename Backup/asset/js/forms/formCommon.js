@@ -1,4 +1,14 @@
-let formData = {};
+let formData = {
+  StartDate: Date.now(),
+  firstCommandAdvisorName: null,
+  ResponseType: null,
+  ResponseDescription: null,
+  AdvisorName: null,
+  OfferDescription: null,
+  ZipCode: null,
+  QuoteKey: "",
+  MemberNumber: "",
+};
 
 let formList = ["radio_select"];
 // *********************************************
@@ -298,8 +308,8 @@ function militaryValidation() {
   const isValidate = validateForm("military_information");
 
   // Set Name in Multi-step form field
-  const fnameValue = document.querySelector("#militaryFirstName").name;
-  const lnameValue = document.querySelector("#militaryLastName").name;
+  const fnameValue = document.querySelector("#eligibilityFirstName").name;
+  const lnameValue = document.querySelector("#eligibilityLastName").name;
 
   document.querySelector("#policyHolderFirstName").value = formData[fnameValue];
   document.querySelector("#policyHolderLastName").value = formData[lnameValue];
@@ -381,12 +391,51 @@ function militaryFormFunc() {
   if (branchOfService) {
     branchOfService.addEventListener("change", () => {
       const militaryRank = document.getElementById("militaryRank");
+
       if (Boolean(branchOfService?.value)) {
         militaryRank.disabled = false;
       } else {
         militaryRank.disabled = true;
       }
+
+      awaitedField(militaryRank, true);
+
+      var selectedtext = $("#branchOfService option:selected").text();
+
+      $.ajax({
+        type: "GET",
+        url: "/api/sitecore/Quote/GetMilitaryRanks?type=" + selectedtext,
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: "{}",
+        success: function (data) {
+          let dropdown = $("#militaryRank");
+          dropdown.empty();
+
+          $("#militaryRank").append('<option value="">Select Rank</option>');
+          var jsonArray = JSON.parse(data);
+          var option;
+          for (var i = 0; i < jsonArray.length; i++) {
+            option = document.createElement("option");
+            option.text = jsonArray[i]["label"];
+            option.value = jsonArray[i]["value"];
+            militaryRank.add(option);
+          }
+
+          awaitedField(militaryRank, false);
+        },
+      });
     });
+  }
+}
+
+function awaitedField(el, disability) {
+  if (disability) {
+    el.value = "wait";
+    el.disabled = true;
+  } else {
+    el.value = "";
+    el.disabled = false;
   }
 }
 
@@ -417,4 +466,46 @@ function coverageHistoryFunc() {
   // STEP 4 - Policy Renewal Data Validation
   const policyRenewalDate = document.querySelector("#policyRenewalDate");
   if (policyRenewalDate) dateValidation(policyRenewalDate, thisYear + 2);
+}
+
+/********************************************************
+ *                   API CALL
+ ********************************************************/
+// SAVE FORM DATA
+async function saveData(url, data, nextBtn, cForm) {
+  const currForm = document.querySelector("." + cForm);
+  const formFields = currForm.querySelectorAll(".field__input");
+
+  // // Process Start
+  // formFields.forEach((field) => (field.disabled = true));
+  // nextBtn.disabled = true;
+  // nextBtn.innerText = "Saving...";
+
+  // API Call
+  const req_data = {
+    action: "send",
+    recaptchaToken: "6LfR7R4gAAAAAJhdtt4xLoULHMVubpGhEYCN6SYR",
+    values: data,
+  };
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(req_data), // data
+  });
+
+  // After Process Done
+  formFields.forEach((field) => (field.disabled = false));
+  nextBtn.disabled = false;
+  nextBtn.innerText = "Next";
+
+  const jsonData = await res.json();
+  if (jsonData.QuoteId && jsonData.QuoteKey) {
+    formData.QuoteId = jsonData.QuoteId;
+    formData.QuoteKey = jsonData.QuoteKey;
+  }
+
+  return jsonData;
 }
