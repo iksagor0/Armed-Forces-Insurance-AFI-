@@ -38,11 +38,6 @@ window.addEventListener("load", () => {
 //   head.appendChild(link);
 // };
 
-window.addEventListener("load", () => {
-  const activeNav = document.querySelector(".level1.active");
-  activeNav?.classList.remove("active");
-});
-
 /********************************************************
  *                   FOOTER
  ********************************************************/
