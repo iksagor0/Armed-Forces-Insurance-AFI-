@@ -19,9 +19,8 @@ window.addEventListener("load", () => {
       }
     });
   });
-});
 
-window.addEventListener("load", () => {
+  // Remove Active
   const activeNav = document.querySelector(".level1.active");
   activeNav?.classList.remove("active");
 });
