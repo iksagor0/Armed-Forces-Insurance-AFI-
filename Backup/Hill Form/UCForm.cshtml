@@ -1,0 +1,2011 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.ExperienceForms.Mvc.Html
+@using AFIWEBV2.Identifiers
+@model RenderingModel
+
+@Html.RenderFormStyles()
+@Html.RenderFormScripts()
+
+@{
+    Sitecore.Data.Items.Item stateList = Sitecore.Context.Database.GetItem("{6D172DA4-FCDF-4A06-9947-DD375375D635}");
+    Sitecore.Data.Items.Item planList = Sitecore.Context.Database.GetItem("{C0EEF8A3-E00D-41A2-BFA0-62C6CA1E0E2D}");
+    Sitecore.Data.Items.Item priceList = Sitecore.Context.Database.GetItem("{2C5E19B6-6F81-46EE-9300-2FF91AC8496C}");
+    Sitecore.Data.Items.Item questions = Sitecore.Context.Database.GetItem("{CD428E02-83C1-45D9-B228-07D68714DDAE}");
+    Sitecore.Data.Items.Item servicesList = Sitecore.Context.Database.GetItem("{2E3AE485-2B66-4AE4-887E-B548BCE42780}");
+    Sitecore.Data.Items.Item statusList = Sitecore.Context.Database.GetItem("{7B4B67DB-E397-425E-90A7-A002C9D4C09A}");
+    Sitecore.Data.Items.Item needhelptext = Sitecore.Context.Database.GetItem("{B23DAAB0-DE50-4E0E-ACFC-CEC8F99BDD55}");
+    Sitecore.Data.Items.Item schedulecalltext = Sitecore.Context.Database.GetItem("{C860C88D-0C01-44C5-9A3E-C979CCB7FC54}");
+    string itemvalue = "{2C5E19B6-6F81-46EE-9300-2FF91AC8496C}";
+    int i = 1; int j = 1;
+}
+<link as="style" rel="stylesheet preload prefetch" href="~/Content/css/uc_form.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+<div class="header_div">
+    <div class="header_div_l">
+        &nbsp;
+        <a class="logo__link" href="/" style="display:none;">
+            <img src="https://afi.org/-/media/logos/UC_LOGO.png" class="logo_cv" alt="UC" width="150">
+        </a>
+    </div>
+    <div class="header_div_m">
+        <h1>@Sitecore.Globalization.Translate.Text("UC Title")</h1>
+    </div>
+    <div class="header_div_r">
+        <a class="logo__link" href="/">
+            <img src="https://afi.org/-/media/images/logo.ashx" class="logo" alt="Armed Forces Insurance Logo"
+                 width="156" height="85">
+        </a>
+    </div>
+</div>
+<div id="Checkout" class="inline">
+
+    <form id="registration">
+        <div class="d-flex">
+
+            <div class="form-group custom_w_25">
+                <label for="salutation">
+                    @Sitecore.Globalization.Translate.Text("Salutation") <span class="required"> *</span>
+                </label>
+                <select class="field__input form-control" id="salutation" name="Salutationdetails" required=""
+                        type="select">
+                    <option value="" selected></option>
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Ms">Ms.</option>
+                </select>
+
+            </div>
+            <div class="form-group custom_w_65">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("First Name") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="first_Name" class="form-control" type="text" name="first_Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="last_Name">
+                    @Sitecore.Globalization.Translate.Text("Last Name") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="last_Name" class="form-control" type="text" name="last_Name">
+                    <label class="error" for="last_Name" style="display: none"></label>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("Suffix")
+                </label>
+                <select class="field__input form-control" id="" name="Suffixdetails"
+                        type="select">
+
+                    <option value="" selected></option>
+                    <option value="Jr">Jr</option>
+                    <option value="Sr">Sr</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    @Sitecore.Globalization.Translate.Text("Email")  <span class="required"> *</span>
+                </label>
+                <input id="email" class="form-control" type="text" name="email">
+                <span id="email-validation-error" class="error" for="last_Name" style="display: none">@Sitecore.Globalization.Translate.Text("Valid Email Msg")</span>
+
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="address">
+                    @Sitecore.Globalization.Translate.Text("Resident Address") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="address" class="form-control" type="text" name="address">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">
+                    @Sitecore.Globalization.Translate.Text("Resident-Address_line2")
+                </label>
+                <div class="input-container">
+                    <input id="address-other" class="form-control" type="text" name="address2">
+
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="city">
+                    @Sitecore.Globalization.Translate.Text("City")  <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="city" class="form-control" type="text" name="city">
+                </div>
+            </div>
+            <div class="form-group statedetails">
+                <div>
+                    <label for="state">
+                        @Sitecore.Globalization.Translate.Text("State")    <span class="required"> *</span>
+                    </label>
+                    <div class="input-container">
+                        <input id="state" class="form-control" type="text" name="state" value="NJ" readonly>
+                        <span id="cvc-state" onmouseover="Showhelpingicon()"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div id="state-tooltip" style="display:none">
+                    Property address in a different state? Use <a href="https://afi.org/quote-hub/startrenterquote?CoverageType=Renters" target="_blank">the link</a> provided to obtain a renter policy in a different state.
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="zipCode">
+                    @Sitecore.Globalization.Translate.Text("Zip Code") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+
+                    <input type="number" id="zipCode" class="form-control" name="zipCode" pattern="[0-9]+">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="BirthDate" class="form-control" type="date" name="BirthDate">
+
+                    <span id="BirthDate-validation-error" class="error" for="DOB" style="display: none">
+                        @Sitecore.Globalization.Translate.Text("Primary policyholder")
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group position-re">
+                <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
+                <input id="ssn" name="ssnXX" class="form-control ssn-number" placeholder="XXX-XX-XXXX" />
+                <input class="ssn-value" name="ssn" />
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">
+                    @Sitecore.Globalization.Translate.Text("Phone Number")<span class="required"> *</span>
+                </label>
+                <input id="phoneNumber" class="form-control" type="text" name="phoneNumber">
+            </div>
+
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="phoneNumber">
+                    @Sitecore.Globalization.Translate.Text("Marital-Status")  <span class="required"> *</span>
+                </label>
+                <select class="field__input form-control" id="MaritalStatus" name="MaritalStatus"
+                        type="select" required="" onchange="showDiv(this)">
+                    &gt;
+                    <option value=""></option>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Cohabitant">Cohabitant</option>
+                    <option value="Civil Union Or Domestic Partner">Civil Union Or Domestic Partner</option>
+                </select>
+            </div>
+        </div>
+        <br />
+
+        <br />
+        <div style="clear:both;">
+            <br />
+            <h3> @Sitecore.Globalization.Translate.Text("Military Information")</h3>
+            <div class="hobbies one">
+                <label class="checkbox-inline h-chk m-chk ">
+                    <input type="checkbox" name="eligibility" class="check-checkbox" id="militery-chck">
+                    <span class="checkmark"></span>@Sitecore.Globalization.Translate.Text("Military Information Msg")
+                </label>
+            </div>
+
+
+            <div class="hobbies two">
+                <label class="checkbox-inline h-chk m-chk ">
+                    <input type="checkbox" name="CurrentMilitarySpouse" class="check-checkbox" id="Spouse-chck">
+                    <span class="checkmark"></span>@Sitecore.Globalization.Translate.Text("Current Military Spouse")
+                </label>
+            </div>
+            <div class="military-affiliation-box">
+                <br />
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Branch of Service") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="branchOfService" name="branchOfService"
+                                type="select" required="">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in servicesList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="military-status">
+                            @Sitecore.Globalization.Translate.Text("Military Status") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="militaryStatus" name="militaryStatus"
+                                type="select" required="">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in statusList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Military Rank")  <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="militaryRank" name="militaryRank" type="select"
+                                required="">
+                            <option value="">Choose One</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                         <label class="checkbox-inline">
+                            <input type="checkbox" name="militarysalutation" class="check-checkbox" id="militarysalutation" checked>
+                            <span class="checkmark2"></span>@Sitecore.Globalization.Translate.Text("Use Rank as Salutation")
+                        </label>   
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="Marital-Status-Information-box" style="display: none">
+                <br />
+                <h3>@Sitecore.Globalization.Translate.Text("Spouse's Information")</h3>
+                <br />
+                <div class="d-flex">
+                    <div class="form-group custom_w_40">
+                        <label for="salutation">
+                            @Sitecore.Globalization.Translate.Text("Salutation") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousesalutation" name="spousesalutation"
+                                type="select">
+                            <option value="" selected></option>
+                            <option value="Mr">Mr.</option>
+                            <option value="Mrs">Mrs.</option>
+                            <option value="Ms">Ms.</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("First Name")   <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-FirstName" class="form-control" type="text" name="MaritalStatusFirstName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Last Name")  <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-LastName" class="form-control" type="text" name="MaritalStatusLastName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Suffix")
+                        </label>
+                        <select class="field__input form-control" id="" name="Suffixdetailsspouse"
+                                type="select">
+                            &gt;
+                            <option value=""></option>
+                            <option value="Jr">Jr</option>
+                            <option value="Sr">Sr</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-BirthDate" class="form-control" type="date" name="MaritalStatusInformationBirthDate">
+                        </div>
+                    </div>
+                    <div class="form-group position-re">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Social Security Number")
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse" placeholder="XXX-XX-XXXX" />
+                            <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Spouse-Information-box" style="display: none">
+
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Branch of Service")<span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousebranchOfService" name="spousebranchOfService"
+                                type="select">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in servicesList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="military-status">
+                            @Sitecore.Globalization.Translate.Text("Military Status") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousemilitaryStatus" name="spousemilitaryStatus"
+                                type="select">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in statusList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Military Rank")  <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousemilitaryRank" name="spousemilitaryRank" type="select">
+                            <option value="">Choose One</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+  <label class="checkbox-inline">
+                            <input type="checkbox" name="currentmilitarysalutation" class="check-checkbox" id="currentmilitarysalutation" checked>
+                            <span class="checkmark2"></span>@Sitecore.Globalization.Translate.Text("Use Rank as Salutation")
+                        </label>
+
+                     
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <br />
+        <br />
+
+        <h3>@Sitecore.Globalization.Translate.Text("Hill AFB Coverage Msg")</h3>
+        <table id="tblplan" class="radio-table table" cellspacing="0">
+            <tbody>
+                <div class="content-wrap">
+
+                    @foreach (Sitecore.Data.Items.Item plan in planList.GetChildren())
+                    {
+                        var planname = plan.Fields["Title"];
+                    <tr>
+                        <td>
+                            <div class="accordion-contianer">
+
+                                @if (planname.ToString() == "Standard")
+                                {
+                                    <div class="accordion" id="accordion-@i">@planname (Recommended): </div>
+                                }
+                                else if (planname.ToString() == "Basic")
+                                {
+                                    <div class="accordion active" id="accordion-@i">@planname : </div>
+                                }
+                                else
+                                {
+                                    <div class="accordion" id="accordion-@i">@planname : </div>
+                                }
+                                @if (planname.ToString() == "Basic")
+                                {
+                                    <div class="panel" id="panel-@i" style="display:block">
+                                        <p class="content-p">
+                                            <input type="radio" class="coverageprice" id="@Html.Sitecore().Field("Title", plan).ToString().ToLower()" name="coverageType" value="@Html.Sitecore().Field("Title", plan)"
+                                                   class="chk-1">@Html.Sitecore().Field("Rich Text Editor", plan)
+                                            </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="panel" id="panel-@i">
+                                            <p class="content-p">
+                                                <input type="radio" class="coverageprice" id="@Html.Sitecore().Field("Title", plan).ToString().ToLower()" name="coverageType" value="@Html.Sitecore().Field("Title", plan)"
+                                                       class="chk-1">@Html.Sitecore().Field("Rich Text Editor", plan)
+                                                </p>
+                                            </div>
+                                        }
+
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    i++;
+
+                }
+    </div>
+
+
+    </tbody>
+    </table>
+    <p class="notice-"><small>@Sitecore.Globalization.Translate.Text("producting activities msg")</small></p>
+    <br />
+    <div class="price">
+        <div style="width:100%;">
+            <label id="lblcvmsg" style="color:red;font-weight:600;"></label>
+        </div>
+        <div class="dvleft">Price:</div>
+        <div class="dvleft">
+            Monthly:&nbsp; <label id="lblMonthlyPrice">$12.75</label>
+            <br /> Yearly:&nbsp; <label id="lblYearlyPrice">$153.00</label>
+            <div id="cp">
+                @foreach (Sitecore.Data.Items.Item state in priceList.GetChildren())
+                {
+
+                    <div class="dv_@state.Name.Replace(" ",String.Empty)">
+                        @{
+                            Sitecore.Data.Items.Item prices = Sitecore.Context.Database.GetItem(state.ID);
+                        }
+                        @foreach (Sitecore.Data.Items.Item p in prices.GetChildren())
+                        {
+
+                            <div class="dv_@p.Name">
+                                <label class="lbl_monthly">$<span>@Html.Sitecore().Field("Monthly Price", p)</span></label>
+                                <label class="lbl_yearly"> $<span id="lbl_yearly">@Html.Sitecore().Field("Yearly Price", p)</span></label>
+                            </div>
+
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <h3 class="txtinfo" style="clear:both;margin-bottom: 0px;padding-top:20px;">@Sitecore.Globalization.Translate.Text("UC Coverage Agent Call Msg")</h3>
+    <br />
+    <br />
+    <div class="additional_content">
+        <h3> @Sitecore.Globalization.Translate.Text("coverage to begin")</h3>
+        <div class="input-container">
+            <input id="staringcoverage" class="form-control" type="date" name="staringcoverage">
+            <span id="Starting-Coverage-Date-error" class="error" style="display: none">
+                @Sitecore.Globalization.Translate.Text("staringcoverage")
+            </span>
+        </div>
+    </div>
+    <div style="clear:both;">
+        <br />
+        <br />
+        <h3> @Sitecore.Globalization.Translate.Text("Additional Questions")</h3>
+        <div id="additional_quentions" class="hobbies one">
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">1. </span>
+                    @Sitecore.Globalization.Translate.Text("Insurance been cancelled")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" id="" name="insurancebeencancelled" class="checkvalue sending-value-input" value="Yes" required>
+                    <label for="">Yes</label><br>
+                    <input type="radio" id="" name="insurancebeencancelled" class="checkvalue sending-value-input" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">2. </span>
+                    @Sitecore.Globalization.Translate.Text("swimming pool or tramploine")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" id="" class="checkvalue sending-value-input" name="swimmingpool" value="Yes" required>
+                    <label for="">Yes</label><br>
+                    <input type="radio" id="" class="checkvalue sending-value-input" name="swimmingpool" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">3. </span>
+                    @Sitecore.Globalization.Translate.Text("aggressive breed dogs")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" class="checkvalue sending-value-input" name="exoticanimals" value="Yes" required>
+                    <label for="">Yes</label><br>
+                    <input type="radio" class="checkvalue sending-value-input" name="exoticanimals" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">4. </span>
+                    @Sitecore.Globalization.Translate.Text("Loss History")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="LossHistory" value="Yes" required>
+                    <label for="">Yes</label><br>
+                    <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="LossHistory" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+                <div id="lossdetails" class="additional_content align_box lossdetails paymentsystem" style="display: none">
+                    <div>
+                        <label>
+                            @Sitecore.Globalization.Translate.Text("Number of Losses") <span class="required"> *</span>
+                        </label>
+                        <select class="input-container form-radio sending-value numLosses" id="childbranch" name="NumberofLosses"
+                                type="select">
+                            &gt;
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>
+                            @Sitecore.Globalization.Translate.Text("Open Claims") <span class="required"> *</span>
+                        </label>
+                        <div class="input-container form-radio">
+                            <input type="radio" class="openClaims paymentsystem" name="lossdetails" id="childbranch" value="Yes">
+                            <label for="">Yes</label><br>
+                            <input type="radio" class="openClaims paymentsystem" name="lossdetails" value="No" id="childbranch" checked="checked">
+                            <label for="">No</label><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">5. </span>
+                    @Sitecore.Globalization.Translate.Text("rent property")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" class="checkvalue sending-value-input" name="NumberofLossesliability" value="Yes">
+                    <label for="">Yes</label><br>
+                    <input type="radio" class="checkvalue sending-value-input" name="NumberofLossesliability" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">6. </span>
+                    @Sitecore.Globalization.Translate.Text("commerical farming")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" class="checkvalue" name="OpenClaims" value="Yes">
+                    <label for="">Yes</label><br>
+                    <input type="radio" class="checkvalue" name="OpenClaims" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+            <div class="additional_content">
+                <label class="">
+                    <span class="f-bold">7. </span>
+                    @Sitecore.Globalization.Translate.Text("Business Information")
+                </label>
+                <div class="input-container form-radio">
+                    <input type="radio" class="checkvalue" name="ownorrentproperty" value="Yes">
+                    <label for="">Yes</label><br>
+                    <input type="radio" class="checkvalue" name="ownorrentproperty" value="No" checked="checked">
+                    <label for="">No</label><br>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <p class="notice-"><small>@Sitecore.Globalization.Translate.Text("defraud any insurance company")</small></p>
+        </div>
+        <div class="dvagentcall" style="display: none; margin: 20px 0 0; font-weight: 600;">
+            <p class="text-center">
+                <strong class="d-block">
+                    @Sitecore.Globalization.Translate.Text("schedule a call Msg")
+                    <a class="shlink">Click Here</a>
+                </strong>
+            </p>
+            <div id="collapseExample" style="display: none;">
+                <h3>
+
+                    @Html.Sitecore().Field(Templates.RTE_Block.FieldNames.Rich_Text_Editor, schedulecalltext)
+
+                </h3>
+                <div class="d-flex">
+                    <div class="form-group custom_w_25">
+                        <label for="Date">Date </label>
+                        <input id="txtCallDate" class="form-control" type="text" name="Date">
+                    </div>
+                    <div class="form-group custom_w_15">
+                        <label for="time">Time </label>
+                        <div class="input-container">
+                            <input id="txtTime" class="form-control" type="text" name="time">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="payment-box" style="display:block;">
+            @Html.Partial("~/Areas/AFIWEB/Views/AFIReport/Partial/_PaymentSystem.cshtml")
+        </div>
+        <div class="dvPayButton">
+            <button id="PayButton" class="button button--large-text" type="submit">Submit </button>
+        </div>
+    </div>
+
+    <br />
+
+
+    </form>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+
+    <script>
+        $("#FullPaylabel").text("$153.00/Full Pay");
+        $("#QuaterPaylabel").text("$51.00/Quaterly Pay");
+        $("#ExtendedPayPaylabel").text("$25.50/Extended Pay");
+        $(".paymentsystem").on('change', function () {
+            debugger
+            let lossdetails = $(".lossdetails:checked").val();
+            let nummloss = $(".numLosses option:selected").val();
+            let openclaims = $(".openClaims:checked").val();
+
+            if (lossdetails == "Yes" && openclaims == "No" && nummloss == "1") {
+                $(".payment-box").css("display", "block");
+                $(".dvagentcall").css("display", "none");
+            }
+            else {
+                $(".payment-box").css("display", "none");
+                $(".dvagentcall").css("display", "block");
+            }
+
+        });
+        $(document).click(function (e) {
+            var container = $("#state-tooltip");
+
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.hide();
+            }
+        });
+        $(".shlink").click(function () {
+            $("#collapseExample").toggle();
+        });
+        $(".discleamer").click(function () {
+            var yearly = $("#rd-1");
+            var monthly = $("#rd-2");
+            if (yearly.is(':checked') == true) {
+                $('.payment-box').css("display", "block");
+                $('.dvcondition').css("display", "block");
+                $('#monthly-payment').css("display", "none");
+                $('.dvconditiomonth').css("display", "none");
+                $('#condition').prop("disabled", false);
+                $("#monthly-payment-view").addClass("payment-box2");
+            }
+            else if (monthly.is(':checked') == true) {
+                $('#monthly-payment').css("display", "flex");
+                $('.dvconditiomonth').css("display", "block");
+                $('.payment-box').css("display", "none");
+                $('.dvcondition').css("display", "none");
+                $('#monthcondition').prop("disabled", false);
+                $("#monthly-payment-view").removeClass("payment-box2");
+            }
+        });
+        $('.checkvalue').click(function () {
+            var ele = $(".checkvalue:checked");
+            var j = 0;
+            var n = 0;
+            for (var i = 0; i < ele.length; i++) {
+                if (ele[i].value == 'Yes') {
+                    j++;
+                }
+                if (ele[i].value == 'No') {
+                    n++;
+                }
+            }
+            if (ele.length == j) {
+                $('.payment-box').css("display", "none");
+                $('.dvconditiomonth').css("display", "none");
+                $('.dvcondition').css("display", "none");
+                $('.monthly-payment-option').css("display", "none");
+                $('.dvagentcall').css("display", "block");
+                $('.monthly-payment').css("display", "none");
+                $('#condition').prop("disabled", true);
+                $("#rd-1").val('');
+                $('#monthly-payment').css("display", "none");
+                $('#monthly-payment-option').css("display", "none");
+
+            }
+            else if (ele.length == n) {
+                $('.payment-box').css("display", "block");
+                $('.dvagentcall').css("display", "none");
+                $('.dvconditiomonth').css("display", "none");
+                $('.monthly-payment').css("display", "block");
+                $('.dvcondition').css("display", "block");
+                $('#monthly-payment').css("display", "none");
+                $('#monthly-payment-option').css("display", "flex");
+
+            }
+            else {
+                $('.payment-box').css("display", "none");
+                $('.dvconditiomonth').css("display", "none");
+                $('.dvcondition').css("display", "none");
+                $('.monthly-payment-option').css("display", "none");
+                $('.dvagentcall').css("display", "block");
+                $('.monthly-payment').css("display", "none");
+                $("#rd-1").val('');
+                $('#monthly-payment').css("display", "none");
+                $("#monthly-payment-view").removeClass("payment-box2");
+                $('#monthly-payment-option').css("display", "none");
+            }
+        });
+        document
+            .querySelector("#staringcoverage")
+            .addEventListener("change", handleInput);
+
+        function handleInput() {
+            const input = document.querySelector("#staringcoverage");
+            const errMsg = document.querySelector("#Starting-Coverage-Date-error");
+            const todayDate = new Date();
+            const inputDate = new Date(input.value);
+            const increasedDate = inputDate.getDate() + 1;
+
+            inputDate.setDate(increasedDate)
+
+            // Console values
+            console.log(inputDate);
+            console.log(todayDate);
+
+            // Functionality
+            if (
+                inputDate > todayDate ||
+                inputDate.toDateString() === todayDate.toDateString()
+            ) {
+                errMsg.style.display = "none";
+                console.log("none");
+            } else {
+                errMsg.style.display = "block";
+            }
+        }
+
+        $("#BirthDate").on('change', function () {
+            var userinput = $("#BirthDate").val();
+            var userDOB = new Date(userinput);
+            var diff_ms = Date.now() - userDOB.getTime();
+            var age_dt = new Date(diff_ms);
+            var userage = Math.abs(age_dt.getUTCFullYear() - 1970);
+            if (userage < 18) {
+                $("#BirthDate-validation-error").css("display", "block");
+            }
+            else {
+                $("#BirthDate-validation-error").css("display", "none");
+            }
+        });
+        $('.ssn-value-spouse').on('keydown keyup mousedown mouseup', function () {
+            var res = this.value, //grabs the value
+                len = res.length, //grabs the length
+                max = 9, //sets a max chars
+                stars = len > 0 ? len > 1 ? len > 2 ? len > 3 ? len > 4 ? 'XXX-XX-' : 'XXX-X' : 'XXX-' : 'XX' : 'X' : '', //this provides the masking and formatting
+                result = stars + res.substring(5); //this is the result
+            $(this).attr('maxlength', max); //setting the max length
+            $(".ssn-number-spouse").val(result); //spits the value into the input
+        });
+        $('.ssn-value-spouse').on('keydown keyup mousedown mouseup', function () {
+            var res = this.value, //grabs the value
+                len = res.length, //grabs the length
+                max = 11, //sets a max chars
+                stars = len > 0 ? len > 1 ? len > 2 ? len > 3 ? len > 4 ? 'XXX-XX-' : 'XXX-X' : 'XXX-' : 'XX' : 'X' : '', //this provides the masking and formatting
+                result = stars + res.substring(6); //this is the result
+            $(this).attr('maxlength', max); //setting the max length
+            $(".ssn-number-spouse").val(result); //spits the value into the input
+        });
+        $('input[type=radio][name=BusinessInformation]').change(function () {
+            if (this.value == 'Yes') {
+                $("#BusinessInformationdetails").toggle();
+                $('#BusinessInformationinput').prop('required', true);
+            }
+            else {
+                $("#BusinessInformationdetails").css("display", "none");
+                $('#BusinessInformationinput').removeAttr('required');
+            }
+        });
+        $('.checkvalue').click(function () {
+            var ele = $(".checkvalue:checked");
+            var j = 0;
+            for (var i = 0; i < ele.length; i++) {
+                if (ele[i].value == 'Yes') {
+                    j++;
+                    console.log(ele[i].value)
+                }
+
+            }
+            if (ele.length == j) {
+                $('#question-hidden').toggle();
+            }
+            else {
+                $("#question-hidden").css("display", "none");
+            }
+        });
+        $('input[type=radio][name=insurancebeencancelled]').change(function () {
+            if (this.value == 'Yes') {
+                $("#insurancebeencancelleddetails").toggle();
+                $('#insurancebeencancelleddetailsinput').prop('required', true);
+            }
+            else {
+                $("#insurancebeencancelleddetails").css("display", "none");
+                $('#insurancebeencancelleddetailsinput').removeAttr('required');
+            }
+        });
+        $('input[type=radio][name=swimmingpool]').change(function () {
+            if (this.value == 'Yes') {
+                $("#swimmingpooldetails").toggle();
+                $('#swimmingpooldetailsinput').prop('required', true);
+            }
+            else {
+                $("#swimmingpooldetails").css("display", "none");
+                $('#swimmingpooldetailsinput').removeAttr('required');
+            }
+        });
+        $('input[type=radio][name=exoticanimals]').change(function () {
+            if (this.value == 'Yes') {
+                $("#exoticanimalsdetails").toggle();
+                $('#exoticanimalsdetailsinput').prop('required', true);
+            }
+            else {
+                $("#exoticanimalsdetails").css("display", "none");
+                $('#exoticanimalsdetailsinput').removeAttr('required');
+            }
+        });
+        $('input[type=radio][name=LossHistory]').change(function () {
+            if (this.value == 'Yes') {
+                $("#lossdetails").toggle();
+                $('#childbranch').prop('required', true);
+            }
+            else {
+                $("#lossdetails").css("display", "none");
+                $('#childbranch').removeAttr('required');
+            }
+        });
+        $('input[type=radio][name=NumberofLosses]').change(function () {
+            if (this.value == 'Yes') {
+                $("#NumberofLossesdetails").toggle();
+                $('#NumberofLossesdetailsinput').prop('required', true);
+            }
+            else {
+                $("#NumberofLossesdetails").css("display", "none");
+                $('#NumberofLossesdetailsinput').removeAttr('required');
+            }
+        });
+        $("#spousebranchOfService").change(function () {
+            var selectedtext = $("#spousebranchOfService option:selected").text()
+            $.ajax({
+                type: "GET",
+                url: "/api/sitecore/AFIReport/GetMilitaryRanks?type=" + selectedtext,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: "{}",
+                success: function (data) {
+                    let dropdown = $('#spousemilitaryRank');
+                    dropdown.empty();
+                    $("#spousemilitaryRank").append('<option >Select Rank</option>');
+                    var jsonArray = JSON.parse(data);
+                    var select = document.getElementById('spousemilitaryRank');
+                    var option;
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        option = document.createElement('option');
+                        option.text = jsonArray[i]["label"];
+                        option.value = jsonArray[i]["value"];
+                        select.add(option);
+                    }
+                }
+            });
+        });
+
+        $(".Territory-details option").eq(1).prop({ selected: true });
+        $('input[type=radio][name=Housing]').change(function () {
+            if (this.value == 'Yes') {
+                $(".Territory-details option").eq(0).prop({ selected: true });
+            }
+            else {
+                $(".Territory-details option").eq(1).prop({ selected: true });
+            }
+        });
+        $("#spouse-militaryRank").change(function () {
+            var value = this.value;
+            if (value == "Cadet") {
+                $("#Academy-Housing").toggle();
+            }
+        });
+        $("#militaryRank").change(function () {
+            var value = this.value;
+            if (value == "Cadet") {
+                $("#Academy-Housing").toggle();
+            }
+        });
+        $(document).ready(function () {
+
+            $('#adding-values').change(function () {
+                if (this.checked) {
+                    const country = "US";
+                    var Residenceaddress = $("#address").val();
+                    var Residenceaddress2 = $("#address-other").val();
+                    var City = $("#city").val();
+                    var State = $("#state").val();
+                    var Zip = $("#zipCode").val();
+                    var ForeignAddressitem = document.getElementById("ForeignAddress").checked
+                    $("#Residenceaddress").val(Residenceaddress);
+                    $("#Residenceaddress2").val(Residenceaddress2);
+                    $("#ResidenceCity").val(City);
+                    $("#ResidenceState").val(State);
+                    $("#ResidenceZip").val(Zip);
+                    // $("#ResidenceForeignAddress").checked = ForeignAddressitem;
+                    document.getElementById("ResidenceForeignAddress").checked = ForeignAddressitem;
+                    $("#ResidenceCounty").val(country);
+                    if (State == "CT") {
+                        $("#Academy-Housing").toggle();
+                    } else if (State == "CO") {
+                        $("#Academy-Housing").toggle();
+                    }
+                    else if (State == "MD") {
+                        $("#Academy-Housing").toggle();
+                    }
+                    else if (State == "NY") {
+                        $("#Academy-Housing").toggle();
+                    }
+                    else {
+                        $("#Academy-Housing").css("display", "none");
+                    }
+                }
+                else {
+                    $("#Residenceaddress").val('');
+                    $("#Residenceaddress2").val('');
+                    $("#ResidenceCity").val('');
+                    $("#ResidenceState").val('');
+                    $("#ResidenceZip").val('');
+                    $("#ResidenceCounty").val('');
+                    $("#ResidenceForeignAddress").val('');
+                }
+            });
+        });
+        $("#ResidenceState").change(function () {
+            var value = this.value;
+            if (value == "CT") {
+                $("#Academy-Housing").toggle();
+            }
+            else if (value == "CO") {
+                $("#Academy-Housing").toggle();
+            }
+            else if (value == "MD") {
+                $("#Academy-Housing").toggle();
+            }
+            else if (value == "NY") {
+                $("#Academy-Housing").toggle();
+            }
+            else {
+                $("#Academy-Housing").css("display", "none");
+            }
+        });
+        $("#militaryRank").change(function () {
+            var value = this.value;
+            if (value == "Cadet") {
+                $("#Academy-Housing").toggle();
+            }
+            else {
+                $("#Academy-Housing").css("display", "none");
+            }
+        });
+        $(document).ready(function () {
+            $('#Spouse-chck').change(function () {
+                if (this.checked) {
+                    $('.Spouse-Information-box').css("display", "block");
+                    $('#SpouseFirstName').prop('required', true);
+                    $('#SpouseLastName').prop('required', true);
+                    $('#spousebranchOfService').prop('required', true);
+                    $('#spousemilitaryStatus').prop('required', true);
+                    $('#spousemilitaryRank').prop('required', true);
+                    $("#militery-chck").prop('disabled', true);
+                    $('.Marital-Status-Information-box').css("display", "block");
+                    $("#MaritalStatus").val('Married');
+                    $('#spousesalutation').prop('required', true);
+                }
+                else {
+                    $('.Spouse-Information-box').css("display", "none");
+                    $('#SpouseFirstName').removeAttr('required');
+                    $('#SpouseLastName').removeAttr('required');
+                    $('#spousebranchOfService').removeAttr('required');
+                    $('#spousemilitaryStatus').removeAttr('required');
+                    $('#spousemilitaryRank').removeAttr('required');
+                    $("#militery-chck").prop('disabled', false);
+                    $('#spousesalutation').removeAttr('required');
+                }
+            });
+        });
+        $('#basic').prop({ checked: true });
+        function showDiv(select) {
+            if (select.value == "Married" || select.value == "Civil Union Or Domestic Partner") {
+                $('.Marital-Status-Information-box').css("display", "block");
+                $('#Marital-Status-Information-FirstName').prop('required', true);
+                $('#Marital-Status-Information-LastName').prop('required', true);
+                $('#Marital-Status-Information-BirthDate').prop('required', true);
+                $('#spousesalutation').prop('required', true);
+            }
+            else {
+                $('.Marital-Status-Information-box').css("display", "none");
+                $('#Marital-Status-Information-FirstName').removeAttr('required');
+                $('#Marital-Status-Information-LastName').removeAttr('required');
+                $('#Marital-Status-Information-BirthDate').removeAttr('required');
+                $('#spousesalutation').removeAttr('required');
+            }
+        }
+        $('input[type=radio][name=AdditionalQuestionsitem]').change(function () {
+            if (this.value == 'Yes') {
+                $('#Additional-Interest').css("display", "block");
+                $('#Organization').prop('required', true);
+                $('#Address1').prop('required', true);
+                $('#AdditionalDescription').prop('required', true);
+                $('#Additionalcity-').prop('required', true);
+                $('#State').prop('required', true);
+                $('#Zip').prop('required', true);
+
+            }
+            else {
+                $('#Additional-Interest').css("display", "none");
+                $('#Organization').removeAttr('required');
+                $('#Address1').removeAttr('required');
+                $('#AdditionalDescription').removeAttr('required');
+                $('#City').removeAttr('required');
+                $('#State').removeAttr('required');
+                $('#Zip').removeAttr('required');
+            }
+
+        });
+        $(document).ready(function () {
+
+            $('#Spouse-chck').change(function () {
+                if (this.checked) {
+                    $('.Spouse-Information-box').css("display", "block");
+                    $('#SpouseFirstName').prop('required', true);
+                    $('#SpouseLastName').prop('required', true);
+                    $('#SpouseBirthDate').prop('required', true);
+                    $('#SpouseSSN').prop('required', true);
+                    // $('#SpouseSuffix').prop('required', true);
+                    $("#militery-chck").prop('disabled', true);
+                }
+                else {
+                    $('.Spouse-Information-box').css("display", "none");
+                    $('#SpouseFirstName').removeAttr('required');
+                    $('#SpouseLastName').removeAttr('required');
+                    $('#SpouseBirthDate').removeAttr('required');
+                    $('#SpouseSSN').removeAttr('required');
+                    // $('#SpouseSuffix').removeAttr('required');
+                    $("#militery-chck").prop('disabled', false);
+                }
+            });
+        });
+        function Hidehelpingicon() {
+            $("#state-tooltip").css("display", "none");
+
+        }
+        function Showhelpingicon() {
+            $("#state-tooltip").css("display", "block");
+        }
+
+
+        $("#email").change(function () {
+            var userinput = $("#email").val();
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA>-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(userinput)) {
+                $("#email-validation-error").css("display", "block");
+            }
+            else if (userinput == null) {
+                $("#email-validation-error").css("display", "none");
+            }
+            else {
+                $("#email-validation-error").css("display", "none");
+            }
+        });
+        $('#basic').prop({ checked: true });
+        // End
+
+        $("#phoneNumber").inputmask({ "mask": "(999) 999-9999" });
+        jQuery.validator.addMethod("customEmail", function (value, element) {
+            return this.optional(element) || /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+                .test(value);
+        }, "Please enter valid email address!");
+
+
+        var $registrationForm = $('#registration');
+        if ($registrationForm.length) {
+            $registrationForm.validate({
+                rules: {
+
+
+                    first_Name: {
+                        required: true
+                    },
+                    last_Name: {
+                        required: true
+                    },
+                    address: {
+                        required: true
+                    },
+                    city: {
+                        required: true
+                    },
+                    email: {
+                        required: true
+                    },
+                    state: {
+                        required: true
+                    },
+                    phoneNumber: {
+                        required: true
+                    },
+                    zipCode: {
+                        required: true,
+                    },
+                    tableInput: {
+                        required: true,
+                    },
+
+                    NameOnCard: {
+                        required: true,
+                    },
+                    CreditCardNumber: {
+                        required: true,
+                    },
+                    ExpiryDate: {
+                        required: true
+                    },
+                    SecurityCode: {
+                        required: true,
+                        maxlength: 16,
+                    },
+                    YtermChk: {
+                        required: true,
+                    },
+                    mtermChk: {
+                        required: true,
+                    },
+                    routing: {
+                        required: true,
+                    },
+                    acnumber: {
+                        required: true
+                    },
+                    BirthDate: {
+                        required: true
+                    },
+                    MaritalStatus: {
+                        required: true
+                    },
+                    staringcoverage: {
+                        required: true
+                    }
+
+                },
+                messages: {
+
+                    first_Name: {
+                        required: 'Please enter first name'
+                    },
+                    last_Name: {
+                        required: 'Please enter last name'
+                    },
+                    address: {
+                        required: 'Please enter address'
+                    },
+                    city: {
+                        required: 'Please enter city'
+                    },
+                    email: {
+                        required: 'Please enter email',
+                        email: 'Please enter valid email'
+                    },
+                    state: {
+                        required: 'Please select state'
+                    },
+                    phoneNumber: {
+                        required: 'Please enter phone number'
+                    },
+                    zipCode: {
+                        required: 'Please enter zip code'
+                    },
+                    CreditCardNumber: {
+                        required: 'Please enter card number'
+                    },
+                    NameOnCard: {
+                        required: 'Please enter card name'
+                    },
+                    ExpiryDate: {
+                        required: 'Please enter expiry date'
+                    },
+                    SecurityCode: {
+                        required: 'Please enter security code'
+                    },
+                    YtermChk: {
+                        required: '*'
+                    },
+                    mtermChk: {
+                        required: '*'
+                    },
+                    routing: {
+                        required: 'Please enter routing'
+                    },
+                    BirthDate: {
+                        required: 'Please enter birth date'
+                    },
+                    MaritalStatus: {
+                        required: 'Please select marital status'
+                    },
+                    staringcoverage: {
+                        required: 'Please enter starting coverage'
+                    }
+                },
+                submitHandler: function (form) {
+                    var valdata = $("#registration").serializeArray();
+                    valdata.push({ name: "CoverageType", value: $('input[name="coverageType"]:checked').val() });
+                    valdata.push({ name: "coverageMonth", value: $("#lblMonthlyPrice").text() });
+                    valdata.push({ name: "coverageYear", value: $("#lblYearlyPrice").text() });
+                    valdata.push({ name: "paymentMethod", value: $('input[name="paymentMethod"]:checked').val() });
+                    valdata.push({ name: "eligibility", value: $('input[name="eligibility"]:checked').val() });
+                    valdata.push({ name: "firstName", value: $('#first_Name').val() });
+                    valdata.push({ name: "lastName", value: $('#last_Name').val() });
+                    valdata.push({ name: "termChk", value: $('input[name="YtermChk"]:checked').val() });
+                    valdata.push({ name: "NumberofLosses", value: $('input[name="NumberofLosses"]:selected').val() });
+
+                    $.ajax({
+                        url: "/api/sitecore/AFIReport/UCFormSubmit",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: function (response) {
+                            if (response > 0) {
+                                window.location = '/ucthanks';
+                            }
+
+                        }
+                    });
+                }
+            });
+        }
+
+        $("#branchOfService").change(function () {
+            var selectedtext = $("#branchOfService option:selected").text()
+            $.ajax({
+                type: "GET",
+                url: "/api/sitecore/AFIReport/GetMilitaryRanks?type=" + selectedtext,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: "{}",
+                success: function (data) {
+                    let dropdown = $('#militaryRank');
+                    dropdown.empty();
+                    $("#militaryRank").append('<option >Select Rank</option>');
+                    var jsonArray = JSON.parse(data);
+                    var select = document.getElementById('militaryRank');
+                    var option;
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        option = document.createElement('option');
+                        option.text = jsonArray[i]["label"];
+                        option.value = jsonArray[i]["value"];
+                        select.add(option);
+                    }
+                }
+            });
+        });
+
+
+        $("#ExpiryDate").mask('Z9/9999', {
+            translation: {
+                'Z': {
+                    pattern: /[0-9]/,
+                    optional: true
+                }
+            }
+        });
+
+        $('#txtCallDate').mask("99/99/9999", {
+            placeholder: 'MM/DD/YYYY'
+        });
+        $('#txtTime').mask('00:00', {
+            placeholder: 'HH:MM'
+        });
+        $('#militery-chck').click(function () {
+            var miletary_chk = $("#militery-chck");
+            if (miletary_chk.is(':checked') == true) {
+                $('.military-affiliation-box').css("display", "block");
+                $("#Spouse-chck").prop('disabled', true);
+            } else {
+                $('.military-affiliation-box').css("display", "none");
+                $("#Spouse-chck").prop('disabled', false);
+            }
+        })
+
+        $(document).ready(function () {
+
+            //   $(".shlink").click(function () {
+            //      $("#collapseExample").toggle();
+            //   });
+
+            $("#lblcvmsg").text("");
+            $(function () {
+                $('.h-chk input:checkbox').attr('checked', 'checked');
+                $('.m-chk input:checkbox').prop('checked', false);
+                $('#NameOnCard').prop("disabled", false);
+                $('#CreditCardNumber').prop("disabled", false);
+                $('#ExpiryDate').prop("disabled", false);
+                $('#SecurityCode').prop("disabled", false);
+                $('#PayButton').prop("disabled", false);
+                $('#condition').prop("disabled", false);
+            });
+
+
+
+
+            $('.chk').click(function () {
+
+                var element1 = $("#chk_1");
+                var element2 = $("#chk_2");
+                var element3 = $("#chk_3");
+                var element4 = $("#chk_4");
+                var element5 = $("#chk_5");
+                var element_rd1 = $("#rd-1");
+                var element_rd2 = $("#rd-2");
+                var miletary_chk = $("#militery-chck");
+                var spouse_chk = $("#Spouse-chck");
+
+                spouse_chk.change(() => {
+                    if (spouse_chk.is(':checked') == true) {
+                        $('.Spouse-Information-box').css("display", "block");
+                        $('#SpouseFirstName').prop('required', true);
+                        $('#SpouseLastName').prop('required', true);
+                        $('#SpouseBirthDate').prop('required', true);
+                        $('#SpouseSSN').prop('required', true);
+                        $('#SpouseSuffix').prop('required', true);
+
+                    } else {
+                        $('.Spouse-Information-box').css("display", "none");
+                        $('#SpouseFirstName').removeAttr('required');
+                        $('#SpouseLastName').removeAttr('required');
+                        $('#SpouseBirthDate').removeAttr('required');
+                        $('#SpouseSSN').removeAttr('required');
+                        $('#SpouseSuffix').removeAttr('required');
+
+                    }
+                })
+
+
+                if (element_rd2.is(':checked') == true) {
+
+                    $('.montly-policy').css("display", "block");
+                } else {
+                    $('.montly-policy').css("display", "none");
+                }
+
+                if (miletary_chk.is(':checked') == true) {
+                    $('.military-affiliation-box').css("display", "block");
+                } else {
+                    $('.military-affiliation-box').css("display", "none");
+                }
+
+                if (element1.is(':checked') == true && element2.is(':checked') == true && element3.is(':checked') == true && element4.is(
+                    ':checked') == true && element_rd1.is(':checked') == true && element5.is(
+                        ':checked') ==
+                    true) {
+                    // if ($('input.chk').is(':checked')) {
+                    $('#NameOnCard').prop("disabled", false);
+                    $('#CreditCardNumber').prop("disabled", false);
+                    $('#ExpiryDate').prop("disabled", false);
+                    $('#SecurityCode').prop("disabled", false);
+                    $('#PayButton').prop("disabled", false);
+                    $('#condition').prop("disabled", false);
+                    $('#monthcondition').prop("disabled", true);
+                    $('#ac-number').prop("disabled", true);
+                    $('#routing').prop("disabled", true);
+                    $('.dvcondition').css("display", "block");
+                    $('.dvconditiomonth').css("display", "none");
+                    $('.payment-box').css("display", "block");
+                    $('.dvagentcall').css("display", "none");
+                    $('.payment-box2').css("display", "none");
+
+
+
+                } else if (element1.is(':checked') == true && element2.is(':checked') == true && element3.is(':checked') == true && element4
+                    .is(':checked') == true && element_rd2.is(':checked') == true && element5.is(
+                        ':checked') ==
+                    true) {
+
+                    //  $('#NameOnCard').prop("disabled", true);
+                    //  $('#CreditCardNumber').prop("disabled", true);
+                    //   $('#ExpiryDate').prop("disabled", true);
+                    //   $('#SecurityCode').prop("disabled", true);
+                    //   $('#PayButton').prop("disabled", false);
+                    //   $('#condition').prop("disabled", true);
+                    //   $('#monthcondition').prop("disabled", false);
+                    //   $('#ac-number').prop("disabled", false);
+                    //   $('#routing').prop("disabled", false);
+                    //  $('.dvcondition').css("display", "none");
+                    //   $('.dvconditiomonth').css("display", "block");
+                    //  $('.payment-box').css("display", "none");
+                    //    $('.payment-box').css("display", "block");
+                    // $('.dvagentcall').css("display", "none");
+                    //    $('.payment-box2').css("display", "block");
+
+
+
+                } else {
+                    // $('#NameOnCard').prop("disabled", true);
+                    //    $('#CreditCardNumber').prop("disabled", true);
+                    //    $('#ExpiryDate').prop("disabled", true);
+                    //    $('#SecurityCode').prop("disabled", true);
+                    //     $('#PayButton').prop("disabled", false);
+                    //      $('#monthcondition').prop("disabled", true);
+                    //     $('#condition').prop("disabled", true);
+                    //     $('#ac-number').prop("disabled", true);
+                    //     $('#routing').prop("disabled", true);
+                    //     $('.dvcondition').css("display", "none");
+                    //     $('.dvconditiomonth').css("display", "none");
+                    // $('.payment-box').css("display", "none");
+                    //   $('.payment-box').css("display", "block");
+                    // $('.dvagentcall').css("display", "block");
+                    //    $('.payment-box2').css("display", "none");
+                }
+            });
+
+            $("#CreditCardNumber").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+            $("#SecurityCode").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+        });
+
+        $("#state").change(function () {
+            setprice();
+        });
+
+        $("input[type=radio][name=coverageType]").change(function () {
+            setprice();
+        });
+
+        function setprice() {
+            debugger;
+            $("#lblcvmsg").text("");
+            var statetxt = $("#state").val();
+            var typetxt = $('input[name="coverageType"]:checked').val();
+            if (typeof (typetxt) === "undefined") {
+                $("#lblcvmsg").text("Please choose coverage options");
+                return false;
+            }
+            if (statetxt == "") {
+                $("#lblcvmsg").text("Please select state options");
+                return false;
+            }
+            if (statetxt == "" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text('$00.00');
+                $("#lblYearlyPrice").text('$00.00')
+            }
+            if (statetxt == "" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text('$00.00');
+                $("#lblYearlyPrice").text('$00.00')
+            }
+            if (statetxt == "" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text('$00.00');
+                $("#lblYearlyPrice").text('$00.00')
+            }
+
+            if (statetxt == "AL" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Alabama .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Alabama .dv_Basic .lbl_yearly').text());
+            }
+            if (statetxt == "AL" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Alabama .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Alabama .dv_Standard .lbl_yearly').text());
+            }
+            if (statetxt == "AL" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Alabama .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Alabama .dv_Premium .lbl_yearly').text());
+            }
+            if (statetxt == "KS" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Kansas .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Kansas .dv_Basic .lbl_yearly').text());
+            }
+            if (statetxt == "KS" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Kansas .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Kansas .dv_Standard .lbl_yearly').text());
+            }
+            if (statetxt == "KS" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Kansas .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Kansas .dv_Premium .lbl_yearly').text());
+            }
+            if (statetxt == "LA" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Louisiana .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Louisiana .dv_Basic .lbl_yearly').text());
+            }
+            if (statetxt == "LA" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Louisiana .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Louisiana .dv_Standard .lbl_yearly').text());
+            }
+            if (statetxt == "LA" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Louisiana .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Louisiana .dv_Premium .lbl_yearly').text());
+            }
+            if (statetxt == "OK" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Oklahoma .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Oklahoma .dv_Basic .lbl_yearly').text());
+            }
+            if (statetxt == "OK" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Oklahoma .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Oklahoma .dv_Standard .lbl_yearly').text());
+            }
+            if (statetxt == "OK" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Oklahoma .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Oklahoma .dv_Premium .lbl_yearly').text());
+            }
+            if (statetxt == "MD" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Maryland .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Maryland .dv_Basic .lbl_yearly').text());
+            }
+            if (statetxt == "MD" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Maryland .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Maryland .dv_Standard .lbl_yearly').text());
+            }
+            if (statetxt == "MD" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_Maryland .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_Maryland .dv_Premium .lbl_yearly').text());
+            }
+            if (statetxt == "NY" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewYork .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewYork .dv_Basic .lbl_yearly').text());
+
+            }
+            if (statetxt == "NY" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewYork .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewYork .dv_Standard .lbl_yearly').text());
+
+            }
+            if (statetxt == "NY" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewYork .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewYork .dv_Premium .lbl_yearly').text());
+
+            }
+            if (statetxt == "NJ" && typetxt == "Basic") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewJersey .dv_Basic .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewJersey .dv_Basic .lbl_yearly').text());
+                let fullpay = parseFloat($('#cp .dv_NewJersey .dv_Basic #lbl_yearly').text());
+                $("#FullPaylabel").text("$" + fullpay.toString() + ".00/Full Pay");
+                let QuaterPaylabel = fullpay / 3;
+                $("#QuaterPaylabel").text("$" + QuaterPaylabel.toFixed(2).toString() + "/Quaterly Pay");
+                let ExtendedPayPaylabel = (fullpay / 12) * 2;
+                $("#ExtendedPayPaylabel").text("$" + ExtendedPayPaylabel.toFixed(2).toString() + "/Extended Pay");
+            }
+            if (statetxt == "NJ" && typetxt == "Standard") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewJersey .dv_Standard .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewJersey .dv_Standard .lbl_yearly').text());
+                let fullpayitem = parseFloat($('#cp .dv_NewJersey .dv_Standard #lbl_yearly').text());
+                $("#FullPaylabel").text("$" + fullpayitem.toString() + ".00/Full Pay");
+                let QuaterPaylabel = fullpayitem / 3;
+                $("#QuaterPaylabel").text("$" + QuaterPaylabel.toFixed(2).toString() + "/Quaterly Pay");
+                let ExtendedPayPaylabel = (fullpayitem / 12) * 2;
+                $("#ExtendedPayPaylabel").text("$" + ExtendedPayPaylabel.toFixed(2).toString() + "/Extended Pay");
+
+            }
+            if (statetxt == "NJ" && typetxt == "Premium") {
+                $("#lblMonthlyPrice").text($('#cp .dv_NewJersey .dv_Premium .lbl_monthly').text());
+                $("#lblYearlyPrice").text($('#cp .dv_NewJersey .dv_Premium .lbl_yearly').text());
+                let fullpay = parseFloat($('#cp .dv_NewJersey .dv_Premium #lbl_yearly').text());
+                $("#FullPaylabel").text("$" + fullpay.toString() + ".00/Full Pay");
+                let QuaterPaylabel = fullpay / 3;
+                $("#QuaterPaylabel").text("$" + QuaterPaylabel.toFixed(2).toString() + "/Quaterly Pay");
+                let ExtendedPayPaylabel = (fullpay / 12) * 2;
+                $("#ExtendedPayPaylabel").text("$" + ExtendedPayPaylabel.toFixed(2).toString() + "/Extended Pay");
+            }
+        }
+
+        function validate(n) {
+            n = n.toString();
+            var arr = n.length % 2 === 0 ? n.split("").map(function (index, currentValue) {
+                return currentValue % 2 === 0 ? index * 2 : index * 1
+            }) : n.split("").map(function (index, currentValue) {
+                return currentValue % 2 === 1 ? index * 2 : index * 1
+            })
+            arr = arr.map(function (index) {
+                if (arr[arr.indexOf(index)] > 9) {
+                    return index - 9
+                } else {
+                    return index
+                }
+            })
+            return arr.reduce(function (a, b) {
+                return a + b
+            }) % 10 === 0 ? true : false;
+        }
+
+        var type = "Generic Card";
+        var acceptedArr = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 189];
+        var fullName;
+
+        var cvv;
+
+
+
+
+        var CreditCardNumber;
+
+        $("#CreditCardNumber").bind("input propertychange", function () {
+            CreditCardNumber = ($(this).val());
+            type = "Generic Card"
+            checkCard(CreditCardNumber);
+
+            if (type == "American Express") {
+                $("#cardName").css({
+                    "height": "30px",
+                    "width": "48px",
+                    "background-repeat": "no-repeat",
+                    "display": "block !important"
+                });
+                $("#cardName").css("background",
+                    "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAMAAABdem3zAAAAA3NCSVQICAjb4U/gAAACi1BMVEUAAAAAAAAAdKIAdqcGdqoDeqkDeKoDe6sFeqoFeqwCeqoGe6wGeasGeqwGe6wFeqwFeqwFeqsGe6oFeawEeqwEeqwFe6wHeaoFe6oFeasFe6wFeawHe6wIfKwJfKwKfa0Lfa0Mfq0Of64Pf64QgK8RgK8Sga8TgbAUgrAVgrAWg7EXg7EYhLEZhLIahbIbhbIdhrMfh7QgiLQhiLQjirUkirUli7YnjLYojLcqjbcsj7gtj7kukLkvkLkwkbkxkboykrozkro0k7s1k7s2lLs3lLw4lbw5lbw6lr07lr08l709l75Amb9Bmr9Dm8BFnMBHncFIncFJnsJKnsJLn8JMn8NNoMNOocRPocRQosRRosVUpMZVpMZWpcZXpcdYpsdZp8dap8dbqMheqclgqslhq8pjrMpkrMtnrsxpr8xqr81tsc5vss5wss9xs89ztNB0tdB1ttF6uNJ8udN9utN+utR/u9SAu9SBvNWCvNWDvdWEvdWGvtaHv9aIv9eKwNeMwdiPw9mQw9mRxNqTxdqUxtuVx9uWx9yXyNyYyNyZyd2ayd2byt2cyt6dy96fzN+gzN+hzd+izeCjzuCkzuCn0OGp0eKq0eKr0uOs0+Ot0+Ov1OSw1eSy1uWz1uW01+W32Oa62ui72+i82+i+3Om/3enC3urE3+vF4OvH4ezI4uzJ4u3K4+3L4+3N5O7O5e7P5e/R5u/S5/DT5/DV6PHW6fHX6fHY6vHa6/Lb7PPc7PPd7fPe7fTf7vTg7vTi7/Xj8PXk8fbm8vbn8vfo8/fp8/fq9Pjr9Pjs9fjt9fnu9vnv9vnw9/rx9/ry+Prz+Pv0+fv1+fv2+vz4+/z5+/37/P38/f7+/v7///+B6xdgAAAAHHRSTlMAARYaJ0FIT1pcYG6YmZyssrPDys3T2tvt9PX+1nJQbwAAAnFJREFUOMtjYOAWESMWiAqwMzBwyZAEOBn4SdMgzCBImgYJUjVI0UeDkoGBrq6BgZ6MhgECqAA56nJ6ICZIWN3AQAeuoevIrvOHDuy6ZLl1366ru3ft2nVl167dJ08cOXHo/P6Dl3Yd33Nm15mdJw+thGnQO2ei2nzDRaZp405Zmd2KxhYWW2TMTeUmJOWv0NOPKVJ1uNEi4329LByuoXKaabvZNZcQw8u5IUANrYuX7pA5eNSxJCk/OPfGBe2ZKotbnAw6kTSs8Axslpnh0mtRr74YqME7LGaHjI6G4uakfOfGG21q3c5hLf7TNDMQGhqUMjN9vFz6O2TCjgA11M+Zs13m4oXIvKT8bOs+i7DMNJks/xuhcggNKQ3b+vfGpS65kLTqVNyRpLi4uP1xl6d09jRPPF+blHC29WB+SsX5PXF1cA0lE/1lWiZOnFg2saZrIgxkgojiyr6JZTLxQFZ5ycSJpRTHdOAmMMiM2Agk103esGnTxiWzwELTVwOJyes29aFqiFtrCQR+x05FuVpaWqcfA3I8FlQDyandjpaWh5KtLI3RNCxTA8ZypHewb7vNrvWKk2QW7wiIzU3YteusXtXWrQvllm+diK5BRl6+4JyW2omJ2qkRiqtknN2VF+UCxWbmKCi5b3GU1fRE16B+4cK5RCe3pH6z6bP3nZOZsyYoMzftwsWrp4+skZt/4kA1mqfjVqgAgcORw/Z23kejg86r7JxXm1AIFOqzVdFLAEoahaNqiDgMBplZQGKNjC6QbD0MA3vmAomN5XTLcaQASQZe0jSIM3CQpoGPgZFHmgT1QkwMDAzMrOxEAjYWBgYAvI9h1MHdhQIAAAAASUVORK5CYII=')"
+                )
+                $("h2").css("color", "black")
+                $("label").css("color", "black")
+            } else if (type == "Visa") {
+                $("#cardName").css({
+                    "height": "30px",
+                    "width": "48px",
+                    "background-repeat": "no-repeat"
+                });
+                $("#cardName").css("background",
+                    "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAMAAABdem3zAAAAA3NCSVQICAjb4U/gAAABvFBMVEUAAADQ0NDa2tra2trZ2dnY2Nja2trt7e3t7e0mM3onNHspNXkqN30rN30sOH4tN3ovO4AwPIAyPoE1QYM3Q4Q4Q4U4RIU5RYY8R4g9SIhCTYtDToxGUY5HUo5JU49JVJBOWJJQW5RSXJVTXZZVX5dXYZhYYplaY5pfaJ1kbaBlbqFoaZFocaNpcqNqc6RtdqZvd6dzcpV0fKp2f6x5ga18g698hK99hK99hbB+hrCAh7GDi7OHjrWIj7aJkLeNk7mNlLqOlbqRl7yUmr6WnL6YnsCbocKepMSjqMekqceprsqrsMysscytss2uss2xts+xttC0uNG1udK1utK2utK3u9O6vdS7v9W8wNa9wda9wdfBxNnDx9rEx9vFyNzFydvHy93Kzd/Mz+DR0+LS1OPT1uTVnV/V1+XX2ebY2NjZuJbZ2+faoVza3Ojc3+rf4evf4ezi5O7j5e7n6fHp6/Lq6/Lr7PPsmC3snTfs7fPunjnu7/Tu7/Xw8fbx8vfy8/f09fj09fn19vn29/r3z5332LH39/r42LD42bL42bP5+fv76tX77dz7+/v7+/387dv9/f7+9ev//v3///9+dhG/AAAACXRSTlMAGxuq7e7u+vsOT6YMAAABbklEQVQ4y+WUV1cTYRQAlwSIsxoLltgLKgZ7AwV777FiL9gT1x4FGxpb0Gg0On/YBx83D+wz8z7nu+fe800QpNKtpTHSmk4FQUt7pu4YqWfaW4L0BBOQSQdt9SRCvS0omYjSOBZ+fB0d/f5T/VQoDHi6cF4b1/Zt6d9fUZ+cLFyMvfDny6vhN3/1EOwegW4/LAHgpb6bBpNr8ZE2PBz+rQvIvrgJ2+2DdaeOba7pXoBbceHAxHvfHIRNHoHjLobLqlZnkIeDcaHIlAeuh6Jb4bb9EG58rh6G4nTWNNnSHFYNZcnrcsKK1d4Qpl63MY9lrmRmE6GHcCdc0Q7mqt5ZAfM9C7uKvfA0LlyASSzUt7Daz+pIyGw7+c+JuPAxCxzV+7DHrq5tOzqhbxA6crlcSE+TS+dhVk0vwRk7AFhb64a76lIWva7EhKEoKqvvo6jqs6sD526UNYoeq5ajR78a4/k/JM5M4pAlTGUqSBrjf5znrWNE0ZcCAAAAAElFTkSuQmCC')"
+                )
+
+            } else if (type == "MasterCard") {
+                $("#cardName").css({
+                    "height": "30px",
+                    "width": "48px",
+                    "background-repeat": "no-repeat"
+                });
+                $("#cardName").css("background",
+                    "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAMAAABdem3zAAAAA3NCSVQICAjb4U/gAAACc1BMVEUAAADQ0NDa2tra2trZ2dnY2Nja2trt7e3t7e3MAADMAQHMBATNCQnOCwvODAzODg7PDwnPERHRGxvSFgfSHh7SHx/SIB7THhDTJCTTJibTJyfUKSnVIAXVLS3VMDDWMjLWNTXWNjbXIQDXLyLXNS7XNzfXOzvYLxbYPT3YPj7Y2NjZOy/ZRUXaSEjaSUnbLQDbLgDbS0vbTU3cSj/cU1PdNADdSjTdVVXdVlbeNwDeW1vfYmLgUDPgZWXgZmbgaGjhXkvhamrhbW3ia2Lib2/jXDfja1njdXXkeHjkeXnke3vlgIDlgYHmg4PmhITmhobnh4fniIjni4voVgDojIzokJDqXADqaiTqlpbqmJjqmZnqmprrnJzrn5/tpqbuqqrura3urq7vsbHvsrLvs7PwbADwbQDwtLTwtbXwt7fxvLzycgDyjULyvr7yv7/zdQDzmVvzn2fzxMTzxcXzx8f2fwD21tb3gQD3x6/3ybL32Nj4hAD43t7439/44OD5iQD54eH54uL65ub65+f76+v7+/v88vL89PT99/f9+Pj9+fn+lwD+/f3/mQD/mgT/nQv/nw//oRT/oRX/oRb/ohj/qCf/qSn/qSr/qy3/rDH/rjX/rjb/sT7/sj//s0L/tEX/tUf/tUj/tkn/t0v/uVD/uVH/u1X/vFj/vVr/vl7/v2H/w2n/xGz/x3P/yHb/yXr/zob/z4j/0Iv/1Zj/1pr/153/2J7/26X/3q7/4LL/4LP/4bX/4bb/5cD/5sL/58P/58T/58X/6sz/7NH/7dL/8d7/8t//9OX/9eb/9ef/9ur/9+v/+vT/+/X//Pj//fz///90HdR0AAAACXRSTlMAGxuq7e7u+vsOT6YMAAABmElEQVQ4y2NgYGJm0SISsDAzMTAwsrG3XiAStLKzMTIwc1wgAbAzM7C2kqKhlZVB6wJJQItSDS3R5orSmo7pPUD2+d2r506bvWzLKdwaOr14OSFAMuXCzqm9ENC//hwODc2KnHDAVdCLALNOYNXQLo9QzylgGoykY+YZbBqckNSrpKamdSPpWINFQw03kgZhJSUlSyQNfUcxNfjzyfFISUDUi5WCQO+EOZOgGmZswNSgY3VBpyPOxJZf1d4uWdxZW9k45+SBtStWTVowffH8o/MxNUgHNsY0entmxrW5R6VnhNb6NlVu6p247uCOs3sOH941DYuG9MTa3JCiGp+S+CzdrrziBOuK5b1L9x8/tG3vko0bsWjQafCKaIhNqon0qyvzqApyKZMtPLZl8/bTR1Zv3Xd6JRYnBeiJChkJGqppWIgoKKi7mTnIVC9YPHnhnHlTJiyaM3EDgWANz87OLicQrCgRx6VvYJBPIOJQk4ZNWD3BpIGS+DhdCSc+0pM3JAOpkpCBaJOnSS5mSC7ISCwqgYUriYUxAINRRW57ksG5AAAAAElFTkSuQmCC')"
+                )
+                $("h2").css("color", "black");
+                $("label").css("color", "black")
+            } else if (type == "Discover") {
+                $("#cardName").css({
+                    "height": "30px",
+                    "width": "48px",
+                    "background-repeat": "no-repeat"
+                });
+                $("#cardName").css("background",
+                    "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAMAAABdem3zAAAAA3NCSVQICAjb4U/gAAACLlBMVEUAAADQ0NDa2tra2trZ2dnY2Nja2trt7e3t7e3vzbDvzbEBAQECAgIDAwMTExMUFBQWFhYYGBgZGRkeHh4jIyMmJiYnJycpKSksLCwtLS0uLi4wMDAzMzM0NDQ3Nzc6Ojo8PDw/Pz9CQkJDQ0NHR0dJSUlKSkpMTExOTk5PT09RUVFWVlZYWFhcXFxgYGBiYmJjY2Nra2tsbGxtbW1wcHBxcXF0dHR1dXV2dnZ3d3d4eHh8fHx9fX1+fn6AgICBgYGCgoKDg4OLi4uMjIyPj4+VlZWWlpabm5udnZ2enp6fn5+hoaGjo6OoqKirq6usrKyvr6+wsLCysrKzs7O4uLi7u7u8vLy9vb2/v7/AwMDBwcHExMTGxsbHx8fJycnLy8vQ0NDR0dHS0tLU1NTW1tbY2NjZ2dnb29vd3d3f39/h4eHi4uLn5+fo6Ojp6enr6+vs7Ozt7e3v7+/x8fHy8vL1giD1giH1gyP1hCT1iS31ii71izD1jDL2kTv2kjz2kz/2lED2lkP2lkT2l0X2mUn2pmH2pmL3m033n1X3oVf3pF73pV739/f4q2n4q2r4rWz4r3D4r3H4sXT4s3f5uoT5u4b5vov5+fn6xJb6yJ36yqD6zKT6+vr7zqj70a372Ln7+/v83sT838b84Mj84sv848785M/85dD89O78/Pz959X96Nb969z9/f3+8+r+9e7+9u/+9/H++PP++vb++vf+/Pn+/Pr+/fz+/v7////OeAUcAAAAC3RSTlMAGxuq7e7u+vv7+w/+RoMAAAGnSURBVDjLY2BgYmZJJRKwMDMxMDCysS/YSSRYwM7GyMDMsZMEwM7MwLqAFA0LWBlSd5IEUumkwc7A0HPBTuvcTAN13535FuqWJTsXdrdP2+IZuHOnR6iNgYHVDgMDsySEBin3QE2NnWJpKk6x8T1iDsku6UvKSktL+4Kld84RzBb3Co9ZyRPnJYikIXHnAr5ssTR9hYCVIfIg8UmlILBCOMFfa6e4jWvQWh5/e0kUDTuFMsTSpvvI6gUog8QngzVsdDRVC9spbu7st5bbmL8ASUNEipEi0ElRRQEyhYL+K/2Tl5cD1U/cmSMgsXOneHRe3krenSpuCA26ckp2xTu1s2xFZSJ3JqiJqKbvXNrbOWPrzp0m3jt36sjJyS2Q35ms0rNz53wSg3VRI2kaVlc1kKRhVU0pSRoWVZaSpGF2RSkpGjZNAMcM0RoW15aSomE9JOKJ1bB1VnUpCRq2z6srLSVew+ZZyMoJalgzpbq0lGgNG+Z2lGKAplQcxcy6uV3lpVhAKyuWgmzLwqktpTgAJzNaUblt2cz+xnocoLmNiw1YuJJYGAMAEKBGzN/0FVAAAAAASUVORK5CYII=')"
+                )
+                $("h2").css("color", "black");
+                $("label").css("color", "black")
+
+            } else if (CreditCardNumber == "") {
+                $("#cardName").css("background", "none");
+            }
+
+        });
+
+
+        function amex(num) {
+            var arr = ["34", "37"];
+            if (arr.indexOf(num.substr(0, 2)) !== -1) {
+                return type = "American Express"
+            }
+        }
+
+        function discover(num) {
+            var arr = ["6011"]
+            if (num.substr(0, 4) == arr[0]) {
+                return type = "Discover"
+            }
+        }
+
+        function masterCard(num) {
+            var arr = ["51", "52", "53", "54", "55"];
+            if (arr.indexOf(num.substr(0, 2)) !== -1) {
+                return type = "MasterCard"
+            }
+        }
+
+        function visa(num) {
+            var arr = ["4"]
+            if (arr.indexOf(num.substr(0, 1)) !== -1) {
+                return type = "Visa"
+            }
+        }
+
+        function checkCard(pass) {
+            amex(pass);
+            masterCard(pass);
+            discover(pass);
+            visa(pass);
+            $("h2").text(type)
+        }
+    </script>
+    <script>
+        // CREDIT CARD NUMBER MASK
+        const creditCardNumberMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 16 ? '0000 0000 0000 0000' : '0000 000000 000009';
+        };
+        const creditCardNumberMaskOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(creditCardNumberMaskBehavior.apply({}, arguments), options);
+            }
+        };
+
+        $('#CreditCardNumber').mask(creditCardNumberMaskBehavior, creditCardNumberMaskOptions);
+
+
+
+        //select all collapse button
+        let collapse_btn = document.querySelectorAll('.collapse_btn');
+
+        // get length collapse buttons
+        let len = collapse_btn.length;
+
+        // loop for work with each button
+        for (let i = 0; i < len; i++) {
+            collapse_btn[i].addEventListener('click', function () {
+
+                //collapse button active style
+                this.classList.toggle('active');
+
+                //content active status
+                let content = this.nextElementSibling
+                content.classList.toggle("active");
+            });
+        }
+
+        var clicked = false;
+        $(".clps-btn-1").on("click", function () {
+            $(".chk-1").prop("checked");
+        });
+        $(".clps-btn-2").on("click", function () {
+            $(".chk-2").prop("checked");
+        });
+        $(".clps-btn-2").on("click", function () {
+            $(".chk-2").prop("checked");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $("#accordion-1").on("click", function () {
+                $(this).toggleClass("active");
+                $(this).next().slideToggle(200);
+                $('#panel-2').css("display", "none");
+                $('#panel-3').css("display", "none");
+                $('#basic').prop({
+                    checked: true
+                });
+                setprice();
+            });
+            $("#accordion-2").on("click", function () {
+                $(this).toggleClass("active");
+                $(this).next().slideToggle(200);
+                $('#panel-1').css("display", "none");
+                $('#panel-3').css("display", "none");
+                $('#standard').prop({
+                    checked: true
+                });
+                setprice();
+            });
+            $("#accordion-3").on("click", function () {
+                $(this).toggleClass("active");
+                $(this).next().slideToggle(200);
+                $('#panel-1').css("display", "none");
+                $('#panel-2').css("display", "none");
+
+                $('#premium').prop({
+                    checked: true
+                });
+                setprice();
+            });
+
+        });
+    </script>
+    <script>
+        function formatCardNumber(event, element) {
+            if (isNaN(event.key) && !isAllowedKey(event)) {
+                event.preventDefault();
+            } else {
+                if (event.keyCode != 8) {
+                    if (element.value.length > 14) {
+                        var position = element.selectionStart;
+                        element.value = element.value.replace(/\W/gi, '').replace(/^(.{4})(.{4})(.{4})(.*)$/,
+                            "$1 $2 $3 $4");
+                        if (element.value.length != 19) {
+                            element.setSelectionRange(position, position);
+                        }
+                    } else {
+                        element.value = element.value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
+                    }
+                }
+            }
+        }
+
+        function isAllowedKey(event) {
+            var allowed = false;
+            if (event.keyCode === 8 || event.keyCode === 9 || event.keyCode === 37 || event.keyCode === 39) {
+                allowed = true;
+            }
+            return allowed;
+        }
+
+        function limit(event, element, max_chars) {
+            if (isTextSelected(element)) { //
+                max_chars += 1;
+            }
+            if (element.value.length >= max_chars && !isAllowedKey(event)) {
+                event.preventDefault();
+            }
+        }
+
+        function showCardValue() {
+            document.getElementById("cardNo").value = document.getElementById("cardNoSafe").value;
+        }
+
+        function isTextSelected(input) {
+            var startPosition = input.selectionStart;
+            var endPosition = input.selectionEnd;
+
+            var selObj = document.getSelection();
+            var selectedText = selObj.toString();
+
+            if (selectedText.length != 0) {
+                input.focus();
+                input.setSelectionRange(startPosition, endPosition);
+                return true;
+            } else if (input.value.substring(startPosition, endPosition).length != 0) {
+                input.focus();
+                input.setSelectionRange(startPosition, endPosition);
+                return true;
+            }
+            return false;
+        }
+
+        function hideCardValue(val) {
+            document.getElementById("cardNoSafe").value = val;
+            var len = val.length;
+            if (len >= 14) {
+                const regex = /\d{4}(?= \d{1})/g;
+                const substr = "****";
+                document.getElementById("cardNo").value = val.replace(regex, substr);
+            }
+        }
+    </script>
+    <script>
+
+        $('.ssn-value').on('keydown keyup mousedown mouseup', function () {
+            var res = this.value, //grabs the value
+                len = res.length, //grabs the length
+                max = 9, //sets a max chars
+                stars = len > 0 ? len > 1 ? len > 2 ? len > 3 ? len > 4 ? 'XXX-XX-' : 'XXX-X' : 'XXX-' : 'XX' : 'X' : '', //this provides the masking and formatting
+                result = stars + res.substring(5); //this is the result
+            $(this).attr('maxlength', max); //setting the max length
+            $(".ssn-number").val(result); //spits the value into the input
+        });
+    </script>
+    <script>
+
+        $('.ssn-value').on('keydown keyup mousedown mouseup', function () {
+            var res = this.value, //grabs the value
+                len = res.length, //grabs the length
+                max = 11, //sets a max chars
+                stars = len > 0 ? len > 1 ? len > 2 ? len > 3 ? len > 4 ? 'XXX-XX-' : 'XXX-X' : 'XXX-' : 'XX' : 'X' : '', //this provides the masking and formatting
+                result = stars + res.substring(6); //this is the result
+            $(this).attr('maxlength', max); //setting the max length
+            $(".ssn-number").val(result); //spits the value into the input
+        });
+
+
+        // CREDIT CARD NUMBER MASK
+        const ssnCardNumberMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 10 ? '000 00 0000' : '000 00 0009';
+        };
+        const ssnCardNumberMaskOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(ssnCardNumberMaskBehavior.apply({}, arguments), options);
+            }
+        };
+
+        $('.ssn-value').mask(ssnCardNumberMaskBehavior, ssnCardNumberMaskOptions);
+
+        $('.ssn-value-spouse').mask(ssnCardNumberMaskBehavior, ssnCardNumberMaskOptions);
+
+
+        $(document).ready(function () {
+            $('.ssn-value').on({
+                focus: function () {
+                    $('.ssn-value').css('color', 'black');
+                },
+                blur: function () {
+                    $('.ssn-value').css('color', 'transparent');
+                }
+            });
+        });
+        $(document).ready(function () {
+            $('.ssn-value-spouse').on({
+                focus: function () {
+                    $('.ssn-value-spouse').css('color', 'black');
+                },
+                blur: function () {
+                    $('.ssn-value-spouse').css('color', 'transparent');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+
+            $('.radio-chk input[type="radio"]').click(function () {
+                var $radio = $(this);
+
+                if ($radio.data('waschecked') == true) {
+                    $radio.prop('checked', false);
+                    $radio.data('waschecked', false);
+                }
+                else {
+                    $radio.prop('checked', true);
+                    $radio.data('waschecked', true);
+                }
+
+                $radio.siblings('input[type="radio"]').data('waschecked', false);
+            });
+
+        });
+    </script>
