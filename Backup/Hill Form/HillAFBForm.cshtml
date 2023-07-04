@@ -104,6 +104,10 @@
         left: 0;
         z-index: 2;
     }
+
+    .form-control:disabled{
+        background-color: gray !important;
+    }
 </style>
 
 <input type="hidden" id="hdn_ClientKey" value="@_ClientKey" />
@@ -250,16 +254,17 @@
                     @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
                 </label>
                 <div class="input-container">
-                    <input id="BirthDate" class="form-control fieldRequired DOB" type="text" placeholder="DD/MM/YYYY" name="InsDOB">
+                    <input id="BirthDate" class="form-control fieldRequired DOB" type="text" placeholder="MM/DD/YYYY" name="InsDOB">
                     <span id="BirthDate-validation-error" class="error" for="DOB" style="display: none"> @Sitecore.Globalization.Translate.Text("Primary policyholder")</span>
                 </div>
             </div>
         </div>
         <div class="d-flex">
-            <div class="form-group position-re">
+            <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
-                <input id="ssn" name="ssnXX" class="form-control ssn-number" placeholder="XXX-XX-XXXX" />
-                <input class="ssn-value" name="InsSocialSecNumber" />
+                <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+                <label id="ssn-error" class="error d-none" for="ssn">SSN is too short</label>
+                <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
             <div class="form-group">
                 <label for="phoneNumber">
@@ -397,20 +402,19 @@
                             <input id="Marital-Status-Information-LastName" class="form-control alphabeticOnly" type="text" name="MaritalStatusLastName" placeholder="">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="first_Name">
                             @Sitecore.Globalization.Translate.Text("Suffix")
                         </label>
-                        <select class="field__input form-control" id="" name="Suffixdetailsspouse"
+                        <select class="field__input form-control" id="Suffixdetailsspouse" name="Suffixdetailsspouse"
                                 type="select">
-                            &gt;
                             <option value=""></option>
                             <option value="Jr.">Jr.</option>
                             <option value="Sr.">Sr.</option>
                             <option value="III">III</option>
                             <option value="IV">IV</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-flex">
                     <div class="form-group">
@@ -418,7 +422,7 @@
                             @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
                         </label>
                         <div class="input-container">
-                            <input id="Marital-Status-Information-BirthDate" class="form-control" type="date" name="MaritalStatusInformationBirthDate">
+                            <input id="Marital-Status-Information-BirthDate" class="form-control DOB" type="text" name="MaritalStatusInformationBirthDate" placeholder="MM/DD/YYYY"> 
                         </div>
                     </div>
                     <div class="form-group position-re">
@@ -426,8 +430,9 @@
                             @Sitecore.Globalization.Translate.Text("Social Security Number")
                         </label>
                         <div class="input-container">
-                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse" placeholder="XXX-XX-XXXX" />
-                            <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" />
+                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
+                            <label id="ssn-error" class="error d-none" for="ssn">SSN is too short</label>
+                            <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
                         </div>
                     </div>
                 </div>
@@ -579,7 +584,7 @@
         <div class="additional_content">
             <h3>@Sitecore.Globalization.Translate.Text("coverage to begin") </h3>
             <div class="input-container">
-                <input id="staringcoverage" class="form-control" type="date" name="InsCovToBegin">
+                <input id="staringcoverage" class="form-control" type="text" name="InsCovToBegin" placeholder="MM/DD/YYYY">
                 <span id="Starting-Coverage-Date-error" class="error" style="display: none">
                     @Sitecore.Globalization.Translate.Text("staringcoverage")
                 </span>
@@ -648,7 +653,7 @@
                             </label>
                             <select class="input-container form-radio sending-value numLosses" id="childbranch" name="NumOfLosses"
                                     type="select">
-                                &gt;
+                                
                                 <option value=""></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -1194,6 +1199,7 @@
             $('#Spouse-chck').change(function () {
                 if (this.checked) {
                     $('.Spouse-Information-box').css("display", "block");
+                    $('#spousesalutation').prop('required', true);
                     $('#SpouseFirstName').prop('required', true);
                     $('#SpouseLastName').prop('required', true);
                     $('#SpouseBirthDate').prop('required', true);
@@ -1484,9 +1490,19 @@
             $("#loader").show();
             const isCheckRes = checkMili()
             const isCheckSelectPay = checkSelectPay()
+            const isSsnValid = ssnValidation()
             //  console.log(isCheckSelectPay)
             if (!isCheckRes) return false;
             if (!isCheckSelectPay) return false;
+            if (!isSsnValid) return false;
+
+            //
+            const startCoVal = document.querySelector("#staringcoverage").value;
+            const isStartCoverageValid = startCoverageValidation(startCoVal);
+            if (!isStartCoverageValid) return false;
+
+            const allFields = document.querySelectorAll(".form-control");
+            allFields.forEach((field) => field.disabled = true);
 
 
             var valdata = $("#registration").serializeArray();
@@ -1547,7 +1563,8 @@
                         }
 
                     }
-                    // console.log(response);
+                    const fields = document.querySelectorAll(".form-control");
+                      fields.forEach((field) => field.disabled = false);
                 }
 
             });
@@ -2050,13 +2067,13 @@
         // Date Validation
         const thisYear = new Date().getFullYear();
 
-        function dateValidation(field, getMaxYear = thisYear) {
+        function dateValidation(field, getMaxYear = thisYear, getMinYear) {
         field?.addEventListener("input", (e) => {
             let value = e.target.value
             .replace(/\D/g, "")
             .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
 
-            let [fullData, DD, MM, YYYY] = value;
+            let [fullData, MM, DD, YYYY] = value;
 
             // Month Validation
             if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
@@ -2075,14 +2092,32 @@
             // Year validation
             const maxYear = String(getMaxYear);
 
-            if (Number(YYYY) <= 0) value[3] = "";
-            else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
-            else if (YYYY.length === 2 && Number(YYYY) > 20 && Number(YYYY) < 19) value[3] = YYYY[0];
-            else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
-            else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
-            value[3] = YYYY.slice(0, 2);
-            else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
-            value[3] = YYYY.slice(0, 3);
+            if(getMinYear){
+                const minYear = String(getMinYear);
+
+                if (Number(YYYY) <= 0) value[3] = "";
+                else if (YYYY.length === 1 && Number(YYYY) != 2) value[3] = "";
+                else if (YYYY.length === 2 && Number(YYYY) != 20) value[3] = YYYY[0];
+                else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+                value[3] = YYYY.slice(0, 2);
+                else if (YYYY.length === 3 && Number(YYYY) < Number(minYear.slice(0, 3)))
+                value[3] = YYYY.slice(0, 2);
+                else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+                value[3] = YYYY.slice(0, 3);
+                else if (YYYY.length === 4 && Number(YYYY) < Number(minYear))
+                value[3] = YYYY.slice(0, 3);
+            } else{
+                if (Number(YYYY) <= 0) value[3] = "";
+                else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+                else if (YYYY.length === 2 && Number(YYYY) > 20 && Number(YYYY) < 19) value[3] = YYYY[0];
+                else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+                else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+                value[3] = YYYY.slice(0, 2);
+                else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+                value[3] = YYYY.slice(0, 3);
+            }
+
+            
 
             // Result
             e.target.value = !value[2]
@@ -2091,6 +2126,42 @@
         });
         }
         document.querySelectorAll(".DOB").forEach((el) => dateValidation(el, thisYear-17));
+    
+        // staringCoverage Validation
+        const staringCoverage= document.querySelector("#staringcoverage")
+        dateValidation(staringCoverage, thisYear +1, thisYear)
+
+        staringCoverage.addEventListener("change", (e)=> startCoverageValidation(e.target.value));
+
+        function startCoverageValidation(value) {
+            const v = value
+            if(v >= 10){
+                const gTime = new Date(v).getTime();
+                const now = Date.now();
+                const maxDays = 60 * 86400000
+                const isPast = now > gTime;
+                const isCrossMax = gTime > now + maxDays
+
+                const err_Msg = document.getElementById('Starting-Coverage-Date-error');
+                if(isPast) {
+                    err_Msg.innerText = "Date must be greater than or equal to today and must be valid date"
+                    err_Msg.style.display = "block";
+                    return false;
+                }else {
+                    err_Msg.style.display = "none";   
+                    return true;
+                }
+
+                if(isCrossMax) {
+                    err_Msg.innerText = "Effective date cannot be > 60 days from currant date"
+                    err_Msg.style.display = "block";
+                    return false;
+                }else {
+                    err_Msg.style.display = "none";   
+                    return true;
+                }
+            }
+        }
 
 
         // State Help Hide on condition
@@ -2103,4 +2174,35 @@
 
         hideStateHelp()
         state.addEventListener("change", hideStateHelp);
+
+        // SSN Validation
+        document.querySelectorAll(".SSN").forEach((field) => {
+        field.addEventListener("input", (e) => {
+            field.classList.remove("error");
+            field.closest(".input-container").querySelector("label.error").classList.add("d-none");
+
+            var x = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+            e.target.value = !x[2]
+            ? x[1]
+            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+        });
+        });
+
+
+        function ssnValidation() {
+            const ssnFields = document.querySelectorAll(".SSN");
+            let result = true;
+
+            for (let i = 0; i < ssnFields.length; i++) {
+                if (ssnFields[i].value && ssnFields[i].value.length < 9) {
+                    ssnFields[i].classList.add("error");
+                    ssnFields[i].closest(".input-container").querySelector("label.error").classList.remove("d-none");
+                    result = false;
+                }
+            }
+
+            return result;
+        }
     </script>
