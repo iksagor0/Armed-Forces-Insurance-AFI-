@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ZIP -->
+    <div class="form-group">
+      <label for="zipCode"> Zip Code <span class="required"> *</span> </label>
+      <div class="input-container">
+        <input
+          id="zipCode"
+          class="form-control fieldRequired error"
+          type="text"
+          name="InsMailZip"
+        /><label id="zipCode-error" class="error" for="zipCode"
+          >This field is required.</label
+        >
+      </div>
+    </div>
+
+    <script>
+      const zipCode = document.getElementById("zipCode");
+      zipCode?.addEventListener("input", (e) => {
+        var x = e.target.value.replace(/\D/g, "").match(/(\d{0,5})(\d{0,4})/);
+
+        e.target.value = !x[2] ? x[1] : x[1] + "-" + x[2];
+      });
+    </script>
+
+    <!-- SSN -->
+    <div class="form-group position-re input-container">
+      <label for="ssnXX"> SSN</label>
+      <input
+        id="ssn"
+        name="ssnXX"
+        class="form-control ssn-number SSN"
+        placeholder="XXX-XX-XXXX"
+      />
+      <label
+        id="ssn-error"
+        class="error"
+        for="ssn"
+        style="display: none"
+      ></label>
+      <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
+    </div>
+
+    <script>
+      document.querySelectorAll(".SSN").forEach((field) => {
+        field.addEventListener("input", (e) => {
+          field.classList.remove("error-field");
+          field
+            .closest(".input-container")
+            .querySelector("label.error").style.display = "none";
+
+          var x = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+          e.target.value = !x[2]
+            ? x[1]
+            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+        });
+
+        field.addEventListener("change", function (e) {
+          const l = e.target.value.length;
+          if (l != 11) {
+            this.classList.add("error-field");
+            const errLabel = field
+              .closest(".input-container")
+              .querySelector("label.error");
+
+            errLabel.innerHTML = "SSN should be 9 digits";
+            errLabel.style.display = "block";
+          }
+        });
+      });
+    </script>
+
+    <!-- Coverage Begin -->
+    <div class="input-container">
+      <input
+        id="staringcoverage"
+        class="form-control error"
+        type="text"
+        name="InsCovToBegin"
+        placeholder="MM/DD/YYYY"
+      /><label id="staringcoverage-error" class="error" for="staringcoverage"
+        >This field is required.</label
+      >
+      <span
+        id="Starting-Coverage-Date-error"
+        class="error"
+        style="display: none"
+      >
+        Date must be greater than or equal to today and must be valid date
+      </span>
+    </div>
+
+    <script>
+        
+    </script>
+  </body>
+</html>
