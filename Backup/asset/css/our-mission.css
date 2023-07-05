@@ -44,6 +44,10 @@
   }
 }
 
+.content-panel.content-panel--one-column .arrow__link {
+  border-bottom: none !important;
+}
+
 /* Insurance Products */
 .product_text p {
   font-size: 16px !important;

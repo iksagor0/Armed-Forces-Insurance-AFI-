@@ -53,3 +53,41 @@
 .faqs details {
     padding: 10px 20px;
 }
+
+/********************************************************
+*                       PCS
+********************************************************/
+.pcs_content_panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    background: #f6f6f6;
+    margin: 50px 0 !important;
+}
+
+.pcs_img_panel,
+.pcs_text_panel {
+    width: 100% !important;
+}
+
+.pcs_img_panel img {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pcs_text_panel {
+    display: flex;
+    align-items: center;
+}
+
+.pcs_text_panel h1,
+.pcs_text_panel .position-left {
+    padding: 1fr 2fr !important;
+}
+
+@media screen and (max-width:768px) {
+    .pcs_content_panel {
+        grid-template-columns: 1fr;
+    }
+}
