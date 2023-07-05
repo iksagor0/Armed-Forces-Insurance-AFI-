@@ -79,7 +79,6 @@
         color: #000;
     }
 
-    .form-control.error-field
     .form-control.error {
         border-color: red;
     }
@@ -663,8 +662,7 @@
                                 <option value="5+">5+</option>
                             </select>
                         </div>
-                     <!-- Updated Code Start 5.7.23 !-->
-                        <div class="openclaimsquestion" style="display: none">
+                        <div>
                             <label>
                                 @Sitecore.Globalization.Translate.Text("Open Claims")    <span class="required"> *</span>
                             </label>
@@ -675,7 +673,6 @@
                                 <label for="">No</label><br>
                             </div>
                         </div>
-                        <!-- Updated Code End 5.7.23 !-->
                     </div>
                 </div>
                 <div class="additional_content">
@@ -762,39 +759,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-   <!-- new added code start 5.7.23-->
-   <script>
-    $(".openclaimsquestion").css("display", "none");
-   $(".numLosses").on('change', function () {
-        let nummloss = $(".numLosses option:selected").val();
-        if(parseInt(nummloss)>2)
-        {
-            window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
-        }
-        else
-        {
-            $(".openclaimsquestion").css("display", "block");
-        }
-   });
-    $(".paymentsystem").on('change', function () {
-    let openclaims = $('input[name=HasOpenClaims]:checked').val();
-    if(openclaims=="Yes")
-    {
-      window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
-    }
-   });
-  $(".lossdetails").on('change', function () {
-            let lossdetails = $(".lossdetails:checked").val();
-            if (lossdetails == "Yes") {
-                lossdetails
-                $("#lossdetails").css("display", "block");
-            }
-            else {
-                 $("#lossdetails").css("display", "none");
-            }
-        });
-   </script>
-<!-- new added code end 5.7.23-->
+
     <script>
 
         function post_secure_token() {
@@ -1278,15 +1243,15 @@
 
             if (!regex.test(userinput)) {
                 $("#email-validation-error").css("display", "block");
-                $("#email").addClass("error-field");
+                $("#email").addClass("error");
             }
             else if (userinput == null) {
                 $("#email-validation-error").css("display", "none");
-                $("#email").removeClass("error-field");
+                $("#email").removeClass("error");
             }
             else {
                 $("#email-validation-error").css("display", "none");
-                $("#email").removeClass("error-field");
+                $("#email").removeClass("error");
             }
         });
 
