@@ -79,6 +79,8 @@
         color: #000;
     }
 
+    .error-label,
+    .form-control.error-field,
     .form-control.error {
         border-color: red;
     }
@@ -246,7 +248,7 @@
                     @Sitecore.Globalization.Translate.Text("Zip Code") <span class="required"> *</span>
                 </label>
                 <div class="input-container">
-                    <input id="zipCode" class="form-control fieldRequired" type="number" name="InsMailZip">
+                    <input id="zipCode" class="form-control fieldRequired" type="text" name="InsMailZip">
                 </div>
             </div>
             <div class="form-group">
@@ -262,8 +264,8 @@
         <div class="d-flex">
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
-                <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
-                <label id="ssn-error" class="error" for="ssn" style="display:none;">SSN is too short</label>
+                <input id="ssn" type="text" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+                <label id="ssn-error" class="error-label" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
             <div class="form-group">
@@ -286,7 +288,7 @@
                     <option value="Married">Married</option>
                     <option value="Cohabitant">Cohabitant</option>
                     <option value="Divorced">Divorced</option>
-                    <option value="Widow">Widow</option>
+                    <option value="Widowed">Widowed</option>
                     <option value="Single">Single</option>
                     <option value="Seperated">Seperated</option>
                     <option value="Civil Union/Domestic Partner">Civil Union/Domestic Partner</option>
@@ -432,7 +434,7 @@
                         <div class="input-container">
                             <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
                             <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
-                            <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
+
                         </div>
                     </div>
                 </div>
@@ -662,7 +664,8 @@
                                 <option value="5+">5+</option>
                             </select>
                         </div>
-                        <div>
+                     <!-- Updated Code Start 5.7.23 !-->
+                        <div class="openclaimsquestion" style="display: none">
                             <label>
                                 @Sitecore.Globalization.Translate.Text("Open Claims")    <span class="required"> *</span>
                             </label>
@@ -673,6 +676,7 @@
                                 <label for="">No</label><br>
                             </div>
                         </div>
+                        <!-- Updated Code End 5.7.23 !-->
                     </div>
                 </div>
                 <div class="additional_content">
@@ -759,7 +763,39 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-
+   <!-- new added code start 5.7.23-->
+   <!-- <script>
+    $(".openclaimsquestion").css("display", "none");
+   $(".numLosses").on('change', function () {
+        let nummloss = $(".numLosses option:selected").val();
+        if(parseInt(nummloss)>2)
+        {
+            window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
+        }
+        else
+        {
+            $(".openclaimsquestion").css("display", "block");
+        }
+   });
+    $(".paymentsystem").on('change', function () {
+    let openclaims = $('input[name=HasOpenClaims]:checked').val();
+    if(openclaims=="Yes")
+    // {
+    //   window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
+    // }
+   });
+  $(".lossdetails").on('change', function () {
+            let lossdetails = $(".lossdetails:checked").val();
+            if (lossdetails == "Yes") {
+                lossdetails
+                $("#lossdetails").css("display", "block");
+            }
+            else {
+                 $("#lossdetails").css("display", "none");
+            }
+        });
+   </script> -->
+<!-- new added code end 5.7.23-->
     <script>
 
         function post_secure_token() {
@@ -1240,14 +1276,18 @@
         $("#email").change(function () {
             var userinput = $("#email").val();
             var regex = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA>-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
             if (!regex.test(userinput)) {
                 $("#email-validation-error").css("display", "block");
+                $("#email").addClass("error-field");
             }
             else if (userinput == null) {
                 $("#email-validation-error").css("display", "none");
+                $("#email").removeClass("error-field");
             }
             else {
                 $("#email-validation-error").css("display", "none");
+                $("#email").removeClass("error-field");
             }
         });
 
@@ -1490,12 +1530,9 @@
         function submit_form(form) {
             debugger;
             $("#loader").show();
-            const isCheckRes = checkMili()
-            const isCheckSelectPay = checkSelectPay()
+
+            //
             const isSsnValid = ssnValidation()
-            //  console.log(isCheckSelectPay)
-            if (!isCheckRes) return false;
-            if (!isCheckSelectPay) return false;
             if (!isSsnValid) return false;
 
             //
@@ -1503,8 +1540,18 @@
             const isStartCoverageValid = startCoverageValidation(startCoVal);
             if (!isStartCoverageValid) return false;
 
+            //
+            const isCheckRes = checkMili()
+            const isCheckSelectPay = checkSelectPay()
+            if (!isCheckRes) return false;
+            if (!isCheckSelectPay) return false;
+
+            
+
             const allFields = document.querySelectorAll(".form-control");
             allFields.forEach((field) => field.disabled = true);
+
+            debugger;
 
 
             var valdata = $("#registration").serializeArray();
@@ -2119,8 +2166,6 @@
                 value[3] = YYYY.slice(0, 3);
             }
 
-            
-
             // Result
             e.target.value = !value[2]
             ? value[1]
@@ -2136,39 +2181,46 @@
         staringCoverage.addEventListener("change", function (e){
             const scResult =  startCoverageValidation(e.target.value)
 
-            if(!scResult) this.classList.add("error");
-            else this.classList.remove("error");
+            if(!scResult) staringCoverage.classList.add("error-field");
+            else staringCoverage.classList.remove("error-field");
         });
 
-        function startCoverageValidation(value) {
-            const v = value
-            if(v >= 10){
-                const gTime = new Date(v).getTime();
-                const now = Date.now();
-                const maxDays = 60 * 86400000
-                const isPast = now > gTime;
-                const isCrossMax = gTime > now + maxDays
+       function startCoverageValidation(value) {
+        let result = true;
+        const v = value;
 
-                const err_Msg = document.getElementById('Starting-Coverage-Date-error');
-                if(isPast) {
-                    err_Msg.innerText = "Date must be greater than or equal to today and must be valid date"
-                    err_Msg.style.display = "block";
-                    return false;
-                }else {
-                    err_Msg.style.display = "none";   
-                    return true;
-                }
+        if (v.length >= 10) {
+          const gTime = new Date(v).getTime();
+          const now = Date.now();
+          const sixtyDays = 60 * 86400000;
+          const maxDays = now + sixtyDays;
+          const isPast = now > gTime;
+          const isCrossMax = gTime > maxDays;
 
-                if(isCrossMax) {
-                    err_Msg.innerText = "Effective date cannot be > 60 days from currant date"
-                    err_Msg.style.display = "block";
-                    return false;
-                }else {
-                    err_Msg.style.display = "none";   
-                    return true;
-                }
-            }
+          const err_Msg = document.getElementById(
+            "Starting-Coverage-Date-error"
+          );
+
+          if (isPast) {
+            err_Msg.innerText =
+              "Date must be greater than or equal to today and must be valid date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
+
+          if (isCrossMax) {
+            err_Msg.innerText =
+              "Effective date cannot be > 60 days from currant date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
         }
+
+        if (result) err_Msg.style.display = "none";
+        else err_Msg.style.display = "block";
+
+        return result;
+      }
 
 
         // State Help Hide on condition
@@ -2186,7 +2238,7 @@
         document.querySelectorAll(".SSN").forEach((field) => {
         field.addEventListener("input", (e) => {
             field.classList.remove("error");
-            ssnFields[i].closest(".input-container").querySelector("label.error").style.display = "none"
+            field.closest(".input-container").querySelector("label.error").style.display = "none"
 
             var x = e.target.value
             .replace(/\D/g, "")
@@ -2198,19 +2250,40 @@
         });
 
 
-        function ssnValidation() {
-            const ssnFields = document.querySelectorAll(".SSN");
-            let result = true;
+        document.querySelectorAll(".SSN").forEach((field) => {
+        field.addEventListener("input", (e) => {
+          field.classList.remove("error-field");
+          field
+            .closest(".input-container")
+            .querySelector("error-label").style.display = "none";
 
-            for (let i = 0; i < ssnFields.length; i++) {
-                if (ssnFields[i].value && ssnFields[i].value.length < 9) {
-                    ssnFields[i].classList.add("error");
-                    ssnFields[i].closest(".input-container").querySelector("label.error").style.display = "block"
-                    result = false;
-                }
-            }
+          var x = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+          e.target.value = !x[2]
+            ? x[1]
+            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+        });
 
-                    debugger
-            return result;
-        }
+        field.addEventListener("change", function (e) {
+          const l = e.target.value.length;
+          if (l != 11) {
+            field.classList.add("error-field");
+            const errLabel = field
+              .closest(".input-container")
+              .querySelector("error-label");
+
+            errLabel.innerHTML = "SSN should be 9 digits";
+            errLabel.style.display = "block";
+          }
+        });
+      });
+
+        // Zip pattern
+        const zipCode = document.getElementById('zipCode');
+        zipCode?.addEventListener("input", (e) => {
+            var x = e.target.value.replace(/\D/g, "").match(/(\d{0,5})(\d{0,4})/);
+
+            e.target.value = !x[2] ? x[1] : x[1] + "-" + x[2];
+        });
     </script>

@@ -265,7 +265,7 @@
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
                 <input id="ssn" type="text" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
-                <span id="ssn-error" class="error-label" for="ssn" style="display:none;">SSN is too short</span>
+                <label id="ssn-error" class="error-label" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
             <div class="form-group">
@@ -432,7 +432,7 @@
                             @Sitecore.Globalization.Translate.Text("Social Security Number")
                         </label>
                         <div class="input-container">
-                            <input type="text" id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
+                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
                             <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
 
                         </div>
@@ -643,9 +643,9 @@
                         @Sitecore.Globalization.Translate.Text("Loss History")
                     </label>
                     <div class="input-container form-radio">
-                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="Yes" required>
+                        <input type="radio" class="checkvalue sending-value-input lossdetails quesFourRel" id="openpayment" name="SusLoss3Yrs" value="Yes" required>
                         <label for="">Yes</label><br>
-                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="No" checked="checked">
+                        <input type="radio" class="checkvalue sending-value-input lossdetails quesFourRel" id="openpayment" name="SusLoss3Yrs" value="No" checked="checked">
                         <label for="">No</label><br>
                     </div>
                     <div id="lossdetails" class="additional_content align_box lossdetails paymentsystem" style="display: none">
@@ -653,7 +653,7 @@
                             <label>
                                 @Sitecore.Globalization.Translate.Text("Number of Losses") <span class="required"> *</span>
                             </label>
-                            <select class="input-container form-radio sending-value numLosses" id="childbranch" name="NumOfLosses"
+                            <select class="input-container form-radio sending-value numLosses quesFourRel" id="childbranch" name="NumOfLosses"
                                     type="select">
                                 
                                 <option value=""></option>
@@ -670,9 +670,9 @@
                                 @Sitecore.Globalization.Translate.Text("Open Claims")    <span class="required"> *</span>
                             </label>
                             <div class="input-container form-radio">
-                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" id="childbranch" value="Yes">
+                                <input type="radio" class="openClaims paymentsystem quesFourRel" name="HasOpenClaims" id="childbranch" value="Yes">
                                 <label for="">Yes</label><br>
-                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" value="No" id="childbranch" checked="checked">
+                                <input type="radio" class="openClaims paymentsystem quesFourRel" name="HasOpenClaims" value="No" id="childbranch" checked="checked">
                                 <label for="">No</label><br>
                             </div>
                         </div>
@@ -764,31 +764,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
    <!-- new added code start 5.7.23-->
-   <script>
+   <!-- <script>
     $(".openclaimsquestion").css("display", "none");
    $(".numLosses").on('change', function () {
         let nummloss = $(".numLosses option:selected").val();
-        if(parseInt(nummloss)<3)
+        if(parseInt(nummloss)>2)
         {
-           $(".openclaimsquestion").css("display", "block");
-         
+            window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
         }
         else
         {
-            $(".dvagentcall").css("display", "block");
-            $(".payment-box").css("display", "none");
-            $("#PayButton").css("display", "block");   
+            $(".openclaimsquestion").css("display", "block");
         }
    });
     $(".paymentsystem").on('change', function () {
     let openclaims = $('input[name=HasOpenClaims]:checked').val();
     if(openclaims=="Yes")
-    {
-         $(".dvagentcall").css("display", "block");
-         $(".payment-box").css("display", "none");
-         $("#PayButton").css("display", "block");
-      
-    }
+    // {
+    //   window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
+    // }
    });
   $(".lossdetails").on('change', function () {
             let lossdetails = $(".lossdetails:checked").val();
@@ -800,7 +794,7 @@
                  $("#lossdetails").css("display", "none");
             }
         });
-   </script>
+   </script> -->
 <!-- new added code end 5.7.23-->
     <script>
 
@@ -825,23 +819,60 @@
         $(".discleamer").click(function () {
             $("#collapseExample").toggle();
         });
-        $(".paymentsystem").on('change', function () {
-            let lossdetails = $(".lossdetails:checked").val();
-            let nummloss = $(".numLosses option:selected").val();
-            let openclaims = $(".openClaims:checked").val();
 
-            if (lossdetails == "Yes" && openclaims == "No" && nummloss == "1") {
+        // *********** START Code for Question 4 ***********
+            function showPayment() {
                 $(".payment-box").css("display", "block");
                 $(".dvagentcall").css("display", "none");
                 $("#PayButton").css("display", "none");
             }
-            else {
+            function hidePayment() {
                 $(".payment-box").css("display", "none");
                 $(".dvagentcall").css("display", "block");
                 $("#PayButton").css("display", "block");
             }
 
+        $(".quesFourRel").on('change', function () {
+            let lossdetails = $(".lossdetails:checked").val();
+            let nummloss = $(".numLosses option:selected").val();
+            let openclaims = $(".openClaims:checked").val();
+
+            // if (lossdetails == "Yes" && openclaims == "No" && nummloss == "1") {
+            //     $(".payment-box").css("display", "block");
+            //     $(".dvagentcall").css("display", "none");
+            //     $("#PayButton").css("display", "none");
+            // }
+            // else {
+            //     $(".payment-box").css("display", "none");
+            //     $(".dvagentcall").css("display", "block");
+            //     $("#PayButton").css("display", "block");
+            // }
+
+
+            if(lossdetails == "Yes"){
+                hidePayment();
+
+                if(nummloss == "1" || nummloss == "2"){
+                    $(".openclaimsquestion").css("display", "block");
+
+                    if(openclaims == "No"){
+                        showPayment();
+                    }else if(openclaims == "Yes"){
+                        hidePayment();
+                    }
+
+                } else if(nummloss == "3" || nummloss == "4" || nummloss == "5+"){
+                    $(".openclaimsquestion").css("display", "none");
+                    // hidePayment(); 
+                }
+            }else{
+                showPayment(); 
+            }
+
         });
+
+        // *********** END Code for Question 4 ***********
+
         $('#militery-chck').click(function () {
             var miletary_chk = $("#militery-chck");
             if (miletary_chk.is(':checked') == true) {
@@ -875,6 +906,7 @@
                 $('#condition').prop("disabled", true);
                 $("#rd-1").val('');
                 $('#monthly-payment').css("display", "none");
+
                 $("#PayButton").css("display", "block");
             }
             else if (ele.length == n) {
@@ -884,6 +916,7 @@
                 $('.monthly-payment').css("display", "block");
                 $('.dvcondition').css("display", "block");
                 $('#monthly-payment').css("display", "none");
+
                 $("#PayButton").css("display", "none");
             }
             else {
@@ -2179,14 +2212,14 @@
         document.querySelectorAll(".DOB").forEach((el) => dateValidation(el, thisYear-17));
     
         // staringCoverage Validation
-        const staringCoverageEl = document.querySelector("#staringcoverage")
-        dateValidation(staringCoverageEl, thisYear +1, thisYear)
+        const staringCoverage= document.querySelector("#staringcoverage")
+        dateValidation(staringCoverage, thisYear +1, thisYear)
 
-        staringCoverageEl.addEventListener("change", function (e){
+        staringCoverage.addEventListener("change", function (e){
             const scResult =  startCoverageValidation(e.target.value)
 
-            if(!scResult) staringCoverageEl.classList.add("error-field");
-            else staringCoverageEl.classList.remove("error-field");
+            if(!scResult) staringCoverage.classList.add("error-field");
+            else staringCoverage.classList.remove("error-field");
         });
 
        function startCoverageValidation(value) {
@@ -2259,7 +2292,7 @@
           field.classList.remove("error-field");
           field
             .closest(".input-container")
-            .querySelector("label.error").style.display = "none";
+            .querySelector("error-label").style.display = "none";
 
           var x = e.target.value
             .replace(/\D/g, "")
