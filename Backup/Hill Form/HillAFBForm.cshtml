@@ -79,7 +79,7 @@
         color: #000;
     }
 
-    .form-control.error-field
+    .form-control.error-field,
     .form-control.error {
         border-color: red;
     }
@@ -247,7 +247,7 @@
                     @Sitecore.Globalization.Translate.Text("Zip Code") <span class="required"> *</span>
                 </label>
                 <div class="input-container">
-                    <input id="zipCode" class="form-control fieldRequired" type="number" name="InsMailZip">
+                    <input id="zipCode" class="form-control fieldRequired" type="text" name="InsMailZip">
                 </div>
             </div>
             <div class="form-group">
@@ -263,7 +263,7 @@
         <div class="d-flex">
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
-                <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+                <input id="ssn" type="text" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
                 <label id="ssn-error" class="error" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
@@ -433,7 +433,7 @@
                         <div class="input-container">
                             <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
                             <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
-                            <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
+
                         </div>
                     </div>
                 </div>
@@ -2180,10 +2180,8 @@
         staringCoverage.addEventListener("change", function (e){
             const scResult =  startCoverageValidation(e.target.value)
 
-            if(!scResult) this.classList.add("error");
-            else this.classList.remove("error");
-
-            debugger;
+            if(!scResult) staringCoverage.classList.add("error-field");
+            else staringCoverage.classList.remove("error-field");
         });
 
        function startCoverageValidation(value) {
