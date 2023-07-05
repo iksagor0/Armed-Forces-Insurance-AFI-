@@ -2186,38 +2186,42 @@
             debugger;
         });
 
-        function startCoverageValidation(value) {
-            const v = value
-            if(v >= 10){
-                const gTime = new Date(v).getTime();
-                const now = Date.now();
-                const maxDays = 60 * 86400000
-                const isPast = now > gTime;
-                const isCrossMax = gTime > (now + maxDays)
+       function startCoverageValidation(value) {
+        let result = true;
+        const v = value;
 
-                const err_Msg = document.getElementById('Starting-Coverage-Date-error');
+        if (v.length >= 10) {
+          const gTime = new Date(v).getTime();
+          const now = Date.now();
+          const sixtyDays = 60 * 86400000;
+          const maxDays = now + sixtyDays;
+          const isPast = now > gTime;
+          const isCrossMax = gTime > maxDays;
 
-                if(isPast) {
-                    err_Msg.innerText = "Date must be greater than or equal to today and must be valid date"
-                    err_Msg.style.display = "block";
-                    return false;
-                }else {
-                    err_Msg.style.display = "none";   
-                    return true;
-                }
+          const err_Msg = document.getElementById(
+            "Starting-Coverage-Date-error"
+          );
 
-                if(isCrossMax) {
-                    err_Msg.innerText = "Effective date cannot be > 60 days from currant date"
-                    err_Msg.style.display = "block";
-                    return false;
-                }else {
-                    err_Msg.style.display = "none";   
-                    return true;
-                }
-            }
+          if (isPast) {
+            err_Msg.innerText =
+              "Date must be greater than or equal to today and must be valid date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
 
-            debugger;
+          if (isCrossMax) {
+            err_Msg.innerText =
+              "Effective date cannot be > 60 days from currant date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
         }
+
+        if (result) err_Msg.style.display = "none";
+        else err_Msg.style.display = "block";
+
+        return result;
+      }
 
 
         // State Help Hide on condition

@@ -100,7 +100,134 @@
     </div>
 
     <script>
-        
+      // Date Validation
+      const thisYear = new Date().getFullYear();
+
+      function dateValidation(field, getMaxYear = thisYear, getMinYear) {
+        field?.addEventListener("input", (e) => {
+          let value = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
+
+          let [fullData, MM, DD, YYYY] = value;
+
+          // Month Validation
+          if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
+          else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
+          else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
+
+          // Date Validation
+          if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
+          else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
+          else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
+          else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
+            value[2] = DD[0];
+          else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
+            value[2] = DD[0];
+
+          // Year validation
+          const maxYear = String(getMaxYear);
+
+          if (getMinYear) {
+            const minYear = String(getMinYear);
+
+            if (Number(YYYY) <= 0) value[3] = "";
+            else if (YYYY.length === 1 && Number(YYYY) != 2) value[3] = "";
+            else if (YYYY.length === 2 && Number(YYYY) != 20)
+              value[3] = YYYY[0];
+            else if (
+              YYYY.length === 3 &&
+              Number(YYYY) > Number(maxYear.slice(0, 3))
+            )
+              value[3] = YYYY.slice(0, 2);
+            else if (
+              YYYY.length === 3 &&
+              Number(YYYY) < Number(minYear.slice(0, 3))
+            )
+              value[3] = YYYY.slice(0, 2);
+            else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+              value[3] = YYYY.slice(0, 3);
+            else if (YYYY.length === 4 && Number(YYYY) < Number(minYear))
+              value[3] = YYYY.slice(0, 3);
+          } else {
+            if (Number(YYYY) <= 0) value[3] = "";
+            else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+            else if (
+              YYYY.length === 2 &&
+              Number(YYYY) > 20 &&
+              Number(YYYY) < 19
+            )
+              value[3] = YYYY[0];
+            else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+            else if (
+              YYYY.length === 3 &&
+              Number(YYYY) > Number(maxYear.slice(0, 3))
+            )
+              value[3] = YYYY.slice(0, 2);
+            else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+              value[3] = YYYY.slice(0, 3);
+          }
+
+          // Result
+          e.target.value = !value[2]
+            ? value[1]
+            : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+        });
+      }
+      document
+        .querySelectorAll(".DOB")
+        .forEach((el) => dateValidation(el, thisYear - 17));
+
+      // staringCoverage Validation
+      const staringCoverage = document.querySelector("#staringcoverage");
+      dateValidation(staringCoverage, thisYear + 1, thisYear);
+
+      staringCoverage.addEventListener("change", function (e) {
+        const scResult = startCoverageValidation(e.target.value);
+
+        if (!scResult) this.classList.add("error");
+        else this.classList.remove("error");
+      });
+
+      function startCoverageValidation(value) {
+        let result = true;
+        const v = value;
+
+        if (v.length >= 10) {
+          const gTime = new Date(v).getTime();
+          const now = Date.now();
+          const sixtyDays = 60 * 86400000;
+          const maxDays = now + sixtyDays;
+          const isPast = now > gTime;
+          const isCrossMax = gTime > maxDays;
+
+          const err_Msg = document.getElementById(
+            "Starting-Coverage-Date-error"
+          );
+
+          if (isPast) {
+            err_Msg.innerText =
+              "Date must be greater than or equal to today and must be valid date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
+
+          if (isCrossMax) {
+            err_Msg.innerText =
+              "Effective date cannot be > 60 days from currant date";
+            err_Msg.style.display = "block";
+            result = false;
+          }
+
+          console.log({ isPast });
+          console.log({ isCrossMax });
+        }
+
+        if (result) err_Msg.style.display = "none";
+        else err_Msg.style.display = "block";
+
+        return result;
+      }
     </script>
   </body>
 </html>
