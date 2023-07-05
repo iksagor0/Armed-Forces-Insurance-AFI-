@@ -263,7 +263,7 @@
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
                 <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
-                <label id="ssn-error" class="error d-none" for="ssn">SSN is too short</label>
+                <label id="ssn-error" class="error" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
             <div class="form-group">
@@ -431,7 +431,7 @@
                         </label>
                         <div class="input-container">
                             <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
-                            <label id="ssn-error" class="error d-none" for="ssn">SSN is too short</label>
+                            <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
                             <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
                         </div>
                     </div>
@@ -1159,6 +1159,7 @@
         function showDiv(select) {
             if (select.value == "Married" || select.value == "Civil Union Or Domestic Partner") {
                 $('.Marital-Status-Information-box').css("display", "block");
+                $('#spousesalutation').prop('required', true);
                 $('#Marital-Status-Information-FirstName').prop('required', true);
                 $('#Marital-Status-Information-LastName').prop('required', true);
                 $('#Marital-Status-Information-BirthDate').prop('required', true);
@@ -1166,6 +1167,7 @@
             }
             else {
                 $('.Marital-Status-Information-box').css("display", "none");
+                $('#spousesalutation').removeAttr('required');
                 $('#Marital-Status-Information-FirstName').removeAttr('required');
                 $('#Marital-Status-Information-LastName').removeAttr('required');
                 $('#Marital-Status-Information-BirthDate').removeAttr('required');
@@ -2131,7 +2133,12 @@
         const staringCoverage= document.querySelector("#staringcoverage")
         dateValidation(staringCoverage, thisYear +1, thisYear)
 
-        staringCoverage.addEventListener("change", (e)=> startCoverageValidation(e.target.value));
+        staringCoverage.addEventListener("change", function (e){
+            const scResult =  startCoverageValidation(e.target.value)
+
+            if(!scResult) this.classList.add("error");
+            else this.classList.remove("error");
+        });
 
         function startCoverageValidation(value) {
             const v = value
@@ -2179,7 +2186,7 @@
         document.querySelectorAll(".SSN").forEach((field) => {
         field.addEventListener("input", (e) => {
             field.classList.remove("error");
-            field.closest(".input-container").querySelector("label.error").classList.add("d-none");
+            ssnFields[i].closest(".input-container").querySelector("label.error").style.display = "none"
 
             var x = e.target.value
             .replace(/\D/g, "")
@@ -2198,11 +2205,12 @@
             for (let i = 0; i < ssnFields.length; i++) {
                 if (ssnFields[i].value && ssnFields[i].value.length < 9) {
                     ssnFields[i].classList.add("error");
-                    ssnFields[i].closest(".input-container").querySelector("label.error").classList.remove("d-none");
+                    ssnFields[i].closest(".input-container").querySelector("label.error").style.display = "block"
                     result = false;
                 }
             }
 
+                    debugger
             return result;
         }
     </script>
