@@ -85,9 +85,11 @@
       <input
         id="staringcoverage"
         class="form-control error"
-        type="text"
+        type="date"
         name="InsCovToBegin"
+        max="2200-12-31"
         placeholder="MM/DD/YYYY"
+        style="width: 130px"
       /><label id="staringcoverage-error" class="error" for="staringcoverage"
         >This field is required.</label
       >
@@ -181,7 +183,7 @@
 
       // staringCoverage Validation
       const staringCoverage = document.querySelector("#staringcoverage");
-      dateValidation(staringCoverage, thisYear + 1, thisYear);
+      // dateValidation(staringCoverage, thisYear + 1, thisYear);
 
       staringCoverage.addEventListener("change", function (e) {
         const scResult = startCoverageValidation(e.target.value);
@@ -194,6 +196,8 @@
         let result = true;
         const v = value;
 
+        const err_Msg = document.getElementById("Starting-Coverage-Date-error");
+
         if (v.length >= 10) {
           const gTime = new Date(v).getTime();
           const now = Date.now();
@@ -201,10 +205,6 @@
           const maxDays = now + sixtyDays;
           const isPast = now > gTime;
           const isCrossMax = gTime > maxDays;
-
-          const err_Msg = document.getElementById(
-            "Starting-Coverage-Date-error"
-          );
 
           if (isPast) {
             err_Msg.innerText =

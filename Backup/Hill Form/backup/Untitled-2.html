@@ -1,0 +1,615 @@
+<div id="Checkout" class="inline">
+
+    <form id="registration">
+        <div class="d-flex">
+            <div class="form-group custom_w_25">
+                <label for="salutation">
+                    @Sitecore.Globalization.Translate.Text("Salutation") <span class="required"> *</span>
+                </label>
+                <select class="field__input form-control fieldRequired" id="salutation" name="Salutation" required=""
+                        type="select">
+                    <option value="" selected></option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Ms.">Ms.</option>
+                </select>
+
+            </div>
+            <div class="form-group custom_w_65">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("First Name")  <span class="required">*</span>
+                </label>
+                <div class="input-container">
+                    <input id="first_Name" class="form-control alphabeticOnly fieldRequired" type="text" name="InsFirstName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="last_Name">
+                    @Sitecore.Globalization.Translate.Text("Last Name") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="last_Name" class="form-control alphabeticOnly fieldRequired" type="text" name="InsLastName">
+                    <label class="error" for="last_Name" style="display: none"></label>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("Suffix")
+                </label>
+                <select class="field__input form-control " id="" name="Suffix"
+                        type="select">
+                    &gt;
+                    <option value=""></option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    @Sitecore.Globalization.Translate.Text("Email")  <span class="required"> *</span>
+                </label>
+                <input id="email" class="form-control fieldRequired" type="text" name="InsEmailAddress">
+                <span id="email-validation-error" class="error" for="last_Name" style="display: none"> @Sitecore.Globalization.Translate.Text("Valid Email Msg")</span>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="address">
+                    @Sitecore.Globalization.Translate.Text("Residence Address") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="address" class="form-control fieldRequired" type="text" name="InsMailAddress1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">
+                    @Sitecore.Globalization.Translate.Text("Residence-Address_line2")
+                </label>
+                <div class="input-container">
+                    <input id="address-other" class="form-control" type="text" name="InsMailAddress2">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="city">
+                    @Sitecore.Globalization.Translate.Text("City")   <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="city" class="form-control fieldRequired" type="text" name="InsMailCity">
+
+                </div>
+            </div>
+            <div class="form-group statedetails">
+                <div>
+                    <label for="state">
+                        @Sitecore.Globalization.Translate.Text("State")     <span class="required"> *</span>
+                    </label>
+                    <div class="input-container">
+                        <input id="state" class="form-control fieldRequired" type="text" name="InsMailState" value="UT" placeholder="Utah" readonly>
+                        <span id="cvc-state" onmouseover="Showhelpingicon()"><i class="fa fa-question-circle"></i></span>
+                    </div>
+                </div>
+                <div id="state-tooltip" style="display:none">
+                    Property address in a different state? Use <a href="https://afi.org/quote-hub/startrenterquote?CoverageType=Renters" target="_blank">the link</a> provided to obtain a renter policy in a different state.
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="zipCode">
+                    @Sitecore.Globalization.Translate.Text("Zip Code") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="zipCode" class="form-control fieldRequired" type="number" name="InsMailZip">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="first_Name">
+                    @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
+                </label>
+                <div class="input-container">
+                    <input id="BirthDate" class="form-control fieldRequired DOB" type="text" placeholder="MM/DD/YYYY" name="InsDOB">
+                    <span id="BirthDate-validation-error" class="error" for="DOB" style="display: none"> @Sitecore.Globalization.Translate.Text("Primary policyholder")</span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group position-re input-container">
+                <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
+                <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+                <label id="ssn-error" class="error" for="ssn" style="display:none;">SSN is too short</label>
+                <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">
+                    @Sitecore.Globalization.Translate.Text("Phone Number")<span class="required"> *</span>
+                </label>
+                <input id="phoneNumber" class="form-control fieldRequired" type="text" name="InsPhoneNumber">
+            </div>
+
+        </div>
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="phoneNumber">
+                    @Sitecore.Globalization.Translate.Text("Marital-Status") <span class="required"> *</span>
+                </label>
+                <select class="field__input form-control fieldRequired" id="MaritalStatus" name="MaritalStatus"
+                        type="select" required="" onchange="showDiv(this)">
+                    &gt;
+                    <option value=""></option>
+                    <option value="Married">Married</option>
+                    <option value="Cohabitant">Cohabitant</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Single">Single</option>
+                    <option value="Seperated">Seperated</option>
+                    <option value="Civil Union/Domestic Partner">Civil Union/Domestic Partner</option>
+                </select>
+            </div>
+        </div>
+
+        <br />
+        <div style="clear:both;">
+            <br />
+            <h3> @Sitecore.Globalization.Translate.Text("Military Information")</h3>
+            <div class="hobbies one">
+                <label class="checkbox-inline h-chk m-chk ">
+                    <input type="checkbox" name="EligibilityMilitary" class="form-control check-checkbox mi_check" id="militery-chck">
+                    <span class="checkmark"></span>@Sitecore.Globalization.Translate.Text("Military Information Msg")
+                </label>
+            </div>
+            <div class="hobbies two">
+                <label class="checkbox-inline h-chk m-chk ">
+                    <input type="checkbox" name="CurrentMilitarySpouse" class="check-checkbox mi_check" id="Spouse-chck">
+                    <span class="checkmark"></span>@Sitecore.Globalization.Translate.Text("Current Military Spouse")
+                </label>
+            </div>
+            <label id="errorMI" class="error1" style="color:red;display:none;font-size:14px;">Please select one Military Information</label>
+            <div class="military-affiliation-box">
+                <br />
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Branch of Service") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="branchOfService" name="branchOfService"
+                                type="select" required="">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in servicesList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="military-status">
+                            @Sitecore.Globalization.Translate.Text("Military Status") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="militaryStatus" name="militaryStatus"
+                                type="select" required="">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in statusList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Military Rank")  <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="militaryRank" name="militaryRank" type="select"
+                                required="">
+                            <option value="">Choose One</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="militarysalutation" class="check-checkbox" id="militarysalutation" checked>
+                            <span class="checkmark2"></span>@Sitecore.Globalization.Translate.Text("Use Rank as Salutation")
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="Marital-Status-Information-box" style="display: none">
+                <br />
+                <h3>@Sitecore.Globalization.Translate.Text("Spouse's Information")</h3>
+                <br />
+                <div class="d-flex">
+                    <div class="form-group custom_w_40">
+                        <label for="salutation">
+                            @Sitecore.Globalization.Translate.Text("Salutation") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousesalutation" name="spousesalutation"
+                                type="select">
+                            <option value="" selected></option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Ms.">Ms.</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("First Name")   <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-FirstName" class="form-control alphabeticOnly" type="text" name="MaritalStatusFirstName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Last Name")  <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-LastName" class="form-control alphabeticOnly" type="text" name="MaritalStatusLastName" placeholder="">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Suffix")
+                        </label>
+                        <select class="field__input form-control" id="Suffixdetailsspouse" name="Suffixdetailsspouse"
+                                type="select">
+                            <option value=""></option>
+                            <option value="Jr.">Jr.</option>
+                            <option value="Sr.">Sr.</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                        </select>
+                    </div> -->
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-BirthDate" class="form-control DOB" type="text" name="MaritalStatusInformationBirthDate" placeholder="MM/DD/YYYY"> 
+                        </div>
+                    </div>
+                    <div class="form-group position-re">
+                        <label for="first_Name">
+                            @Sitecore.Globalization.Translate.Text("Social Security Number")
+                        </label>
+                        <div class="input-container">
+                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
+                            <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
+                            <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Spouse-Information-box" style="display: none">
+
+                <div class="d-flex">
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Branch of Service")<span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousebranchOfService" name="spousebranchOfService"
+                                type="select">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in servicesList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="military-status">
+                            @Sitecore.Globalization.Translate.Text("Military Status") <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousemilitaryStatus" name="spousemilitaryStatus"
+                                type="select">
+                            &gt;
+                            <option value="">Choose One</option>
+                            @foreach (Sitecore.Data.Items.Item data in statusList.GetChildren())
+                            {
+                                <option value="@Html.Sitecore().Field("Value", data)">@Html.Sitecore().Field("Label", data)</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch-service">
+                            @Sitecore.Globalization.Translate.Text("Military Rank")  <span class="required"> *</span>
+                        </label>
+                        <select class="field__input form-control" id="spousemilitaryRank" name="spousemilitaryRank" type="select">
+                            <option value="">Choose One</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="currentmilitarysalutation" class="check-checkbox" id="currentmilitarysalutation" checked>
+                            <span class="checkmark2"></span>@Sitecore.Globalization.Translate.Text("Use Rank as Salutation")
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <h3>@Sitecore.Globalization.Translate.Text("Hill AFB Coverage Msg")</h3>
+        <table id="tblplan" class="radio-table table" cellspacing="0">
+            <tbody>
+                <div class="content-wrap">
+
+                    @foreach (Sitecore.Data.Items.Item plan in planList.GetChildren())
+                    {
+                        var planname = plan.Fields["Title"];
+                    <tr>
+                        <td>
+                            <div class="accordion-contianer">
+
+                                @if (planname.ToString() == "Standard")
+                                {
+                                    <div class="accordion" id="accordion-@i">@planname (Recommended): </div>
+                                }
+                                else if (planname.ToString() == "Basic")
+                                {
+                                    <div class="accordion active" id="accordion-@i">@planname : </div>
+                                }
+                                else
+                                {
+                                    <div class="accordion" id="accordion-@i">@planname : </div>
+                                }
+                                @if (planname.ToString() == "Basic")
+                                {
+                                    <div class="panel" id="panel-@i" style="display:block">
+                                        <p class="content-p">
+                                            <input type="radio" id="@Html.Sitecore().Field("Title", plan).ToString().ToLower()" name="coverageType" value="@Html.Sitecore().Field("Title", plan)"
+                                                   class="chk-1">@Html.Sitecore().Field("Rich Text Editor", plan)
+                                            </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="panel" id="panel-@i">
+                                            <p class="content-p">
+                                                <input type="radio" id="@Html.Sitecore().Field("Title", plan).ToString().ToLower()" name="coverageType" value="@Html.Sitecore().Field("Title", plan)"
+                                                       class="chk-1">@Html.Sitecore().Field("Rich Text Editor", plan)
+                                                </p>
+                                            </div>
+                                        }
+
+                            </div>
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+
+        </form>
+        </tbody>
+        </table>
+        <p class="notice-"><small>@Sitecore.Globalization.Translate.Text("producting activities msg")</small></p>
+        <br />
+        <div class="price">
+            <div style="width:100%;">
+                <label id="lblcvmsg" style="color:red;font-weight:600;"></label>
+            </div>
+            <div class="dvleft">Price:</div>
+            <div class="dvleft">
+                Monthly:&nbsp; <label id="lblMonthlyPrice">$14.83</label>
+                <br /> Yearly:&nbsp; <label id="lblYearlyPrice">$178.00</label>
+                <div id="cp">
+                    @foreach (Sitecore.Data.Items.Item state in priceList.GetChildren())
+                    {
+                        <div class="dv_@state.Name.Replace(" ",String.Empty)">
+                            @{
+                                Sitecore.Data.Items.Item prices = Sitecore.Context.Database.GetItem(state.ID);
+                            }
+                            @foreach (Sitecore.Data.Items.Item p in prices.GetChildren())
+                            {
+                                <div class="dv_@p.Name">
+                                    <label class="lbl_monthly">$<span>@Html.Sitecore().Field("Monthly Price", p)</span></label>
+                                    <label class="lbl_yearly"> $<span id="lbl_yearly">@Html.Sitecore().Field("Yearly Price", p)</span></label>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <h3 class="txtinfo" style="clear:both;margin-bottom: 0px;padding-top:20px;">@Sitecore.Globalization.Translate.Text("Hill AFB Coverage Agent Call Msg")</h3>
+        <br />
+        <br />
+        <div class="additional_content">
+            <h3>@Sitecore.Globalization.Translate.Text("coverage to begin") </h3>
+            <div class="input-container">
+                <input id="staringcoverage" class="form-control" type="text" name="InsCovToBegin" placeholder="MM/DD/YYYY">
+                <span id="Starting-Coverage-Date-error" class="error" style="display: none">
+                    @Sitecore.Globalization.Translate.Text("staringcoverage")
+                </span>
+            </div>
+        </div>
+        <div style="clear:both;">
+            <br />
+            <br />
+            <h3> @Sitecore.Globalization.Translate.Text("Additional Questions")</h3>
+            <div id="additional_quentions" class="hobbies one">
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">1. </span>
+                        @Sitecore.Globalization.Translate.Text("Insurance been cancelled")
+
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" id="" name="CancDec5Yrs" class="checkvalue sending-value-input" value="Yes" required>
+                        <label for="">Yes</label><br>
+                        <input type="radio" id="" name="CancDec5Yrs" class="checkvalue sending-value-input" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">2. </span>
+                        @Sitecore.Globalization.Translate.Text("swimming pool or tramploine")
+
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" id="" class="checkvalue sending-value-input" name="LockingSafety" value="Yes" required>
+                        <label for="">Yes</label><br>
+                        <input type="radio" id="" class="checkvalue sending-value-input" name="LockingSafety" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">3. </span>
+                        @Sitecore.Globalization.Translate.Text("aggressive breed dogs")
+
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" class="checkvalue sending-value-input" name="AggressiveDogsBreed" value="Yes" required>
+                        <label for="">Yes</label><br>
+                        <input type="radio" class="checkvalue sending-value-input" name="AggressiveDogsBreed" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">4. </span>
+                        @Sitecore.Globalization.Translate.Text("Loss History")
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="Yes" required>
+                        <label for="">Yes</label><br>
+                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="No" checked="checked">
+                        <label for="">No</label><br>
+                    </div>
+                    <div id="lossdetails" class="additional_content align_box lossdetails paymentsystem" style="display: none">
+                        <div>
+                            <label>
+                                @Sitecore.Globalization.Translate.Text("Number of Losses") <span class="required"> *</span>
+                            </label>
+                            <select class="input-container form-radio sending-value numLosses" id="childbranch" name="NumOfLosses"
+                                    type="select">
+                                
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5+">5+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>
+                                @Sitecore.Globalization.Translate.Text("Open Claims")    <span class="required"> *</span>
+                            </label>
+                            <div class="input-container form-radio">
+                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" id="childbranch" value="Yes">
+                                <label for="">Yes</label><br>
+                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" value="No" id="childbranch" checked="checked">
+                                <label for="">No</label><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">5. </span>
+                        @Sitecore.Globalization.Translate.Text("rent property")
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" class="checkvalue sending-value-input" name="OtherLocations" value="Yes">
+                        <label for="">Yes</label><br>
+                        <input type="radio" class="checkvalue sending-value-input" name="OtherLocations" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">6. </span>
+                        @Sitecore.Globalization.Translate.Text("commerical farming")
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" class="checkvalue" name="IsCompany" value="Yes">
+                        <label for="">Yes</label><br>
+                        <input type="radio" class="checkvalue" name="IsCompany" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+                <div class="additional_content">
+                    <label class="">
+                        <span class="f-bold">7. </span>
+                        @Sitecore.Globalization.Translate.Text("Business Information")
+
+                    </label>
+                    <div class="input-container form-radio">
+                        <input type="radio" class="checkvalue" name="IsBusinessOrRevenueOnPremises" value="Yes">
+                        <label for="">Yes</label><br>
+                        <input type="radio" class="checkvalue" name="IsBusinessOrRevenueOnPremises" value="No" checked="checked" required>
+                        <label for="">No</label><br>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <p class="notice-"><small>@Sitecore.Globalization.Translate.Text("defraud any insurance company")</small></p>
+            </div>
+            <div class="dvagentcall">
+                <p class="text-center" style="margin: 20px 0 0; font-weight: 600;"
+                <strong class="d-block">
+                    @Sitecore.Globalization.Translate.Text("schedule a call Msg")
+
+                    <a class="shlink">Click Here</a>
+                </strong>
+            </p>
+                <div id="collapseExample" style="display: none">
+                    <h3>
+
+                        @Html.Sitecore().Field(Templates.RTE_Block.FieldNames.Rich_Text_Editor, schedulecalltext)
+
+                    </h3>
+                    <div class="d-flex">
+                        <div class="form-group custom_w_25">
+                            <label for="Date">Date </label>
+                            <input id="txtCallDate" class="form-control" type="text" name="ScheduleDate">
+                        </div>
+                        <div class="form-group custom_w_15">
+                            <label for="time">Time </label>
+                            <div class="input-container">
+                                <input id="txtTime" class="form-control" type="text" name="ScheduleTime">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-box" style="display:block;">
+                @Html.Partial("~/Areas/AFIWEB/Views/AFIReport/Partial/_PaymentSystem.cshtml")
+            </div>
+            <div class="dvPayButton">
+                <button id="PayButton" class="button button--large-text" type="submit">Submit </button>
+            </div>
+        </div>
+    </div>
+    </div>

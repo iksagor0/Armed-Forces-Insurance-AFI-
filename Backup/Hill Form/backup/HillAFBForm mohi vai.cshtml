@@ -79,20 +79,16 @@
         color: #000;
     }
 
-    .error-label{
-        color: red;
-    }
-
-    .form-control.error-field,
+    .form-control.error-field
     .form-control.error {
         border-color: red;
     }
 
-    /* input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-inner-spin-button,
     input[type="date"]::-webkit-calendar-picker-indicator {
         display: none;
         -webkit-appearance: none;
-    } */
+    }
 
 
     #state-tooltip {
@@ -110,7 +106,7 @@
         z-index: 2;
     }
 
-    .form-control:disabled{
+    .form-control:disabled {
         background-color: gray !important;
     }
 </style>
@@ -251,7 +247,7 @@
                     @Sitecore.Globalization.Translate.Text("Zip Code") <span class="required"> *</span>
                 </label>
                 <div class="input-container">
-                    <input id="zipCode" class="form-control fieldRequired" type="text" name="InsMailZip">
+                    <input id="zipCode" class="form-control fieldRequired" type="number" name="InsMailZip">
                 </div>
             </div>
             <div class="form-group">
@@ -267,8 +263,8 @@
         <div class="d-flex">
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
-                <input type="text" id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
-                <label id="ssn-error-label" class="error-label" for="ssn" style="display:none;">SSN is too short</label>
+                <input id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+                <label id="ssn-error" class="error" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
             <div class="form-group">
@@ -427,7 +423,7 @@
                             @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
                         </label>
                         <div class="input-container">
-                            <input id="Marital-Status-Information-BirthDate" class="form-control DOB" type="text" name="MaritalStatusInformationBirthDate" placeholder="MM/DD/YYYY"> 
+                            <input id="Marital-Status-Information-BirthDate" class="form-control DOB" type="text" name="MaritalStatusInformationBirthDate" placeholder="MM/DD/YYYY">
                         </div>
                     </div>
                     <div class="form-group position-re">
@@ -435,9 +431,8 @@
                             @Sitecore.Globalization.Translate.Text("Social Security Number")
                         </label>
                         <div class="input-container">
-                            <input type="text" id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
-
-                            <label id="ssn-error-label" class="error-label" for="ssn" style="display:none">SSN is too short</label>
+                            <input id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
+                            <label id="ssn-error" class="error" for="ssn" style="display:none>SSN is too short</label>
                             <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
                         </div>
                     </div>
@@ -590,7 +585,7 @@
         <div class="additional_content">
             <h3>@Sitecore.Globalization.Translate.Text("coverage to begin") </h3>
             <div class="input-container">
-                <input id="staringcoverage" class="form-control" type="date" max="2200-12-31" name="InsCovToBegin" placeholder="MM/DD/YYYY">
+                <input id="staringcoverage" class="form-control" type="text" name="InsCovToBegin" placeholder="MM/DD/YYYY">
                 <span id="Starting-Coverage-Date-error" class="error" style="display: none">
                     @Sitecore.Globalization.Translate.Text("staringcoverage")
                 </span>
@@ -647,19 +642,19 @@
                         @Sitecore.Globalization.Translate.Text("Loss History")
                     </label>
                     <div class="input-container form-radio">
-                        <input type="radio" class="checkvalue sending-value-input lossdetails quesFourRel" id="openpayment" name="SusLoss3Yrs" value="Yes" required>
+                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="Yes" required>
                         <label for="">Yes</label><br>
-                        <input type="radio" class="checkvalue sending-value-input lossdetails quesFourRel" id="openpayment" name="SusLoss3Yrs" value="No" checked="checked">
+                        <input type="radio" class="checkvalue sending-value-input lossdetails" id="openpayment" name="SusLoss3Yrs" value="No" checked="checked">
                         <label for="">No</label><br>
                     </div>
-                    <div id="lossdetails" class="additional_content align_box lossdetails paymentsystem">
-                        <div class="NumOfLossesWrapper" style="display: none">
+                    <div id="lossdetails" class="additional_content align_box lossdetails paymentsystem" style="display: none">
+                        <div>
                             <label>
                                 @Sitecore.Globalization.Translate.Text("Number of Losses") <span class="required"> *</span>
                             </label>
-                            <select class="input-container form-radio sending-value numLosses quesFourRel" id="childbranch" name="NumOfLosses"
+                            <select class="input-container form-radio sending-value numLosses" id="childbranch" name="NumOfLosses"
                                     type="select">
-                                
+
                                 <option value=""></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -668,17 +663,19 @@
                                 <option value="5+">5+</option>
                             </select>
                         </div>
-                        <div class="openClaimsWrapper" style="display: none">
+                        <!-- Updated Code Start 5.7.23 !-->
+                        <div class="openclaimsquestion" style="display: none">
                             <label>
                                 @Sitecore.Globalization.Translate.Text("Open Claims")    <span class="required"> *</span>
                             </label>
-                            <div class="input-container form-radio openclaimsquestion">
-                                <input type="radio" class="openClaims paymentsystem quesFourRel" name="HasOpenClaims" id="childbranch" value="Yes">
+                            <div class="input-container form-radio">
+                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" id="childbranch" value="Yes">
                                 <label for="">Yes</label><br>
-                                <input type="radio" class="openClaims paymentsystem quesFourRel" name="HasOpenClaims" value="No" id="childbranch" checked="checked">
+                                <input type="radio" class="openClaims paymentsystem" name="HasOpenClaims" value="No" id="childbranch" checked="checked">
                                 <label for="">No</label><br>
                             </div>
                         </div>
+                        <!-- Updated Code End 5.7.23 !-->
                     </div>
                 </div>
                 <div class="additional_content">
@@ -761,44 +758,46 @@
     </div>
 
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-   <!-- new added code start 5.7.23-->
-   <!-- <script>
-    $(".openclaimsquestion").css("display", "none");
-   $(".numLosses").on('change', function () {
-        let nummloss = $(".numLosses option:selected").val();
-        if(parseInt(nummloss)>2)
-        {
-            window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
-        }
-        else
-        {
-            $(".openclaimsquestion").css("display", "block");
-        }
-   });
-    $(".paymentsystem").on('change', function () {
-    let openclaims = $('input[name=HasOpenClaims]:checked').val();
-    if(openclaims=="Yes")
-    // {
-    //   window.location.href = "https://afidev-435500-single.azurewebsites.net/hill-afb/ApplicationThankYou";
-    // }
-   });
-  $(".lossdetails").on('change', function () {
+    <!-- new added code start 5.7.23-->
+    <script>
+        $(".openclaimsquestion").css("display", "none");
+        $(".numLosses").on('change', function () {
+            let nummloss = $(".numLosses option:selected").val();
+            if (parseInt(nummloss) > 2) {
+                $(".PayButton").css("display", "block");
+                $(".payment-box").css("display", "none");
+            }
+            else {
+                $(".openclaimsquestion").css("display", "block");
+            }
+        });
+        $(".paymentsystem").on('change', function () {
+            let openclaims = $('input[name=HasOpenClaims]:checked').val();
+            if (openclaims == "Yes") {
+                $(".PayButton").css("display", "block");
+                $(".payment-box").css("display", "none");
+            }
+            if (openclaims == "No") {
+                $(".PayButton").css("display", "none");
+                $(".payment-box").css("display", "block");
+            }
+        });
+        $(".lossdetails").on('change', function () {
             let lossdetails = $(".lossdetails:checked").val();
             if (lossdetails == "Yes") {
                 lossdetails
                 $("#lossdetails").css("display", "block");
             }
             else {
-                 $("#lossdetails").css("display", "none");
+                $("#lossdetails").css("display", "none");
             }
         });
-   </script> -->
-<!-- new added code end 5.7.23-->
+    </script>
+    <!-- new added code end 5.7.23-->
     <script>
 
         function post_secure_token() {
@@ -822,64 +821,23 @@
         $(".discleamer").click(function () {
             $("#collapseExample").toggle();
         });
+        $(".paymentsystem").on('change', function () {
+            let lossdetails = $(".lossdetails:checked").val();
+            let nummloss = $(".numLosses option:selected").val();
+            let openclaims = $(".openClaims:checked").val();
 
-        // *********** START Code for Question 4 ***********
-            function showPayment() {
+            if (lossdetails == "Yes" && openclaims == "No" && (nummloss == "1" || nummloss == "2")) {
                 $(".payment-box").css("display", "block");
                 $(".dvagentcall").css("display", "none");
                 $("#PayButton").css("display", "none");
             }
-            function hidePayment() {
+            else {
                 $(".payment-box").css("display", "none");
                 $(".dvagentcall").css("display", "block");
                 $("#PayButton").css("display", "block");
             }
 
-        $(".quesFourRel").on('change', function () {
-            let lossdetails = $(".lossdetails:checked").val();
-            let nummloss = $(".numLosses option:selected").val();
-            let openclaims = $(".openClaims:checked").val();
-
-            // if (lossdetails == "Yes" && openclaims == "No" && nummloss == "1") {
-            //     $(".payment-box").css("display", "block");
-            //     $(".dvagentcall").css("display", "none");
-            //     $("#PayButton").css("display", "none");
-            // }
-            // else {
-            //     $(".payment-box").css("display", "none");
-            //     $(".dvagentcall").css("display", "block");
-            //     $("#PayButton").css("display", "block");
-            // }
-
-
-            if(lossdetails == "Yes"){
-                hidePayment();
-                $(".NumOfLossesWrapper").css("display", "block");
-
-
-                if(nummloss == "1" || nummloss == "2"){
-                    $(".openClaimsWrapper").css("display", "block");
-
-                    if(openclaims == "No"){
-                        showPayment();
-                    }else if(openclaims == "Yes"){
-                        hidePayment();
-                    }
-
-                } else {
-                    // else if(nummloss == "3" || nummloss == "4" || nummloss == "5+")
-                    $(".openClaimsWrapper").css("display", "none");
-                     hidePayment(); 
-                }
-            }else{
-                showPayment(); 
-                $(".NumOfLossesWrapper").css("display", "none");
-            }
-
         });
-
-        // *********** END Code for Question 4 ***********
-
         $('#militery-chck').click(function () {
             var miletary_chk = $("#militery-chck");
             if (miletary_chk.is(':checked') == true) {
@@ -1237,7 +1195,7 @@
         });
         $('#basic').prop({ checked: true });
         function showDiv(select) {
-            if (select.value == "Married" || select.value == "Civil Union/Domestic Partner") {
+            if (select.value == "Married" || select.value == "Civil Union Or Domestic Partner") {
                 $('.Marital-Status-Information-box').css("display", "block");
                 $('#spousesalutation').prop('required', true);
                 $('#Marital-Status-Information-FirstName').prop('required', true);
@@ -1590,7 +1548,7 @@
             if (!isCheckRes) return false;
             if (!isCheckSelectPay) return false;
 
-            
+
 
             const allFields = document.querySelectorAll(".form-control");
             allFields.forEach((field) => field.disabled = true);
@@ -1657,7 +1615,7 @@
 
                     }
                     const fields = document.querySelectorAll(".form-control");
-                      fields.forEach((field) => field.disabled = false);
+                    fields.forEach((field) => field.disabled = false);
                 }
 
             });
@@ -2150,7 +2108,7 @@
         /********************************************************
         *                   COMMENT
         ********************************************************/
-       // Input Alphabet Only
+        // Input Alphabet Only
         document.querySelectorAll(".alphabeticOnly")?.forEach((input) => {
             input.addEventListener("input", (e) => {
                 e.target.value = e.target?.value.replace(/[^a-zA-z]/g, "");
@@ -2161,127 +2119,110 @@
         const thisYear = new Date().getFullYear();
 
         function dateValidation(field, getMaxYear = thisYear, getMinYear) {
-        field?.addEventListener("input", (e) => {
-            let value = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
+            field?.addEventListener("input", (e) => {
+                let value = e.target.value
+                    .replace(/\D/g, "")
+                    .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
 
-            let [fullData, MM, DD, YYYY] = value;
+                let [fullData, MM, DD, YYYY] = value;
 
-            // Month Validation
-            if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
-            else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
-            else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
+                // Month Validation
+                if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
+                else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
+                else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
 
-            // Date Validation
-            if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
-            else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
-            else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
-            else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
-            value[2] = DD[0];
-            else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
-            value[2] = DD[0];
+                // Date Validation
+                if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
+                else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
+                else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
+                else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
+                    value[2] = DD[0];
+                else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
+                    value[2] = DD[0];
 
-            // Year validation
-            const maxYear = String(getMaxYear);
+                // Year validation
+                const maxYear = String(getMaxYear);
 
-            if(getMinYear){
-                const minYear = String(getMinYear);
+                if (getMinYear) {
+                    const minYear = String(getMinYear);
 
-                if (Number(YYYY) <= 0) value[3] = "";
-                else if (YYYY.length === 1 && Number(YYYY) != 2) value[3] = "";
-                else if (YYYY.length === 2 && Number(YYYY) != 20) value[3] = YYYY[0];
-                else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
-                value[3] = YYYY.slice(0, 2);
-                else if (YYYY.length === 3 && Number(YYYY) < Number(minYear.slice(0, 3)))
-                value[3] = YYYY.slice(0, 2);
-                else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
-                value[3] = YYYY.slice(0, 3);
-                else if (YYYY.length === 4 && Number(YYYY) < Number(minYear))
-                value[3] = YYYY.slice(0, 3);
-            } else{
-                if (Number(YYYY) <= 0) value[3] = "";
-                else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
-                else if (YYYY.length === 2 && Number(YYYY) > 20 && Number(YYYY) < 19) value[3] = YYYY[0];
-                else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
-                else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
-                value[3] = YYYY.slice(0, 2);
-                else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
-                value[3] = YYYY.slice(0, 3);
+                    if (Number(YYYY) <= 0) value[3] = "";
+                    else if (YYYY.length === 1 && Number(YYYY) != 2) value[3] = "";
+                    else if (YYYY.length === 2 && Number(YYYY) != 20) value[3] = YYYY[0];
+                    else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+                        value[3] = YYYY.slice(0, 2);
+                    else if (YYYY.length === 3 && Number(YYYY) < Number(minYear.slice(0, 3)))
+                        value[3] = YYYY.slice(0, 2);
+                    else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+                        value[3] = YYYY.slice(0, 3);
+                    else if (YYYY.length === 4 && Number(YYYY) < Number(minYear))
+                        value[3] = YYYY.slice(0, 3);
+                } else {
+                    if (Number(YYYY) <= 0) value[3] = "";
+                    else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+                    else if (YYYY.length === 2 && Number(YYYY) > 20 && Number(YYYY) < 19) value[3] = YYYY[0];
+                    else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+                    else if (YYYY.length === 3 && Number(YYYY) > Number(maxYear.slice(0, 3)))
+                        value[3] = YYYY.slice(0, 2);
+                    else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+                        value[3] = YYYY.slice(0, 3);
+                }
+
+                // Result
+                e.target.value = !value[2]
+                    ? value[1]
+                    : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+            });
+        }
+        document.querySelectorAll(".DOB").forEach((el) => dateValidation(el, thisYear - 17));
+
+        // staringCoverage Validation
+        const staringCoverage = document.querySelector("#staringcoverage")
+        dateValidation(staringCoverage, thisYear + 1, thisYear)
+
+        staringCoverage.addEventListener("change", function (e) {
+            const scResult = startCoverageValidation(e.target.value)
+
+            if (!scResult) this.classList.add("error-field");
+            else this.classList.remove("error-field");
+        });
+
+        function startCoverageValidation(value) {
+            let result = true;
+            const v = value;
+
+            if (v.length >= 10) {
+                const gTime = new Date(v).getTime();
+                const now = Date.now();
+                const sixtyDays = 60 * 86400000;
+                const maxDays = now + sixtyDays;
+                const isPast = now > gTime;
+                const isCrossMax = gTime > maxDays;
+
+                const err_Msg = document.getElementById(
+                    "Starting-Coverage-Date-error"
+                );
+
+                if (isPast) {
+                    err_Msg.innerText =
+                        "Date must be greater than or equal to today and must be valid date";
+                    err_Msg.style.display = "block";
+                    result = false;
+                }
+
+                if (isCrossMax) {
+                    err_Msg.innerText =
+                        "Effective date cannot be > 60 days from currant date";
+                    err_Msg.style.display = "block";
+                    result = false;
+                }
             }
 
-            // Result
-            e.target.value = !value[2]
-            ? value[1]
-            : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
-        });
+            if (result) err_Msg.style.display = "none";
+            else err_Msg.style.display = "block";
+
+            return result;
         }
-
-        document.querySelectorAll(".DOB").forEach((el) => {
-            dateValidation(el, thisYear-17);
-
-            el.addEventListener("change", (e) => {
-                const isFullDate = e.target.value.length != 10
-
-                 const errLabel = el.closest(".input-container").querySelector(".error");
-
-                if(isFullDate) {
-                    errLabel.innerText = "Enter a valid Birthdate"
-                    errLabel.style.display =  "block";
-                }else{
-                 errLabel.style.display =  "none";
-                }
-            })
-        });
-    
-        // staringCoverage Validation
-        const staringCoverage= document.querySelector("#staringcoverage")
-        // dateValidation(staringCoverage, thisYear +1, thisYear)
-
-        staringCoverage.addEventListener("change", function (e){
-            const scResult =  startCoverageValidation(e.target.value)
-
-            if(!scResult) staringCoverage.classList.add("error-field");
-            else staringCoverage.classList.remove("error-field");
-        });
-
-       function startCoverageValidation(value) {
-        let result = true;
-        const v = value;
-
-        const err_Msg = document.getElementById("Starting-Coverage-Date-error");
-
-        if (v.length >= 10) {
-          const gTime = new Date(v).getTime();
-          const now = Date.now();
-          const sixtyDays = 60 * 86400000;
-          const maxDays = now + sixtyDays;
-          const isPast = now > gTime;
-          const isCrossMax = gTime > maxDays;
-
-          if (isPast) {
-            err_Msg.innerText =
-              "Date must be greater than or equal to today and must be valid date";
-            err_Msg.style.display = "block";
-            result = false;
-          }
-
-          if (isCrossMax) {
-            err_Msg.innerText =
-              "Effective date cannot be > 60 days from currant date";
-            err_Msg.style.display = "block";
-            result = false;
-          }
-
-          console.log({ isPast });
-          console.log({ isCrossMax });
-        }
-
-        if (result) err_Msg.style.display = "none";
-        else err_Msg.style.display = "block";
-
-        return result;
-      }
 
 
         // State Help Hide on condition
@@ -2297,48 +2238,48 @@
 
         // SSN Validation
         document.querySelectorAll(".SSN").forEach((field) => {
-        field.addEventListener("input", (e) => {
-            field.classList.remove("error");
-            field.closest(".input-container").querySelector("label.error").style.display = "none"
+            field.addEventListener("input", (e) => {
+                field.classList.remove("error");
+                field.closest(".input-container").querySelector("label.error").style.display = "none"
 
-            var x = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
-            e.target.value = !x[2]
-            ? x[1]
-            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
-        });
+                var x = e.target.value
+                    .replace(/\D/g, "")
+                    .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+                e.target.value = !x[2]
+                    ? x[1]
+                    : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+            });
         });
 
 
         document.querySelectorAll(".SSN").forEach((field) => {
-        field.addEventListener("input", (e) => {
-          field.classList.remove("error-field");
-          field
-            .closest(".input-container")
-            .querySelector(".error-label").style.display = "none";
+            field.addEventListener("input", (e) => {
+                field.classList.remove("error-field");
+                field
+                    .closest(".input-container")
+                    .querySelector("label.error").style.display = "none";
 
-          var x = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
-          e.target.value = !x[2]
-            ? x[1]
-            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+                var x = e.target.value
+                    .replace(/\D/g, "")
+                    .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+                e.target.value = !x[2]
+                    ? x[1]
+                    : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+            });
+
+            field.addEventListener("change", function (e) {
+                const l = e.target.value.length;
+                if (l != 11) {
+                    this.classList.add("error-field");
+                    const errLabel = field
+                        .closest(".input-container")
+                        .querySelector("label.error");
+
+                    errLabel.innerHTML = "SSN should be 9 digits";
+                    errLabel.style.display = "block";
+                }
+            });
         });
-
-        field.addEventListener("change", function (e) {
-          const l = e.target.value.length;
-          if (l != 11) {
-            field.classList.add("error-field");
-            const errLabel = field
-              .closest(".input-container")
-              .querySelector(".error-label");
-
-            errLabel.innerHTML = "SSN should be 9 digits";
-            errLabel.style.display = "block";
-          }
-        });
-      });
 
         // Zip pattern
         const zipCode = document.getElementById('zipCode');
