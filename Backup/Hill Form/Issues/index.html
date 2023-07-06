@@ -12,10 +12,14 @@
       <div class="input-container">
         <input
           id="zipCode"
-          class="form-control fieldRequired error"
+          class="form-control fieldRequired"
           type="text"
           name="InsMailZip"
-        /><label id="zipCode-error" class="error" for="zipCode"
+        /><label
+          id="zipCode-error"
+          class="error"
+          for="zipCode"
+          style="display: none"
           >This field is required.</label
         >
       </div>
@@ -27,6 +31,24 @@
         var x = e.target.value.replace(/\D/g, "").match(/(\d{0,5})(\d{0,4})/);
 
         e.target.value = !x[2] ? x[1] : x[1] + "-" + x[2];
+      });
+
+      zipCode?.addEventListener("change", (e) => {
+        const x = e.target.value.length;
+
+        const errLabel = zipCode
+          .closest(".input-container")
+          .querySelector(".error");
+
+        if (x < 5) {
+          zipCode.classList.add("error-field");
+
+          errLabel.innerHTML = "Enter a valid zip";
+          errLabel.style.display = "block";
+        } else {
+          zipCode.classList.remove("error-field");
+          errLabel.style.display = "none";
+        }
       });
     </script>
 
@@ -40,6 +62,15 @@
         class="form-control ssn-number SSN"
         placeholder="XXX-XX-XXXX"
       />
+      <input
+        id="ssnMask"
+        name="ssnXX"
+        type="text"
+        class="form-control ssn-number SSNmask"
+        value="XXX-XX-"
+        placeholder="XXX-XX-XXXX"
+        style="display: none"
+      />
       <label
         id="ssn-error"
         class="error"
@@ -51,6 +82,8 @@
 
     <script>
       document.querySelectorAll(".SSN").forEach((field) => {
+        const maskSSN = document.getElementById(field.id + "Mask");
+
         field.addEventListener("input", (e) => {
           field.classList.remove("error-field");
           field
@@ -63,6 +96,12 @@
           e.target.value = !x[2]
             ? x[1]
             : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+
+          //
+
+          const ssnVal = e.target.value.slice(7, 11);
+
+          maskSSN.value = "XXX-XX-" + ssnVal;
         });
 
         field.addEventListener("change", function (e) {
@@ -76,6 +115,18 @@
             errLabel.innerHTML = "SSN should be 9 digits";
             errLabel.style.display = "block";
           }
+        });
+
+        //
+        field.addEventListener("blur", () => {
+          field.style.display = "none";
+          maskSSN.style.display = "block";
+        });
+
+        maskSSN.addEventListener("focus", () => {
+          maskSSN.style.display = "none";
+          field.style.display = "block";
+          field.focus();
         });
       });
     </script>
@@ -102,7 +153,7 @@
       </span>
     </div>
 
-    <script>
+    <!-- <script>
       // Date Validation
       const thisYear = new Date().getFullYear();
 
@@ -229,6 +280,128 @@
 
         return result;
       }
+    </script> -->
+
+    <!-- DOB -->
+    <br />
+    <div class="input-container">
+      dob
+      <input
+        id="BirthDate"
+        class="form-control fieldRequired DOB"
+        type="text"
+        placeholder="MM/DD/YYYY"
+        name="InsDOB"
+      />
+      <span
+        id="BirthDate-validation-error"
+        class="error"
+        for="DOB"
+        style="display: none"
+      >
+        Primary policyholder must be age 18 or older.</span
+      >
+    </div>
+
+    <div class="input-container">
+      spouse
+      <input
+        id="Marital-Status-Information-BirthDate"
+        class="form-control DOB spouse"
+        type="text"
+        name="MaritalStatusInformationBirthDate"
+        placeholder="MM/DD/YYYY"
+        required=""
+      />
+      <div class="error"></div>
+    </div>
+
+    <script>
+      // Date Validation
+      const thisYear = new Date().getFullYear();
+
+      function dateValidation(field, getMaxYear = thisYear, getMinYear) {
+        field?.addEventListener("input", (e) => {
+          let value = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,2})(\d{0,2})(\d{0,4})/);
+
+          let [fullData, MM, DD, YYYY] = value;
+
+          // Month Validation
+          if (MM.length === 1 && Number(MM) > 1) value[1] = 0 + MM[0];
+          else if (MM.length === 2 && Number(MM) <= 0) value[1] = MM[0];
+          else if (MM.length === 2 && Number(MM) > 12) value[1] = MM[0];
+
+          // Date Validation
+          if (DD.length === 1 && Number(DD) > 3) value[2] = 0 + DD[0];
+          else if (DD.length === 2 && Number(DD) <= 0) value[2] = DD[0];
+          else if (DD.length === 2 && Number(DD) > 31) value[2] = DD[0];
+          else if (DD.length === 2 && Number(MM) == 2 && Number(DD) > 29)
+            value[2] = DD[0];
+          else if ([4, 6, 9, 11].includes(Number(MM)) && Number(DD) > 30)
+            value[2] = DD[0];
+
+          // Year validation
+          const maxYear = String(getMaxYear);
+
+          if (Number(YYYY) <= 0) value[3] = "";
+          else if (YYYY.length === 1 && Number(YYYY) > 2) value[3] = "";
+          else if (YYYY.length === 2 && Number(YYYY) > 20) value[3] = YYYY[0];
+          else if (YYYY.length === 2 && Number(YYYY) < 19) value[3] = YYYY[0];
+          else if (
+            YYYY.length === 3 &&
+            Number(YYYY) > Number(maxYear.slice(0, 3))
+          )
+            value[3] = YYYY.slice(0, 2);
+          else if (YYYY.length === 4 && Number(YYYY) > Number(maxYear))
+            value[3] = YYYY.slice(0, 3);
+
+          // Result
+          e.target.value = !value[2]
+            ? value[1]
+            : value[1] + "/" + value[2] + (value[3] ? "/" + value[3] : "");
+        });
+      }
+      document.querySelectorAll(".DOB").forEach((el) => {
+        const isSpouse = el.classList.contains("spouse");
+        isSpouse
+          ? dateValidation(el, thisYear - 1)
+          : dateValidation(el, thisYear - 17);
+
+        el.addEventListener("change", (e) => {
+          const isFullDate = e.target.value.length != 10;
+
+          const errLabel = el
+            .closest(".input-container")
+            .querySelector(".error");
+
+          if (isFullDate) {
+            errLabel.innerText = "Enter a valid Birthdate";
+            errLabel.style.display = "block";
+          } else {
+            errLabel.style.display = "none";
+          }
+        });
+      });
+    </script>
+
+    <!-- Alpha -->
+    <br />
+    <br />
+    alphabeticOnly
+    <input type="text" class="alphabeticOnly" />
+
+    <script>
+      document.querySelectorAll(".alphabeticOnly")?.forEach((input) => {
+        input.addEventListener("input", (e) => {
+          e.target.value = e.target?.value.replace(/[^a-zA-Z\s-]/g, "");
+
+          // if (e.target.value.length > 5) {
+          //   console.log(e.target.value.slice(5, 10));
+          // }
+        });
+      });
     </script>
   </body>
 </html>
