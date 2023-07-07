@@ -2279,6 +2279,9 @@
             err_Msg.style.display = "block";
             result = false;
           }
+
+          console.log({ isPast });
+          console.log({ isCrossMax });
         }
 
         if (result) err_Msg.style.display = "none";
@@ -2305,7 +2308,6 @@
 
             field.addEventListener("input", (e) => {
                 field.classList.remove("error-field");
-                maskSSN.classList.remove("error-field");
                 field
                 .closest(".input-container")
                 .querySelector(".error-label").style.display = "none";
@@ -2328,14 +2330,13 @@
             field.addEventListener("change", function (e) {
                 const l = e.target.value.length;
                 if (l != 11) {
-                    const errLabel = field
-                        .closest(".input-container")
-                        .querySelector(".error-label");
+                this.classList.add("error-field");
+                const errLabel = field
+                    .closest(".input-container")
+                    .querySelector(".error-label");
 
-                    field.classList.add("error-field");
-                    maskSSN.classList.add("error-field");
-                    errLabel.innerHTML = "SSN should be 9 digits";
-                    errLabel.style.display = "block";
+                errLabel.innerHTML = "SSN should be 9 digits";
+                errLabel.style.display = "block";
                 }
             });
 
