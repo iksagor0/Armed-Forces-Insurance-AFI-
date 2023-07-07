@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Zilla+Slab:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      as="font"
+      rel="stylesheet preload prefetch"
+      href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <!-- Note: Swiper CDN for css, js already added in AFI Layout. Not need a add again. -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/common.css" />
+    <style>
+      #article-carousel .mySwiper {
+        overflow: hidden;
+      }
+
+      #article-carousel .slideItem {
+        width: 100% !important;
+        height: 500px;
+        position: relative;
+        padding: 50px;
+        color: #fff;
+        display: flex;
+        align-items: end;
+      }
+
+      #article-carousel .slideItem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #article-carousel .slideItem::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.29);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      #article-carousel .slide_content_wrapper {
+        position: relative;
+        z-index: 2;
+      }
+
+      #article-carousel .slide_category {
+        text-transform: uppercase;
+        /* color: #004976; */
+        color: #9ad1f3;
+        font-size: 0.75rem !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 8px !important;
+        font-weight: bold !important;
+      }
+
+      .slide_title {
+        font-family: Roboto !important;
+        font-weight: bold !important;
+        font-size: 1.25rem !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 0.5rem !important;
+        line-height: 1.2 !important;
+      }
+
+      @media screen and (min-width: 800px) {
+        .slide_title {
+          font-family: Roboto !important;
+          font-weight: bold !important;
+          font-size: 1.5rem !important;
+          letter-spacing: 0.5px !important;
+          margin-bottom: 0.5rem !important;
+          line-height: 1.2 !important;
+        }
+
+        .slide_description {
+          font-size: 1.125rem !important;
+          line-height: 1.5 !important;
+        }
+      }
+
+      @media screen and (max-width: 799px) {
+        #article-carousel .slideItem {
+          height: auto;
+          padding: 20px;
+          flex-direction: column;
+          color: #000;
+        }
+
+        #article-carousel .slideItem img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          position: unset;
+        }
+
+        #article-carousel .slideItem::after {
+          display: none;
+        }
+
+        #article-carousel .slide_content_wrapper {
+          padding: 1rem;
+        }
+
+        #article-carousel .slide_category {
+          color: #004976;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="body">
+    <!-- ******************************************************************** -->
+    <!--                          CAROUSEL HTML                               -->
+    <!-- ******************************************************************** -->
+    <section id="article-carousel">
+      <div class="container">
+        <div class="mySwiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 01 -->
+            <div class="swiper-slide slideItem">
+              <img
+                class="slide_image"
+                src="./img/Home-insurance-for-veterans.jpg"
+                alt=""
+              />
+
+              <section class="slide_content_wrapper">
+                <h6 class="slide_category">Homeowner</h6>
+                <h2 class="slide_title">
+                  3 Tips to find the best home insurance for veterans
+                </h2>
+                <p class="slide_description">
+                  The best home insurance for veterans is the insurance that
+                  meets your needs, is a financial value and is delivered and
+                  administered by trusted advisors you know.
+                </p>
+                <a
+                  href="https://afi.org/articles/3-tips-to-find-the-best-home-insurance-for-veterans"
+                  class="button"
+                  >Read More</a
+                >
+              </section>
+            </div>
+
+            <!-- Slide 02 -->
+            <div class="swiper-slide slideItem">
+              <img class="slide_image" src="./img/Flag-2.jpg" alt="" />
+
+              <section class="slide_content_wrapper">
+                <h6 class="slide_category">Insurance</h6>
+                <h2 class="slide_title">Account Review</h2>
+                <p class="slide_description">
+                  Life changes so rapidly that people are often unaware of how
+                  it can affect their insurance it is important to review your
+                  policies annually and make sure they accurately reflect your
+                  circumstances.
+                </p>
+                <a
+                  href="https://afi.org/articles/3-tips-to-find-the-best-home-insurance-for-veterans"
+                  class="button"
+                  >Read More</a
+                >
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Note: Swiper CDN for css, js already added in AFI Layout. Not need a add again. -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- ******* CAROUSEL JS ******* -->
+    <script>
+      var artSwiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        // effect: "fade",
+      });
+    </script>
+  </body>
+</html>

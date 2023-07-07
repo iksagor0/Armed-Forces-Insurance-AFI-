@@ -2279,9 +2279,6 @@
             err_Msg.style.display = "block";
             result = false;
           }
-
-          console.log({ isPast });
-          console.log({ isCrossMax });
         }
 
         if (result) err_Msg.style.display = "none";
@@ -2308,6 +2305,7 @@
 
             field.addEventListener("input", (e) => {
                 field.classList.remove("error-field");
+                maskSSN.classList.remove("error-field");
                 field
                 .closest(".input-container")
                 .querySelector(".error-label").style.display = "none";
@@ -2335,6 +2333,7 @@
                         .querySelector(".error-label");
 
                     field.classList.add("error-field");
+                    maskSSN.classList.add("error-field");
                     errLabel.innerHTML = "SSN should be 9 digits";
                     errLabel.style.display = "block";
                 }
