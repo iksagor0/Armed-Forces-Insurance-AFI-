@@ -252,6 +252,8 @@
                 </label>
                 <div class="input-container">
                     <input id="zipCode" class="form-control fieldRequired" type="text" name="InsMailZip">
+
+                    <label id="zipCode-error-label" class="error-label" for="zipCode" style="display:none"> Zip is too short</label>
                 </div>
             </div>
             <div class="form-group">
@@ -267,7 +269,11 @@
         <div class="d-flex">
             <div class="form-group position-re input-container">
                 <label for="ssnXX"> @Sitecore.Globalization.Translate.Text("SSN")</label>
+
                 <input type="text" id="ssn" name="ssnXX" class="form-control ssn-number SSN" placeholder="XXX-XX-XXXX" />
+
+                <input id="ssnMask" name="ssnXX" type="text" class="form-control ssn-number SSNmask" style="display: none" placeholder="XXX-XX-XXXX" />
+
                 <label id="ssn-error-label" class="error-label" for="ssn" style="display:none;">SSN is too short</label>
                 <!-- <input class="ssn-value" name="InsSocialSecNumber" /> -->
             </div>
@@ -425,9 +431,12 @@
                     <div class="form-group">
                         <label for="first_Name">
                             @Sitecore.Globalization.Translate.Text("DOB") <span class="required"> *</span>
+                            
                         </label>
                         <div class="input-container">
                             <input id="Marital-Status-Information-BirthDate" class="form-control DOB spouse" type="text" name="MaritalStatusInformationBirthDate" placeholder="MM/DD/YYYY"> 
+
+                            <span id="Spouse-error" class="error" style="display: none"> @Sitecore.Globalization.Translate.Text("Primary policyholder")</span>
                         </div>
                     </div>
                     <div class="form-group position-re">
@@ -436,6 +445,8 @@
                         </label>
                         <div class="input-container">
                             <input type="text" id="Marital-Status-Information-SSN" name="SpousessnXX" class="form-control ssn-number-spouse SSN" placeholder="XXX-XX-XXXX" />
+
+                            <input type="text" id="Marital-Status-Information-SSNMask" name="SpousessnXX" class="form-control ssn-number-spouse" style="display:none" placeholder="XXX-XX-XXXX" />
 
                             <label id="ssn-error-label" class="error-label" for="ssn" style="display:none">SSN is too short</label>
                             <!-- <input class="ssn-value-spouse" name="MaritalStatusssn" maxlength="11" /> -->
@@ -1234,6 +1245,7 @@
             });
         });
         $('#basic').prop({ checked: true });
+
         function showDiv(select) {
             if (select.value == "Married" || select.value == "Civil Union/Domestic Partner") {
                 $('.Marital-Status-Information-box').css("display", "block");
@@ -1252,6 +1264,7 @@
 
             }
         }
+
         $('input[type=radio][name=AdditionalQuestionsitem]').change(function () {
             if (this.value == 'Yes') {
                 $('#Additional-Interest').css("display", "block");
@@ -1575,18 +1588,21 @@
 
             //
             const isSsnValid = ssnValidation()
-            if (!isSsnValid) return false;
-
-            //
-            const startCoVal = document.querySelector("#staringcoverage").value;
-            const isStartCoverageValid = startCoverageValidation(startCoVal);
-            if (!isStartCoverageValid) return false;
-
-            //
             const isCheckRes = checkMili()
             const isCheckSelectPay = checkSelectPay()
+
+            const startCoVal = document.querySelector("#staringcoverage").value;
+            const isStartCoverageValid = startCoverageValidation(startCoVal);
+
+            if (!isSsnValid) return false;
+            if (!isStartCoverageValid) return false;
             if (!isCheckRes) return false;
             if (!isCheckSelectPay) return false;
+
+            if(!isSsnValid || !isStartCoverageValid || !isCheckRes || !isCheckSelectPay) {
+                $("#loader").hide();
+                return false;
+            }
 
             
 
@@ -2151,11 +2167,12 @@
        // Input Alphabet Only
         document.querySelectorAll(".alphabeticOnly")?.forEach((input) => {
             input.addEventListener("input", (e) => {
-                // old /[^a-zA-z]/g
                 e.target.value = e.target?.value.replace(/[^a-zA-Z\s-]/g, "");
             });
         });
 
+    //  *********** Date Validation ***********
+      const thisYear = new Date().getFullYear();
        function dateValidation(field, getMaxYear = thisYear, getMinYear) {
         field?.addEventListener("input", (e) => {
           let value = e.target.value
@@ -2214,15 +2231,17 @@
             .querySelector(".error");
 
           if (isFullDate) {
+            el.classList.add("error-field");
             errLabel.innerText = "Enter a valid Birthdate";
             errLabel.style.display = "block";
           } else {
+            el.classList.remove("error-field");
             errLabel.style.display = "none";
           }
         });
       });
     
-        // staringCoverage Validation
+        // *********** staringCoverage Validation ***********
         const staringCoverage= document.querySelector("#staringcoverage")
         // dateValidation(staringCoverage, thisYear +1, thisYear)
 
@@ -2260,9 +2279,6 @@
             err_Msg.style.display = "block";
             result = false;
           }
-
-          console.log({ isPast });
-          console.log({ isCrossMax });
         }
 
         if (result) err_Msg.style.display = "none";
@@ -2272,7 +2288,7 @@
       }
 
 
-        // State Help Hide on condition
+        // *********** State Help Hide on condition ***********
         const state = document.getElementById("state");
 
         function hideStateHelp() {
@@ -2283,57 +2299,69 @@
         hideStateHelp()
         state.addEventListener("change", hideStateHelp);
 
-        // SSN Validation
+        // *********** SSN Validation ***********
         document.querySelectorAll(".SSN").forEach((field) => {
-        field.addEventListener("input", (e) => {
-            field.classList.remove("error");
-            field.closest(".input-container").querySelector("label.error").style.display = "none"
+            const maskSSN = document.getElementById(field.id + "Mask");
 
-            var x = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
-            e.target.value = !x[2]
-            ? x[1]
-            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+            field.addEventListener("input", (e) => {
+                field.classList.remove("error-field");
+                field
+                .closest(".input-container")
+                .querySelector(".error-label").style.display = "none";
+
+                var x = e.target.value
+                .replace(/\D/g, "")
+                .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
+                e.target.value = !x[2]
+                ? x[1]
+                : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+
+                //
+                const ssnVal = e.target.value.slice(7, 11);
+                const valLen = e.target.value.length;
+                const Xmask = "XXX-XX-XXXX".slice(0, valLen);
+
+                maskSSN.value = valLen < 7 ? Xmask : "XXX-XX-" + ssnVal;
+            });
+
+            field.addEventListener("change", function (e) {
+                const l = e.target.value.length;
+                if (l != 11) {
+                    this.classList.add("error-field");
+                    const errLabel = field.closest(".input-container").querySelector(".error-label");
+
+                    field?.classList.add("error-field");
+                    errLabel?.innerHTML = "SSN should be 9 digits";
+                    errLabel?.style.display = "block";
+                }
+            });
+
+            //
+            field.addEventListener("blur", () => {
+                field?.style.display = "none";
+                maskSSN?.style.display = "block";
+            });
+
+            maskSSN.addEventListener("focus", () => {
+                maskSSN?.style.display = "none";
+                field?.style.display = "block";
+                field.focus();
+            });
         });
-        });
 
+        function ssnValidation() {
+            const ssnFields =  document.querySelectorAll(".SSN");
 
-        document.querySelectorAll(".SSN").forEach((field) => {
-        field.addEventListener("input", (e) => {
-          field.classList.remove("error-field");
-          field
-            .closest(".input-container")
-            .querySelector(".error-label").style.display = "none";
+            for (let i = 0; i < ssnFields.length; i++) {
+              const ssnV = ssnFields[i].value;
 
-          var x = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{0,3})(\d{0,2})(\d{0,4})/);
-          e.target.value = !x[2]
-            ? x[1]
-            : x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
-        });
+              if(ssnV && ssnV.length < 11) return false;
+            }
 
-        field.addEventListener("change", function (e) {
-          const l = e.target.value.length;
+            return true;
+        }
 
-          const errLabel = field
-              .closest(".input-container")
-              .querySelector(".error-label");
-
-          if (l != 11) {
-            field.classList.add("error-field");
-
-            errLabel.innerHTML = "SSN should be 9 digits";
-            errLabel.style.display = "block";
-          }else{
-            zipCode.classList.remove("error-field");
-            errLabel.style.display = "none";
-          }
-        });
-      });
-
-        // Zip pattern
+        // *********** Zip pattern ***********
         const zipCode = document.getElementById('zipCode');
         zipCode?.addEventListener("input", (e) => {
             const x = e.target.value.replace(/\D/g, "").match(/(\d{0,5})(\d{0,4})/);
@@ -2341,10 +2369,10 @@
             e.target.value = !x[2] ? x[1] : x[1] + "-" + x[2];
         });
 
-        zipCode?.addEventListener("change", (e) => {
+        zipCode?.addEventListener("blur", (e) => {
             const x = e.target.value.length
 
-            const errLabel = zipCode.closest(".input-container").querySelector(".error");
+            const errLabel = zipCode.closest(".input-container").querySelector(".error-label");
 
             if (x < 5) {
                 zipCode.classList.add("error-field");
@@ -2357,13 +2385,13 @@
             }
         });
 
-        // Military, Military Spouse onUnCheckFieldBlank
+        // *********** Military, Military Spouse onUnCheckFieldBlank ***********
         function onUnCheckFieldBlank(checkboxId, sectionClass) {
         const checkBoxEl = document.getElementById(checkboxId);
-        checkBoxEl.addEventListener("change", () => {
+        checkBoxEl?.addEventListener("change", () => {
             const isChecked = checkBoxEl.checked;
             if (!isChecked) {
-            $(`${sectionClass}  .form-control`).val("");
+            $(`${sectionClass} .form-control`).val("");
             }
         });
         }

@@ -67,7 +67,6 @@
         name="ssnXX"
         type="text"
         class="form-control ssn-number SSNmask"
-        value="XXX-XX-"
         placeholder="XXX-XX-XXXX"
         style="display: none"
       />
@@ -100,8 +99,10 @@
           //
 
           const ssnVal = e.target.value.slice(7, 11);
+          const valLen = e.target.value.length;
+          const Xmask = "XXX-XX-XXXX".slice(0, valLen);
 
-          maskSSN.value = "XXX-XX-" + ssnVal;
+          maskSSN.value = valLen < 7 ? Xmask : "XXX-XX-" + ssnVal;
         });
 
         field.addEventListener("change", function (e) {
@@ -395,7 +396,7 @@
     <script>
       document.querySelectorAll(".alphabeticOnly")?.forEach((input) => {
         input.addEventListener("input", (e) => {
-          e.target.value = e.target?.value.replace(/[^a-zA-Z\s-]/g, "");
+          e.target.value = e.target?.value.replace(/[^a-zA-Z -]/g, "");
 
           // if (e.target.value.length > 5) {
           //   console.log(e.target.value.slice(5, 10));
