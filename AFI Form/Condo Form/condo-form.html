@@ -61,7 +61,7 @@
     <!-- ************************************************ -->
     <!------------------- Radio Section -------------------->
     <!-- ************************************************ -->
-    <section class="form_section radio_select form_container">
+    <section class="form_section radio_select form_container active_section">
       <div class="container">
         <section class="heading_text_section">
           <h1 class="quote_request_heading">Eligibility For Insurance</h1>
@@ -551,7 +551,7 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 1 ------------------>
     <!-- ************************************************ -->
-    <section class="form_section flood__step policyholder_form">
+    <section class="form_section condo__step policyholder_form">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -913,7 +913,7 @@
     </section>
 
     <!-- SPOUSE INFORMATION -->
-    <section class="form_section flood__step spouse_information">
+    <section class="form_section condo__step spouse_information">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -1080,7 +1080,7 @@
     <!---------------------- MULTI-STEP 2 ------------------>
     <!-- ************************************************ -->
     <!-- PROPERTY QUOTED FORM -->
-    <section class="form_section flood__step property_quoted_form">
+    <section class="form_section condo__step property_quoted_form">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -1209,13 +1209,13 @@
             <div class="quote_request_sidebar__content">
               <div class="quote_request_sidebar__item">
                 <p class="quote_request_sidebar__item_description">
-                  Flood insurance covers direct physical loss caused by "flood."
-                  In simple terms, a flood is an excess of water on land that is
+                  Flood insurance covers direct physical loss caused by "condo."
+                  In simple terms, a condo is an excess of water on land that is
                   normally dry.
                 </p>
                 <p class="quote_request_sidebar__item_description">
                   Federal disaster assistance is only available if the President
-                  declares a disaster. Less than 50 percent of all flooding
+                  declares a disaster. Less than 50 percent of all condoing
                   incidents are awarded a Federal Disaster Assistance
                   declaration. If the President declares a Federal Disaster
                   Area, most disaster assistance is provided in the form of a
@@ -1228,8 +1228,8 @@
       </div>
     </section>
 
-    <!-- PROPERTY OVERVIEW FORM -->
-    <section class="form_section flood__step property_information_form">
+    <!-- PROPERTY INFORMATION FORM -->
+    <section class="form_section condo__step property_information_form">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -1248,6 +1248,7 @@
           <!-- ******* FORM  *******-->
           <div class="form_container">
             <h2 class="quote_request_heading">Property Information</h2>
+
             <!-- Occupancy -->
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
@@ -1258,11 +1259,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input residenceOccupancy required"
                     id="residenceOccupancy"
                     name="residenceOccupancy"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="Primary Owner Occupied">
@@ -1278,6 +1278,7 @@
                 </div>
               </div>
             </div>
+
             <!-- Length Of Leasing Agreement -->
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
@@ -1288,11 +1289,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input occupancyDependent"
                     id="lengthofleasingagreement"
                     name="lengthofleasingagreement"
                     type="select"
-                    required=""
                     disabled=""
                   >
                     <option value="">Choose One</option>
@@ -1305,6 +1305,7 @@
                 </div>
               </div>
             </div>
+
             <!-- Are tenants required to carry liability coverage? -->
             <div class="fields-row">
               <div class="field field--xxlarge field--extended-label">
@@ -1317,11 +1318,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input occupancyDependent"
                     id="aretenantsrequiredtocarryliabilitycoverage"
                     name="aretenantsrequiredtocarryliabilitycoverage"
                     type="select"
-                    required=""
                     disabled=""
                   >
                     <option value="">Choose One</option>
@@ -1343,17 +1343,17 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input required dollar"
                     id="residenceDwellingAmountToBeQuoted"
                     name="residenceDwellingAmountToBeQuoted"
                     type="text"
-                    required=""
                     placeholder=""
                     value=""
                   />
                 </div>
               </div>
             </div>
+
             <!-- Year Built, Year Built -->
             <div class="fields-row">
               <div class="field">
@@ -1364,11 +1364,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyYearBuilt"
                     name="propertyYearBuilt"
                     type="select"
-                    required=""
                   >
                     <option value="">--</option>
                     <option value="2023">2023</option>
@@ -1386,11 +1385,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyStyleOfHouse"
                     name="propertyStyleOfHouse"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="Condo/Co-op">Condo/Co-op</option>
@@ -1409,11 +1407,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyConstructionType"
                     name="propertyConstructionType"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="Brick over Frame">Brick over Frame</option>
@@ -1440,11 +1437,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input required numberOnly"
                     id="totalLivingAreaSqFt"
                     name="totalLivingAreaSqFt"
-                    type="number"
-                    required=""
+                    type="text"
                     placeholder=""
                     value=""
                   />
@@ -1462,11 +1458,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyBedroomCount"
                     name="propertyBedroomCount"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="1">1</option>
@@ -1488,11 +1483,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyBathroomCount"
                     name="propertyBathroomCount"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="1">1</option>
@@ -1516,37 +1510,15 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyRoofAge"
                     name="propertyRoofAge"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
                     <option value="24">24</option>
                     <option value="25 or more">25 or more</option>
                   </select>
@@ -1560,26 +1532,16 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyRoofMaterial"
                     name="propertyRoofMaterial"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
-                    <option value="Asphalt/Composition">
-                      Asphalt/Composition
-                    </option>
                     <option value="Metal">Metal</option>
-                    <option value="Clay/Ceramic/Cement Tile">
-                      Clay/Ceramic/Cement Tile
-                    </option>
                     <option value="Wood">Wood</option>
                     <option value="Hail Proof">Hail Proof</option>
                     <option value="Slate">Slate</option>
-                    <option value="Plastic/Rubber/Vinyl">
-                      Plastic/Rubber/Vinyl
-                    </option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -1610,8 +1572,8 @@
       </div>
     </section>
 
-    <!-- PROPERTY OVERVIEW FORM -->
-    <section class="form_section flood__step property_claims_form">
+    <!-- PROPERTY CLAIMS FORM -->
+    <section class="form_section condo__step property_claims_form">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -1642,11 +1604,10 @@
                 </div>
                 <div class="field__input-wrapper">
                   <select
-                    class="field__input"
+                    class="field__input required"
                     id="propertyClaimsCount"
                     name="propertyClaimsCount"
                     type="select"
-                    required=""
                   >
                     <option value="">Choose One</option>
                     <option value="0">0</option>
@@ -1667,10 +1628,9 @@
                 </div>
                 <div class="field__input-wrapper">
                   <textarea
-                    class="field__input"
+                    class="field__input required"
                     id="propertyClaimsDetails"
                     name="propertyClaimsDetails"
-                    required=""
                     placeholder=""
                     spellcheck="false"
                   ></textarea>
@@ -1698,8 +1658,8 @@
     <!-- ************************************************ -->
     <!---------------------- MULTI-STEP 3 ------------------>
     <!-- ************************************************ -->
-    <!-- PROPERTY DETAILS FORM -->
-    <section class="form_section flood__step discount_form active_section">
+    <!-- DISCOUNT FORM -->
+    <section class="form_section condo__step discount_form">
       <div class="container">
         <!-- ******** STEP ******** -->
         <div class="step__container">
@@ -1744,7 +1704,7 @@
                 <div class="field-group field-group--inline">
                   <div class="field__input-wrapper">
                     <input
-                      class="field__input"
+                      class="field__input newPurchaseDiscount"
                       id="newPurchaseDiscount--true"
                       name="newPurchaseDiscount"
                       type="radio"
@@ -1770,14 +1730,14 @@
                 </div>
                 <div class="field__input-wrapper">
                   <input
-                    class="field__input"
+                    class="field__input date newPurchaseDiscountDate"
                     id="newPurchaseDiscountAnticipatedClosingDate"
                     name="newPurchaseDiscountAnticipatedClosingDate"
                     type="text"
                     pattern="\d{1,2}/\d{1,2}/\d{4}"
+                    disabled
                     placeholder=""
                     value=""
-                    required=""
                   />
                 </div>
               </div>
@@ -1872,14 +1832,14 @@
     <section class="quote_request__action_buttons">
       <div class="container d-flex">
         <button
-          id="floodBackBtn"
+          id="condoBackBtn"
           class="button button__back button__left hide"
           type="button"
         >
           Back
         </button>
         <button
-          id="floodNextBtn"
+          id="condoNextBtn"
           class="button button__next button__right"
           type="submit"
         >
