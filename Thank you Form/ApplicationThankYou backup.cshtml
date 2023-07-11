@@ -26,7 +26,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <title>AFI QUOTE HUB</title>
-
     <style>
         .unstyled::-webkit-inner-spin-button,
         .unstyled::-webkit-calendar-picker-indicator {
@@ -424,10 +423,9 @@
                                            class="form-control input__field unstyled"
                                            name="txtCallDate"
                                            id="txtCallDate"
+                                           max="2000-03-11"
                                            onkeydown="keyDown(event)"
-                                           onblur="InvalidDOC()" 
-                                           max="2000-03-11"/>
-                                           
+                                           onblur="InvalidDOC()" />
                                     <span class="error__msg text-danger d-none">required</span>
                                 </div>
                             </div>
@@ -495,8 +493,9 @@
                         <div class="mt-3">
                             <ul>
 
-                                <li class="dotted-line">                              
-                                    <a href="/quote%20hub/startautoquote?UserType=C&MemberNumber={@HttpContext.Current.Session["ChipMemberId"]}&CoverageType=Auto">
+                                <li class="dotted-line">
+
+                                    <a href="/Quote%20Hub/GetAutoQuote">
 
                                         <img alt="auto" src="/images/icon-Auto-Other.png" />
                                         <span style="">Auto</span>
@@ -504,7 +503,7 @@
                                 </li>
                                 <li>
 
-                                    <a href="/quote%20hub/startumbrellaquote?UserType=C&MemberNumber={@HttpContext.Current.Session["ChipMemberId"]}&CoverageType=Umbrella&OP=True">
+                                    <a href="/Quote%20Hub/GetUmbrellaQuote">
 
                                         <img alt="auto" src="/images/icon-Umbrella-Other.png" />
                                         <span style="">Umbrella</span>
@@ -530,9 +529,9 @@
 
                             <li><a href="/business-form-page?CoverageType=Business" target="_blank">Business</a></li>
                             <li><a href="/collector-form-page? CoverageType=Collector%20Vehicle" target="_blank">Collector Vehicle</a></li>
-                            <li><a href="/quote%20hub/StartDwellingQuote?UserType=C&MemberNumber={@HttpContext.Current.Session["ChipMemberId"]}&CoverageType=Dwelling+Fire"> Dwelling Fire (Landlord)</a></li>
+                            <li><a href="/Quote%20Hub/GetDwellingQuote?idRiskAddress=0"> Dwelling Fire (Landlord)</a></li>
                             <li><a href="/flood-form-page? CoverageType=Flood" target="_blank">Flood </a></li>
-                            <li><a href="/quote%20hub/startquote?UserType=C&MemberNumber={@HttpContext.Current.Session["ChipMemberId"]}&CoverageType=Homeowner" target="_blank">Home </a></li>
+                            <li><a href="/Quote%20Hub/EligibilityPersonal?idRiskAddress=0" target="_blank">Home </a></li>
                             <li><a href="/mobilehome-form-page?CoverageType=Mobile%20Home" target="_blank"> Mobile Home</a></li>
                             <li><a href="/motorcycle-form-page?CoverageType=Motorcycle" target="_blank">Motorcycle </a></li>
                             <li><a href="/motorhome-form-page?CoverageType=Motorhome" target="_blank"> Motorhome</a></li>
