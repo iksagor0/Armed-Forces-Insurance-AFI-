@@ -1,0 +1,9 @@
+I finally got through this again.  Please review the following:
+
+If I start to enter an SSN number and then back out the error message still shows. Since this is not a required field, the error message should display if the user enters alpha, special characters or and numerical characters less than 9. If the user blanks out an entry do not display error message. ------>
+
+DOB is not pushing to CHIP for either the primary or secondary insured
+
+When tabbing through the form after marital status if married the tab disappears until you get to salutation for spouse - is that intentional since Military Information is a check box?
+
+If I skip a required field and try to make payment, I get an error message at the top, the skipped required fields should also highlight in red with the error message (see snip). ------>
